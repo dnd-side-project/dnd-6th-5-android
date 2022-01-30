@@ -1,7 +1,8 @@
-package com.fork.spoonfeed
+package com.fork.spoonfeed.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.fork.spoonfeed.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
