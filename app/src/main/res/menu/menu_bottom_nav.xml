@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_main_home"
+        android:title="@string/bottom_home" />
+    <item
+        android:id="@+id/menu_main_customized_policy"
+        android:title="@string/bottom_customized_policy" />
+    <item
+        android:id="@+id/menu_main_community"
+        android:title="@string/bottom_community" />
+    <item
+        android:id="@+id/menu_main_mypage"
+        android:title="@string/bottom_mypage" />
+</menu>
