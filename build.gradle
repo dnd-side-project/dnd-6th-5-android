@@ -7,6 +7,8 @@ buildscript {
         okhttpVersion = "4.9.3"
         gsonVersion = "2.8.9"
         hiltVersion = "2.36"
+        activityVersion = "1.4.0"
+        fragmentVersion = "1.4.1"
     }
     repositories {
         google()
