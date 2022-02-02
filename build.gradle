@@ -3,6 +3,9 @@ buildscript {
     ext {
         materialVersion = "1.5.0"
         coroutineVersion = "1.5.2"
+        retrofitVersion = "2.9.0"
+        okhttpVersion = "4.9.3"
+        gsonVersion = "2.8.9"
     }
     repositories {
         google()
