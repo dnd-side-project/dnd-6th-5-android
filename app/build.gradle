@@ -37,6 +37,9 @@ android {
 
 dependencies {
 
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
+
     // Material Design 3
     implementation "com.google.android.material:material:$materialVersion"
 
