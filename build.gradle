@@ -6,6 +6,7 @@ buildscript {
         retrofitVersion = "2.9.0"
         okhttpVersion = "4.9.3"
         gsonVersion = "2.8.9"
+        hiltVersion = "2.36"
     }
     repositories {
         google()
@@ -17,6 +18,9 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+        // Hilt
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
     }
 }
 
