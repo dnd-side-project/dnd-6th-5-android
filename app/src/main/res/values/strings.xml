@@ -2,7 +2,9 @@
     <string name="app_name">SpoonFeed</string>
 
     <string name="bottom_home">홈</string>
-    <string name="bottom_customized_policy">맞춤 정책 찾기</string>
+    <string name="bottom_policy">맞춤정책</string>
     <string name="bottom_community">커뮤니티</string>
     <string name="bottom_mypage">마이페이지</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

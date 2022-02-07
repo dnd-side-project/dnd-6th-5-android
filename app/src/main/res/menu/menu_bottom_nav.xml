@@ -2,14 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/menu_main_home"
+        android:icon="@drawable/selector_home"
         android:title="@string/bottom_home" />
     <item
-        android:id="@+id/menu_main_customized_policy"
-        android:title="@string/bottom_customized_policy" />
+        android:id="@+id/menu_main_policy"
+        android:icon="@drawable/selector_policy"
+        android:title="@string/bottom_policy" />
     <item
         android:id="@+id/menu_main_community"
+        android:icon="@drawable/selector_community"
         android:title="@string/bottom_community" />
     <item
         android:id="@+id/menu_main_mypage"
+        android:icon="@drawable/selector_mypage"
         android:title="@string/bottom_mypage" />
 </menu>
