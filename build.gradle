@@ -6,7 +6,7 @@ buildscript {
         retrofitVersion = "2.9.0"
         okhttpVersion = "4.9.3"
         gsonVersion = "2.8.9"
-        hiltVersion = "2.36"
+        hiltVersion = "2.38.1"
         activityVersion = "1.4.0"
         fragmentVersion = "1.4.1"
     }
