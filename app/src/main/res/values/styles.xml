@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--  Heading TextView  -->
+    <style name="TextView.Heading.Bold.20" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">30sp</item>
+    </style>
+
+    <style name="TextView.Heading.SemiBold.30" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_semibold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="lineHeight">30sp</item>
+    </style>
+
+    <style name="TextView.Heading.Bold.16" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextView.Heading.SemiBold.16" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_semibold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextView.Heading.Bold.14" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <!--  Label TextView  -->
+    <style name="TextView.Label.Bold.16" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextView.Label.Regular.16" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextView.Label.Medium.14" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <style name="TextView.Label.Regular.14" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <style name="TextView.Label.Regular.12" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">18sp</item>
+    </style>
+
+    <!--  Paragraph TextView  -->
+    <style name="TextView.Paragraph.Regular.14" parent="Widget.AppCompat.TextView">
+        <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+</resources>
