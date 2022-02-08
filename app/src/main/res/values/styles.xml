@@ -9,7 +9,7 @@
         <item name="lineHeight">30sp</item>
     </style>
 
-    <style name="TextView.Heading.SemiBold.30" parent="Widget.AppCompat.TextView">
+    <style name="TextView.Heading.SemiBold.20" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_semibold</item>
         <item name="android:textSize">20sp</item>
