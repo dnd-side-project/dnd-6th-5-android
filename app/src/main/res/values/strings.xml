@@ -7,4 +7,14 @@
     <string name="bottom_mypage">마이페이지</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Toolbar Title  -->
+    <string name="title_policy">맞춤 정책</string>
+
+    <!--  Policy Main -->
+    <string name="policy_subtitle">Spoon Feed 스푼피드에서\n 내게 맞는 정책을 찾아보세요!</string>
+    <string name="policy_description">떠먹여주는 맞춤 정책 정보 Spoon Feed 스푼 피드는\n모르고 쉽게 지나칠 수 있는 많은 정책 정보를 개인 맞춤 필터를 적용해 한눈에 보기 쉽도록 만들었어요.\n\n온라인 청년센터에 제공되는 공식 정보를 참고하여 제작했으며, 자세한 내용은 온라인 청년센터 홈페이지에서\n확인이 가능합니다!</string>
+    <string name="policy_youth_center_shortcut"><u>온라인 청년센터 바로가기</u></string>
+    <string name="policy_find_fit_policy">맞춤 정책 찾기</string>
+
 </resources>

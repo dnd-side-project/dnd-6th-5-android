@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -9,7 +10,83 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".presentation.ui.policy.view.PolicyFragment">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mt_policy_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_policy_title"
+                style="@style/TextView.Heading.Bold.24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginVertical="13dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/title_policy" />
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ImageView
+            android:id="@+id/iv_policy_emoji"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/img_policy_sub_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mt_policy_title" />
+
+        <TextView
+            android:id="@+id/tv_policy_subtitle"
+            style="@style/TextView.Heading.Bold.20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/policy_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/iv_policy_emoji" />
+
+        <TextView
+            android:id="@+id/tv_policy_description"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/policy_description"
+            app:layout_constraintEnd_toEndOf="@id/tv_policy_subtitle"
+            app:layout_constraintStart_toStartOf="@id/tv_policy_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_subtitle" />
+
+        <TextView
+            android:id="@+id/tv_policy_youth_center_shortcut"
+            style="TextView.Shortcut.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:padding="4dp"
+            android:text="@string/policy_youth_center_shortcut"
+            app:layout_constraintBottom_toTopOf="@id/mb_policy_find_fit_policy"
+            app:layout_constraintEnd_toEndOf="@id/mb_policy_find_fit_policy"
+            app:layout_constraintStart_toStartOf="@id/mb_policy_find_fit_policy" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_policy_find_fit_policy"
+            style="@style/MaterialButton.Bold.16"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/primary_blue"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:text="@string/policy_find_fit_policy"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
