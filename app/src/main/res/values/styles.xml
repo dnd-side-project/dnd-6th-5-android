@@ -2,6 +2,13 @@
 <resources>
 
     <!--  Heading TextView  -->
+    <style name="TextView.Heading.Bold.24" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">30sp</item>
+    </style>
+
     <style name="TextView.Heading.Bold.20" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_bold</item>
@@ -79,5 +86,21 @@
         <item name="fontFamily">@font/suit_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">21sp</item>
+    </style>
+
+    <!--  Shortcut TextView  -->
+    <style name="TextView.Shortcut.Regular.14" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <!--  Material Button  -->
+    <style name="MaterialButton.Bold.16" parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">14dp</item>
     </style>
 </resources>
