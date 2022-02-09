@@ -5,6 +5,22 @@
     <string name="bottom_policy">맞춤정책</string>
     <string name="bottom_community">커뮤니티</string>
     <string name="bottom_mypage">마이페이지</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--home-->
+    <string name="home_customized_policy_title">맞춤 정책</string>
+    <string name="home_customized_policy_explain">나에게 딱 맞는 맞춤 정책을\n찾아보세요</string>
+    <string name="home_policy_search_title">청년정책 살펴보기</string>
+    <string name="home_policy_search_explain">어떤 청년정책이 진행되고 있는지 살펴보세요</string>
+    <string name="home_policy_search_all">전체</string>
+    <string name="home_policy_search_dwelling">주거</string>
+    <string name="home_policy_search_finance">금융</string>
+    <string name="home_interested_policy_title">관심있는 정책</string>
+    <string name="home_interested_policy_explain">관심있는 정책을 모아 바로 확인하세요</string>
+    <string name="home_not_interested_policy_explain">아직 관심있는 정책이 없어요</string>
+
+    <!--kakaologin-->
+    <string name="kakao_native_key">a0ce0b1269719277338f2d9d230dfe54</string>
+    <string name="kakao_key">kakaoa0ce0b1269719277338f2d9d230dfe54</string>
+
 </resources>
