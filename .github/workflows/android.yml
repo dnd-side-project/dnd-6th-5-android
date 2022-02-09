@@ -22,12 +22,12 @@ jobs:
     - name: Access kakao key
       env:
         KAKAO_KEY_MANIFEST: ${{ secrets.KAKAO_KEY_MANIFEST }}
-      run: echo $KAKAO_KEY_MANIFEST
+      run: echo $KAKAO_KEY_MANIFEST > ./local.properties
 
     - name: Access kakao native key
       env:
         KAKAO_NATIVE_KEY: ${{ secrets.KAKAO_NATIVE_KEY }}
-      run: echo $KAKAO_NATIVE_KEY
+      run: echo $KAKAO_NATIVE_KEY > ./local.properties
     
     - name: set up JDK 11
       uses: actions/setup-java@v2
