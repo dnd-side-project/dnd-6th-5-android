@@ -10,7 +10,8 @@ class SpoonFeedApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         appContext = this
-        KakaoSdk.init(this, getString(R.string.kakao_native_key))
+        KakaoSdk.init(this, BuildConfig.KAKAO_NATIVE_KEY)
+
     }
 
     companion object {

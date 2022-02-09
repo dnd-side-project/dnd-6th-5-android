@@ -12,10 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="@string/kakao_native_key" />
-
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -27,7 +23,7 @@
 
                 <data
                     android:host="oauth"
-                    android:scheme="@string/kakao_key" />
+                    android:scheme="${kakaoKey}" />
             </intent-filter>
         </activity>
         <activity
@@ -41,8 +37,7 @@
         </activity>
         <activity
             android:name=".presentation.MainActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
     </application>
 
 </manifest>

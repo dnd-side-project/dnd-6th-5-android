@@ -18,9 +18,4 @@
     <string name="home_interested_policy_title">관심있는 정책</string>
     <string name="home_interested_policy_explain">관심있는 정책을 모아 바로 확인하세요</string>
     <string name="home_not_interested_policy_explain">아직 관심있는 정책이 없어요</string>
-
-    <!--kakaologin-->
-    <string name="kakao_native_key">a0ce0b1269719277338f2d9d230dfe54</string>
-    <string name="kakao_key">kakaoa0ce0b1269719277338f2d9d230dfe54</string>
-
 </resources>
