@@ -7,6 +7,7 @@ import android.view.View
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentPolicyBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +28,11 @@ class PolicyFragment : BaseViewUtil.BaseFragment<FragmentPolicyBinding>(R.layout
         binding.tvPolicyYouthCenterShortcut.setOnClickListener {
             val youthCenterIntent = Intent(Intent.ACTION_VIEW, Uri.parse(youthCenterUrl))
             startActivity(youthCenterIntent)
+        }
+
+        binding.mbPolicyFindFitPolicy.setOnClickListener {
+            val policyFilterActivityIntent = Intent(context, PolicyFilterActivity::class.java)
+            startActivity(policyFilterActivityIntent)
         }
     }
 }

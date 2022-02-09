@@ -83,8 +83,6 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="@color/primary_blue"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
             android:text="@string/policy_find_fit_policy"
             app:layout_constraintBottom_toBottomOf="parent" />
 

@@ -2,6 +2,13 @@
 <resources>
 
     <!--  Heading TextView  -->
+    <style name="TextView.Heading.ExtraBold.12" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
+        <item name="fontFamily">@font/suit_extrabold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+
     <style name="TextView.Heading.Bold.24" parent="Widget.AppCompat.TextView">
         <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_bold</item>
@@ -102,5 +109,23 @@
         <item name="lineHeight">24sp</item>
         <item name="android:textSize">16sp</item>
         <item name="cornerRadius">14dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <!--  Chip Button  -->
+    <style name="Chip.Regular.14" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipBackgroundColor">@color/selector_chip_background_color</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+        <item name="android:textColor">@color/selector_chip_text_color</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipStrokeColor">@color/selector_chip_stroke_tint</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="chipEndPadding">0dp</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="textEndPadding">24dp</item>
+        <item name="textStartPadding">24dp</item>
     </style>
 </resources>

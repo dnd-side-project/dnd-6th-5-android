@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        tools:context=".presentation.ui.policy.view.filter.PolicyFilterLevelOneFragment">
+
+        <com.fork.spoonfeed.presentation.ui.custom.FilterProgress
+            android:id="@+id/fp_policy_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:currentPosition="ONE"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_level"
+            style="@style/TextView.Heading.ExtraBold.12"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="51dp"
+            android:background="@drawable/bg_policy_filter_level_title"
+            android:gravity="center"
+            android:text="@string/policy_filter_level_one"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/tv_policy_filter_title"
+            app:layout_constraintTop_toBottomOf="@id/fp_policy_filter" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_title"
+            style="@style/TextView.Heading.SemiBold.20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/policy_filter_level_one_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_level" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_subtitle"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/policy_filter_level_one_subtitle"
+            android:textColor="@color/gray04"
+            app:layout_constraintEnd_toEndOf="@id/tv_policy_filter_title"
+            app:layout_constraintStart_toStartOf="@id/tv_policy_filter_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_title" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_age"
+            style="@style/TextView.Heading.Bold.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:text="@string/policy_filter_level_one_age"
+            app:layout_constraintStart_toStartOf="@id/et_policy_filter_age_year"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_subtitle" />
+
+        <EditText
+            android:id="@+id/et_policy_filter_age_year"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_policy_filter_age_input"
+            android:hint="@string/policy_filter_level_one_age_year_hint"
+            android:maxLength="4"
+            android:padding="16dp"
+            android:textColorHint="@color/gray03"
+            app:layout_constraintEnd_toStartOf="@id/et_policy_filter_age_month"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_age" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_age_year"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/policy_filter_level_one_age_year"
+            app:layout_constraintBottom_toBottomOf="@id/et_policy_filter_age_year"
+            app:layout_constraintEnd_toEndOf="@id/et_policy_filter_age_year"
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_age_year" />
+
+        <EditText
+            android:id="@+id/et_policy_filter_age_month"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginHorizontal="12dp"
+            android:background="@drawable/bg_policy_filter_age_input"
+            android:hint="@string/policy_filter_level_one_age_month_hint"
+            android:maxLength="2"
+            android:padding="16dp"
+            android:textColorHint="@color/gray03"
+            app:layout_constraintEnd_toStartOf="@id/et_policy_filter_age_day"
+            app:layout_constraintStart_toEndOf="@id/et_policy_filter_age_year"
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_age_year" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_age_month"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/policy_filter_level_one_age_month"
+            app:layout_constraintBottom_toBottomOf="@id/et_policy_filter_age_month"
+            app:layout_constraintEnd_toEndOf="@id/et_policy_filter_age_month"
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_age_month" />
+
+
+        <EditText
+            android:id="@+id/et_policy_filter_age_day"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_policy_filter_age_input"
+            android:hint="@string/policy_filter_level_one_age_day_hint"
+            android:maxLength="2"
+            android:padding="16dp"
+            android:textColorHint="@color/gray03"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/et_policy_filter_age_month"
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_age_year" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_age_day"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="@string/policy_filter_level_one_age_day"
+            app:layout_constraintBottom_toBottomOf="@id/et_policy_filter_age_day"
+            app:layout_constraintEnd_toEndOf="@id/et_policy_filter_age_day"
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_age_day" />
+
+        <View
+            android:id="@+id/view_decorator"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginTop="40dp"
+            android:background="@color/gray01"
+            app:layout_constraintTop_toBottomOf="@id/et_policy_filter_age_year" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_marriage"
+            style="@style/TextView.Heading.Bold.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="@string/policy_filter_level_one_marriage"
+            app:layout_constraintStart_toStartOf="@id/cg_policy_filter_marriage"
+            app:layout_constraintTop_toBottomOf="@id/view_decorator" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_policy_filter_marriage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            app:chipSpacingHorizontal="8dp"
+            app:chipSpacingVertical="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_marriage"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/policy_filter_level_one_marriage_true" />
+
+            <com.google.android.material.chip.Chip
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="@string/policy_filter_level_one_marriage_false" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_policy_filter_next"
+            style="@style/MaterialButton.Bold.16"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="104dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/gray03"
+            android:clickable="false"
+            android:text="@string/policy_filter_next"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cg_policy_filter_marriage" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

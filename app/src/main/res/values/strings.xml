@@ -18,8 +18,26 @@
     <string name="policy_find_fit_policy">맞춤 정책 찾기</string>
 
     <!--  Policy Filter Progress -->
+    <string name="policy_filter_title">맞춤 정책 찾기</string>
     <string name="policy_filter_progress_one">1/3</string>
     <string name="policy_filter_progress_two">2/3</string>
     <string name="policy_filter_progress_three">3/3</string>
+
+    <!--  Policy Filter  -->
+    <string name="policy_filter_next">다음</string>
+
+    <string name="policy_filter_level_one">1</string>
+    <string name="policy_filter_level_one_title">내게 맞는 정책을 찾기 위해\n기본 정보를 알려주세요</string>
+    <string name="policy_filter_level_one_subtitle">정부 정책은 주로 만 나이 기준으로 제공되기 때문에 생년월일 정보가 필요하며, 혼인 여부에 따라 맞는 정책이 다를 수 있습니다.</string>
+    <string name="policy_filter_level_one_age">나이</string>
+    <string name="policy_filter_level_one_age_year_hint">YYYY</string>
+    <string name="policy_filter_level_one_age_year">년</string>
+    <string name="policy_filter_level_one_age_month_hint">MM</string>
+    <string name="policy_filter_level_one_age_month">월</string>
+    <string name="policy_filter_level_one_age_day_hint">DD</string>
+    <string name="policy_filter_level_one_age_day">일</string>
+    <string name="policy_filter_level_one_marriage">혼인여부</string>
+    <string name="policy_filter_level_one_marriage_true">기혼</string>
+    <string name="policy_filter_level_one_marriage_false">미혼</string>
 
 </resources>
