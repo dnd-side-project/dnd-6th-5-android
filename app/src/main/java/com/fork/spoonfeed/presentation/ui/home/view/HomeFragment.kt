@@ -21,4 +21,13 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun initView() {
     }
+
+
+    private fun initClick() {
+        //맞춤정책 뷰로 이동
+
+        //청년정책 살펴보기 뷰로 이동
+
+        //관심있는정책 살펴보기 뷰로 이동
+    }
 }
