@@ -1,6 +1,5 @@
 package com.fork.spoonfeed.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMainBinding
