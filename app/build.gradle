@@ -64,7 +64,7 @@ dependencies {
     implementation "com.google.android.material:material:$materialVersion"
 
     //kakao
-    implementation "com.kakao.sdk:v2-user:2.8.5"
+    implementation "com.kakao.sdk:v2-user:$kakaoLogInVersion"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
