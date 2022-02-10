@@ -97,7 +97,7 @@ class PolicyFilterLevelOneFragment :
             val marriageStatus = when (checkedId) {
                 binding.chipPolicyFilterOneMarriageTrue.id -> true
                 binding.chipPolicyFilterOneMarriageFalse.id -> false
-                else -> false
+                else -> return@setOnCheckedChangeListener
             }
 
             viewModel.setMarriageStatus(marriageStatus)
