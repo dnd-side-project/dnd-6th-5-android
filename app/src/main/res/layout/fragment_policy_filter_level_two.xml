@@ -81,15 +81,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_employment_availability"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_employment_incumbent"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_two_employment_incumbent" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_unemployed"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
@@ -125,33 +128,39 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_company_size"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_small"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_two_company_small" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_mid"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_two_company_mid" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_self"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_two_company_self" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_founder"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_two_company_founder" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_nothing"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
