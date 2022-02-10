@@ -79,6 +79,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/bg_policy_filter_age_input"
             android:hint="@string/policy_filter_level_one_age_year_hint"
+            android:inputType="number"
             android:maxLength="4"
             android:padding="@dimen/policy_filter_edittext_padding"
             android:textColorHint="@color/gray03"
@@ -105,7 +106,8 @@
             android:layout_marginHorizontal="12dp"
             android:background="@drawable/bg_policy_filter_age_input"
             android:hint="@string/policy_filter_level_one_age_month_hint"
-            android:maxLength="2"
+            android:inputType="number"
+            android:maxLength="3"
             android:padding="@dimen/policy_filter_edittext_padding"
             android:textColorHint="@color/gray03"
             app:layout_constraintEnd_toStartOf="@id/et_policy_filter_one_age_day"
@@ -123,7 +125,6 @@
             app:layout_constraintEnd_toEndOf="@id/et_policy_filter_one_age_month"
             app:layout_constraintTop_toTopOf="@id/et_policy_filter_one_age_month" />
 
-
         <EditText
             android:id="@+id/et_policy_filter_one_age_day"
             style="@style/TextView.Paragraph.Regular.14"
@@ -132,7 +133,8 @@
             android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
             android:background="@drawable/bg_policy_filter_age_input"
             android:hint="@string/policy_filter_level_one_age_day_hint"
-            android:maxLength="2"
+            android:inputType="number"
+            android:maxLength="3"
             android:padding="@dimen/policy_filter_edittext_padding"
             android:textColorHint="@color/gray03"
             app:layout_constraintEnd_toEndOf="parent"
@@ -174,6 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
             android:layout_marginTop="16dp"
+            app:selectionRequired="true"
             app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
             app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
             app:layout_constraintEnd_toEndOf="parent"
@@ -182,12 +185,14 @@
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_one_marriage_true"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_one_marriage_true" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_one_marriage_false"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
