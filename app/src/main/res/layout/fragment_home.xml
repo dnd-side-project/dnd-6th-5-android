@@ -23,13 +23,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
+        <ImageView
             android:id="@+id/tv_home_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="spoon feed"
-            android:textSize="10sp"
+            android:src="@drawable/img_logo"
             app:layout_constraintBottom_toBottomOf="@id/iv_home_logo"
             app:layout_constraintStart_toEndOf="@id/iv_home_logo"
             app:layout_constraintTop_toTopOf="@id/iv_home_logo" />
