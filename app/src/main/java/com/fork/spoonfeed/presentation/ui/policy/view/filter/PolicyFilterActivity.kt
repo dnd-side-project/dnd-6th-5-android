@@ -1,9 +1,11 @@
 package com.fork.spoonfeed.presentation.ui.policy.view.filter
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityPolicyFilterBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.util.addAndAddToBackStack
 
 class PolicyFilterActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityPolicyFilterBinding>(R.layout.activity_policy_filter) {
@@ -14,5 +16,24 @@ class PolicyFilterActivity :
     }
 
     override fun initView() {
+        setBackBtnClickListener()
+    }
+
+    private fun setBackBtnClickListener() {
+        binding.mtPolicyFilterTitle.setNavigationOnClickListener {
+            if (supportFragmentManager.fragments.size == 1) {
+                finish()
+            } else {
+                supportFragmentManager.popBackStack()
+            }
+        }
+    }
+
+    fun moveToNextLevel(newFragment: Fragment) {
+        addAndAddToBackStack(newFragment)
+    }
+
+    fun scrollToTop() {
+        binding.svPolicyFilter.scrollTo(0, 0)
     }
 }

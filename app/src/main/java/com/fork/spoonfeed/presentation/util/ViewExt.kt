@@ -10,3 +10,11 @@ fun AppCompatActivity.replace(fragment: Fragment) {
         .replace(R.id.fcv_main, fragment, null)
         .commit()
 }
+
+fun AppCompatActivity.addAndAddToBackStack(fragment: Fragment) {
+    supportFragmentManager
+        .beginTransaction()
+        .add(R.id.fcv_policy_filter, fragment)
+        .addToBackStack(null)
+        .commit()
+}

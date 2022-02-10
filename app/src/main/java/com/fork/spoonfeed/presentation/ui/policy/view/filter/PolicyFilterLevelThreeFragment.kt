@@ -3,11 +3,11 @@ package com.fork.spoonfeed.presentation.ui.policy.view.filter
 import android.os.Bundle
 import android.view.View
 import com.fork.spoonfeed.R
-import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelOneBinding
+import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelThreeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 
-class PolicyFilterLevelOneFragment :
-    BaseViewUtil.BaseFragment<FragmentPolicyFilterLevelOneBinding>(R.layout.fragment_policy_filter_level_one) {
+class PolicyFilterLevelThreeFragment :
+    BaseViewUtil.BaseFragment<FragmentPolicyFilterLevelThreeBinding>(R.layout.fragment_policy_filter_level_three) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,5 +20,10 @@ class PolicyFilterLevelOneFragment :
     }
 
     override fun initView() {
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as PolicyFilterActivity).scrollToTop()
     }
 }
