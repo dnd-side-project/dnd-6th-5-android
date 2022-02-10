@@ -16,7 +16,7 @@
             android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.ui.customizedpolicy.CustomizedActivity"
+            android:name=".presentation.ui.policylist.PolicyListActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"
