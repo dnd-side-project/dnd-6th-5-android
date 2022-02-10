@@ -38,4 +38,17 @@
     <string name="policy_filter_level_one_marriage_true">기혼</string>
     <string name="policy_filter_level_one_marriage_false">미혼</string>
 
+    <string name="policy_filter_level_two">2</string>
+    <string name="policy_filter_level_two_title">내게 맞는 정책을 찾기 위해\n재직 정보를 알려주세요</string>
+    <string name="policy_filter_level_two_subtitle">재직 여부 및 회사 규모에 따라 지원하는 정책이 달라지기 때문에 정보에 맞춰 정책 정보를 제공해드립니다.</string>
+    <string name="policy_filter_level_two_employment_availability">재직여부</string>
+    <string name="policy_filter_level_two_employment_incumbent">재직자</string>
+    <string name="policy_filter_level_two_unemployed">미취업자</string>
+    <string name="policy_filter_level_two_company_size">회사규모</string>
+    <string name="policy_filter_level_two_company_small">중소기업</string>
+    <string name="policy_filter_level_two_company_mid">중견기업</string>
+    <string name="policy_filter_level_two_company_self">자영업자</string>
+    <string name="policy_filter_level_two_company_founder">(예비)창업자</string>
+    <string name="policy_filter_level_two_company_nothing">해당없음</string>
+
 </resources>
