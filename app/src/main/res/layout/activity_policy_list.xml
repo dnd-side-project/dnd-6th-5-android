@@ -46,7 +46,7 @@
                 android:layout_height="match_parent">
 
                 <TextView
-                    android:id="@+id/tv_policylist_enter_back"
+                    android:id="@+id/tv_policylist_rewrite"
                     style="@style/TextView.Label.Regular.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -67,9 +67,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="18dp"
                     android:src="@drawable/ic_chevron_left_20"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_policylist_enter_back"
-                    app:layout_constraintStart_toStartOf="@id/tv_policylist_enter_back"
-                    app:layout_constraintTop_toTopOf="@id/tv_policylist_enter_back"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_policylist_rewrite"
+                    app:layout_constraintStart_toStartOf="@id/tv_policylist_rewrite"
+                    app:layout_constraintTop_toTopOf="@id/tv_policylist_rewrite"
                     tools:layout_editor_absoluteX="20dp" />
 
                 <TextView
@@ -84,9 +84,9 @@
                     android:paddingEnd="38dp"
                     android:text="전체"
                     android:textColor="@color/gray06"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_policylist_enter_back"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_policylist_rewrite"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_policylist_enter_back" />
+                    app:layout_constraintTop_toTopOf="@id/tv_policylist_rewrite" />
 
                 <ImageView
                     android:id="@+id/iv_policylist_filter"
@@ -107,7 +107,7 @@
                     android:layout_marginBottom="24dp"
                     android:overScrollMode="never"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_enter_back"
+                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_rewrite"
                     tools:itemCount="6"
                     tools:listitem="@layout/item_policy_list">
 
@@ -120,7 +120,7 @@
                     android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_enter_back">
+                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_rewrite">
 
                     <TextView
                         android:id="@+id/tv_policylist_no_list_explain"
