@@ -21,4 +21,5 @@
     <dimen name="policy_filter_next_btn_height">56dp</dimen>
     <dimen name="policy_filter_bottom_content_top_margin">104dp</dimen>
     <dimen name="policy_filter_bottom_content_bottom_margin">16dp</dimen>
+    <item name="policy_filter_tooltip_padding" type="dimen" format="float">3.75dp</item>
 </resources>

@@ -23,6 +23,8 @@
 
     <!--  Policy Filter  -->
     <string name="policy_filter_next">다음</string>
+    <string name="policy_filter_save">지금까지 입력한 정보를 저장해서 다음에도 불러옵니다.</string>
+    <string name="policy_filter_finish">맞춤 정책 확인하기</string>
 
     <string name="policy_filter_level_one">1</string>
     <string name="policy_filter_level_one_title">내게 맞는 정책을 찾기 위해\n기본 정보를 알려주세요</string>
@@ -50,5 +52,39 @@
     <string name="policy_filter_level_two_company_self">자영업자</string>
     <string name="policy_filter_level_two_company_founder">(예비)창업자</string>
     <string name="policy_filter_level_two_company_nothing">해당없음</string>
+
+    <string name="policy_filter_level_three">3</string>
+    <string name="policy_filter_level_three_title">더 적합한 정책을 찾기 위해\n추가 정보를 입력해주세요</string>
+    <string name="policy_filter_level_three_subtitle">중위소득, 연소득, 순자산, 세대주 및 주택 소유 여부에\n따라 지원하는 정책이 달라집니다.</string>
+    <string name="policy_filter_level_three_median_income">중위소득</string>
+    <string name="policy_filter_level_three_median_income_tooltip"><u>중위소득 알아보기</u></string>
+    <string name="policy_filter_level_three_median_income_under_30">30%이하</string>
+    <string name="policy_filter_level_three_median_income_under_40">40%이하</string>
+    <string name="policy_filter_level_three_median_income_under_45">45%이하</string>
+    <string name="policy_filter_level_three_median_income_under_50">50%이하</string>
+    <string name="policy_filter_level_three_median_income_under_100">100%이하</string>
+    <string name="policy_filter_level_three_median_income_nothing">해당없음</string>
+    <string name="policy_filter_level_three_median_income_private">미공개</string>
+    <string name="policy_filter_level_three_median_income_under_72">72%이하</string>
+    <string name="policy_filter_level_three_annual_income">연소득</string>
+    <string name="policy_filter_level_three_annual_income_couple_under_2">부부합산 2천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_couple_under_5">부부합산 5천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_single_under_3">외벌이 3천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_single_under_3_5">외벌이 3.5천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_nothing">해당없음</string>
+    <string name="policy_filter_level_three_annual_income_private">미공개</string>
+    <string name="policy_filter_level_three_net_worth">순자산</string>
+    <string name="policy_filter_level_three_net_worth_tooltip">순자산 알아보기</string>
+    <string name="policy_filter_level_three_net_worth_under_2_92">2.92억원 이하</string>
+    <string name="policy_filter_level_three_net_worth_over_2_92">2.92억원 초과</string>
+    <string name="policy_filter_level_three_net_worth_private">미공개</string>
+    <string name="policy_filter_level_three_house_holder_status_owner">예비 세대주 또는 세대주</string>
+    <string name="policy_filter_level_three_house_holder_status_member">세대구성원</string>
+    <string name="policy_filter_level_three_house_holder_status_private">미공개</string>
+    <string name="policy_filter_level_three_home_ownership_homeless">무주택자</string>
+    <string name="policy_filter_level_three_home_ownership_owner">유주택자</string>
+    <string name="policy_filter_level_three_home_ownership_private">미공개</string>
+    <string name="policy_filter_level_three_house_holder_status">세대주 여부</string>
+    <string name="policy_filter_level_three_home_ownership">주택소유 여부</string>
 
 </resources>
