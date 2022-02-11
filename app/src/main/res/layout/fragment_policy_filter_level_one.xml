@@ -5,6 +5,19 @@
 
     <data>
 
+        <import type="com.fork.spoonfeed.presentation.util.StringExtKt" />
+
+        <import type="com.fork.spoonfeed.domain.model.ChipInputType" />
+
+        <import type="com.fork.spoonfeed.domain.model.AgeInputType" />
+
+        <variable
+            name="fragment"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelOneFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -83,9 +96,11 @@
             android:maxLength="4"
             android:padding="@dimen/policy_filter_edittext_padding"
             android:textColorHint="@color/gray03"
+            app:ageInputType="@{AgeInputType.YEAR}"
             app:layout_constraintEnd_toStartOf="@id/et_policy_filter_one_age_month"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_one_age" />
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_one_age"
+            app:viewModel="@{viewModel}" />
 
         <TextView
             android:id="@+id/tv_policy_filter_one_age_year"
@@ -110,9 +125,11 @@
             android:maxLength="3"
             android:padding="@dimen/policy_filter_edittext_padding"
             android:textColorHint="@color/gray03"
+            app:ageInputType="@{AgeInputType.MONTH}"
             app:layout_constraintEnd_toStartOf="@id/et_policy_filter_one_age_day"
             app:layout_constraintStart_toEndOf="@id/et_policy_filter_one_age_year"
-            app:layout_constraintTop_toTopOf="@id/et_policy_filter_one_age_year" />
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_one_age_year"
+            app:viewModel="@{viewModel}" />
 
         <TextView
             android:id="@+id/tv_policy_filter_one_age_month"
@@ -137,9 +154,11 @@
             android:maxLength="3"
             android:padding="@dimen/policy_filter_edittext_padding"
             android:textColorHint="@color/gray03"
+            app:ageInputType="@{AgeInputType.DAY}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/et_policy_filter_one_age_month"
-            app:layout_constraintTop_toTopOf="@id/et_policy_filter_one_age_year" />
+            app:layout_constraintTop_toTopOf="@id/et_policy_filter_one_age_year"
+            app:viewModel="@{viewModel}" />
 
         <TextView
             android:id="@+id/tv_policy_filter_one_age_day"
@@ -176,12 +195,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
             android:layout_marginTop="16dp"
-            app:selectionRequired="true"
+            viewModel="@{viewModel}"
+            type="@{ChipInputType.MARRIAGE}"
             app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
             app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_one_marriage"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
@@ -207,8 +228,9 @@
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
             android:layout_marginTop="@dimen/policy_filter_bottom_content_top_margin"
             android:layout_marginBottom="@dimen/policy_filter_bottom_content_bottom_margin"
-            android:backgroundTint="@color/gray03"
-            android:enabled="false"
+            android:backgroundTint="@{viewModel.isLevelOneValid ? @color/primary_blue : @color/gray03}"
+            android:enabled="@{viewModel.isLevelOneValid}"
+            android:onClick="@{() -> fragment.moveToNextLevel()}"
             android:text="@string/policy_filter_next"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

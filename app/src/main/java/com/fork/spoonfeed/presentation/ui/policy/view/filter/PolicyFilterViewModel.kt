@@ -16,11 +16,14 @@ import javax.inject.Inject
 @HiltViewModel
 class PolicyFilterViewModel @Inject constructor() : ViewModel() {
 
-    private val _age = MutableLiveData<Age>()
+    private val _age = MutableLiveData(Age())
     val age: LiveData<Age> = _age
 
     private val _marriageStatus = MutableLiveData<Boolean>()
     val marriageStatus: LiveData<Boolean> = _marriageStatus
+
+    private val _isLevelOneValid = MutableLiveData(false)
+    val isLevelOneValid: LiveData<Boolean> = _isLevelOneValid
 
     private val _employmentAvailability = MutableLiveData<Boolean>()
     val employmentAvailability: LiveData<Boolean> = _employmentAvailability
@@ -46,20 +49,28 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
     private val _saveData = MutableLiveData<Boolean>()
     val saveData: LiveData<Boolean> = _saveData
 
-    fun setAge(year: Int? = null, month: Int? = null, day: Int? = null) {
-        val newYear = year.let { if (it == 0) null else it ?: _age.value?.year }
-        val newMonth = month.let { if (it == 0) null else it ?: _age.value?.month }
-        val newDay = day.let { if (it == 0) null else it ?: _age.value?.day }
+    fun setYear(year: Int?){
+        _age.value = _age.value?.copy(year = year)
+        setLevelOneValid()
+    }
 
-        _age.value = Age(newYear, newMonth, newDay)
+    fun setMonth(month: Int?){
+        _age.value = _age.value?.copy(month = month)
+        setLevelOneValid()
+    }
+
+    fun setDay(day: Int?){
+        _age.value = _age.value?.copy(day = day)
+        setLevelOneValid()
     }
 
     fun setMarriageStatus(status: Boolean) {
         _marriageStatus.value = status
+        setLevelOneValid()
     }
 
-    fun isLevelOneValid(): Boolean {
-        return _age.value?.isValid() == true && _marriageStatus.value != null
+    private fun setLevelOneValid() {
+        _isLevelOneValid.value = _age.value?.isValid() == true && _marriageStatus.value != null
     }
 
     fun setEmploymentAvailability(availability: Boolean) {
