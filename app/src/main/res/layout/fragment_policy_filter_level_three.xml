@@ -96,51 +96,60 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_three_median_income"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_under_30"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_under_30" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_under_40"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_under_40" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_under_45"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_under_45" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_under_50"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_under_50" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_under_72"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_under_72" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_under_100"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_under_100" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_nothing"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_median_income_nothing" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_median_income_private"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
@@ -177,39 +186,46 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_three_annual_income"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_annual_income_couple_under_2"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_annual_income_couple_under_2" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_annual_income_couple_under_5"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_annual_income_couple_under_5" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_annual_income_single_under_3"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_annual_income_single_under_3" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_annual_income_single_under_3_5"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_annual_income_single_under_3_5" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_annual_income_nothing"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_annual_income_nothing" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_annual_income_private"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
@@ -261,21 +277,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_three_net_worth"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_net_worth_under_2_92"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_net_worth_under_2_92" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_net_worth_over_2_92"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_net_worth_over_2_92" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_net_worth_private"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
@@ -312,21 +332,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_three_house_holder_status"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_house_holder_status_owner"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_house_holder_status_owner" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_house_holder_status_member"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_house_holder_status_member" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_house_holder_status_private"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
@@ -363,21 +387,25 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_three_home_ownership"
+            app:selectionRequired="true"
             app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_home_ownership_homeless"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_home_ownership_homeless" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_home_ownership_owner"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
                 android:text="@string/policy_filter_level_three_home_ownership_owner" />
 
             <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_three_home_ownership_private"
                 style="@style/Chip.Regular.14"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/policy_filter_chip_height"
@@ -392,6 +420,7 @@
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_policy_filter_save"
             android:button="@null"
+            android:checked="true"
             app:layout_constraintBottom_toBottomOf="@id/tv_policy_filter_save"
             app:layout_constraintStart_toStartOf="@id/mb_policy_filter_three_next"
             app:layout_constraintTop_toTopOf="@id/tv_policy_filter_save" />
