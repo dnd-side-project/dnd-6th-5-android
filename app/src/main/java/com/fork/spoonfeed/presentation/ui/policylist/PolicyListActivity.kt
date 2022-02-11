@@ -10,10 +10,13 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityPolicyListBinding
+import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListResponseData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyListBinding>(R.layout.activity_policy_list) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,6 +53,29 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         binding.tvPolicylistRewrite.setOnClickListener {
             showReWritedialog()
         }
+        binding.tvPolicylistFilter.setOnClickListener {
+            showBottomDialogFilterFragment()
+        }
+
+    }
+
+    private fun showBottomDialogFilterFragment() {
+
+        val bottomDialogFilterFragment = BottomDialogFilterFragment {
+            when (it) {
+                ALL -> {
+
+                }
+
+                DWELLING -> {
+
+                }
+                FINANCE -> {
+
+                }
+            }
+        }
+        bottomDialogFilterFragment.show(supportFragmentManager, bottomDialogFilterFragment.tag)
     }
 
     private fun showReWritedialog() {
@@ -70,5 +96,11 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         CancelBtn.setOnClickListener {
             dialog.dismiss()
         }
+    }
+
+    companion object {
+        const val ALL = 0
+        const val DWELLING = 1
+        const val FINANCE = 2
     }
 }
