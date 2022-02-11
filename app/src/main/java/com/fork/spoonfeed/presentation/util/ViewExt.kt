@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.util
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.CheckBox
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
@@ -28,6 +29,13 @@ fun AppCompatActivity.addAndAddToBackStack(fragment: Fragment) {
         .commit()
 }
 
+@BindingAdapter("onCheckedChanged")
+fun setOnCheckedChanged(view: CheckBox, viewModel: ViewModel){
+    view.setOnCheckedChangeListener { _, isChecked ->
+        (viewModel as? PolicyFilterViewModel)?.setSaveData(isChecked)
+    }
+}
+
 @BindingAdapter("viewModel", "type")
 fun setOnCheckedChanged(view: ChipGroup, viewModel: ViewModel, type: ChipInputType) {
     view.setOnCheckedChangeListener { _, checkedId ->
@@ -43,6 +51,26 @@ fun setOnCheckedChanged(view: ChipGroup, viewModel: ViewModel, type: ChipInputTy
             ChipInputType.COMPANY_SIZE -> {
                 (viewModel as? PolicyFilterViewModel)
                     ?.setCompanySize(getCompanySizeFromCheckedId(checkedId))
+            }
+            ChipInputType.MEDIAN_INCOME -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setMedianIncome(getMedianIncomeFromCheckedId(checkedId))
+            }
+            ChipInputType.ANNUAL_INCOME -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setAnnualIncome(getAnnualIncomeFromCheckedId(checkedId))
+            }
+            ChipInputType.NET_WORTH -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setNetWorth(getNetWorthFromCheckedId(checkedId))
+            }
+            ChipInputType.HOUSE_HOLDER_STATUS -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setHouseHolderStatus(getHouseHolderStatusFromCheckedId(checkedId))
+            }
+            ChipInputType.HOME_OWNERSHIP -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setHomeOwnership(getHomeOwnershipFromCheckedId(checkedId))
             }
         }
     }

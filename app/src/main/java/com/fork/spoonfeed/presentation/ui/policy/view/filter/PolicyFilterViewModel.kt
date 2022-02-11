@@ -52,6 +52,9 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
     private val _saveData = MutableLiveData<Boolean>()
     val saveData: LiveData<Boolean> = _saveData
 
+    private val _isLevelThreeValid = MutableLiveData(false)
+    val isLevelThreeValid: LiveData<Boolean> = _isLevelThreeValid
+
     fun setYear(year: Int?) {
         _age.value = _age.value?.copy(year = year)
         setLevelOneValid()
@@ -93,30 +96,35 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
 
     fun setMedianIncome(medianIncome: MedianIncome) {
         _medianIncome.value = medianIncome
+        setLevelThreeValid()
     }
 
     fun setAnnualIncome(annualIncome: AnnualIncome) {
         _annualIncome.value = annualIncome
+        setLevelThreeValid()
     }
 
     fun setNetWorth(netWorth: NetWorth) {
         _netWorth.value = netWorth
+        setLevelThreeValid()
     }
 
     fun setHouseHolderStatus(houseHolderStatus: HouseHolderStatus) {
         _houseHolderStatus.value = houseHolderStatus
+        setLevelThreeValid()
     }
 
     fun setHomeOwnership(homeOwnership: HomeOwnership) {
         _homeOwnership.value = homeOwnership
+        setLevelThreeValid()
     }
 
     fun setSaveData(saveData: Boolean) {
         _saveData.value = saveData
     }
 
-    fun isLevelThreeValid(): Boolean {
-        return _medianIncome.value != null && _annualIncome.value != null
+    private fun setLevelThreeValid() {
+        _isLevelThreeValid.value = _medianIncome.value != null && _annualIncome.value != null
                 && _netWorth.value != null && _houseHolderStatus.value != null
                 && _homeOwnership.value != null
     }

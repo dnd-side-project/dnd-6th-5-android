@@ -5,6 +5,15 @@
 
     <data>
 
+        <import type="com.fork.spoonfeed.domain.model.ChipInputType" />
+
+        <variable
+            name="fragment"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelThreeFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -87,6 +96,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_three_median_income"
+            type="@{ChipInputType.MEDIAN_INCOME}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -177,6 +188,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_three_annual_income"
+            type="@{ChipInputType.ANNUAL_INCOME}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -268,6 +281,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_three_net_worth"
+            type="@{ChipInputType.NET_WORTH}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -323,6 +338,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_three_house_holder_status"
+            type="@{ChipInputType.HOUSE_HOLDER_STATUS}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -378,6 +395,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_three_home_ownership"
+            type="@{ChipInputType.HOME_OWNERSHIP}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -420,7 +439,7 @@
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_policy_filter_save"
             android:button="@null"
-            android:checked="true"
+            onCheckedChanged="@{viewModel}"
             app:layout_constraintBottom_toBottomOf="@id/tv_policy_filter_save"
             app:layout_constraintStart_toStartOf="@id/mb_policy_filter_three_next"
             app:layout_constraintTop_toTopOf="@id/tv_policy_filter_save" />
@@ -444,8 +463,9 @@
             android:layout_height="@dimen/policy_filter_next_btn_height"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
             android:layout_marginVertical="@dimen/policy_filter_bottom_content_bottom_margin"
-            android:backgroundTint="@color/gray03"
-            android:enabled="false"
+            android:backgroundTint="@{viewModel.isLevelThreeValid ? @color/primary_blue : @color/gray03}"
+            android:enabled="@{viewModel.isLevelThreeValid}"
+            android:onClick="@{() -> fragment.moveToPolicyResult()}"
             android:text="@string/policy_filter_finish"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
