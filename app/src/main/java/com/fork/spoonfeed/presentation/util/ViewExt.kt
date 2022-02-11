@@ -36,6 +36,14 @@ fun setOnCheckedChanged(view: ChipGroup, viewModel: ViewModel, type: ChipInputTy
                 (viewModel as? PolicyFilterViewModel)
                     ?.setMarriageStatus(getMarriageStatusFromCheckedId(checkedId))
             }
+            ChipInputType.EMPLOYMENT -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setEmploymentAvailability(getEmploymentFromCheckedId(checkedId))
+            }
+            ChipInputType.COMPANY_SIZE -> {
+                (viewModel as? PolicyFilterViewModel)
+                    ?.setCompanySize(getCompanySizeFromCheckedId(checkedId))
+            }
         }
     }
 }

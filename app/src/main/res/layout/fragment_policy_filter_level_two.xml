@@ -5,6 +5,15 @@
 
     <data>
 
+        <import type="com.fork.spoonfeed.domain.model.ChipInputType" />
+
+        <variable
+            name="fragment"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelTwoFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -72,6 +81,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_two_employment_availability"
+            type="@{ChipInputType.EMPLOYMENT}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -119,6 +130,8 @@
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/cg_policy_filter_two_company_size"
+            type="@{ChipInputType.COMPANY_SIZE}"
+            viewModel="@{viewModel}"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -176,8 +189,9 @@
             android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
             android:layout_marginTop="@dimen/policy_filter_bottom_content_top_margin"
             android:layout_marginBottom="@dimen/policy_filter_bottom_content_bottom_margin"
-            android:backgroundTint="@color/gray03"
-            android:enabled="false"
+            android:backgroundTint="@{viewModel.isLevelTwoValid ? @color/primary_blue : @color/gray03}"
+            android:enabled="@{viewModel.isLevelTwoValid}"
+            android:onClick="@{() -> fragment.moveToNextLevel()}"
             android:text="@string/policy_filter_next"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

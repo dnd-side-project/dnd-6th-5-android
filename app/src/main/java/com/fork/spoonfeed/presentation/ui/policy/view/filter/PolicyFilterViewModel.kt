@@ -31,6 +31,9 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
     private val _companySize = MutableLiveData<CompanySize>()
     val companySize: LiveData<CompanySize> = _companySize
 
+    private val _isLevelTwoValid = MutableLiveData(false)
+    val isLevelTwoValid: LiveData<Boolean> = _isLevelTwoValid
+
     private val _medianIncome = MutableLiveData<MedianIncome>()
     val medianIncome: LiveData<MedianIncome> = _medianIncome
 
@@ -49,17 +52,17 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
     private val _saveData = MutableLiveData<Boolean>()
     val saveData: LiveData<Boolean> = _saveData
 
-    fun setYear(year: Int?){
+    fun setYear(year: Int?) {
         _age.value = _age.value?.copy(year = year)
         setLevelOneValid()
     }
 
-    fun setMonth(month: Int?){
+    fun setMonth(month: Int?) {
         _age.value = _age.value?.copy(month = month)
         setLevelOneValid()
     }
 
-    fun setDay(day: Int?){
+    fun setDay(day: Int?) {
         _age.value = _age.value?.copy(day = day)
         setLevelOneValid()
     }
@@ -75,14 +78,17 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
 
     fun setEmploymentAvailability(availability: Boolean) {
         _employmentAvailability.value = availability
+        setLevelTwoValid()
     }
 
     fun setCompanySize(size: CompanySize) {
         _companySize.value = size
+        setLevelTwoValid()
     }
 
-    fun isLevelTwoValid(): Boolean {
-        return _employmentAvailability.value != null && _companySize.value !== null
+    private fun setLevelTwoValid() {
+        _isLevelTwoValid.value =
+            _employmentAvailability.value != null && _companySize.value !== null
     }
 
     fun setMedianIncome(medianIncome: MedianIncome) {
