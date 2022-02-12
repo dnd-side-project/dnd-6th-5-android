@@ -34,7 +34,7 @@
             app:layout_constraintTop_toTopOf="@id/iv_home_logo" />
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/scv_home"
+            android:id="@+id/nsv_home"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -131,12 +131,12 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_home_policy_search_title" />
 
                     <ImageView
-                        android:id="@+id/iv_home_all_backgroung"
+                        android:id="@+id/iv_home_all_background"
                         android:layout_width="0dp"
                         android:layout_height="96dp"
                         android:layout_marginTop="16dp"
                         android:src="@drawable/bg_white_radius_8"
-                        app:layout_constraintEnd_toStartOf="@id/iv_home_dwelling_backgroung"
+                        app:layout_constraintEnd_toStartOf="@id/iv_home_dwelling_background"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_home_policy_search_explain" />
 
@@ -146,9 +146,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="26dp"
                         android:src="@drawable/img_all"
-                        app:layout_constraintEnd_toEndOf="@id/iv_home_all_backgroung"
-                        app:layout_constraintStart_toStartOf="@id/iv_home_all_backgroung"
-                        app:layout_constraintTop_toTopOf="@id/iv_home_all_backgroung" />
+                        app:layout_constraintEnd_toEndOf="@id/iv_home_all_background"
+                        app:layout_constraintStart_toStartOf="@id/iv_home_all_background"
+                        app:layout_constraintTop_toTopOf="@id/iv_home_all_background" />
 
                     <TextView
                         android:id="@+id/tv_home_all"
@@ -163,14 +163,14 @@
                         app:layout_constraintTop_toBottomOf="@id/iv_home_all" />
 
                     <ImageView
-                        android:id="@+id/iv_home_dwelling_backgroung"
+                        android:id="@+id/iv_home_dwelling_background"
                         android:layout_width="0dp"
                         android:layout_height="96dp"
                         android:layout_marginStart="8dp"
                         android:src="@drawable/bg_white_radius_8"
-                        app:layout_constraintEnd_toStartOf="@id/iv_home_finance_backgroung"
-                        app:layout_constraintStart_toEndOf="@id/iv_home_all_backgroung"
-                        app:layout_constraintTop_toTopOf="@id/iv_home_all_backgroung" />
+                        app:layout_constraintEnd_toStartOf="@id/iv_home_finance_background"
+                        app:layout_constraintStart_toEndOf="@id/iv_home_all_background"
+                        app:layout_constraintTop_toTopOf="@id/iv_home_all_background" />
 
                     <ImageView
                         android:id="@+id/iv_home_dwelling"
@@ -178,9 +178,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="26dp"
                         android:src="@drawable/img_dwelling"
-                        app:layout_constraintEnd_toEndOf="@id/iv_home_dwelling_backgroung"
-                        app:layout_constraintStart_toStartOf="@id/iv_home_dwelling_backgroung"
-                        app:layout_constraintTop_toTopOf="@id/iv_home_dwelling_backgroung" />
+                        app:layout_constraintEnd_toEndOf="@id/iv_home_dwelling_background"
+                        app:layout_constraintStart_toStartOf="@id/iv_home_dwelling_background"
+                        app:layout_constraintTop_toTopOf="@id/iv_home_dwelling_background" />
 
                     <TextView
                         android:id="@+id/tv_home_dwelling"
@@ -195,15 +195,15 @@
                         app:layout_constraintTop_toBottomOf="@+id/iv_home_dwelling" />
 
                     <ImageView
-                        android:id="@+id/iv_home_finance_backgroung"
+                        android:id="@+id/iv_home_finance_background"
                         android:layout_width="0dp"
                         android:layout_height="96dp"
                         android:layout_marginStart="8dp"
                         android:src="@drawable/bg_white_radius_8"
-                        app:layout_constraintBottom_toBottomOf="@id/iv_home_dwelling_backgroung"
+                        app:layout_constraintBottom_toBottomOf="@id/iv_home_dwelling_background"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/iv_home_dwelling_backgroung"
-                        app:layout_constraintTop_toTopOf="@id/iv_home_dwelling_backgroung" />
+                        app:layout_constraintStart_toEndOf="@id/iv_home_dwelling_background"
+                        app:layout_constraintTop_toTopOf="@id/iv_home_dwelling_background" />
 
                     <ImageView
                         android:id="@+id/iv_home_finance"
@@ -211,9 +211,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="26dp"
                         android:src="@drawable/img_finance"
-                        app:layout_constraintEnd_toEndOf="@id/iv_home_finance_backgroung"
-                        app:layout_constraintStart_toStartOf="@id/iv_home_finance_backgroung"
-                        app:layout_constraintTop_toTopOf="@id/iv_home_finance_backgroung" />
+                        app:layout_constraintEnd_toEndOf="@id/iv_home_finance_background"
+                        app:layout_constraintStart_toStartOf="@id/iv_home_finance_background"
+                        app:layout_constraintTop_toTopOf="@id/iv_home_finance_background" />
 
                     <TextView
                         android:id="@+id/tv_home_finance"
