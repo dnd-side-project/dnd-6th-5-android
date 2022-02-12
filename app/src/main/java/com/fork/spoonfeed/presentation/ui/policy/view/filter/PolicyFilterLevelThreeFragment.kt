@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
+import com.fork.spoonfeed.NetWorthTooltipActivity
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelThreeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
@@ -35,6 +36,9 @@ class PolicyFilterLevelThreeFragment :
     private fun setClickListener() {
         binding.tvPolicyFilterThreeMedianIncomeTooltip.setOnClickListener {
             startActivity(Intent(context, MedianIncomeTooltipActivity::class.java))
+        }
+        binding.tvPolicyFilterThreeNetWorthTooltip.setOnClickListener {
+            startActivity(Intent(context, NetWorthTooltipActivity::class.java))
         }
     }
 

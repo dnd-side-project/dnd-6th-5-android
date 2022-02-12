@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".NetWorthTooltipActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.ui.policy.view.filter.tooltip.MedianIncomeTooltipActivity"
             android:exported="true" />
         <activity

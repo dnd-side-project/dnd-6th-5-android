@@ -95,4 +95,11 @@
     <string name="median_income_tooltip_close">닫기</string>
     <string name="median_income_tooltip_shortcut">중위소득 확인하기</string>
 
+    <!--  Net Worth Tooltip  -->
+    <string name="net_worth_tooltip_title">순자산 알아보기</string>
+    <string name="net_worth_tooltip_subtitle">‘순자산’은 어떻게\n알 수 있나요?</string>
+    <string name="net_worth_tooltip_description">순자산이란 자산 총액에서 부채를 뺀 나머지 금액입니다.\n주로 재무 현황을 알기 위해 파악하며 ‘현재\' 중심으로 계산합니다.\n\n예를 들면, 예적금 및 현금, 소유 재산, 투자 차익, 전세 보증금, 자동차 보유 자산 가치 등을 모두 더한 자산합계에서m학자금 대출, 신용카드 할부 잔액, 전세 대출 잔액 등 모든 부채를 뺀 금액입니다.\n\n순자산 = (자산합계-부채합계)</string>
+    <string name="net_worth_tooltip_close">닫기</string>
+    <string name="net_worth_tooltip_shortcut">순자산 알아보기</string>
+
 </resources>
