@@ -74,7 +74,7 @@
     <string name="policy_filter_level_three_annual_income_nothing">해당없음</string>
     <string name="policy_filter_level_three_annual_income_private">미공개</string>
     <string name="policy_filter_level_three_net_worth">순자산</string>
-    <string name="policy_filter_level_three_net_worth_tooltip">순자산 알아보기</string>
+    <string name="policy_filter_level_three_net_worth_tooltip"><u>순자산 알아보기</u></string>
     <string name="policy_filter_level_three_net_worth_under_2_92">2.92억원 이하</string>
     <string name="policy_filter_level_three_net_worth_over_2_92">2.92억원 초과</string>
     <string name="policy_filter_level_three_net_worth_private">미공개</string>

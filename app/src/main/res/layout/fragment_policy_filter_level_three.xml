@@ -434,12 +434,13 @@
 
         <CheckBox
             android:id="@+id/cb_policy_filter_save"
+            onCheckedChanged="@{viewModel}"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginStart="4dp"
             android:background="@drawable/bg_policy_filter_save"
             android:button="@null"
-            onCheckedChanged="@{viewModel}"
+            android:checked="true"
             app:layout_constraintBottom_toBottomOf="@id/tv_policy_filter_save"
             app:layout_constraintStart_toStartOf="@id/mb_policy_filter_three_next"
             app:layout_constraintTop_toTopOf="@id/tv_policy_filter_save" />
