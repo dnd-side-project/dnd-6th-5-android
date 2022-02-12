@@ -27,15 +27,15 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
         with(binding) {
             //맞춤정책 뷰로 이동
 
-            ivHomeAllBackgroung.setOnClickListener {
+            ivHomeAllBackground.setOnClickListener {
                 val intent = Intent(requireContext(), PolicyListActivity::class.java)
                 startActivity(intent)
             }
-            ivHomeDwellingBackgroung.setOnClickListener {
+            ivHomeDwellingBackground.setOnClickListener {
                 val intent = Intent(requireContext(), PolicyListActivity::class.java)
                 startActivity(intent)
             }
-            ivHomeFinanceBackgroung.setOnClickListener {
+            ivHomeFinanceBackground.setOnClickListener {
                 val intent = Intent(requireContext(), PolicyListActivity::class.java)
                 startActivity(intent)
             }
