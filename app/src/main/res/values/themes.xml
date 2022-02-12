@@ -13,6 +13,6 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="android:colorPrimaryDark">@color/white</item>
-        <item name="android:windowLightStatusBar">true</item> //글자 색 어둡게 설정
+        <item name="android:windowLightStatusBar">true</item> 
     </style>
 </resources>
