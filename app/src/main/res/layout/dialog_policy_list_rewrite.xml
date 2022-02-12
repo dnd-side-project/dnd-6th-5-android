@@ -13,40 +13,32 @@
         android:paddingHorizontal="26dp"
         android:paddingTop="40dp"
         android:paddingBottom="12dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/tv_dialog_title"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/TextView.Heading.Bold.16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
-            android:fontFamily="@font/suit_bold"
-            android:includeFontPadding="false"
             android:text="정보를 다시 입력하시겠어요?"
             android:textColor="@color/gray06"
-            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_dialog_explain"
-            style="@style/Widget.AppCompat.Button.Borderless"
+            style="@style/TextView.Label.Regular.14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="@font/suit_regular"
-            android:includeFontPadding="false"
-            android:text="이전에 입력한 정보들은\n모두 초기화 됩니다."
+            android:layout_margin="8dp"
+            android:text="이전에 입력한 정보들은\n    모두 초기화 됩니다."
             android:textColor="@color/gray06"
-            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="@id/tv_dialog_title"
             app:layout_constraintStart_toStartOf="@id/tv_dialog_title"
-            app:layout_constraintTop_toTopOf="@+id/tv_dialog_title" />
+            app:layout_constraintTop_toBottomOf="@+id/tv_dialog_title" />
 
         <Button
             android:id="@+id/tv_dialog_cancel"
@@ -55,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
+            android:background="@drawable/selector_rewrite"
             android:fontFamily="@font/suit_bold"
             android:includeFontPadding="false"
             android:text="취소"
@@ -70,10 +63,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
+            android:background="@drawable/selector_rewrite"
             android:fontFamily="@font/suit_bold"
             android:includeFontPadding="false"
             android:text="확인"
-            android:textColor="@color/primary_blue"
+            android:textColor="@color/gray03"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_dialog_explain" />
