@@ -1,8 +1,9 @@
-package com.fork.spoonfeed
+package com.fork.spoonfeed.presentation.ui.policy.view.filter.tooltip
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityNetWorthTooltipBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 

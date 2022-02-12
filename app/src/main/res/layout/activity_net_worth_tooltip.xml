@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".NetWorthTooltipActivity">
+        tools:context=".presentation.ui.policy.view.filter.tooltip.NetWorthTooltipActivity">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/mt_net_worth_tooltip_title"

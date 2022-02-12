@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import com.fork.spoonfeed.NetWorthTooltipActivity
+import com.fork.spoonfeed.presentation.ui.policy.view.filter.tooltip.NetWorthTooltipActivity
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelThreeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
