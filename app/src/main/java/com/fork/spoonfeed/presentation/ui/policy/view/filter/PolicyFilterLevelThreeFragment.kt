@@ -1,11 +1,13 @@
 package com.fork.spoonfeed.presentation.ui.policy.view.filter
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelThreeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.policy.view.filter.tooltip.MedianIncomeTooltipActivity
 
 class PolicyFilterLevelThreeFragment :
     BaseViewUtil.BaseFragment<FragmentPolicyFilterLevelThreeBinding>(R.layout.fragment_policy_filter_level_three) {
@@ -26,6 +28,14 @@ class PolicyFilterLevelThreeFragment :
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         binding.fragment = this
+
+        setClickListener()
+    }
+
+    private fun setClickListener() {
+        binding.tvPolicyFilterThreeMedianIncomeTooltip.setOnClickListener {
+            startActivity(Intent(context, MedianIncomeTooltipActivity::class.java))
+        }
     }
 
     fun moveToPolicyResult() {

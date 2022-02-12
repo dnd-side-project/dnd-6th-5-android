@@ -87,4 +87,12 @@
     <string name="policy_filter_level_three_house_holder_status">세대주 여부</string>
     <string name="policy_filter_level_three_home_ownership">주택소유 여부</string>
 
+    <!--  Median Income Tooltip  -->
+    <string name="median_income_tooltip_title">중위소득 알아보기</string>
+    <string name="median_income_tooltip_subtitle">‘중위소득’은 어떻게\n알 수 있나요?</string>
+    <string name="median_income_tooltip_description">기준 중위소득은 모든 가구의 소득을 순서대로 세웠을 때, 정확히 중간 지점에 있는 가구의 소득을 의미합니다.\n\n통계청의 자료를 바탕으로 보건복지부에서 매년 8월마다 공표하며, 중위소득에 따라 생계 ‧ 의료급여를 선정하고, 최저보장수준을 정합니다.\n\n예를 들어 30%이하는 기준 중위소득에 비해 30%만큼 적은 소득을 뜻합니다. 정확한 금액은 오른쪽 하단 버튼을\n눌러 확인해주세요.</string>
+    <string name="median_income_tooltip_ref">* 2022년 중위소득 : 보건복지부 고시 제2021–21호 참조</string>
+    <string name="median_income_tooltip_close">닫기</string>
+    <string name="median_income_tooltip_shortcut">중위소득 확인하기</string>
+
 </resources>
