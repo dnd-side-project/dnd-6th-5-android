@@ -5,12 +5,15 @@
 
     <data>
 
+        <variable
+            name="policyListViewModel"
+            type="com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.policylist.PolicyListActivity">
+        tools:context=".presentation.ui.policylist.view.PolicyListActivity">
 
         <ImageView
             android:id="@+id/iv_policylist_back"
@@ -35,10 +38,11 @@
             app:layout_constraintTop_toTopOf="@+id/iv_policylist_back" />
 
         <androidx.core.widget.NestedScrollView
-            android:id="@+id/sv_policy_list"
+            android:id="@+id/nsv_policylist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:overScrollMode="never"
             app:layout_constraintTop_toBottomOf="@+id/tv_policylist_back">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,6 +57,7 @@
                     android:layout_marginStart="20dp"
                     android:background="@drawable/bg_stroke_gray03_1dp"
                     android:includeFontPadding="false"
+                    android:onClick="@{()->policyListViewModel.reWriteOnClick()}"
                     android:paddingVertical="11dp"
                     android:paddingStart="36dp"
                     android:paddingEnd="16dp"
@@ -79,6 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="20dp"
                     android:background="@drawable/bg_stroke_gray03_1dp"
+                    android:onClick="@{()->policyListViewModel.filterOnClick()}"
                     android:paddingVertical="11dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="38dp"

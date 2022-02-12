@@ -31,8 +31,11 @@ class PolicyListAdapter(
                 tvItemDeadline.text = data.deadline
                 tvItemLikeCount.text = data.likeCount.toString()
 
-                root.setOnClickListener {
+                ctlItem.setOnClickListener {
                     clickListener(data)
+                }
+                ivItemLike.setOnClickListener {
+                    ivItemLike.toggle()
                 }
             }
         }

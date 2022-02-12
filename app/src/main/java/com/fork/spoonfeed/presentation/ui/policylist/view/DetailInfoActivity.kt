@@ -1,4 +1,4 @@
-package com.fork.spoonfeed.presentation.ui.policylist
+package com.fork.spoonfeed.presentation.ui.policylist.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
