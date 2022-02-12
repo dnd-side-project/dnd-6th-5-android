@@ -25,31 +25,31 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
     private val _isLevelOneValid = MutableLiveData(false)
     val isLevelOneValid: LiveData<Boolean> = _isLevelOneValid
 
-    private val _employmentAvailability = MutableLiveData<Boolean>()
-    val employmentAvailability: LiveData<Boolean> = _employmentAvailability
+    private val _employmentAvailability = MutableLiveData<Boolean?>()
+    val employmentAvailability: LiveData<Boolean?> = _employmentAvailability
 
-    private val _companySize = MutableLiveData<CompanySize>()
-    val companySize: LiveData<CompanySize> = _companySize
+    private val _companySize = MutableLiveData<CompanySize?>()
+    val companySize: LiveData<CompanySize?> = _companySize
 
     private val _isLevelTwoValid = MutableLiveData(false)
     val isLevelTwoValid: LiveData<Boolean> = _isLevelTwoValid
 
-    private val _medianIncome = MutableLiveData<MedianIncome>()
-    val medianIncome: LiveData<MedianIncome> = _medianIncome
+    private val _medianIncome = MutableLiveData<MedianIncome?>()
+    val medianIncome: LiveData<MedianIncome?> = _medianIncome
 
-    private val _annualIncome = MutableLiveData<AnnualIncome>()
-    val annualIncome: LiveData<AnnualIncome> = _annualIncome
+    private val _annualIncome = MutableLiveData<AnnualIncome?>()
+    val annualIncome: LiveData<AnnualIncome?> = _annualIncome
 
-    private val _netWorth = MutableLiveData<NetWorth>()
-    val netWorth: LiveData<NetWorth> = _netWorth
+    private val _netWorth = MutableLiveData<NetWorth?>()
+    val netWorth: LiveData<NetWorth?> = _netWorth
 
-    private val _houseHolderStatus = MutableLiveData<HouseHolderStatus>()
-    val houseHolderStatus: LiveData<HouseHolderStatus> = _houseHolderStatus
+    private val _houseHolderStatus = MutableLiveData<HouseHolderStatus?>()
+    val houseHolderStatus: LiveData<HouseHolderStatus?> = _houseHolderStatus
 
-    private val _homeOwnership = MutableLiveData<HomeOwnership>()
-    val homeOwnership: LiveData<HomeOwnership> = _homeOwnership
+    private val _homeOwnership = MutableLiveData<HomeOwnership?>()
+    val homeOwnership: LiveData<HomeOwnership?> = _homeOwnership
 
-    private val _saveData = MutableLiveData<Boolean>()
+    private val _saveData = MutableLiveData(true)
     val saveData: LiveData<Boolean> = _saveData
 
     private val _isLevelThreeValid = MutableLiveData(false)
@@ -94,6 +94,12 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
             _employmentAvailability.value != null && _companySize.value !== null
     }
 
+    fun clearLevelTwo() {
+        _employmentAvailability.value = null
+        _companySize.value = null
+        _isLevelTwoValid.value = false
+    }
+
     fun setMedianIncome(medianIncome: MedianIncome) {
         _medianIncome.value = medianIncome
         setLevelThreeValid()
@@ -127,5 +133,15 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
         _isLevelThreeValid.value = _medianIncome.value != null && _annualIncome.value != null
                 && _netWorth.value != null && _houseHolderStatus.value != null
                 && _homeOwnership.value != null
+    }
+
+    fun clearLevelThree() {
+        _medianIncome.value = null
+        _annualIncome.value = null
+        _netWorth.value = null
+        _houseHolderStatus.value = null
+        _homeOwnership.value = null
+        _saveData.value = true
+        _isLevelThreeValid.value = false
     }
 }

@@ -49,5 +49,6 @@ class PolicyFilterLevelThreeFragment :
     override fun onDestroyView() {
         super.onDestroyView()
         (activity as PolicyFilterActivity).scrollToTop()
+        viewModel.clearLevelThree()
     }
 }
