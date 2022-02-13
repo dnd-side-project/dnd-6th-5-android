@@ -90,23 +90,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="30dp"
             android:onClick="@{()->policyListViewModel.financeSelected()}"
             android:text="@string/bottom_dialog_filter_finance"
             android:textColor="@color/gray06"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
             app:layout_constraintTop_toBottomOf="@id/iv_bottom_dialog_div_mid" />
 
-        <ImageView
-            android:id="@+id/iv_bottom_dialog_div_bottom"
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="11dp"
-            android:src="@drawable/div_policy_list_item"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/iv_bottom_dialog_div_mid"
-            app:layout_constraintStart_toStartOf="@+id/iv_bottom_dialog_div_mid"
-            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_finance" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
