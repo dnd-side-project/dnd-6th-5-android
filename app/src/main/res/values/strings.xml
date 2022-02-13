@@ -26,5 +26,29 @@
         해당 앱에서 제공하는 내용의 사용에 대한 책임은\n &#160; &#160; &#160; &#160; &#160; &#160;  &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160; &#160;
         전적으로 사용사에게 있음을 알립니다.</string>
 
+    <!--policylist-->
+    <string name="policylist_title">맞춤 정책 리스트</string>
+    <string name="policylist_rewrite">다시 입력하기</string>
+    <string name="policylist_all">전체</string>
+
+    <!--item_policylist-->
+    <string name="item_policylist_category">주거</string>
+    <string name="item_policylist_title">청년 우대 청약통장</string>
+    <string name="item_policylist_sentence">저소즉 무주택자 청년의 주택자금</string>
+    <string name="item_policylist_deadline_title">기한</string>
+    <string name="item_policylist_deadline">2022.03.01 - 2022.12.31</string>
+
+    <!--bottom_dialog_filter-->
+    <string name="bottom_dialog_filter_sort">정렬</string>
+    <string name="bottom_dialog_filter_all">전체</string>
+    <string name="bottom_dialog_filter_dwelling">주거</string>
+    <string name="bottom_dialog_filter_finance">금융</string>
+
+    <!--dialog_rewrite-->
+    <string name="dialog_rewrite_title">정보를 다시 입력하시겠어요?"</string>
+    <string name="dialog_rewrite_explain">이전에 입력한 정보들은\n &#160; 모두 초기화 됩니다.</string>
+    <string name="dialog_rewrite_cancle">취소</string>
+    <string name="dialog_rewrite_confirm">확인</string>
+
 
 </resources>

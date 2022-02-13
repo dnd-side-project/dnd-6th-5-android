@@ -25,7 +25,7 @@
                 android:background="@drawable/bg_dwelling_color_radius_4dp"
                 android:paddingHorizontal="9dp"
                 android:paddingVertical="4dp"
-                android:text="주거"
+                android:text="@string/item_policylist_category"
                 android:textColor="@color/white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="청년 우대 청약통장"
+                android:text="@string/policylist_title"
                 android:textColor="@color/gray06"
                 app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
                 app:layout_constraintStart_toEndOf="@+id/tv_item_category"
@@ -50,7 +50,7 @@
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:text="저소득 무주택자 청년의 주택구매 및 임차"
+                android:text="@string/item_policylist_sentence"
                 android:textColor="@color/gray04"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="@id/tv_item_policy_title"
@@ -63,7 +63,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                android:text="기한"
+                android:text="@string/item_policylist_deadline_title"
                 app:layout_constraintStart_toStartOf="@id/tv_item_policy_sentence"
                 app:layout_constraintTop_toBottomOf="@id/tv_item_policy_sentence" />
 
@@ -73,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="2022.03.01 - 2022.12.31"
+                android:text="@string/item_policylist_deadline"
                 app:layout_constraintStart_toEndOf="@id/tv_item_deadline_title"
                 app:layout_constraintTop_toTopOf="@+id/tv_item_deadline_title"
                 tools:layout_editor_absoluteX="82dp" />

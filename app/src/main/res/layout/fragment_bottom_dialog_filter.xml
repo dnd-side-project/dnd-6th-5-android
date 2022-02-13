@@ -25,7 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="24dp"
-            android:text="정렬"
+            android:text="@string/bottom_dialog_filter_sort"
             android:textColor="@color/gray06"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="@{()->policyListViewModel.allSelected()}"
-            android:text="전체"
+            android:text="@string/bottom_dialog_filter_all"
             android:textColor="@color/gray06"
             app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
             app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_sort" />
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:onClick="@{()->policyListViewModel.dwellingSelected()}"
-            android:text="주거"
+            android:text="@string/bottom_dialog_filter_dwelling"
             android:textColor="@color/gray06"
             app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
             app:layout_constraintTop_toBottomOf="@id/iv_bottom_dialog_div_top" />
@@ -91,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:onClick="@{()->policyListViewModel.financeSelected()}"
-            android:text="금융"
+            android:text="@string/bottom_dialog_filter_finance"
             android:textColor="@color/gray06"
             app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
             app:layout_constraintTop_toBottomOf="@id/iv_bottom_dialog_div_mid" />
