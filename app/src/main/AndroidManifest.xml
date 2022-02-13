@@ -14,6 +14,12 @@
         android:theme="@style/Theme.SpoonFeed">
         <activity
             android:name=".presentation.ui.policylist.view.PolicyListActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,9 +30,6 @@
         <activity
             android:name=".presentation.ui.policylist.view.DetailInfoActivity"
             android:exported="false" />
-        <activity
-            android:name=".presentation.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>
