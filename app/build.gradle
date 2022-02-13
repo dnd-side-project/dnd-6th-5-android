@@ -44,7 +44,6 @@ dependencies {
 
     // Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
 
     // Gson
@@ -63,20 +62,6 @@ dependencies {
 
     // Material Design 3
     implementation "com.google.android.material:material:$materialVersion"
-
-    // ViewModel
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodelVersion"
-    implementation "androidx.activity:activity-ktx:1.4.0"
-
-    // LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$liveDataVersion"
-
-    // LifeCycle
-    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
-    implementation "androidx.legacy:legacy-support-v4:1.0.0"
-    androidTestImplementation "androidx.arch.core:core-testing:2.1.0"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-savedstate:$viewmodelVersion"
-    implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

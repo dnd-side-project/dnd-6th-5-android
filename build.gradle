@@ -9,9 +9,6 @@ buildscript {
         hiltVersion = "2.38.1"
         activityVersion = "1.4.0"
         fragmentVersion = "1.4.1"
-        viewmodelVersion = "2.4.1"
-        liveDataVersion = "2.4.1"
-        lifecycleVersion = "2.4.1"
     }
     repositories {
         google()
