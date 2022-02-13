@@ -107,17 +107,11 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         val cancelBtn = dialog.findViewById<Button>(R.id.tv_dialog_cancel)
 
         confirmBtn.setOnClickListener {
-            confirmBtn.setTextColor(this.getColor(R.color.primary_blue))
-
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({ dialog.dismiss() }, 120)
+            dialog.dismiss()
         }
 
         cancelBtn.setOnClickListener {
-            cancelBtn.setTextColor(this.getColor(R.color.primary_blue))
-
-            val handler = Handler(Looper.getMainLooper())
-            handler.postDelayed({ dialog.dismiss() }, 120)
+            dialog.dismiss()
         }
         policyListViewModel.reWriteOnClickFalse()
     }

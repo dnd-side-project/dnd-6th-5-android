@@ -67,7 +67,7 @@
             android:fontFamily="@font/suit_bold"
             android:includeFontPadding="false"
             android:text="@string/dialog_rewrite_confirm"
-            android:textColor="@color/gray03"
+            android:textColor="@color/primary_blue"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_dialog_explain" />
