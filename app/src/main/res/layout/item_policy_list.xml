@@ -21,7 +21,6 @@
                 style="@style/TextView.Label.Regular.12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
                 android:background="@drawable/bg_dwelling_color_radius_4dp"
                 android:paddingHorizontal="9dp"
                 android:paddingVertical="4dp"
@@ -78,22 +77,26 @@
                 app:layout_constraintTop_toTopOf="@+id/tv_item_deadline_title"
                 tools:layout_editor_absoluteX="82dp" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginBottom="24dp"
-                android:src="@drawable/div_policy_list_item"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_item_deadline_title" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:src="@drawable/div_policy_list_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_item_like"
+            app:layout_constraintStart_toStartOf="@+id/ctl_item"
+            app:layout_constraintTop_toBottomOf="@id/ctl_item" />
 
         <CheckedTextView
             android:id="@+id/iv_item_like"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            android:layout_marginEnd="9dp"
+            android:layout_marginEnd="5dp"
             android:checkMark="@drawable/selector_like"
             android:checked="false"
             app:layout_constraintEnd_toEndOf="parent"
