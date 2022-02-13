@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".presentation.ui.policylist.DetailInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policylist.PolicyListActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
