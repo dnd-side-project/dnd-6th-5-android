@@ -71,14 +71,11 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
 
     private fun setClickedCategory(category: TextView) {
         val typeFaceBold = Typeface.createFromAsset(requireActivity().assets, "suit_bold.otf")
-        category.setTextColor(requireContext().getColor(R.color.primary_blue))
         category.setTypeface(typeFaceBold)
     }
 
     private fun setUnClickedCategory(categoryOne: TextView, categoryTwo: TextView) {
         val typeFaceRegular = Typeface.createFromAsset(requireActivity().assets, "suit_regular.otf")
-        categoryOne.setTextColor(requireContext().getColor(R.color.gray06))
-        categoryTwo.setTextColor(requireContext().getColor(R.color.gray06))
         categoryOne.setTypeface(typeFaceRegular)
         categoryTwo.setTypeface(typeFaceRegular)
     }
