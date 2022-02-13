@@ -7,7 +7,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentHomeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterastedPolicyActivity
-import com.fork.spoonfeed.presentation.ui.policylist.PolicyListActivity
+import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

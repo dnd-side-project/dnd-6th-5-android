@@ -13,10 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
-            android:name=".presentation.ui.policylist.view.PolicyListActivity"
-            android:exported="false"/>
-        <activity
             android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policylist.view.PolicyListActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.MainActivity"
