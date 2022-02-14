@@ -54,8 +54,14 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     private fun setPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
-        policyListAdapter = PolicyListAdapter(dataList) { item ->
-            startActivity(Intent(this, DetailInfoActivity::class.java))
+        var policyListAdapter = PolicyListAdapter(dataList) {
+            Intent(this, DetailInfoActivity::class.java).apply {
+                putExtra("category", it.category)
+                putExtra("title", it.title)
+                putExtra("id", it.id)
+                putExtra("likeCount", it.likeCount)
+                startActivity(this)
+            }
         }
         with(binding) {
             rvPolicylist.adapter = policyListAdapter
@@ -71,12 +77,12 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun setFilterClickObserve() {
         policyListViewModel.isFilterClicked.observe(this) { isFilterClicked ->
-            Log.d("1","ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡisFilterClickedㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
+            Log.d("1", "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡisFilterClickedㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
             isFilterClicked.let {
                 if (isFilterClicked) {
                     showBottomFilterDialog()
                 }
-                Log.d("2","${isFilterClicked.toString()}")
+                Log.d("2", "${isFilterClicked.toString()}")
             }
         }
     }
@@ -93,13 +99,13 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun showBottomFilterDialog() {
         val bottomSheetFragment = BottomDialogFilterFragment()
-        Log.d("3","${policyListViewModel.isFilterClicked.value.toString()}")
+        Log.d("3", "${policyListViewModel.isFilterClicked.value.toString()}")
         bottomSheetFragment.show(
             supportFragmentManager,
             bottomSheetFragment.tag
         )
         policyListViewModel.filterOnClickFalse()
-        Log.d("4","${policyListViewModel.isFilterClicked.value.toString()}")
+        Log.d("4", "${policyListViewModel.isFilterClicked.value.toString()}")
     }
 
     private fun showReWriteDialog() {
