@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class PolicyListViewModel : ViewModel() {
 
 
-    private val _isFilterClicked = MutableLiveData<Boolean>()
+    private val _isFilterClicked = MutableLiveData<Boolean>(false)
     val isFilterClicked: LiveData<Boolean>
         get() = _isFilterClicked
 

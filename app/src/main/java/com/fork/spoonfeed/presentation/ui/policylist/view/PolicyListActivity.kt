@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.Gravity
 import android.view.Window
 import android.widget.Button
@@ -29,6 +30,10 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         binding.policyListViewModel = policyListViewModel
         binding.lifecycleOwner = this
         initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 
     override fun initView() {
@@ -66,10 +71,12 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun setFilterClickObserve() {
         policyListViewModel.isFilterClicked.observe(this) { isFilterClicked ->
+            Log.d("1","ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡisFilterClickedㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
             isFilterClicked.let {
                 if (isFilterClicked) {
                     showBottomFilterDialog()
                 }
+                Log.d("2","${isFilterClicked.toString()}")
             }
         }
     }
@@ -86,11 +93,13 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun showBottomFilterDialog() {
         val bottomSheetFragment = BottomDialogFilterFragment()
+        Log.d("3","${policyListViewModel.isFilterClicked.value.toString()}")
         bottomSheetFragment.show(
             supportFragmentManager,
             bottomSheetFragment.tag
         )
         policyListViewModel.filterOnClickFalse()
+        Log.d("4","${policyListViewModel.isFilterClicked.value.toString()}")
     }
 
     private fun showReWriteDialog() {
