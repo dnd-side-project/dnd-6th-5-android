@@ -119,4 +119,10 @@
         해당 앱에서 제공하는 내용의 사용에 대한 책임은\n &#160; &#160; &#160; &#160; &#160; &#160;  &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160; &#160;
         전적으로 사용사에게 있음을 알립니다.</string>
 
+    <!--  Onboarding  -->
+    <string name="onboarding_skip"><u>둘러보기</u></string>
+    <string name="onboarding_title">나에게 맞는 정책을\n스푼피드와 함께 찾아보세요:)</string>
+    <string name="onboarding_kakao_login">카카오로 시작하기</string>
+    <string name="onboarding_naver_login">네이버로 시작하기</string>
+
 </resources>

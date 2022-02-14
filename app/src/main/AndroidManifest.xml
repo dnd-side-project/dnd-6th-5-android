@@ -28,6 +28,9 @@
             android:name=".presentation.ui.policylist.view.PolicyListActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.ui.policylist.view.DetailInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.MainActivity"
             android:exported="true">
             <intent-filter>
@@ -37,8 +40,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.ui.policylist.view.DetailInfoActivity"
-            android:exported="false" />
+            android:name=".presentation.ui.onboarding.OnboardingActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
