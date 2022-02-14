@@ -17,6 +17,9 @@
     <string name="home_all">전체</string>
     <string name="home_dwelling">주거</string>
     <string name="home_finance">금융</string>
+    <string name="home_agency">국토교통부</string>
+    <string name="home_policy_category">주거</string>
+    <string name="home_policy_title">청년전용 버팀목 전세자금대출 정부정책</string>
     <string name="home_interasted_policy_title">관심있는 정책</string>
     <string name="home_interasted_policy_explain">관심있는 정책을 모아 바로 확인하세요</string>
     <string name="home_no_interasted_policy_explain">아직 관심있는 정책이 없어요</string>
@@ -50,5 +53,68 @@
     <string name="dialog_rewrite_cancle">취소</string>
     <string name="dialog_rewrite_confirm">확인</string>
 
+    <!--detail_info-->
+    <string name="detail_info_title">정책 상세정보</string>
+    <string name="detail_info_category">주거</string>
+    <string name="detail_info_policy_title">청년 우대형 청약통장</string>
+    <string name="detail_info_policy_num_text">정책번호</string>
+    <string name="detail_info_num">R12345678988</string>
+
+    <string name="detail_info_policy_summary">정책 요약</string>
+    <string name="detail_info_policy_name">정책이름</string>
+    <string name="detail_info_policy_name_sentence">청년우대형 청약통장</string>
+    <string name="detail_info_policy_category">정책유형</string>
+    <string name="detail_info_policy_category_sentence">주거지원</string>
+    <string name="detail_info_policy_explain_sentence">저소득 무주택 청년의 주택구매 및 임차\n자금 마련 지원을 위해 재형 기능을 강화\n한 청약통장</string>
+    <string name="detail_info_agency">주관기관</string>
+    <string name="detail_info_agency_sentence">국토교통부</string>
+    <string name="detail_info_application_period">신청기간</string>
+    <string name="detail_info_application_period_sentence">2022.03.01~2022.12.31(연중상시)</string>
+    <string name="detail_info_selection_announcement">선정발표</string>
+    <string name="detail_info_selection_announcement_sentence">신청한 은행에서 별도 안내</string>
+    <string name="detail_info_duration">진행기간</string>
+    <string name="detail_info_duration_sentence">-</string>
+
+    <string name="detail_info_apply_qualifications">신청 자격</string>
+    <string name="detail_info_age">연령</string>
+    <string name="detail_info_age_sentence">만19세 ~ 만 34세 이하</string>
+    <string name="detail_info_residence_and_income">거주지 및 소득</string>
+    <string name="detail_info_residence_and_income_sentence">-(병역증명서에 의한 병역 이행기간이\n증명되는 경우 현재 연령에서 병역 이행 기간(최대6년)을
+        빼고 계산한 연령이 만\n34세 이하인 사람 포함)\n-직적년도 신고소득이 있는 자로 연소득 3천만원 이하(근로.사업.기타소득자에 한함)\n(근로기간 1년 미만으로 직전년도 신고소득이 없는 근로\n소득자에 한해 당해 급여명세표 등으로 연소득 환산 후 가\n입 가능)</string>
+    <string name="detail_info_specialization_field">특화 분야</string>
+    <string name="detail_info_specialization_field_sentence">저소득층,무주택청년</string>
+
+    <string name="detail_info_apply_explain">지원 내용</string>
+    <string name="detail_info_apply_explain_sentence">- 납입원금 5,000만원 한도 내에서 신규가입일로부터 2\n년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기\n간에 한하여
+    기존 '주택청약종합저축, 이율에 우대이율\n(1.5퍼센트포인트)을 더한 이율을 적용\n</string>
+    <string name="detail_info_note">참고 사항</string>
+    <string name="detail_info_note_sentence">- 납입원금 5,000만원 한도 내에서 신규가입일로부터 2\n년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기\n간에 한하여
+    기존 '주택청약종합저축, 이율에 우대이율\n(1.5퍼센트포인트)을 더한 이율을 적용\n</string>
+    <string name="detail_info_restriction_subject">제한 대상</string>
+    <string name="detail_info_restriction_subject_sentence">제한없음</string>
+    <string name="detail_info_apply_support_target">지원 규모</string>
+    <string name="detail_info_apply_support_target_sentence">-</string>
+
+    <string name="detail_info_apply_way">신청 방법</string>
+    <string name="detail_info_apply_procedure">신청 절차</string>
+    <string name="detail_info_apply_procedure_sentence">주택도시기금 수탁은행(우리,국민,신\n한,농협,기업,하나,대구,부산,경남은\n행)에서 신청가능</string>
+    <string name="detail_info_apply_site">신청 사이트</string>
+    <string name="detail_info_apply_site_sentence">주택도시기금</string>
+    <string name="detail_info_submit_document">제출 서류</string>
+    <string name="detail_info_submit_document_sentence">소득증빙:소득확인증명서(청년우대형\n주택청약종합저축 가입 및 과세특례 신청n용)
+    병적증명서:해당하는자\n각서(양식제공)\n(비과세신청시)비과세 신청자용 각서 및 정보제공 동의서(양식제공)</string>
+
+    <string name="detail_info_etc">기타</string>
+    <string name="detail_info_etc_sentence">기타</string>
+    <string name="detail_info_etc_agency">주관기관</string>
+    <string name="detail_info_etc_agency_sentence">국토교통부 주택기금과</string>
+    <string name="detail_info_operating_agency">운영기관</string>
+    <string name="detail_info_operating_agency_sentence">주택도기보증공사 기금기획실</string>
+    <string name="detail_info_reference_site_one">참고사이트 1</string>
+    <string name="detail_info_reference_site_one_sentence">청년우대청약통장 | 정부서비스</string>
+    <string name="detail_info_reference_site_two">참고사이트 2</string>
+    <string name="detail_info_reference_site_two_sentence">주택도시보증공사 기금기획실</string>
+
+    <string name="detail_info_check_custom_policy">맞춤 정책 확인하기</string>
 
 </resources>
