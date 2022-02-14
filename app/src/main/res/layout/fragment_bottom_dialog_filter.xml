@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="policyListViewModel"
+            type="com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius_top_20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_sort"
+            style="@style/TextView.Heading.Bold.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:text="정렬"
+            android:textColor="@color/gray06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_bottom_dialog_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="26dp"
+            android:src="@drawable/ic_close_24"
+            app:layout_constraintBottom_toBottomOf="@id/tv_bottom_dialog_sort"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_bottom_dialog_sort" />
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_all"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:onClick="@{()->policyListViewModel.allSelected()}"
+            android:text="전체"
+            android:textColor="@color/gray06"
+            app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_sort" />
+
+        <ImageView
+            android:id="@+id/iv_bottom_dialog_div_top"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/div_policy_list_item"
+            app:layout_constraintEnd_toEndOf="@+id/iv_bottom_dialog_close"
+            app:layout_constraintStart_toStartOf="@+id/tv_bottom_dialog_all"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_all" />
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_dwelling"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{()->policyListViewModel.dwellingSelected()}"
+            android:text="주거"
+            android:textColor="@color/gray06"
+            app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
+            app:layout_constraintTop_toBottomOf="@id/iv_bottom_dialog_div_top" />
+
+        <ImageView
+            android:id="@+id/iv_bottom_dialog_div_mid"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/div_policy_list_item"
+            app:layout_constraintEnd_toEndOf="@+id/iv_bottom_dialog_div_top"
+            app:layout_constraintStart_toStartOf="@+id/iv_bottom_dialog_div_top"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_dwelling" />
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_finance"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:onClick="@{()->policyListViewModel.financeSelected()}"
+            android:text="금융"
+            android:textColor="@color/gray06"
+            app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
+            app:layout_constraintTop_toBottomOf="@id/iv_bottom_dialog_div_mid" />
+
+        <ImageView
+            android:id="@+id/iv_bottom_dialog_div_bottom"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="11dp"
+            android:src="@drawable/div_policy_list_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_bottom_dialog_div_mid"
+            app:layout_constraintStart_toStartOf="@+id/iv_bottom_dialog_div_mid"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_finance" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
