@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="com.fork.spoonfeed.domain.model.ChipInputType" />
+
+        <variable
+            name="fragment"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelTwoFragment" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.ui.policy.view.filter.PolicyFilterLevelTwoFragment">
+
+        <com.fork.spoonfeed.presentation.ui.custom.FilterProgress
+            android:id="@+id/fp_policy_filter_two_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:currentPosition="TWO"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_two_level"
+            style="@style/TextView.Heading.ExtraBold.12"
+            android:layout_width="@dimen/policy_filter_level_size"
+            android:layout_height="@dimen/policy_filter_level_size"
+            android:layout_marginTop="@dimen/policy_filter_level_top_margin"
+            android:background="@drawable/bg_policy_filter_level_title"
+            android:gravity="center"
+            android:text="@string/policy_filter_level_two"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="@id/tv_policy_filter_two_title"
+            app:layout_constraintTop_toBottomOf="@id/fp_policy_filter_two_progress" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_two_title"
+            style="@style/TextView.Heading.SemiBold.20"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
+            android:layout_marginTop="@dimen/policy_filter_title_top_margin"
+            android:text="@string/policy_filter_level_two_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_level" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_two_subtitle"
+            style="@style/TextView.Paragraph.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/policy_filter_title_top_margin"
+            android:text="@string/policy_filter_level_two_subtitle"
+            android:textColor="@color/gray04"
+            app:layout_constraintEnd_toEndOf="@id/tv_policy_filter_two_title"
+            app:layout_constraintStart_toStartOf="@id/tv_policy_filter_two_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_title" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_two_employment_availability"
+            style="@style/TextView.Heading.Bold.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/policy_filter_form_top_margin"
+            android:text="@string/policy_filter_level_two_employment_availability"
+            app:layout_constraintStart_toStartOf="@id/tv_policy_filter_two_subtitle"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_subtitle" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_policy_filter_two_employment_availability"
+            type="@{ChipInputType.EMPLOYMENT}"
+            viewModel="@{viewModel}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
+            android:layout_marginTop="16dp"
+            app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
+            app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_employment_availability"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_employment_incumbent"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_employment_incumbent" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_unemployed"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_unemployed" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:id="@+id/view_decorator"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/policy_filter_decorator_height"
+            android:layout_marginTop="@dimen/policy_filter_decorator_margin"
+            android:background="@color/gray01"
+            app:layout_constraintTop_toBottomOf="@id/cg_policy_filter_two_employment_availability" />
+
+        <TextView
+            android:id="@+id/tv_policy_filter_two_company_size"
+            style="@style/TextView.Heading.Bold.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/policy_filter_decorator_margin"
+            android:text="@string/policy_filter_level_two_company_size"
+            app:layout_constraintStart_toStartOf="@id/cg_policy_filter_two_company_size"
+            app:layout_constraintTop_toBottomOf="@id/view_decorator" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/cg_policy_filter_two_company_size"
+            type="@{ChipInputType.COMPANY_SIZE}"
+            viewModel="@{viewModel}"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
+            android:layout_marginTop="16dp"
+            app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
+            app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_filter_two_company_size"
+            app:selectionRequired="true"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_small"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_company_small" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_mid"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_company_mid" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_self"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_company_self" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_founder"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_company_founder" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_policy_filter_level_two_company_nothing"
+                style="@style/Chip.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/policy_filter_chip_height"
+                android:text="@string/policy_filter_level_two_company_nothing" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_policy_filter_two_next"
+            style="@style/MaterialButton.Bold.16"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/policy_filter_next_btn_height"
+            android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
+            android:layout_marginTop="@dimen/policy_filter_bottom_content_top_margin"
+            android:layout_marginBottom="@dimen/policy_filter_bottom_content_bottom_margin"
+            android:backgroundTint="@{viewModel.isLevelTwoValid ? @color/primary_blue : @color/gray03}"
+            android:enabled="@{viewModel.isLevelTwoValid}"
+            android:onClick="@{() -> fragment.moveToNextLevel()}"
+            android:text="@string/policy_filter_next"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cg_policy_filter_two_company_size" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
