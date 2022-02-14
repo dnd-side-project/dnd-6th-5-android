@@ -2,6 +2,7 @@ package com.fork.spoonfeed.domain.model
 
 import java.text.ParseException
 import java.text.SimpleDateFormat
+import java.time.LocalDate
 import java.util.Locale
 
 data class Age(
@@ -10,6 +11,8 @@ data class Age(
     val day: Int? = null
 ) {
     fun isValid(): Boolean {
+        if (year !in (1900..LocalDate.now().year)) return false
+
         val ageYear = year?.toString() ?: return false
         val ageMonth = month?.toString() ?: return false
         val ageDay = day?.toString() ?: return false
