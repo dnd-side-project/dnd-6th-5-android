@@ -14,5 +14,12 @@ class ApplyExplainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityApplyExp
     }
 
     override fun initView() {
+        setBackBtnClickListener()
+    }
+
+    private fun setBackBtnClickListener() {
+        binding.ivApplyExplainBack.setOnClickListener {
+            finish()
+        }
     }
 }

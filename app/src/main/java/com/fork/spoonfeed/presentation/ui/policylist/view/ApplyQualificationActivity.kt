@@ -13,5 +13,12 @@ class ApplyQualificationActivity : BaseViewUtil.BaseAppCompatActivity<ActivityAp
     }
 
     override fun initView() {
+        setBackBtnClickListener()
+    }
+
+    private fun setBackBtnClickListener() {
+        binding.ivApplyQualificationsBack.setOnClickListener {
+            finish()
+        }
     }
 }

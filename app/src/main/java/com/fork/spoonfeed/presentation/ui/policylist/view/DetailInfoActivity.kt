@@ -20,11 +20,18 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     override fun initView() {
-        initClick()
+        initClickListener()
         setLikeBtn()
+        setBackBtnClickListener()
     }
 
-    private fun initClick() {
+    private fun setBackBtnClickListener() {
+        binding.ivDetailInfoBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun initClickListener() {
         with(binding) {
             ivDetailInfoLike.setOnClickListener {
                 ivDetailInfoLike.toggle()

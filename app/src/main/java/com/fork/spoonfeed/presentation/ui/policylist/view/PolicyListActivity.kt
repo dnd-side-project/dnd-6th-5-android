@@ -37,6 +37,7 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     override fun initView() {
+        setBackBtnClickListener()
         setPolicyListAdapter(
             mutableListOf(
                 PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
@@ -51,6 +52,12 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
+    }
+
+    private fun setBackBtnClickListener() {
+        binding.ivPolicylistBack.setOnClickListener {
+                finish()
+        }
     }
 
     private fun setPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
