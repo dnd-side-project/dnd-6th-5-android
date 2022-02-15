@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FilterProgress">
+        <attr name="currentPosition" format="enum">
+            <enum name="ONE" value="1"/>
+            <enum name="TWO" value="2"/>
+            <enum name="THREE" value="3"/>
+        </attr>
+    </declare-styleable>
+</resources>

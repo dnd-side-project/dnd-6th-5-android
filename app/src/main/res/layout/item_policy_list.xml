@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toStartOf="@id/iv_item_like"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_item_category"
+                style="@style/TextView.Label.Regular.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/bg_dwelling_color_radius_4dp"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="4dp"
+                android:text="주거"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_item_policy_title"
+                style="@style/TextView.Label.Medium.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="청년 우대 청약통장"
+                android:textColor="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
+                app:layout_constraintStart_toEndOf="@+id/tv_item_category"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_category" />
+
+            <TextView
+                android:id="@+id/tv_item_policy_sentence"
+                style="@style/TextView.Label.Regular.14"
+                android:layout_width="214dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="저소득 무주택자 청년의 주택구매 및 임차"
+                android:textColor="@color/gray04"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/tv_item_policy_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_policy_title" />
+
+
+            <TextView
+                android:id="@+id/tv_item_deadline_title"
+                style="@style/TextView.Heading.SemiBold.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="기한"
+                app:layout_constraintStart_toStartOf="@id/tv_item_policy_sentence"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_policy_sentence" />
+
+            <TextView
+                android:id="@+id/tv_item_deadline"
+                style="@style/TextView.Label.Regular.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="2022.03.01 - 2022.12.31"
+                app:layout_constraintStart_toEndOf="@id/tv_item_deadline_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_deadline_title"
+                tools:layout_editor_absoluteX="82dp" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:src="@drawable/div_policy_list_item"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_deadline_title" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <CheckedTextView
+            android:id="@+id/iv_item_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="9dp"
+            android:checkMark="@drawable/selector_like"
+            android:checked="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="34dp" />
+
+        <TextView
+            android:id="@+id/tv_item_like_count"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="24"
+            app:layout_constraintEnd_toEndOf="@id/iv_item_like"
+            app:layout_constraintStart_toStartOf="@id/iv_item_like"
+            app:layout_constraintTop_toBottomOf="@id/iv_item_like" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
