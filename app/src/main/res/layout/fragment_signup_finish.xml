@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.ui.onboarding.signup.SignupFinishFragment">
+
+        <ImageView
+            android:id="@+id/iv_signup_finish"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/img_signup_finish"
+            app:layout_constraintBottom_toTopOf="@id/tv_signup_finish_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_signup_finish_title"
+            style="@style/TextView.Heading.SemiBold.20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/signup_finish_title"
+            app:layout_constraintBottom_toTopOf="@id/tv_signup_finish_description"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_signup_finish"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_signup_finish_description"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/signup_finish_description"
+            android:textColor="@color/gray04"
+            app:layout_constraintBottom_toTopOf="@id/mb_signup_finish_start_spoonfeed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_signup_finish_title"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_signup_finish_start_spoonfeed"
+            style="@style/MaterialButton.Bold.16"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="17dp"
+            android:backgroundTint="@color/primary_blue"
+            android:text="@string/signup_finish_start_spoonfeed"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

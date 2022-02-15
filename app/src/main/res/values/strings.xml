@@ -138,5 +138,9 @@
     <string name="signup_terms_condition_user_protect">(필수) 콘텐츠 이용자 보호지침</string>
     <string name="signup_terms_condition_personal_info">(필수) 개인정보 처리방침</string>
 
+    <string name="signup_finish_title">준비 완료!</string>
+    <string name="signup_finish_description">스푼피드와 함께 다양한\n청년 정책을 만나보세요!</string>
+    <string name="signup_finish_start_spoonfeed">스푼피드 시작하기</string>
+
 
 </resources>
