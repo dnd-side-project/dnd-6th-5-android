@@ -125,4 +125,10 @@
     <string name="onboarding_kakao_login">카카오로 시작하기</string>
     <string name="onboarding_naver_login">네이버로 시작하기</string>
 
+    <!--  Signup  -->
+    <string name="signup_title">시작하기</string>
+    <string name="signup_next">다음</string>
+    <string name="signup_name_title">스푼피드에선\n어떤 이름을 쓸까요?</string>
+    <string name="signup_name_hint">닉네임을 입력해주세요</string>
+
 </resources>
