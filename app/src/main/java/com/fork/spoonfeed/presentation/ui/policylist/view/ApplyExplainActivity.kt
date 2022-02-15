@@ -1,12 +1,18 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.databinding.ActivityApplyExplainBinding
+import com.fork.spoonfeed.presentation.base.BaseViewUtil
 
-class ApplyExplainActivity : AppCompatActivity() {
+class ApplyExplainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityApplyExplainBinding>(R.layout.activity_apply_explain) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_apply_explain)
+        initView()
+    }
+
+    override fun initView() {
     }
 }

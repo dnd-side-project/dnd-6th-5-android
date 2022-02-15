@@ -176,16 +176,15 @@
     <string name="detail_info_residence_and_income_sentence">만 19세 이상 만34세 이하\n - (병역증명서에 의한 병역 이행기간이증명되는 경우 현재 연령에서 병역 이행 기간(최대6년)을
         빼고 계산한 연령이 만34세 이하인 사람 포함)\n- 직전년도 신고소득이 있는 자로 연소득 3천만원 이하(근로.사업.기타소득자에 한함)(근로기간 1년 미만으로 직전년도 신고소득이 없는 근로소득자에 한해 당해 급여명세표 등으로 연소득 환산 후 가입 가능하고맥스라인 테스테스테테스트테스트세트세테스트텥슷트트를 위한 텍스트)</string>
     <string name="detail_info_specialization_field">특화 분야</string>
-    <string name="detail_info_specialization_field_sentence">저소득층,무주택청년</string>
 
     <string name="detail_info_apply_explain">지원 내용</string>
     <string name="detail_info_apply_explain_sentence">- 납입원금 5,000만원 한도 내에서 신규가입일로부터 2년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기간에 한하여기존 주택청약종합저축, 이율에 우대이율(1.5퍼센트포인트)을 더한 이율을 적용</string>
-    <string name="detail_info_note">참고사항</string>
-    <string name="detail_info_note_sentence">-납입원금 5,000만원 한도 내에서 신규가입일로부터 2년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기간에 한하여 기존 주택청약종합저축, 이율에 우대이율(1.5퍼센트포인트)을 더한 이율을 적용</string>
+    <string name="detail_info_note">참고 사항</string>
+    <string name="detail_info_note_sentence">- 납입원금 5,000만원 한도 내에서 신규가입일로부터 2년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기간에 한하여 기존 주택청약종합저축, 이율에 우대이율(1.5퍼센트포인트)을 더한 이율을 적용</string>
     <string name="detail_info_restriction_subject">제한 대상</string>
     <string name="detail_info_restriction_subject_sentence">제한없음</string>
-    <string name="detail_info_apply_support_target">지원 규모</string>
-    <string name="detail_info_apply_support_target_sentence">-</string>
+    <string name="detail_info_apply_support_scale">지원 규모</string>
+    <string name="detail_info_apply_support_scale_sentence">-</string>
 
     <string name="detail_info_apply_way">신청 방법</string>
     <string name="detail_info_apply_procedure">신청 절차</string>
