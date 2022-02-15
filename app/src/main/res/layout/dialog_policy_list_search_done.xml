@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius_20dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_dialog_search_done_firecracker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="54dp"
+            android:src="@drawable/img_firecracker"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_dialog_search_done_title"
+            style="@style/TextView.Heading.Bold.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/dialog_policy_list_search_done_title"
+            android:textColor="@color/gray06"
+            app:layout_constraintEnd_toEndOf="@id/iv_dialog_search_done_firecracker"
+            app:layout_constraintStart_toStartOf="@id/iv_dialog_search_done_firecracker"
+            app:layout_constraintTop_toBottomOf="@id/iv_dialog_search_done_firecracker" />
+
+        <TextView
+            android:id="@+id/tv_dialog_search_done_explain"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center_horizontal"
+            android:text="@string/dialog_policy_list_search_done_explain"
+            android:textColor="@color/gray06"
+            app:layout_constraintEnd_toEndOf="@id/tv_dialog_search_done_title"
+            app:layout_constraintStart_toStartOf="@id/tv_dialog_search_done_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_search_done_title" />
+
+
+        <Button
+            android:id="@+id/tv_dialog_search_done_confirm"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/selector_rewrite"
+            android:fontFamily="@font/suit_bold"
+            android:includeFontPadding="false"
+            android:text="@string/dialog_policy_list_search_done_confirm"
+            android:textColor="@color/primary_blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@id/tv_dialog_search_done_explain"
+            app:layout_constraintStart_toStartOf="@id/tv_dialog_search_done_explain"
+            app:layout_constraintTop_toBottomOf="@id/tv_dialog_search_done_explain" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -212,4 +212,9 @@
     <string name="apply_qualification_residence_specialization_field">특화 분야</string>
     <string name="apply_qualification_residence_specialization_field_sentence">저소득층, 무주택청년</string>
 
+    <!--  Dialog Policy List Search Done  -->
+    <string name="dialog_policy_list_search_done_title">맞춤 정책 찾기 완료!</string>
+    <string name="dialog_policy_list_search_done_explain">입력한 정보와 가장 관련있는\n 정책부터 확인해보세요.\n 스푼피드를 통해 다양한 청년 정책의\n 혜택을 받을 수 있길 바랄게요!</string>
+    <string name="dialog_policy_list_search_done_confirm">확인</string>
+
 </resources>
