@@ -13,6 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".presentation.ui.policy.view.filter.tooltip.NetWorthTooltipActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.policy.view.filter.tooltip.MedianIncomeTooltipActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.policy.view.filter.PolicyFilterActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
             android:exported="false" />
         <activity
