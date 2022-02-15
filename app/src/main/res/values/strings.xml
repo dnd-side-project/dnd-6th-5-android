@@ -131,4 +131,12 @@
     <string name="signup_name_title">스푼피드에선\n어떤 이름을 쓸까요?</string>
     <string name="signup_name_hint">닉네임을 입력해주세요</string>
 
+    <string name="signup_terms_condition_title">스푼피드 이용 약관 동의</string>
+    <string name="signup_terms_condition_subtitle">스푼피드에 오신 것을 환영합니다!\n이용을 위해 아래의 약관 동의가 필요합니다.</string>
+    <string name="signup_terms_condition_all_agree">모두 동의합니다.</string>
+    <string name="signup_terms_condition_digital_content">(필수) 디지털콘텐츠 이용 표준약관</string>
+    <string name="signup_terms_condition_user_protect">(필수) 콘텐츠 이용자 보호지침</string>
+    <string name="signup_terms_condition_personal_info">(필수) 개인정보 처리방침</string>
+
+
 </resources>
