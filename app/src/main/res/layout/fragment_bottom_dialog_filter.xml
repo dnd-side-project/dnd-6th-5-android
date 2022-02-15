@@ -57,7 +57,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/div_policy_list_item"
+            android:src="@drawable/div_policy_list_item_gray02_1dp"
             app:layout_constraintEnd_toEndOf="@+id/iv_bottom_dialog_close"
             app:layout_constraintStart_toStartOf="@+id/tv_bottom_dialog_all"
             app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_all" />
@@ -79,7 +79,7 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/div_policy_list_item"
+            android:src="@drawable/div_policy_list_item_gray02_1dp"
             app:layout_constraintEnd_toEndOf="@+id/iv_bottom_dialog_div_top"
             app:layout_constraintStart_toStartOf="@+id/iv_bottom_dialog_div_top"
             app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_dwelling" />
