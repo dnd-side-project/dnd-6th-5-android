@@ -102,7 +102,7 @@
     <string name="net_worth_tooltip_close">닫기</string>
     <string name="net_worth_tooltip_shortcut">순자산 알아보기</string>
 
-    <!--home-->
+    <!--  Home  -->
     <string name="home_customized_policy_title">맞춤정책</string>
     <string name="home_customized_policy_explain">나에게 딱 맞는 맞춤 정책을\n스푼피드에서 찾아보세요!</string>
     <string name="home_policy_search_title">청년정책 살펴보기</string>
@@ -122,31 +122,31 @@
         해당 앱에서 제공하는 내용의 사용에 대한 책임은\n &#160; &#160; &#160; &#160; &#160; &#160;  &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160; &#160;
         전적으로 사용사에게 있음을 알립니다.</string>
 
-    <!--policylist-->
+    <!--  PolicyList  -->
     <string name="policylist_title">맞춤 정책 리스트</string>
     <string name="policylist_rewrite">다시 입력하기</string>
     <string name="policylist_all">전체</string>
 
-    <!--item_policylist-->
+    <!--  Item Policylist  -->
     <string name="item_policylist_category">주거</string>
     <string name="item_policylist_title">청년 우대 청약통장</string>
     <string name="item_policylist_sentence">저소즉 무주택자 청년의 주택자금</string>
     <string name="item_policylist_deadline_title">기한</string>
     <string name="item_policylist_deadline">2022.03.01 - 2022.12.31</string>
 
-    <!--bottom_dialog_filter-->
+    <!--  Bottom Dialog Filter  -->
     <string name="bottom_dialog_filter_sort">정렬</string>
     <string name="bottom_dialog_filter_all">전체</string>
     <string name="bottom_dialog_filter_dwelling">주거</string>
     <string name="bottom_dialog_filter_finance">금융</string>
 
-    <!--dialog_rewrite-->
+    <!--  Dialog Rewrite  -->
     <string name="dialog_rewrite_title">정보를 다시 입력하시겠어요?"</string>
     <string name="dialog_rewrite_explain">이전에 입력한 정보들은\n &#160; 모두 초기화 됩니다.</string>
     <string name="dialog_rewrite_cancle">취소</string>
     <string name="dialog_rewrite_confirm">확인</string>
 
-    <!--detail_info-->
+    <!--  Detail Info  -->
     <string name="detail_info_title">정책 상세정보</string>
     <string name="detail_info_category">주거</string>
     <string name="detail_info_policy_title">청년 우대형 청약통장</string>
@@ -173,7 +173,7 @@
     <string name="detail_info_age">연령</string>
     <string name="detail_info_age_sentence">만19세 ~ 만 34세 이하</string>
     <string name="detail_info_residence_and_income">거주지 및\n 소득</string>
-    <string name="detail_info_residence_and_income_sentence">- (병역증명서에 의한 병역 이행기간이증명되는 경우 현재 연령에서 병역 이행 기간(최대6년)을
+    <string name="detail_info_residence_and_income_sentence">만 19세 이상 만34세 이하\n - (병역증명서에 의한 병역 이행기간이증명되는 경우 현재 연령에서 병역 이행 기간(최대6년)을
         빼고 계산한 연령이 만34세 이하인 사람 포함)\n- 직전년도 신고소득이 있는 자로 연소득 3천만원 이하(근로.사업.기타소득자에 한함)(근로기간 1년 미만으로 직전년도 신고소득이 없는 근로소득자에 한해 당해 급여명세표 등으로 연소득 환산 후 가입 가능하고맥스라인 테스테스테테스트테스트세트세테스트텥슷트트를 위한 텍스트)</string>
     <string name="detail_info_specialization_field">특화 분야</string>
     <string name="detail_info_specialization_field_sentence">저소득층,무주택청년</string>
@@ -207,5 +207,10 @@
     <string name="detail_info_reference_site_two">참고사이트 2</string>
     <string name="detail_info_reference_site_two_sentence">주택도시보증공사 기금기획실</string>
     <string name="detail_info_check_custom_policy">맞춤 정책 확인하기</string>
+
+    <!--  Apply Qualification  -->
+    <string name="apply_qualification_residence_and_income">거주지 및 소득</string>
+    <string name="apply_qualification_residence_specialization_field">특화 분야</string>
+    <string name="apply_qualification_residence_specialization_field_sentence">저소득층, 무주택청년</string>
 
 </resources>

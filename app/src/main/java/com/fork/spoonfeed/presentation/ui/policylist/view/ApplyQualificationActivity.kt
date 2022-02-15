@@ -3,10 +3,15 @@ package com.fork.spoonfeed.presentation.ui.policylist.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.databinding.ActivityApplyQualificationBinding
+import com.fork.spoonfeed.presentation.base.BaseViewUtil
 
-class ApplyQualificationActivity : AppCompatActivity() {
+class ApplyQualificationActivity : BaseViewUtil.BaseAppCompatActivity<ActivityApplyQualificationBinding>(R.layout.activity_apply_qualification) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_apply_qualification)
+        initView()
+    }
+
+    override fun initView() {
     }
 }
