@@ -10,7 +10,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_white_radius_20dp"
-        android:paddingBottom="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -60,12 +59,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/selector_rewrite"
             android:fontFamily="@font/suit_bold"
             android:includeFontPadding="false"
             android:text="@string/dialog_policy_list_search_done_confirm"
             android:textColor="@color/primary_blue"
             android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/tv_dialog_search_done_explain"
             app:layout_constraintStart_toStartOf="@id/tv_dialog_search_done_explain"
             app:layout_constraintTop_toBottomOf="@id/tv_dialog_search_done_explain" />
