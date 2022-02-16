@@ -11,6 +11,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import android.graphics.Typeface
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
@@ -39,38 +41,68 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.ivBottomDialogClose.setOnClickListener {
-            dialog?.dismiss()
-        }
-
+        applyInitSelectedFilterLayout()
         applyFilterLayout()
+        setCloseBtnClickedListener()
     }
 
+    fun applyInitSelectedFilterLayout() {
+        with(binding) {
+            when (policyListViewModel?.initSelectedFilter) {
+                ALL -> {
+                    setClickedCategory(tvBottomDialogAll)
+                    setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
+                }
+                DWELLING -> {
+                    setClickedCategory(tvBottomDialogDwelling)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
+                }
+                FINANCE -> {
+                    setClickedCategory(tvBottomDialogFinance)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
+                }
+                else -> {
+                    setClickedCategory(tvBottomDialogFinance)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
+                }
+            }
+        }
+    }
 
     private fun applyFilterLayout() {
-
         policyListViewModel.selectedFileter.observe(this) { selectedFileter ->
             with(binding) {
                 when (selectedFileter) {
                     ALL -> {
                         setClickedCategory(tvBottomDialogAll)
                         setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
-                        Log.d("필터선택", "1필터선탞ㄲㄲㄲㄲㄲㄲ")
-                        dialog?.dismiss()
+                        setHandler()
                     }
                     DWELLING -> {
                         setClickedCategory(tvBottomDialogDwelling)
                         setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
-                        Log.d("필터선택", "2필터선탞ㄲㄲㄲㄲㄲㄲ")
+                        setHandler()
                     }
                     FINANCE -> {
                         setClickedCategory(tvBottomDialogFinance)
                         setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
-                        Log.d("필터선택", "3필터선탞ㄲㄲㄲㄲㄲㄲ")
+                        setHandler()
                     }
                 }
+                policyListViewModel?.initSelectedFilter = selectedFileter
             }
         }
+    }
+
+    private fun setCloseBtnClickedListener() {
+        binding.ivBottomDialogClose.setOnClickListener {
+            dialog?.dismiss()
+        }
+    }
+
+    private fun setHandler() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({ dialog?.dismiss() }, 140)
     }
 
     private fun setClickedCategory(category: TextView) {
@@ -90,7 +122,6 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val NOTHING = 0
         const val ALL = 1
         const val DWELLING = 2
         const val FINANCE = 3

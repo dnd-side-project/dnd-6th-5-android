@@ -15,9 +15,11 @@ class PolicyListViewModel : ViewModel() {
     val isReWriteClicked: LiveData<Boolean>
         get() = _isReWriteClicked
 
-    private var _selectedFileter = MutableLiveData(NOTHING)
+    private val _selectedFileter = MutableLiveData(NOTHING)
     val selectedFileter: LiveData<Int>
         get() = _selectedFileter
+
+    var initSelectedFilter = ALL
 
     fun allSelected() {
         _selectedFileter.value = ALL
@@ -29,6 +31,10 @@ class PolicyListViewModel : ViewModel() {
 
     fun financeSelected() {
         _selectedFileter.value = FINANCE
+    }
+
+    fun nothingSelected() {
+        _selectedFileter.value = NOTHING
     }
 
     fun applyFilter() {

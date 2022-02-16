@@ -27,7 +27,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyListBinding>(R.layout.activity_policy_list) {
     private val policyListViewModel: PolicyListViewModel by viewModels()
     private lateinit var policyListAdapter: PolicyListAdapter
-    lateinit var policyList_Activity: Activity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,11 +34,6 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         binding.policyListViewModel = policyListViewModel
         binding.lifecycleOwner = this
         initView()
-        policyList_Activity = this
-    }
-
-    override fun onResume() {
-        super.onResume()
     }
 
     override fun initView() {
@@ -68,7 +62,7 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     private fun setPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
-        var policyListAdapter = PolicyListAdapter(dataList) {
+        policyListAdapter = PolicyListAdapter(dataList) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("category", it.category)
                 putExtra("title", it.title)
@@ -91,12 +85,10 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun setFilterClickObserve() {
         policyListViewModel.isFilterClicked.observe(this) { isFilterClicked ->
-            Log.d("1", "ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡisFilterClickedㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ")
             isFilterClicked.let {
                 if (isFilterClicked) {
                     showBottomFilterDialog()
                 }
-                Log.d("2", "${isFilterClicked.toString()}")
             }
         }
     }
@@ -139,12 +131,11 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun showBottomFilterDialog() {
         val bottomSheetFragment = BottomDialogFilterFragment()
-        Log.d("3", "${policyListViewModel.isFilterClicked.value.toString()}")
         bottomSheetFragment.show(
             supportFragmentManager,
             bottomSheetFragment.tag
         )
         policyListViewModel.filterOnClickFalse()
-        Log.d("4", "${policyListViewModel.isFilterClicked.value.toString()}")
+        policyListViewModel.nothingSelected()
     }
 }
