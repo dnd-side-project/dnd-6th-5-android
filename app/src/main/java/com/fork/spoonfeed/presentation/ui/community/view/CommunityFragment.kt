@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.community.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -43,6 +44,7 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
             )
         )
         setFilterClickObserve()
+        setSearchClickListener()
     }
 
     private fun setCommunityAdapter(dataList: MutableList<CommunityResponseData>) {
@@ -54,6 +56,13 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
         with(binding) {
             rvCommunity.adapter = communityAdapter
             rvCommunity.layoutManager = LinearLayoutManager(requireContext())
+        }
+    }
+
+    private fun setSearchClickListener() {
+        binding.ivCommunityMagnifyGlass.setOnClickListener {
+            val intent = Intent(requireContext(), SearchInputActivity::class.java)
+            startActivity(intent)
         }
     }
 
