@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
 import android.graphics.drawable.ColorDrawable
@@ -26,12 +27,15 @@ import dagger.hilt.android.AndroidEntryPoint
 class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyListBinding>(R.layout.activity_policy_list) {
     private val policyListViewModel: PolicyListViewModel by viewModels()
     private lateinit var policyListAdapter: PolicyListAdapter
+    lateinit var policyList_Activity: Activity
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.policyListViewModel = policyListViewModel
         binding.lifecycleOwner = this
         initView()
+        policyList_Activity = this
     }
 
     override fun onResume() {
