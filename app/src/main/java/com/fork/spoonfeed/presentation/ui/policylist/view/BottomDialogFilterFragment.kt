@@ -11,6 +11,9 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import android.graphics.Typeface
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
@@ -29,7 +32,6 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
         _binding = FragmentBottomDialogFilterBinding.inflate(layoutInflater, container, false)
         binding.policyListViewModel = policyListViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-
         return binding.root
     }
 
@@ -39,46 +41,77 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.ivBottomDialogClose.setOnClickListener {
-            policyListViewModel.applyFilter()
-            dialog?.dismiss()
-        }
+        applyInitSelectedFilterLayout()
         applyFilterLayout()
+        setCloseBtnClickedListener()
     }
 
+    fun applyInitSelectedFilterLayout() {
+        with(binding) {
+            when (policyListViewModel?.initSelectedFilter) {
+                ALL -> {
+                    setClickedCategory(tvBottomDialogAll)
+                    setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
+                }
+                DWELLING -> {
+                    setClickedCategory(tvBottomDialogDwelling)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
+                }
+                FINANCE -> {
+                    setClickedCategory(tvBottomDialogFinance)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
+                }
+                else -> {
+                    setClickedCategory(tvBottomDialogFinance)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
+                }
+            }
+        }
+    }
 
     private fun applyFilterLayout() {
-
         policyListViewModel.selectedFileter.observe(this) { selectedFileter ->
             with(binding) {
                 when (selectedFileter) {
                     ALL -> {
                         setClickedCategory(tvBottomDialogAll)
                         setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
+                        setHandler()
                     }
                     DWELLING -> {
                         setClickedCategory(tvBottomDialogDwelling)
                         setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
+                        setHandler()
                     }
                     FINANCE -> {
                         setClickedCategory(tvBottomDialogFinance)
                         setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
+                        setHandler()
                     }
                 }
+                policyListViewModel?.initSelectedFilter = selectedFileter
             }
         }
     }
 
+    private fun setCloseBtnClickedListener() {
+        binding.ivBottomDialogClose.setOnClickListener {
+            dialog?.dismiss()
+        }
+    }
+
+    private fun setHandler() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({ dialog?.dismiss() }, 140)
+    }
+
     private fun setClickedCategory(category: TextView) {
         val typeFaceBold = Typeface.createFromAsset(requireActivity().assets, "suit_bold.otf")
-        category.setTextColor(requireContext().getColor(R.color.primary_blue))
         category.setTypeface(typeFaceBold)
     }
 
     private fun setUnClickedCategory(categoryOne: TextView, categoryTwo: TextView) {
         val typeFaceRegular = Typeface.createFromAsset(requireActivity().assets, "suit_regular.otf")
-        categoryOne.setTextColor(requireContext().getColor(R.color.gray06))
-        categoryTwo.setTextColor(requireContext().getColor(R.color.gray06))
         categoryOne.setTypeface(typeFaceRegular)
         categoryTwo.setTypeface(typeFaceRegular)
     }
@@ -89,7 +122,6 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val NOTHING = 0
         const val ALL = 1
         const val DWELLING = 2
         const val FINANCE = 3

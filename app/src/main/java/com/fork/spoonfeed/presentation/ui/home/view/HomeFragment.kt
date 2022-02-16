@@ -3,10 +3,14 @@ package com.fork.spoonfeed.presentation.ui.home.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isGone
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentHomeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterastedPolicyActivity
+import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -20,6 +24,8 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun initView() {
         initClick()
+      /*  binding.ctlHomeInterastedPolicyList.visibility=View.INVISIBLE
+        binding.ctlHomeNoInterastedPolicyList.visibility=View.VISIBLE*/
     }
 
 

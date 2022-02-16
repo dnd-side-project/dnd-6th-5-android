@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.ui.policylist.view.ApplyExplainActivity">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_apply_explain_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_apply_explain_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="16dp"
+                android:src="@drawable/ic_chevron_left"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_apply_explain_title"
+                style="@style/TextView.Heading.SemiBold.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_info_apply_explain"
+                android:textColor="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@id/iv_apply_explain_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_apply_explain_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:fillViewport="true"
+            android:overScrollMode="never"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ctl_apply_explain_top">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_apply_explain"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_apply_explain"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_info_apply_explain"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/TextView.Label.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/detail_info_apply_explain_sentence"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="@id/tv_apply_explain"
+                        app:layout_constraintTop_toBottomOf="@id/tv_apply_explain" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/iv_apply_explain_div_one"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:src="@drawable/div_detail_info_gray01_16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_apply_explain" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_apply_explain_info_note"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="@id/ctl_apply_explain"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_apply_explain"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_apply_explain_div_one">
+
+                    <TextView
+                        android:id="@+id/tv_apply_explain_detail_info_note"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_info_note"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/TextView.Label.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/detail_info_note_sentence"
+                        app:layout_constraintStart_toStartOf="@id/tv_apply_explain_detail_info_note"
+                        app:layout_constraintTop_toBottomOf="@id/tv_apply_explain_detail_info_note" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/iv_apply_explain_div_two"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:src="@drawable/div_detail_info_gray01_16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_apply_explain_info_note" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_apply_explain_restriction_subject"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="@id/ctl_apply_explain_info_note"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_apply_explain_info_note"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_apply_explain_div_two">
+
+                    <TextView
+                        android:id="@+id/tv_apply_explain_restriction_subject"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_info_restriction_subject"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/TextView.Label.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/detail_info_restriction_subject_sentence"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="@id/tv_apply_explain_restriction_subject"
+                        app:layout_constraintTop_toBottomOf="@id/tv_apply_explain_restriction_subject" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <ImageView
+                    android:id="@+id/iv_apply_explain_div_three"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:src="@drawable/div_detail_info_gray01_16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_apply_explain_restriction_subject" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_apply_explain_support_scale"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="80dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/ctl_apply_explain_restriction_subject"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_apply_explain_restriction_subject"
+                    app:layout_constraintTop_toBottomOf="@+id/iv_apply_explain_div_three">
+
+                    <TextView
+                        android:id="@+id/tv_apply_explain_support_scale"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/detail_info_apply_support_scale"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        style="@style/TextView.Label.Regular.14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@string/detail_info_apply_support_scale_sentence"
+                        android:textColor="@color/gray06"
+                        app:layout_constraintStart_toStartOf="@id/tv_apply_explain_support_scale"
+                        app:layout_constraintTop_toBottomOf="@id/tv_apply_explain_support_scale" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

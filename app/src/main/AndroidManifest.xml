@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".presentation.ui.policylist.view.ApplyExplainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policylist.view.ApplyQualificationActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.policy.view.filter.tooltip.NetWorthTooltipActivity"
             android:exported="true" />
         <activity
