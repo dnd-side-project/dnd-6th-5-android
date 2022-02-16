@@ -34,7 +34,19 @@
             android:name=".presentation.ui.policylist.view.PolicyListActivity"
             android:exported="false" />
         <activity
+            android:name=".presentation.ui.policylist.view.DetailInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.onboarding.signup.SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.onboarding.OnboardingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,9 +54,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.ui.policylist.view.DetailInfoActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

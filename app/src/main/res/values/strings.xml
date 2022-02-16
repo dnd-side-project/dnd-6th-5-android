@@ -121,7 +121,7 @@
         개인이 취합한 내용으로 공식적인 근거 자료로 활용될 수\n &#160; &#160; &#160;  &#160; &#160;&#160; &#160;없습니다.
         해당 앱에서 제공하는 내용의 사용에 대한 책임은\n &#160; &#160; &#160; &#160; &#160; &#160;  &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160; &#160;
         전적으로 사용사에게 있음을 알립니다.</string>
-
+    
     <!--  PolicyList  -->
     <string name="policylist_title">맞춤 정책 리스트</string>
     <string name="policylist_rewrite">다시 입력하기</string>
@@ -216,5 +216,28 @@
     <string name="dialog_policy_list_search_done_title">맞춤 정책 찾기 완료!</string>
     <string name="dialog_policy_list_search_done_explain">입력한 정보와 가장 관련있는\n 정책부터 확인해보세요.\n 스푼피드를 통해 다양한 청년 정책의\n 혜택을 받을 수 있길 바랄게요!</string>
     <string name="dialog_policy_list_search_done_confirm">확인</string>
+
+    <!--  Onboarding  -->
+    <string name="onboarding_skip"><u>둘러보기</u></string>
+    <string name="onboarding_title">나에게 맞는 정책을\n스푼피드와 함께 찾아보세요:)</string>
+    <string name="onboarding_kakao_login">카카오로 시작하기</string>
+    <string name="onboarding_naver_login">네이버로 시작하기</string>
+
+    <!--  Signup  -->
+    <string name="signup_title">시작하기</string>
+    <string name="signup_next">다음</string>
+    <string name="signup_name_title">스푼피드에선\n어떤 이름을 쓸까요?</string>
+    <string name="signup_name_hint">닉네임을 입력해주세요</string>
+
+    <string name="signup_terms_condition_title">스푼피드 이용 약관 동의</string>
+    <string name="signup_terms_condition_subtitle">스푼피드에 오신 것을 환영합니다!\n이용을 위해 아래의 약관 동의가 필요합니다.</string>
+    <string name="signup_terms_condition_all_agree">모두 동의합니다.</string>
+    <string name="signup_terms_condition_digital_content">(필수) 디지털콘텐츠 이용 표준약관</string>
+    <string name="signup_terms_condition_user_protect">(필수) 콘텐츠 이용자 보호지침</string>
+    <string name="signup_terms_condition_personal_info">(필수) 개인정보 처리방침</string>
+
+    <string name="signup_finish_title">준비 완료!</string>
+    <string name="signup_finish_description">스푼피드와 함께 다양한\n청년 정책을 만나보세요!</string>
+    <string name="signup_finish_start_spoonfeed">스푼피드 시작하기</string>
 
 </resources>

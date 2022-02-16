@@ -22,4 +22,10 @@
     <dimen name="policy_filter_bottom_content_top_margin">104dp</dimen>
     <dimen name="policy_filter_bottom_content_bottom_margin">16dp</dimen>
     <dimen name="policy_filter_tooltip_padding">3.75dp</dimen>
+
+    <!--  Signup  -->
+    <dimen name="signup_terms_condition_check_box_size">18dp</dimen>
+    <dimen name="signup_terms_condition_chevron_width">7.12dp</dimen>
+    <dimen name="signup_terms_condition_chevron_height">12.5dp</dimen>
+    <dimen name="signup_terms_condition_chevron_margin_end">30.25dp</dimen>
 </resources>
