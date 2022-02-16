@@ -16,7 +16,11 @@ import android.os.Looper
 import android.util.Log
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModel
+import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
+
 
 
 @AndroidEntryPoint
