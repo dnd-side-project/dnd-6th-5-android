@@ -761,14 +761,14 @@
                         app:layout_constraintTop_toBottomOf="@id/iv_detail_info_like_bottom" />
 
                     <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_detail_info_goto_custom_policy"
                         style="@style/TextView.Heading.Bold.16"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="56dp"
                         android:layout_marginTop="24dp"
                         android:layout_marginBottom="14dp"
                         android:background="@drawable/bg_primary_blue_radius_14dp"
                         android:gravity="center"
-                        android:paddingVertical="22dp"
                         android:text="@string/detail_info_check_custom_policy"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
