@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="communityViewModel"
+            type="com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel" />
+        <variable
+            name="policyListViewModel"
+            type="com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -11,5 +18,90 @@
         android:layout_height="match_parent"
         tools:context=".presentation.ui.community.view.CommunityFragment">
 
+        <TextView
+            android:id="@+id/tv_community_title"
+            style="@style/TextView.Heading.Bold.24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="13dp"
+            android:text="@string/community_title"
+            android:textColor="@color/gray06"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_community_magnify_glass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="17dp"
+            android:src="@drawable/ic_search"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_community_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_community_title" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="21dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/iv_community_magnify_glass"
+            app:layout_constraintStart_toStartOf="@id/tv_community_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_community_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/tv_community_filter"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_stroke_gray03_1dp"
+                    android:paddingVertical="11dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="38dp"
+                    android:onClick="@{()->policyListViewModel.filterOnClick()}"
+                    android:text="@string/search_input_category_all"
+                    android:textColor="@color/gray06"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="13dp"
+                    android:src="@drawable/ic_chevron_down_20"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_filter"
+                    app:layout_constraintEnd_toEndOf="@id/tv_community_filter"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_filter" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_community"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_filter"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/item_community">
+
+                </androidx.recyclerview.widget.RecyclerView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ImageView
+            android:id="@+id/iv_community_floating_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/bg_white_circle"
+            android:elevation="10dp"
+            android:padding="21dp"
+            android:src="@drawable/ic_write_22"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

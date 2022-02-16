@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ctl_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:paddingHorizontal="4dp"
+        app:layout_constraintEnd_toStartOf="@id/iv_item_like"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_item_category"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:background="@drawable/bg_finance_purple_radius_4dp"
+            android:paddingHorizontal="9dp"
+            android:paddingVertical="6dp"
+            android:text="@string/item_policylist_category"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_item_policy_title"
+            style="@style/TextView.Label.Medium.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/policylist_title"
+            android:textColor="@color/gray06"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
+            app:layout_constraintStart_toEndOf="@+id/tv_item_category"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_category" />
+
+
+        <TextView
+            android:id="@+id/tv_item_user_name"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/community_user_name"
+            android:textColor="@color/gray04"
+            app:layout_constraintStart_toStartOf="@id/tv_item_category"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_policy_title" />
+
+        <TextView
+            android:id="@+id/tv_item_dot"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="·"
+            android:textColor="@color/gray04"
+            app:layout_constraintStart_toEndOf="@id/tv_item_user_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_user_name"
+            tools:layout_editor_absoluteX="82dp" />
+
+        <TextView
+            android:id="@+id/tv_item_deadline"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/community_policy_deadline"
+            android:textColor="@color/gray04"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_user_name"
+            app:layout_constraintStart_toEndOf="@id/tv_item_dot"
+            app:layout_constraintTop_toTopOf="@id/tv_item_user_name"
+            tools:layout_editor_absoluteX="82dp" />
+
+        <TextView
+            android:id="@+id/tv_item_policy_explain"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/community_policy_explain"
+            android:textColor="@color/gray06"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_user_name" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="9dp"
+            android:src="@drawable/ic_comment"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_item_comment_count"
+            app:layout_constraintEnd_toStartOf="@+id/tv_item_comment_count"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_comment_count" />
+
+        <TextView
+            android:id="@+id/tv_item_comment_count"
+            style="@style/TextView.Label.Regular.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:text="@string/community_comment_count"
+            android:textColor="@color/gray04"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_policy_explain" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="18dp"
+            android:src="@drawable/div_policy_list_item_gray02_1dp"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_comment_count" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
