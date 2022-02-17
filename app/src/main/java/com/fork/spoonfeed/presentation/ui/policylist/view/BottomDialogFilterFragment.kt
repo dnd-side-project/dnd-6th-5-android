@@ -13,10 +13,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import android.graphics.Typeface
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
+
 
 
 @AndroidEntryPoint
@@ -36,7 +36,7 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return BottomSheetDialog(requireContext(), R.style.NewDialog)
+        return BottomSheetDialog(requireContext(), R.style.BottomDialog)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

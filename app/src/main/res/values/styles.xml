@@ -128,11 +128,12 @@
     </style>
 
     <!--  Chip Button  -->
-    <style name="Chip.Regular.14" parent="Widget.Material3.Chip.Suggestion">
+    <style name="Chip.Regular.14" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/selector_chip_background_color</item>
         <item name="fontFamily">@font/suit_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">21sp</item>
+        <item name="chipStrokeWidth">1dp</item>
         <item name="android:textColor">@color/selector_chip_text_color</item>
         <item name="chipCornerRadius">20dp</item>
         <item name="chipStrokeColor">@color/selector_chip_stroke_tint</item>
@@ -143,7 +144,8 @@
         <item name="textStartPadding">24dp</item>
     </style>
 
-    <style name="NewDialog">
+    <!--  BottomDialog  -->
+    <style name="BottomDialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowIsFloating">true</item>
@@ -152,5 +154,16 @@
 
         <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
         <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!--  TabLayout  -->
+    <style name="TabLayout">
+        <item name="tabIndicatorColor">@color/gray06</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabTextAppearance">@style/TextView.Heading.Bold.14</item>
+        <item name="tabSelectedTextColor">@color/gray06</item>
+        <item name="tabTextColor">@color/gray04</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabGravity">fill</item>
     </style>
 </resources>

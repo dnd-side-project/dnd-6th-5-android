@@ -1,16 +1,8 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
 import android.annotation.SuppressLint
-import android.app.Activity
-import android.app.Dialog
 import android.content.Intent
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.view.Gravity
-import android.view.Window
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager

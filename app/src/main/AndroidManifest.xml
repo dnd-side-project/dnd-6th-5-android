@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".presentation.ui.community.view.SearchInputActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.policylist.view.ApplyExplainActivity"
             android:exported="false" />
         <activity

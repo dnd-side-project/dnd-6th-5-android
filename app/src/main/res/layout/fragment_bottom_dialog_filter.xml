@@ -47,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:onClick="@{()->policyListViewModel.allSelected()}"
+
             android:text="@string/bottom_dialog_filter_all"
             android:textColor="@color/gray06"
             app:layout_constraintStart_toStartOf="@id/tv_bottom_dialog_sort"
