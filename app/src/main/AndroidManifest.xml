@@ -15,11 +15,6 @@
         <activity
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
             android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"
@@ -41,7 +36,13 @@
             android:exported="true" />
         <activity
             android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".presentation.ui.policylist.view.PolicyListActivity"
             android:exported="false" />

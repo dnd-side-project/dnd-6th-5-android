@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
 
 data class PolicyListResponseData(
@@ -30,6 +31,10 @@ class PolicyListAdapter(
                 tvItemPolicySentence.text = data.sentence
                 tvItemDeadline.text = data.deadline
                 tvItemLikeCount.text = data.likeCount.toString()
+
+                if (data.category == "주거") {
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_dwelling_blue_radius_4dp)
+                }
 
                 ctlItem.setOnClickListener {
                     clickListener(data)
