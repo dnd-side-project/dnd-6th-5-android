@@ -266,4 +266,7 @@
     <string name="mypostmanagement_comment_writed_date">2021/01/21</string>
     <string name="mypostmanagement_comment_write">작성</string>
     <string name="mypostmanagement_dot">·</string>
+
+    <!--  Interasted Policy  -->
+    <string name="interasted_policy_title">관심있는 정책</string>
 </resources>
