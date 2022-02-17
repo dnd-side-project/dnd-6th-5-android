@@ -8,14 +8,16 @@
         <variable
             name="communityViewModel"
             type="com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel" />
+
         <variable
             name="policyListViewModel"
-            type="com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel"/>
+            type="com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".presentation.ui.community.view.CommunityFragment">
 
         <TextView
@@ -58,11 +60,11 @@
                     style="@style/TextView.Label.Regular.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_stroke_gray03_1dp"
-                    android:paddingVertical="11dp"
+                    android:background="@drawable/bg_stroke_gray02_1dp"
+                    android:onClick="@{()->policyListViewModel.filterOnClick()}"
+                    android:paddingVertical="10dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="38dp"
-                    android:onClick="@{()->policyListViewModel.filterOnClick()}"
                     android:text="@string/search_input_category_all"
                     android:textColor="@color/gray06"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -81,12 +83,19 @@
                     android:id="@+id/rv_community"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginTop="8dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_community_filter"
                     tools:itemCount="6"
                     tools:listitem="@layout/item_community">
 
                 </androidx.recyclerview.widget.RecyclerView>
+
+                <View
+                    android:background="@color/white"
+                    app:layout_constraintBottom_toBottomOf="@id/rv_community"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
 

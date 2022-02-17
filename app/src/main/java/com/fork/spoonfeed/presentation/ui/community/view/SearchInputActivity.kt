@@ -1,13 +1,9 @@
 package com.fork.spoonfeed.presentation.ui.community.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivitySearchInputBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.community.adapter.CommunityAdapter
-import com.fork.spoonfeed.presentation.ui.community.adapter.CommunityResponseData
 import com.fork.spoonfeed.presentation.ui.community.adapter.SearchInputAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 

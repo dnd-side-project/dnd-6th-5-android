@@ -20,6 +20,8 @@
             tools:itemCount="6"
             tools:listitem="@layout/item_community" />
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ctl_search_input_result_no_post"
             android:layout_width="wrap_content"
