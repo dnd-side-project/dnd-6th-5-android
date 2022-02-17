@@ -15,6 +15,11 @@
         <activity
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
             android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"
@@ -56,11 +61,7 @@
         <activity
             android:name=".presentation.SplashActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 
