@@ -13,16 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
-            android:name=".presentation.ui.mypage.view.NoticeActivity"
-            android:exported="false" />
+            android:name=".presentation.ui.mypage.view.NoticeDetailActivity"
+            android:exported="false" >
+        </activity>
         <activity
-            android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
-            android:exported="true">
+            android:name=".presentation.ui.mypage.view.NoticeActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
+            android:exported="true">
         </activity>
         <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"
@@ -44,7 +49,7 @@
             android:exported="true" />
         <activity
             android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".presentation.ui.policylist.view.PolicyListActivity"
             android:exported="false" />
@@ -62,7 +67,7 @@
             android:exported="true" />
         <activity
             android:name=".presentation.SplashActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

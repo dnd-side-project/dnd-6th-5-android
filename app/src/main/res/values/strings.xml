@@ -269,4 +269,11 @@
 
     <!--  Interasted Policy  -->
     <string name="interasted_policy_title">관심있는 정책</string>
+
+    <!--  Notice  -->
+    <string name="notice_title">공지사항</string>
+    <string name="notice_sentece_title">스푼피드에 오신 것을 환영합니다!</string>
+    <string name="notice_spoonfeed">스푼피드</string>
+    <string name="notice_writed_date">2021/1/21</string>
+    <string name="notice_sentence">스푼피드는 내게 맞는 정책을 좀 더 편리하게 찾을 수 있도록 만든 플랫폼입니다. 모르고 놓치는 정책들이 없도록 스푼피드가 함께 하겠습니다. 앱을 사용하다 불편한 부분이나 개선이 필요한 점이 있으면 문의하기를 통해 남겨주세요. 참고하여 더 좋은 서비스로 만들겠습니다. 스푼피드는 이제 막 첫걸음을 디딘 사회초년생들을 응원합니다! 감사합니다 : )</string>
 </resources>
