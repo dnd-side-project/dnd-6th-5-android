@@ -13,12 +13,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".presentation.ui.mypage.view.SecessionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.mypage.view.LogoutActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.mypage.view.QuestionActivity"
+            android:exported="false" />
+        <activity
             android:name=".presentation.ui.mypage.view.NoticeDetailActivity"
-            android:exported="false" >
-        </activity>
+            android:exported="false" />
         <activity
             android:name=".presentation.ui.mypage.view.NoticeActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +35,7 @@
         </activity>
         <activity
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"
             android:exported="false" />
