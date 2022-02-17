@@ -256,4 +256,14 @@
     <string name="search_input_category_finance">금융</string>
     <string name="search_input_no_result">관련된 글이 없어요</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  MyPostManagement  -->
+    <string name="mypostmanagement_title">내 글 관리</string>
+    <string name="mypostmanagement_tab_post">게시글</string>
+    <string name="mypostmanagement_tab_comment">댓글</string>
+    <string name="mypostmanagement_comment_sentence">후기 남깁니다 너무 좋았던 정책입니다. 일단 저는 직장인이고요</string>
+    <string name="mypostmanagement_comment_category">[내일채움공제 후기]</string>
+    <string name="mypostmanagement_comment_writed_date">2021/01/21</string>
+    <string name="mypostmanagement_comment_write">작성</string>
+    <string name="mypostmanagement_dot">·</string>
 </resources>
