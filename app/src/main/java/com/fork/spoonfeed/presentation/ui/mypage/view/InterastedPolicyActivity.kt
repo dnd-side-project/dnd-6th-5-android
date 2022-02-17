@@ -25,16 +25,12 @@ class InterastedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
                 PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
                 PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
                 PolicyListResponseData(1, "금융", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "금융", "청년 우대 통장", "아이조아아이아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "금융", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2)
             )
         )
     }
 
     private fun setInterastedPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
-        interastedPolicyListAdapter = PolicyListAdapter(dataList) {
+        interastedPolicyListAdapter = PolicyListAdapter(true, dataList) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("category", it.category)
                 putExtra("title", it.title)

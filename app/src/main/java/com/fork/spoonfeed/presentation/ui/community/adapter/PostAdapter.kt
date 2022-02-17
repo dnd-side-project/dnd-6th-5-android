@@ -35,8 +35,8 @@ class PostAdapter(
                 tvItemDeadline.text = data.deadline
                 tvItemPolicyExplain.text = data.sentence
                 tvItemCommentCount.text = data.commentCount.toString()
-                if (data.category == "주거") {
-                    tvItemCategory.setBackgroundResource(R.drawable.bg_dwelling_blue_radius_4dp)
+                if (data.category == "금융") {
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
                 }
                 if (user) {
                     ivItemPostEdit.visibility = View.VISIBLE

@@ -54,7 +54,7 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     private fun setPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
-        policyListAdapter = PolicyListAdapter(dataList) {
+        policyListAdapter = PolicyListAdapter(false,dataList) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("category", it.category)
                 putExtra("title", it.title)

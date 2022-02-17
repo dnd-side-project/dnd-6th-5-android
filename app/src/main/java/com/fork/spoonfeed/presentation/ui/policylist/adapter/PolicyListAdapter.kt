@@ -19,6 +19,7 @@ data class PolicyListResponseData(
 )
 
 class PolicyListAdapter(
+    private val interasted: Boolean,
     private val policyList: List<PolicyListResponseData>,
     private val clickListener: (PolicyListResponseData) -> Unit
 ) : ListAdapter<PolicyListResponseData, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
@@ -32,8 +33,11 @@ class PolicyListAdapter(
                 tvItemDeadline.text = data.deadline
                 tvItemLikeCount.text = data.likeCount.toString()
 
-                if (data.category == "주거") {
-                    tvItemCategory.setBackgroundResource(R.drawable.bg_dwelling_blue_radius_4dp)
+                if (data.category == "금융") {
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
+                }
+
+                if(interasted){ ivItemLike.isChecked = true
                 }
 
                 ctlItem.setOnClickListener {

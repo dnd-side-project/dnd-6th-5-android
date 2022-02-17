@@ -77,6 +77,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tl_mypostmanagement"/>
 
             <com.fork.spoonfeed.presentation.util.NestedScrollableHost
+                android:id="@+id/nsc_mypostmanagement"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="20dp"
@@ -91,7 +92,11 @@
                     android:paddingHorizontal="4dp"
                     app:tabIndicatorGravity="top" />
             </com.fork.spoonfeed.presentation.util.NestedScrollableHost>
-
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/nsc_mypostmanagement" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
