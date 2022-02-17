@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="6"
-            tools:listitem="@layout/item_community" />
+            tools:listitem="@layout/item_post" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/ctl_search_input_result_no_post"
