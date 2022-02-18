@@ -27,8 +27,8 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
         super.onViewCreated(view, savedInstanceState)
         binding.policyListViewModel = policyListViewModel
         binding.communityViewModel = communityViewModel
-        binding.lifecycleOwner = this
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.lifecycleOwner = viewLifecycleOwner
         initView()
     }
 

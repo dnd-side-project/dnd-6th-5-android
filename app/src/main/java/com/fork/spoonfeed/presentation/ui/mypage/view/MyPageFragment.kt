@@ -2,7 +2,10 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import com.fork.spoonfeed.R
@@ -10,6 +13,7 @@ import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
