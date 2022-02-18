@@ -411,6 +411,7 @@
                     app:layout_constraintTop_toTopOf="@id/tv_community_post_comment" />
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_community_post_comment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
