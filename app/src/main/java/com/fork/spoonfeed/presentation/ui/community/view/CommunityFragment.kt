@@ -45,6 +45,7 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
         )
         setFilterClickObserve()
         setSearchClickListener()
+        setFloatingClickListener()
     }
 
     private fun setCommunityAdapter(dataList: MutableList<CommunityResponseData>) {
@@ -62,6 +63,13 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
     private fun setSearchClickListener() {
         binding.ivCommunityMagnifyGlass.setOnClickListener {
             val intent = Intent(requireContext(), SearchInputActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setFloatingClickListener() {
+        binding.ivCommunityFloatingButton.setOnClickListener {
+            val intent = Intent(context, CommunityPostCreateActivity::class.java)
             startActivity(intent)
         }
     }
