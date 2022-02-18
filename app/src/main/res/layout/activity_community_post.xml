@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".presentation.ui.community.view.CommunityPostActivity">
+        tools:context=".presentation.ui.communitypost.view.CommunityPostActivity">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/mt_community_post_title"

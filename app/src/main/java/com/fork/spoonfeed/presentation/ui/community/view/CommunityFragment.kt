@@ -11,6 +11,7 @@ import com.fork.spoonfeed.databinding.FragmentCommunityBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.adapter.CommunityAdapter
 import com.fork.spoonfeed.presentation.ui.community.adapter.CommunityResponseData
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
 import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel

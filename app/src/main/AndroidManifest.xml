@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
-            android:name=".presentation.ui.community.view.CommunityPostActivity"
+            android:name=".presentation.ui.communitypost.view.CommunityPostActivity"
             android:windowSoftInputMode="adjustPan"
             android:exported="true" />
         <activity
-            android:name=".presentation.ui.community.view.CommunityPostCreateActivity"
+            android:name=".presentation.ui.communitypost.view.CommunityPostCreateActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"

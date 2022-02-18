@@ -1,4 +1,4 @@
-package com.fork.spoonfeed.presentation.ui.community.view
+package com.fork.spoonfeed.presentation.ui.communitypost.view
 
 import android.os.Bundle
 import com.fork.spoonfeed.R
