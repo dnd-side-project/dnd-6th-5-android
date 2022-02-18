@@ -34,6 +34,7 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
             }
             ivMypageOpenSource.setOnClickListener {
                 startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
+                OssLicensesMenuActivity.setActivityTitle(getString(R.string.oss_license_title))
             }
             ivMypageQuestion.setOnClickListener {
                 startActivity(Intent(requireContext(), QuestionActivity::class.java))
