@@ -1,11 +1,14 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,6 +45,24 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
             ivMypageSecession.setOnClickListener {
                 startActivity(Intent(requireContext(), SecessionActivity::class.java))
             }
+            ivMypageLogout.setOnClickListener {
+                showLogOutDoneDialog()
+            }
+        }
+    }
+
+    @SuppressLint("ResourceType")
+    private fun showLogOutDoneDialog() {
+        val dialog = requireContext().showFloatingDialog(R.layout.dialog_logout)
+        val confirmBtn = dialog.findViewById<Button>(R.id.tv_lougout_dialog_confirm)
+        val cancelBtn = dialog.findViewById<Button>(R.id.tv_logout_dialog_cancel)
+
+        confirmBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        cancelBtn.setOnClickListener {
+            dialog.dismiss()
         }
     }
 }
