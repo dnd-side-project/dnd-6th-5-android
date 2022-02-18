@@ -266,4 +266,18 @@
     <string name="community_post_create_detail_description">상세정보는 기존에 저장된 정보를 불러옵니다.\n추가 정보에 대한 공개를 설정해주세요.</string>
     <string name="community_post_create_update_detail">상세정보 수정</string>
     <string name="community_post_create">글쓰기</string>
+
+    <string name="community_post_title">커뮤니티</string>
+    <string name="community_post_detail">상세정보</string>
+    <string name="community_post_detail_age">나이</string>
+    <string name="community_post_detail_marriage">혼인여부</string>
+    <string name="community_post_detail_employment">재직여부</string>
+    <string name="community_post_detail_company_size">회사규모</string>
+    <string name="community_post_detail_median_income">중위소득</string>
+    <string name="community_post_detail_annual_income">연소득</string>
+    <string name="community_post_detail_net_worth">순자산</string>
+    <string name="community_post_detail_house_holder">세대주여부</string>
+    <string name="community_post_detail_home_ownership">주택소유여부</string>
+    <string name="community_post_comment">댓글</string>
+    <string name="community_post_comment_hint">궁금한 점들을 물어보세요 :)</string>
 </resources>

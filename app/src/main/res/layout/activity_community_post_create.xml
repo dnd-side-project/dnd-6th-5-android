@@ -120,7 +120,7 @@
                     app:layout_constraintTop_toBottomOf="@id/tv_community_post_create_detail_description" />
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/mb_policy_filter_one_next"
+                    android:id="@+id/mb_community_post_create"
                     style="@style/MaterialButton.Bold.16"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/policy_filter_next_btn_height"

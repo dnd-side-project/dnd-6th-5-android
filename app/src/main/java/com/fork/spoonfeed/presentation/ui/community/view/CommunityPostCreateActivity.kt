@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.community.view
 
+import android.content.Intent
 import android.os.Bundle
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityCommunityPostCreateBinding
@@ -13,5 +14,10 @@ class CommunityPostCreateActivity :
         initView()
     }
 
-    override fun initView() {}
+    override fun initView() {
+        binding.mbCommunityPostCreate.setOnClickListener {
+            startActivity(Intent(baseContext, CommunityPostActivity::class.java))
+            finish()
+        }
+    }
 }
