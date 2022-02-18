@@ -11,107 +11,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".presentation.ui.community.view.SearchInputActivity">
+        tools:context=".presentation.ui.mypage.view.MyPostManagementActivity">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/ctl_search_input_top"
+            android:id="@+id/ctl_mypostmanagement_top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="18dp"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/iv_search_input_back"
+                android:id="@+id/iv_mypostmanagement_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
                 android:src="@drawable/ic_chevron_left"
-                app:layout_constraintBottom_toBottomOf="@+id/et_search_input_bar"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/et_search_input_bar" />
-
-            <EditText
-                android:id="@+id/et_search_input_bar"
-                style="@style/TextView.Label.Medium.14"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/bg_filled_stroke_gray02_1dp"
-                android:hint="@string/search_input_hint"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:paddingVertical="10dp"
-                android:paddingStart="16dp"
-                android:textColor="@color/gray06"
-                android:textColorHint="@color/gray03"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/iv_search_input_back"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
+            <TextView
+                style="@style/TextView.Heading.SemiBold.16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/ic_close_search_input"
-                app:layout_constraintBottom_toBottomOf="@id/et_search_input_bar"
-                app:layout_constraintEnd_toEndOf="@id/et_search_input_bar"
-                app:layout_constraintTop_toTopOf="@id/et_search_input_bar" />
+                android:text="@string/mypostmanagement_title"
+                android:textColor="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_mypostmanagement_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/iv_mypostmanagement_back" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ctl_search_input_top">
+            app:layout_constraintTop_toBottomOf="@id/ctl_mypostmanagement_top">
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tl_search_input"
+                android:id="@+id/tl_mypostmanagement"
                 style="@style/TabLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
+                android:layout_marginHorizontal="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_input_category_all" />
+                    android:text="@string/mypostmanagement_tab_post" />
 
                 <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/search_input_category_dwelling" />
-
-                <com.google.android.material.tabs.TabItem
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/search_input_category_finance" />
+                    android:text="@string/mypostmanagement_tab_comment" />
             </com.google.android.material.tabs.TabLayout>
 
             <ImageView
-                android:id="@+id/iv_search_input_div"
+                android:id="@+id/iv_mypostmanagement_div"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:src="@drawable/div_policy_list_item_gray02_1dp"
-                app:layout_constraintTop_toBottomOf="@+id/tl_search_input">
-
-            </ImageView>
+                app:layout_constraintTop_toBottomOf="@id/tl_mypostmanagement"/>
 
             <com.fork.spoonfeed.presentation.util.NestedScrollableHost
-                android:id="@+id/nsv_sarch_input"
+                android:id="@+id/nsc_mypostmanagement"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/iv_search_input_div">
+                app:layout_constraintTop_toBottomOf="@+id/iv_mypostmanagement_div">
 
                 <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/vp_search_input"
+                    android:id="@+id/vp_mypostmanagement"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="32dp"
                     android:paddingHorizontal="4dp"
                     app:tabIndicatorGravity="top" />
             </com.fork.spoonfeed.presentation.util.NestedScrollableHost>
@@ -119,7 +96,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="20dp"
                 android:background="@color/white"
-                app:layout_constraintBottom_toBottomOf="@id/nsv_sarch_input" />
+                app:layout_constraintBottom_toBottomOf="@id/nsc_mypostmanagement" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 

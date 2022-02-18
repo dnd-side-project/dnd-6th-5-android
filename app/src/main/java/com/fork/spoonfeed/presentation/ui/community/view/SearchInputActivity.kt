@@ -4,11 +4,12 @@ import android.os.Bundle
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivitySearchInputBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.community.adapter.SearchInputAdapter
+import com.fork.spoonfeed.presentation.ui.community.adapter.TabLayoutAdapter
+import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 class SearchInputActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySearchInputBinding>(R.layout.activity_search_input) {
-    private lateinit var searchInputAdapter: SearchInputAdapter
+    private lateinit var searchInputAdapter: TabLayoutAdapter
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,12 +20,12 @@ class SearchInputActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySearchInp
     override fun initView() {
         initTabLayoutAdapter()
         initTabLayout()
-        setBackBtnClickListener()
+        this.setBackBtnClickListener(binding.ivSearchInputBack)
     }
 
     private fun initTabLayoutAdapter() {
         val fragmentList = listOf(SearchInputResultFragment(),SearchInputResultFragment(),SearchInputResultFragment())
-        searchInputAdapter = SearchInputAdapter(this)
+        searchInputAdapter = TabLayoutAdapter(this)
         searchInputAdapter.fragments.addAll(fragmentList)
         binding.vpSearchInput.adapter = searchInputAdapter
     }
@@ -34,11 +35,5 @@ class SearchInputActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySearchInp
         TabLayoutMediator(binding.tlSearchInput, binding.vpSearchInput) { tab, position ->
             tab.text = tabLable[position]
         }.attach()
-    }
-
-    private fun setBackBtnClickListener() {
-        binding.ivSearchInputBack.setOnClickListener {
-            finish()
-        }
     }
 }

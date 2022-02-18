@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="questionActivity"
+            type="com.fork.spoonfeed.presentation.ui.mypage.view.QuestionActivity" />
+
+        <variable
+            name="MyPageViewModel"
+            type="com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        tools:context=".presentation.ui.mypage.view.QuestionActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_question_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/iv_question_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="26dp"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/ic_chevron_left"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/TextView.Heading.SemiBold.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/question_title"
+                android:textColor="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@id/iv_question_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/iv_question_back" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/et_question_email"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/selector_question_bg_stroke"
+            android:hint="@string/question_email_hint"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="14dp"
+            android:textColor="@color/gray06"
+            android:textColorHint="@color/gray03"
+            app:layout_constraintTop_toBottomOf="@+id/ctl_question_top" />
+
+        <EditText
+            android:id="@+id/et_question_sentence"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="118dp"
+            android:background="@drawable/selector_question_bg_stroke"
+            android:checked="false"
+            android:gravity="top"
+            android:hint="@string/question_sentence_hint"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:textColor="@color/gray06"
+            android:textColorHint="@color/gray03"
+            app:layout_constraintBottom_toTopOf="@+id/btn_question"
+            app:layout_constraintEnd_toEndOf="@id/et_question_email"
+            app:layout_constraintStart_toStartOf="@id/et_question_email"
+            app:layout_constraintTop_toBottomOf="@+id/et_question_email" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_question"
+            style="@style/MaterialButton.Bold.16"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@{MyPageViewModel.isQuestionValid ? @color/primary_blue : @color/gray03}"
+            android:enabled="@{MyPageViewModel.isQuestionValid}"
+            android:text="@string/question_title"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

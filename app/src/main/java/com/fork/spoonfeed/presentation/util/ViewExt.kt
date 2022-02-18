@@ -1,9 +1,12 @@
 package com.fork.spoonfeed.presentation.util
 
+import android.app.Activity
+import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.CheckBox
 import android.widget.EditText
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
@@ -30,7 +33,7 @@ fun AppCompatActivity.addAndAddToBackStack(fragment: Fragment) {
 }
 
 @BindingAdapter("onCheckedChanged")
-fun setOnCheckedChanged(view: CheckBox, viewModel: ViewModel){
+fun setOnCheckedChanged(view: CheckBox, viewModel: ViewModel) {
     view.setOnCheckedChangeListener { _, isChecked ->
         (viewModel as? PolicyFilterViewModel)?.setSaveData(isChecked)
     }
@@ -116,4 +119,11 @@ private fun formatStringWithPrefix(input: String, editText: EditText) {
     }
     editText.setText(formattedText)
     editText.setSelection(editText.text.length)
+}
+
+
+fun Activity.setBackBtnClickListener(imageView: ImageView) {
+    imageView.setOnClickListener {
+        finish()
+    }
 }

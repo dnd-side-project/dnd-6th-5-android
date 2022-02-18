@@ -280,4 +280,46 @@
     <string name="community_post_detail_home_ownership">주택소유여부</string>
     <string name="community_post_comment">댓글</string>
     <string name="community_post_comment_hint">궁금한 점들을 물어보세요 :)</string>
+
+    <!--  MyPostManagement  -->
+    <string name="mypostmanagement_title">내 글 관리</string>
+    <string name="mypostmanagement_tab_post">게시글</string>
+    <string name="mypostmanagement_tab_comment">댓글</string>
+    <string name="mypostmanagement_comment_sentence">후기 남깁니다 너무 좋았던 정책입니다. 일단 저는 직장인이고요</string>
+    <string name="mypostmanagement_comment_category">[내일채움공제 후기]</string>
+    <string name="mypostmanagement_comment_writed_date">2021/01/21</string>
+    <string name="mypostmanagement_comment_write">작성</string>
+    <string name="mypostmanagement_dot">·</string>
+
+    <!--  Interasted Policy  -->
+    <string name="interasted_policy_title">관심있는 정책</string>
+
+    <!--  Notice  -->
+    <string name="notice_title">공지사항</string>
+    <string name="notice_sentece_title">스푼피드에 오신 것을 환영합니다!</string>
+    <string name="notice_spoonfeed">스푼피드</string>
+    <string name="notice_writed_date">2021/1/21</string>
+    <string name="notice_sentence">스푼피드는 내게 맞는 정책을 좀 더 편리하게 찾을 수 있도록 만든 플랫폼입니다. 모르고 놓치는 정책들이 없도록 스푼피드가 함께 하겠습니다.\n\n앱을 사용하다 불편한 부분이나 개선이 필요한 점이 있으면 문의하기를 통해 남겨주세요. 참고하여 더 좋은 서비스로 만들겠습니다.\n\n스푼피드는 이제 막 첫걸음을 디딘 사회초년생들을 응원합니다!\n\n감사합니다 : )</string>
+
+    <!--  Question  -->
+    <string name="question_title">문의하기</string>
+    <string name="question_email_hint">답변받을 e-mail을 알려주세요</string>
+    <string name="question_sentence_hint">서비스를 이용하면서 불편하거나 아쉬웠던 점을 알려주세요\n 알려주신 피드백을 바탕으로 더 좋은 서비스를 제공하도록\n 노력하겠습니다 관심과 응원 감사합니다 :)</string>
+
+    <!-- Dialog Logout  -->
+    <string name="dialog_logout_title">로그아웃 하시겠어요?</string>
+    <string name="dialog_logout_cancle">취소</string>
+    <string name="dialog_logout_confirm">로그아웃</string>
+
+    <!--  Secession  -->
+    <string name="secession_title">탈퇴하기</string>
+    <string name="secession_sentence_title">탈퇴하기 전에 확인해주세요!</string>
+    <string name="secession_sentence_one">탈퇴하면 그 동안의 활동한 데이터들은 모두 삭제\n되어 복구할 수 없게 됩니다.</string>
+    <string name="secession_sentence_two">스푼피드는 맞춤 정책 정보를 제공하기위해 다양한\n컨텐츠를 지속적으로 업데이트 합니다.</string>
+    <string name="secession_sentence_three">사용하면서 불편했던 점이나 아쉬운 점이 있으면\n문의하기를 통해 의견을 남겨주세요.</string>
+
+    <!-- Dialog Secession  -->
+    <string name="dialog_secession_title">스푼피드를 또 찾아주세요!</string>
+    <string name="dialog_secession_cancle">취소</string>
+    <string name="dialog_secession_confirm">탈퇴하기</string>
 </resources>

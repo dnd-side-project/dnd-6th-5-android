@@ -18,7 +18,7 @@
             style="@style/TextView.Label.Regular.12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_finance_purple_radius_4dp"
+            android:background="@drawable/bg_dwelling_blue_radius_4dp"
             android:paddingHorizontal="9dp"
             android:paddingVertical="6dp"
             android:text="@string/item_policylist_category"
@@ -38,6 +38,15 @@
             app:layout_constraintStart_toEndOf="@+id/tv_item_category"
             app:layout_constraintTop_toTopOf="@+id/tv_item_category" />
 
+        <ImageView
+            android:id="@+id/iv_item_post_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_edit_24"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_policy_title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_policy_title" />
 
         <TextView
             android:id="@+id/tv_item_user_name"

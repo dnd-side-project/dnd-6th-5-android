@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
 
 data class PolicyListResponseData(
@@ -18,6 +19,7 @@ data class PolicyListResponseData(
 )
 
 class PolicyListAdapter(
+    private val interasted: Boolean,
     private val policyList: List<PolicyListResponseData>,
     private val clickListener: (PolicyListResponseData) -> Unit
 ) : ListAdapter<PolicyListResponseData, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
@@ -30,6 +32,13 @@ class PolicyListAdapter(
                 tvItemPolicySentence.text = data.sentence
                 tvItemDeadline.text = data.deadline
                 tvItemLikeCount.text = data.likeCount.toString()
+
+                if (data.category == "금융") {
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
+                }
+
+                if(interasted){ ivItemLike.isChecked = true
+                }
 
                 ctlItem.setOnClickListener {
                     clickListener(data)
