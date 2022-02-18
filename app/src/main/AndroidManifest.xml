@@ -14,24 +14,26 @@
         android:theme="@style/Theme.SpoonFeed">
         <activity
             android:name=".presentation.ui.mypage.view.SecessionActivity"
-            android:exported="false" />
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".presentation.ui.mypage.view.LogoutActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.mypage.view.QuestionActivity"
-            android:exported="false" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".presentation.ui.mypage.view.NoticeDetailActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.mypage.view.NoticeActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
