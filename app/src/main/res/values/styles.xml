@@ -177,4 +177,13 @@
         <item name="tabMode">fixed</item>
         <item name="tabGravity">fill</item>
     </style>
+
+    <!--  Oss License  -->
+    <style name="LicenseTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/primary_blue</item>
+        <item name="colorSecondary">@color/secondary_lightblue</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:statusBarColor" >@color/white</item>
+    </style>
 </resources>

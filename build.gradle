@@ -27,6 +27,9 @@ buildscript {
 
         // Hilt
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hiltVersion"
+
+        //oss license
+        classpath 'com.google.android.gms:oss-licenses-plugin:0.10.4'
     }
 }
 

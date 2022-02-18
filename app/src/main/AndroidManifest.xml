@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/LicenseTheme" />
+        <activity
             android:name=".presentation.ui.communitypost.view.CommunityPostActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />

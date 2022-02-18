@@ -322,4 +322,19 @@
     <string name="dialog_secession_title">스푼피드를 또 찾아주세요!</string>
     <string name="dialog_secession_cancle">취소</string>
     <string name="dialog_secession_confirm">탈퇴하기</string>
+
+    <!--  Mypage  -->
+    <string name="mypage_title">마이페이지</string>
+    <string name="mypage_my_info">내 정보</string>
+    <string name="mypage_my_post">내 글 관리</string>
+    <string name="mypage_interested_policy">관심있는 정책</string>
+    <string name="mypage_notice">공지사항</string>
+    <string name="mypage_terms_condition">이용약관</string>
+    <string name="mypage_protect">보호 지침</string>
+    <string name="mypage_personal_info">이용약관</string>
+    <string name="mypage_open_source">오픈소스 라이센스</string>
+    <string name="mypage_question">문의하기</string>
+    <string name="mypage_logout">로그아웃</string>
+    <string name="mypage_secession">회원탈퇴</string>
+    <string name="oss_license_title">오픈소스 라이센스</string>
 </resources>
