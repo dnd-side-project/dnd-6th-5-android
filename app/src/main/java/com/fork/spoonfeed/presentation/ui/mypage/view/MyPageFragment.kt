@@ -6,6 +6,7 @@ import android.view.View
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -30,6 +31,9 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
             }
             ivMypageNotice.setOnClickListener {
                 startActivity(Intent(requireContext(), NoticeActivity::class.java))
+            }
+            ivMypageOpenSource.setOnClickListener {
+                startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
             }
             ivMypageQuestion.setOnClickListener {
                 startActivity(Intent(requireContext(), QuestionActivity::class.java))
