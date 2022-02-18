@@ -17,9 +17,6 @@
             android:exported="true" >
         </activity>
         <activity
-            android:name=".presentation.ui.mypage.view.LogoutActivity"
-            android:exported="false" />
-        <activity
             android:name=".presentation.ui.mypage.view.QuestionActivity"
             android:exported="true" >
         </activity>
