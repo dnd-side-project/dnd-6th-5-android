@@ -57,6 +57,7 @@
                     style="@style/TextView.Label.Medium.14"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
+                    android:maxLength="22"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_community_post_create_input"
