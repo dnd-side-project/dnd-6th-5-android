@@ -1,13 +1,9 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
+import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.FragmentManager
 import com.fork.spoonfeed.R
-import com.fork.spoonfeed.databinding.FragmentHomeBinding
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,5 +17,26 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
     }
 
     override fun initView() {
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
+        with(binding) {
+            ivMypageMyPost.setOnClickListener {
+                startActivity(Intent(requireContext(), MyPostManagementActivity::class.java))
+            }
+            ivMypageInterestedPolicy.setOnClickListener {
+                startActivity(Intent(requireContext(), InterastedPolicyActivity::class.java))
+            }
+            ivMypageNotice.setOnClickListener {
+                startActivity(Intent(requireContext(), NoticeActivity::class.java))
+            }
+            ivMypageQuestion.setOnClickListener {
+                startActivity(Intent(requireContext(), QuestionActivity::class.java))
+            }
+            ivMypageSecession.setOnClickListener {
+                startActivity(Intent(requireContext(), SecessionActivity::class.java))
+            }
+        }
     }
 }
