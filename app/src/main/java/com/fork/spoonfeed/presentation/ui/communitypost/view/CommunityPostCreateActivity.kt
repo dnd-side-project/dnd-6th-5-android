@@ -15,8 +15,15 @@ class CommunityPostCreateActivity :
     }
 
     override fun initView() {
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
         binding.mbCommunityPostCreate.setOnClickListener {
             startActivity(Intent(baseContext, CommunityPostActivity::class.java))
+            finish()
+        }
+        binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
             finish()
         }
     }
