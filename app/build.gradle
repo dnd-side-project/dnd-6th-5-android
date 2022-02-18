@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'com.google.android.gms.oss-licenses-plugin'
 }
 
 android {
@@ -38,6 +39,9 @@ android {
 }
 
 dependencies {
+
+    // oss license
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.0'
 
     // desugar
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:$desugarVersion"
