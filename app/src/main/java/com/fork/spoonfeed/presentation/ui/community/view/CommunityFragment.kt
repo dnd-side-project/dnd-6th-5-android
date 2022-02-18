@@ -3,20 +3,16 @@ package com.fork.spoonfeed.presentation.ui.community.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.cardview.widget.CardView
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewbinding.ViewBindings
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentCommunityBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.community.adapter.PostResponseData
 import com.fork.spoonfeed.presentation.ui.community.adapter.PostAdapter
+import com.fork.spoonfeed.presentation.ui.community.adapter.PostResponseData
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -50,6 +46,7 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
         )
         setFilterClickObserve()
         setSearchClickListener()
+        setFloatingClickListener()
     }
 
     private fun setCommunityAdapter(dataList: MutableList<PostResponseData>) {
@@ -67,6 +64,13 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
     private fun setSearchClickListener() {
         binding.ivCommunityMagnifyGlass.setOnClickListener {
             val intent = Intent(requireContext(), SearchInputActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setFloatingClickListener() {
+        binding.ivCommunityFloatingButton.setOnClickListener {
+            val intent = Intent(context, CommunityPostCreateActivity::class.java)
             startActivity(intent)
         }
     }

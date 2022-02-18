@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.communitypost.view.CommunityPostActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mt_community_post_title"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_chevron_left">
+
+            <TextView
+                style="@style/TextView.Heading.SemiBold.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/community_post_title" />
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <ScrollView
+            android:id="@+id/sv_community_post"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/et_community_post_comment_input"
+            app:layout_constraintTop_toBottomOf="@id/mt_community_post_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_community_post_category"
+                    style="@style/TextView.Label.Regular.12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_finance_purple_radius_4dp"
+                    android:paddingHorizontal="9.5dp"
+                    android:paddingVertical="3dp"
+                    android:text="금융"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_title"
+                    style="@style/TextView.Label.Medium.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="청년 버팀목 전세자금으로 이사했습니당"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_category"
+                    app:layout_constraintStart_toEndOf="@id/tv_community_post_category"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_post_category" />
+
+                <ImageView
+                    android:id="@+id/iv_community_post_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
+                    android:backgroundTint="@color/gray06"
+                    android:src="@drawable/ic_edit"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_post_title" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_user_name"
+                    style="@style/TextView.Label.Regular.12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/community_user_name"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_category" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_dot"
+                    style="@style/TextView.Label.Regular.12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="·"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_user_name"
+                    app:layout_constraintStart_toEndOf="@id/tv_community_post_user_name"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_post_user_name" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_deadline"
+                    style="@style/TextView.Label.Regular.12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/community_policy_deadline"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_user_name"
+                    app:layout_constraintStart_toEndOf="@id/tv_community_post_dot"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_post_user_name" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_content"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="16dp"
+                    android:text="스푼피드로 저도 해당되는걸 알고나서 신청했더니\n잘 받을 수 있었습니당 서류제출도 생각보다 어렵지 않았어요! 비슷한 상황이신 분들도 한번 도전해보세요^^!\n\n제 상세정보도 꼭 확인하시길 바랍니다~~~~"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_user_name" />
+
+                <View
+                    android:id="@+id/view_decorator1"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="40dp"
+                    android:background="@color/gray02"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_content" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_detail"
+                    style="@style/TextView.Heading.Bold.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/community_post_detail"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_decorator1" />
+
+                <ImageView
+                    android:id="@+id/iv_community_post_detail"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
+                    android:paddingHorizontal="4.5dp"
+                    android:src="@drawable/ic_chevron_up"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_detail"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_post_detail" />
+
+                <LinearLayout
+                    android:id="@+id/ll_community_post_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="16dp"
+                    android:divider="@drawable/bg_community_post_detail_divider"
+                    android:orientation="vertical"
+                    android:showDividers="middle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_detail">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_age"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_age"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="20대"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_marriage"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_marriage"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="미혼"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_employment"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_employment"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="재직자"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_company_size"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_company_size"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="중소기업"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_median_income"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_median_income"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="40%이하"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_annual_income"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_annual_income"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="외벌이 3천만원 이하"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_net_worth"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_net_worth"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="2.92억원 이하"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_house_holder"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_house_holder"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="세대구성원"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/community_post_detail_home_ownership"
+                            android:textColor="@color/gray04" />
+
+                        <TextView
+                            android:id="@+id/tv_community_post_detail_home_ownership"
+                            style="@style/TextView.Paragraph.Regular.14"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="2"
+                            android:text="무주택자"
+                            android:textColor="@color/gray06" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/view_decorator2"
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:layout_marginTop="56dp"
+                    android:background="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/ll_community_post_detail" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_comment"
+                    style="@style/TextView.Heading.Bold.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/community_post_comment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/view_decorator2" />
+
+                <TextView
+                    android:id="@+id/tv_community_post_comment_count"
+                    style="@style/TextView.Label.Regular.16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
+                    android:drawablePadding="8dp"
+                    android:text="3"
+                    app:drawableStartCompat="@drawable/ic_comment_filled_24"
+                    app:drawableTint="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_comment"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/tv_community_post_comment" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_community_post_comment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="35dp"
+                    android:layout_marginBottom="40dp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_comment"
+                    tools:listitem="@layout/item_community_post_comment" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <EditText
+            android:id="@+id/et_community_post_comment_input"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_community_post_comment"
+            android:drawableEnd="@drawable/ic_send_comment"
+            android:hint="@string/community_post_comment_hint"
+            android:paddingHorizontal="@dimen/policy_filter_horizontal_margin_24"
+            android:paddingVertical="12dp"
+            android:textColorHint="#B1B8C0"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

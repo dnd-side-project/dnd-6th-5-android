@@ -13,20 +13,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed">
         <activity
+            android:name=".presentation.ui.communitypost.view.CommunityPostActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.ui.communitypost.view.CommunityPostCreateActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.ui.mypage.view.SecessionActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".presentation.ui.mypage.view.QuestionActivity"
-            android:exported="true" >
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".presentation.ui.mypage.view.NoticeDetailActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.ui.mypage.view.NoticeActivity"
-            android:exported="true">
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
             android:exported="true" />
@@ -68,7 +72,7 @@
             android:exported="true" />
         <activity
             android:name=".presentation.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
