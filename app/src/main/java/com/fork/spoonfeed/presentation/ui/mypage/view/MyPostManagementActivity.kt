@@ -5,6 +5,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMyPostManagementBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.adapter.TabLayoutAdapter
+import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 class MyPostManagementActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMyPostManagementBinding>(R.layout.activity_my_post_management) {
@@ -17,7 +18,7 @@ class MyPostManagementActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMyPo
     override fun initView() {
         initTabLayoutAdapter()
         initTabLayout()
-        setBackBtnClickListener()
+        this.setBackBtnClickListener(binding.ivMypostmanagementBack)
     }
 
     private fun initTabLayoutAdapter() {
@@ -32,11 +33,5 @@ class MyPostManagementActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMyPo
         TabLayoutMediator(binding.tlMypostmanagement, binding.vpMypostmanagement) { tab, position ->
             tab.text = tabLable[position]
         }.attach()
-    }
-
-    private fun setBackBtnClickListener() {
-        binding.ivMypostmanagementBack.setOnClickListener {
-            finish()
-        }
     }
 }

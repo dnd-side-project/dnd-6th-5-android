@@ -5,6 +5,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivitySearchInputBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.adapter.TabLayoutAdapter
+import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.google.android.material.tabs.TabLayoutMediator
 
 class SearchInputActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySearchInputBinding>(R.layout.activity_search_input) {
@@ -19,7 +20,7 @@ class SearchInputActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySearchInp
     override fun initView() {
         initTabLayoutAdapter()
         initTabLayout()
-        setBackBtnClickListener()
+        this.setBackBtnClickListener(binding.ivSearchInputBack)
     }
 
     private fun initTabLayoutAdapter() {
@@ -34,11 +35,5 @@ class SearchInputActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySearchInp
         TabLayoutMediator(binding.tlSearchInput, binding.vpSearchInput) { tab, position ->
             tab.text = tabLable[position]
         }.attach()
-    }
-
-    private fun setBackBtnClickListener() {
-        binding.ivSearchInputBack.setOnClickListener {
-            finish()
-        }
     }
 }

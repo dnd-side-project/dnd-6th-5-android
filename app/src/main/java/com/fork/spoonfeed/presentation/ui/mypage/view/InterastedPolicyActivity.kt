@@ -10,6 +10,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListResponseData
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
+import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 
 class InterastedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInterastedPolicyBinding>(R.layout.activity_interasted_policy) {
     private lateinit var interastedPolicyListAdapter: PolicyListAdapter
@@ -27,6 +28,7 @@ class InterastedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
                 PolicyListResponseData(1, "금융", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
             )
         )
+        this.setBackBtnClickListener(binding.ivInterastedpolicyBack)
     }
 
     private fun setInterastedPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
