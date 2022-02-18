@@ -256,4 +256,14 @@
     <string name="search_input_category_finance">금융</string>
     <string name="search_input_no_result">관련된 글이 없어요</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Community Post  -->
+    <string name="community_post_create_title">커뮤니티 글쓰기</string>
+    <string name="community_post_create_category">카테고리 선택</string>
+    <string name="community_post_create_title_hint">글 제목(최대 22자)</string>
+    <string name="community_post_create_content_hint">커뮤니티 글을 올릴 때는 어떤 정책에 대한 것인지,\n어떤 상황인지 등 구체적으로 남겨주시면, 다른 분들도\n이해하고 도움을 주고 받기에 훨씬 편리할 거에요!\n\n-개인정보는 조심해주세요 :)\n-욕설/음란성/선정성 게시글 금지\n-홍보성 게시글 금지</string>
+    <string name="community_post_create_detail">상세정보</string>
+    <string name="community_post_create_detail_description">상세정보는 기존에 저장된 정보를 불러옵니다.\n추가 정보에 대한 공개를 설정해주세요.</string>
+    <string name="community_post_create_update_detail">상세정보 수정</string>
+    <string name="community_post_create">글쓰기</string>
 </resources>
