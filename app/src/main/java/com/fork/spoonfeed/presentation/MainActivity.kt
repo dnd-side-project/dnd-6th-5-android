@@ -8,15 +8,18 @@ import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.home.view.HomeFragment
 import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageFragment
 import com.fork.spoonfeed.presentation.ui.policy.view.PolicyFragment
+import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import com.fork.spoonfeed.presentation.util.replace
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.layout.activity_main) {
+
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val policyFragment: PolicyFragment by lazy { PolicyFragment() }
     private val communityFragment: CommunityFragment by lazy { CommunityFragment() }
     private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -25,6 +28,14 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
     override fun initView() {
         replace(homeFragment)
         initBottomNavigation()
+
+        checkPolicyReset()
+    }
+
+    private fun checkPolicyReset() {
+        intent.getStringExtra(PolicyListActivity.POLICY_FILTER_RESET_NAME)?.let {
+            moveToPolicy()
+        }
     }
 
     private fun initBottomNavigation() {

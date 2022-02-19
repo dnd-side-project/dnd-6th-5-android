@@ -25,10 +25,10 @@ fun AppCompatActivity.replace(fragment: Fragment) {
         .commit()
 }
 
-fun AppCompatActivity.addAndAddToBackStack(fragment: Fragment) {
+fun AppCompatActivity.addAndAddToBackStack(layoutId: Int, fragment: Fragment) {
     supportFragmentManager
         .beginTransaction()
-        .add(R.id.fcv_policy_filter, fragment)
+        .add(layoutId, fragment)
         .addToBackStack(null)
         .commit()
 }

@@ -33,7 +33,7 @@ class PolicyFilterActivity :
     }
 
     fun moveToNextLevel(newFragment: Fragment) {
-        addAndAddToBackStack(newFragment)
+        addAndAddToBackStack(R.id.fcv_policy_filter, newFragment)
     }
 
     fun scrollToTop() {

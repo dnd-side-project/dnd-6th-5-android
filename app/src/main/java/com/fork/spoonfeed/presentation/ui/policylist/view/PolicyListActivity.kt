@@ -3,13 +3,13 @@ package com.fork.spoonfeed.presentation.ui.policylist.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityPolicyListBinding
+import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListResponseData
@@ -140,6 +140,11 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
         confirmBtn.setOnClickListener {
             dialog.dismiss()
+            startActivity(Intent(baseContext, MainActivity::class.java).apply {
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                putExtra(POLICY_FILTER_RESET_NAME, POLICY_FILTER_RESET_VALUE)
+            })
         }
 
         cancelBtn.setOnClickListener {
@@ -163,5 +168,7 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         const val DWELLING = "DWELLING"
         const val FINANCE = "FINANCE"
         const val CATEGORY = "CATEGORY"
+        const val POLICY_FILTER_RESET_NAME = "com.fork.spoonfeed.presentation.ui.policylist"
+        const val POLICY_FILTER_RESET_VALUE = "RESET"
     }
 }

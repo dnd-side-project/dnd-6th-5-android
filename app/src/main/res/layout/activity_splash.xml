@@ -28,7 +28,7 @@
             android:id="@+id/iv_splash_app_name"
             android:layout_width="96dp"
             android:layout_height="22dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:src="@drawable/img_logo"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
