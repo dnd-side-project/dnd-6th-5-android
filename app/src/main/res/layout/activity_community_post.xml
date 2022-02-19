@@ -56,11 +56,12 @@
                 <TextView
                     android:id="@+id/tv_community_post_title"
                     style="@style/TextView.Label.Medium.14"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="청년 버팀목 전세자금으로 이사했습니당"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_community_post_category"
+                    android:layout_marginEnd="22dp"
+                    android:text="청년 버팀목 전세자금으로 이사했습니당."
+                    app:layout_constraintEnd_toStartOf="@id/iv_community_post_edit"
                     app:layout_constraintStart_toEndOf="@id/tv_community_post_category"
                     app:layout_constraintTop_toTopOf="@id/tv_community_post_category" />
 
@@ -85,7 +86,7 @@
                     android:text="@string/community_user_name"
                     android:textColor="@color/gray04"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_category" />
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_title" />
 
                 <TextView
                     android:id="@+id/tv_community_post_dot"
