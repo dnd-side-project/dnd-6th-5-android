@@ -122,5 +122,63 @@
             android:src="@drawable/div_policy_list_item_gray02_1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_item_comment_count" />
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_item_post_edit_dialog"
+            android:layout_width="189dp"
+            android:layout_height="132dp"
+            android:layout_marginStart="140dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/img_comment_bg"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <Button
+                android:id="@+id/tv_comment_dialog_edit"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/selector_rewrite"
+                android:fontFamily="@font/suit_bold"
+                android:includeFontPadding="false"
+                android:text="@string/dialog_comment_edit"
+                android:textColor="@color/gray04"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/div_policy_list_item_gray02_1dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/tv_comment_dialog_delete"
+                style="@style/Widget.AppCompat.Button.Borderless"
+                android:layout_width="116dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/selector_rewrite"
+                android:fontFamily="@font/suit_bold"
+                android:includeFontPadding="false"
+                android:text="@string/dialog_comment_delete"
+                android:textColor="@color/delete_red"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_comment_dialog_edit"
+                app:layout_constraintStart_toStartOf="@+id/tv_comment_dialog_edit" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -71,7 +71,7 @@ class CommunityPostActivity :
     }
 
     @SuppressLint("ResourceType")
-    private fun showEditDialog() {
+    fun showEditDialog() {
         val dialog = this.showFloatingDialog(R.layout.dialog_comment)
         val edit = dialog.findViewById<Button>(R.id.tv_comment_dialog_edit)
         val delete = dialog.findViewById<Button>(R.id.tv_comment_dialog_delete)

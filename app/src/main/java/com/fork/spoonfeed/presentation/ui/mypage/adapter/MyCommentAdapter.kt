@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
 import android.content.ClipData
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -35,6 +36,7 @@ class MyCommentAdapter(
                     clickListener(data)
                 }
             }
+         //   setClickListenerItemPostEdit(binding)
         }
     }
 
@@ -56,6 +58,21 @@ class MyCommentAdapter(
 
             override fun areItemsTheSame(oldItem: MyCommentResponseData, newItem: MyCommentResponseData) =
                 oldItem.id == newItem.id
+        }
+    }
+
+    private fun setClickListenerItemPostEdit(binding: ItemCommentBinding) {
+        with(binding) {
+            ivItemCommentEdit.setOnClickListener {
+                ctlItemPostEditDialog.visibility = android.view.View.VISIBLE
+                //     activity.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
+            }
+            tvCommentDialogEdit.setOnClickListener {
+                ctlItemPostEditDialog.visibility = android.view.View.INVISIBLE
+            }
+            tvCommentDialogDelete.setOnClickListener {
+                ctlItemPostEditDialog.visibility = android.view.View.INVISIBLE
+            }
         }
     }
 }
