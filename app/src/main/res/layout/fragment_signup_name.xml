@@ -57,6 +57,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_signup_name"
             style="@style/MaterialButton.Bold.16"
             android:layout_width="0dp"
             android:layout_height="56dp"

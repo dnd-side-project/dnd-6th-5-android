@@ -169,6 +169,7 @@
             app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_personal_info" />
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_signup_terms_condition"
             style="@style/MaterialButton.Bold.16"
             android:layout_width="0dp"
             android:layout_height="56dp"
