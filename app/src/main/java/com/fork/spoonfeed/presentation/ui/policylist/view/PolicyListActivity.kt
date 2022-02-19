@@ -3,6 +3,8 @@ package com.fork.spoonfeed.presentation.ui.policylist.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -12,6 +14,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListResponseData
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
+import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,21 +43,38 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
                 PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2)
             )
         )
-        setBackBtnClickListener()
-        showSearchDoneDialog()
+        this.setBackBtnClickListener(binding.ivPolicylistBack)
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
+        setInitLayout()
     }
 
-    private fun setBackBtnClickListener() {
-        binding.ivPolicylistBack.setOnClickListener {
-            finish()
+    private fun setInitLayout() {
+        val category = intent.getStringExtra(CATEGORY)
+        if (category != null) {
+            with(binding) {
+                tvPolicylistRewrite.visibility = View.INVISIBLE
+                ivPolicylistEnterBack.visibility = View.INVISIBLE
+                tvPolicylistTitle.text = "청년 정책"
+            }
+            policyListViewModel?.initSelectedFilter = category
+            setFilterCategoryLayout(category)
+        } else {
+            showSearchDoneDialog()
+        }
+    }
+
+    private fun setFilterCategoryLayout(category: String) {
+        when (category) {
+            ALL -> binding.tvPolicylistFilter.text = "전체"
+            DWELLING -> binding.tvPolicylistFilter.text = "주거"
+            FINANCE -> binding.tvPolicylistFilter.text = "금융"
         }
     }
 
     private fun setPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
-        policyListAdapter = PolicyListAdapter(false,dataList) {
+        policyListAdapter = PolicyListAdapter(false, dataList) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("category", it.category)
                 putExtra("title", it.title)
@@ -80,8 +100,15 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
             isFilterClicked.let {
                 if (isFilterClicked) {
                     showBottomFilterDialog()
+                    setFilterClickLayoutObserve()
                 }
             }
+        }
+    }
+
+    private fun setFilterClickLayoutObserve() {
+        policyListViewModel.selectedFileter.observe(this) { category ->
+            setFilterCategoryLayout(category)
         }
     }
 
@@ -129,5 +156,12 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
         )
         policyListViewModel.filterOnClickFalse()
         policyListViewModel.nothingSelected()
+    }
+
+    companion object {
+        const val ALL = "ALL"
+        const val DWELLING = "DWELLING"
+        const val FINANCE = "FINANCE"
+        const val CATEGORY = "CATEGORY"
     }
 }

@@ -16,7 +16,7 @@ class PolicyListViewModel : ViewModel() {
         get() = _isReWriteClicked
 
     private val _selectedFileter = MutableLiveData(NOTHING)
-    val selectedFileter: LiveData<Int>
+    val selectedFileter: LiveData<String>
         get() = _selectedFileter
 
     var initSelectedFilter = ALL
@@ -60,9 +60,9 @@ class PolicyListViewModel : ViewModel() {
 
 
     companion object {
-        const val NOTHING = 0
-        const val ALL = 1
-        const val DWELLING = 2
-        const val FINANCE = 3
+        const val NOTHING = "NOTHING"
+        const val ALL = "ALL"
+        const val DWELLING = "DWELLING"
+        const val FINANCE = "FINANCE"
     }
 }

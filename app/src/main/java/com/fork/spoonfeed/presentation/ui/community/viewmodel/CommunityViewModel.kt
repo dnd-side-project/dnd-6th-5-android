@@ -13,7 +13,7 @@ class CommunityViewModel : ViewModel() {
 
 
     private val _selectedFileter = MutableLiveData(PolicyListViewModel.NOTHING)
-    val selectedFileter: LiveData<Int>
+    val selectedFileter: LiveData<String>
         get() = _selectedFileter
 
     var initSelectedFilter = PolicyListViewModel.ALL

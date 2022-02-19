@@ -3,6 +3,7 @@ package com.fork.spoonfeed.presentation.ui.home.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.widget.AlertDialogLayout
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -24,8 +25,8 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun initView() {
         initClick()
-      /*  binding.ctlHomeInterastedPolicyList.visibility=View.INVISIBLE
-        binding.ctlHomeNoInterastedPolicyList.visibility=View.VISIBLE*/
+        /*  binding.ctlHomeInterastedPolicyList.visibility=View.INVISIBLE
+          binding.ctlHomeNoInterastedPolicyList.visibility=View.VISIBLE*/
     }
 
 
@@ -34,15 +35,21 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
             //맞춤정책 뷰로 이동
 
             ivHomeAllBackground.setOnClickListener {
-                val intent = Intent(requireContext(), PolicyListActivity::class.java)
+                val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
+                    it.putExtra(CATEGORY, ALL)
+                }
                 startActivity(intent)
             }
             ivHomeDwellingBackground.setOnClickListener {
-                val intent = Intent(requireContext(), PolicyListActivity::class.java)
+                val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
+                    it.putExtra(CATEGORY, DWELLING)
+                }
                 startActivity(intent)
             }
             ivHomeFinanceBackground.setOnClickListener {
-                val intent = Intent(requireContext(), PolicyListActivity::class.java)
+                val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
+                    it.putExtra(CATEGORY, FINANCE)
+                }
                 startActivity(intent)
             }
             ivHomeInterastedPolicyMore.setOnClickListener {
@@ -50,5 +57,12 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
                 startActivity(intent)
             }
         }
+    }
+
+    companion object {
+        const val ALL = "ALL"
+        const val DWELLING = "DWELLING"
+        const val FINANCE = "FINANCE"
+        const val CATEGORY = "CATEGORY"
     }
 }

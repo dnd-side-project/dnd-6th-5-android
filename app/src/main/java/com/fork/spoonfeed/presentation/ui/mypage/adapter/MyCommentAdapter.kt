@@ -36,7 +36,7 @@ class MyCommentAdapter(
                     clickListener(data)
                 }
             }
-         //   setClickListenerItemPostEdit(binding)
+            setClickListenerItemPostEdit(binding)
         }
     }
 
