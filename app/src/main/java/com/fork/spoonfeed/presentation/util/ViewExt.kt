@@ -1,9 +1,9 @@
 package com.fork.spoonfeed.presentation.util
 
 import android.app.Activity
-import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.DisplayMetrics
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
@@ -16,6 +16,7 @@ import com.fork.spoonfeed.domain.model.AgeInputType
 import com.fork.spoonfeed.domain.model.ChipInputType
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel
 import com.google.android.material.chip.ChipGroup
+import kotlin.math.roundToInt
 
 fun AppCompatActivity.replace(fragment: Fragment) {
     supportFragmentManager
@@ -126,4 +127,9 @@ fun Activity.setBackBtnClickListener(imageView: ImageView) {
     imageView.setOnClickListener {
         finish()
     }
+}
+
+fun Activity.dpToPx(dp: Int): Int {
+    val displayMetrics = resources.displayMetrics
+    return (dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
 }

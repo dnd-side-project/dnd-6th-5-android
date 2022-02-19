@@ -30,6 +30,9 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
 
     private fun setOnClickListener() {
         with(binding) {
+            ivMypageMyInfo.setOnClickListener {
+                startActivity(Intent(requireContext(), MyPageMyInfoActivity::class.java))
+            }
             ivMypageMyPost.setOnClickListener {
                 startActivity(Intent(requireContext(), MyPostManagementActivity::class.java))
             }

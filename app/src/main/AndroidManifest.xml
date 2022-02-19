@@ -20,6 +20,9 @@
             android:exported="true"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".presentation.ui.communitypost.view.CommunityPostInfoUpdateActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.ui.communitypost.view.CommunityPostCreateActivity"
             android:exported="true" />
         <activity
@@ -36,6 +39,9 @@
             android:exported="true" />
         <activity
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.MyPageMyInfoActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"
