@@ -44,9 +44,7 @@ class PolicyFilterLevelThreeFragment :
     }
 
     fun moveToPolicyResult() {
-        binding.mbPolicyFilterThreeNext.setOnClickListener {
-            startActivity(Intent(context, PolicyListActivity::class.java))
-        }
+        startActivity(Intent(context, PolicyListActivity::class.java))
     }
 
     override fun onDestroyView() {
