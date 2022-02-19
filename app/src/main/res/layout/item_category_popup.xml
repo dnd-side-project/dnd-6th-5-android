@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <TextView
+        android:id="@+id/details"
+        style="@style/TextView.Heading.Bold.14"
+        android:layout_width="102dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="39dp"
+        android:paddingVertical="8dp"
+        android:text="주거"/>
+</layout>
+
