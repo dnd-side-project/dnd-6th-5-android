@@ -9,6 +9,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelThreeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.tooltip.MedianIncomeTooltipActivity
+import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 
 class PolicyFilterLevelThreeFragment :
     BaseViewUtil.BaseFragment<FragmentPolicyFilterLevelThreeBinding>(R.layout.fragment_policy_filter_level_three) {
@@ -43,7 +44,9 @@ class PolicyFilterLevelThreeFragment :
     }
 
     fun moveToPolicyResult() {
-        // 맞춤 정책 확인 페이지로 이동
+        binding.mbPolicyFilterThreeNext.setOnClickListener {
+            startActivity(Intent(context, PolicyListActivity::class.java))
+        }
     }
 
     override fun onDestroyView() {

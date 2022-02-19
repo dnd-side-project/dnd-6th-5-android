@@ -30,10 +30,10 @@ class SearchInputResultFragment : BaseViewUtil.BaseFragment<FragmentSearchInputR
             )
         )
     }
-    
+
 
     private fun initRvAdapter(dataList: MutableList<PostResponseData>) {
-        communityPostAdapter = PostAdapter(true,dataList) {
+        communityPostAdapter = PostAdapter(true, dataList) {
             /*      Intent(requireContext(), DetailInfoActivity::class.java).apply {
                       startActivity(this)
                   }*/

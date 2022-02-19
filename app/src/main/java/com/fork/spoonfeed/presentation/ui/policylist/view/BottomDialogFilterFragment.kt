@@ -18,7 +18,6 @@ import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 
 
-
 @AndroidEntryPoint
 class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     private val policyListViewModel: PolicyListViewModel by activityViewModels()
@@ -122,8 +121,9 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val ALL = 1
-        const val DWELLING = 2
-        const val FINANCE = 3
+        const val NOTHING = "NOTHING"
+        const val ALL = "ALL"
+        const val DWELLING = "DWELLING"
+        const val FINANCE = "FINANCE"
     }
 }

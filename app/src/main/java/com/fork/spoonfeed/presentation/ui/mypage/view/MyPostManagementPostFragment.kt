@@ -32,7 +32,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
 
 
     private fun initRvAdapter(dataList: MutableList<PostResponseData>) {
-        myPostManagementPostAdapter = PostAdapter(true,dataList) {
+        myPostManagementPostAdapter = PostAdapter(true, dataList) {
             //커뮤니티 상세 페이지로 이동
         }
         with(binding) {
