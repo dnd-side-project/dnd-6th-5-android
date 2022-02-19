@@ -37,6 +37,9 @@ class CommunityPostCreateActivity :
         binding.tvCommunityPostCreateCategory.setOnClickListener {
             showMenu()
         }
+        binding.mbCommunityPostCreateUpdateDetail.setOnClickListener {
+            startActivity(Intent(baseContext, CommunityPostInfoUpdateActivity::class.java))
+        }
     }
 
     private fun showMenu() {
