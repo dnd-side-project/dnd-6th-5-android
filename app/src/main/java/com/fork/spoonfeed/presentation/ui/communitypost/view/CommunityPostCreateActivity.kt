@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.Gravity
 import android.view.View
@@ -39,8 +40,28 @@ class CommunityPostCreateActivity :
         }
         binding.mbCommunityPostCreateUpdateDetail.setOnClickListener {
             startActivity(Intent(baseContext, CommunityPostInfoUpdateActivity::class.java))
+
+            // TODO 현재 뷰모델 없이 임의로 상세정보 수정 버튼을 누르면 활성화 되도록 구현
+            // 뷰모델과 연결지어 모든 값이 입력되고, 수정페이지 방문 후 현재 화면으로 돌아왔을때 활성화되도록 수정 필요
+            setButtonActive()
         }
     }
+
+    private fun setButtonActive() {
+        with(binding.mbCommunityPostCreateUpdateDetail) {
+            icon = ContextCompat.getDrawable(context, R.drawable.ic_check_round_filled)
+            iconTint = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.primary_blue))
+            setTextColor(ContextCompat.getColor(context, R.color.primary_blue))
+            setBackgroundColor(ContextCompat.getColor(context, R.color.secondary_lightblue))
+            strokeColor =
+                ColorStateList.valueOf(ContextCompat.getColor(context, R.color.primary_blue))
+        }
+
+        binding.mbCommunityPostCreate.isEnabled = true
+        binding.mbCommunityPostCreate.backgroundTintList =
+            ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.primary_blue))
+    }
+
 
     private fun showMenu() {
         val items = resources.getStringArray(R.array.category_popup)
