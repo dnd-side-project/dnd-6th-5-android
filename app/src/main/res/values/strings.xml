@@ -289,6 +289,11 @@
     <string name="community_post_comment">댓글</string>
     <string name="community_post_comment_hint">궁금한 점들을 물어보세요 :)</string>
 
+    <!--  MyInfoUpdate  -->
+    <string name="mypage_my_info_update_name">닉네임</string>
+    <string name="mypage_my_info_update_save">수정한 정보를 저장해서 필터링에도 불러옵니다.</string>
+    <string name="mypage_my_info_update_confirm">수정하기</string>
+
     <!--  MyPostManagement  -->
     <string name="mypostmanagement_title">내 글 관리</string>
     <string name="mypostmanagement_tab_post">게시글</string>

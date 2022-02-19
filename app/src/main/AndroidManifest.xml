@@ -41,6 +41,9 @@
             android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
             android:exported="true" />
         <activity
+            android:name=".presentation.ui.mypage.view.MyPageMyInfoActivity"
+            android:exported="true" />
+        <activity
             android:name=".presentation.ui.community.view.SearchInputActivity"
             android:exported="false" />
         <activity
