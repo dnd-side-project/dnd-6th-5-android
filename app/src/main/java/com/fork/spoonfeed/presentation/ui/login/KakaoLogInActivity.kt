@@ -1,10 +1,8 @@
 package com.fork.spoonfeed.presentation.ui.login
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityKakaoLogInBinding
 import com.fork.spoonfeed.presentation.MainActivity
@@ -31,6 +29,7 @@ class KakaoLogInActivity : BaseViewUtil.BaseAppCompatActivity<ActivityKakaoLogIn
             } else if (token != null) {
                 UserApiClient.instance.me { user, error ->
                     Log.e("kakao", "로그인 성공 ${token.accessToken}")
+                    Log.e("kakao", "로그인 성공 ${token.refreshToken}")
                     //  val kakaoId = user!!.id
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
