@@ -345,4 +345,8 @@
     <string name="mypage_logout">로그아웃</string>
     <string name="mypage_secession">회원탈퇴</string>
     <string name="oss_license_title">오픈소스 라이센스</string>
+
+    <!--  Dialog Comment  -->
+    <string name="dialog_comment_edit">수정하기</string>
+    <string name="dialog_comment_delete">삭제하기</string>
 </resources>
