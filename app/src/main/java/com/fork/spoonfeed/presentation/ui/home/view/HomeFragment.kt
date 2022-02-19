@@ -3,12 +3,9 @@ package com.fork.spoonfeed.presentation.ui.home.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.AlertDialogLayout
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentHomeBinding
+import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterastedPolicyActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
@@ -25,14 +22,11 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun initView() {
         initClick()
-        /*  binding.ctlHomeInterastedPolicyList.visibility=View.INVISIBLE
-          binding.ctlHomeNoInterastedPolicyList.visibility=View.VISIBLE*/
     }
 
 
     private fun initClick() {
         with(binding) {
-            //맞춤정책 뷰로 이동
 
             ivHomeAllBackground.setOnClickListener {
                 val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
@@ -54,6 +48,23 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
             }
             ivHomeInterastedPolicyMore.setOnClickListener {
                 val intent = Intent(requireContext(), InterastedPolicyActivity::class.java)
+                startActivity(intent)
+            }
+
+            ivHomeGotoCustomizedPolicy.setOnClickListener {
+                (activity as MainActivity).moveToPolicy()
+            }
+
+            tvHomeInterastedPolicyOne.setOnClickListener {
+                val intent = Intent(requireContext(), DetailInfoActivity::class.java)
+                startActivity(intent)
+            }
+            tvHomeInterastedPolicyTwo.setOnClickListener {
+                val intent = Intent(requireContext(), DetailInfoActivity::class.java)
+                startActivity(intent)
+            }
+            tvHomeInterastedPolicyThree.setOnClickListener {
+                val intent = Intent(requireContext(), DetailInfoActivity::class.java)
                 startActivity(intent)
             }
         }

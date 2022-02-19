@@ -1,6 +1,5 @@
 package com.fork.spoonfeed.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMainBinding
@@ -18,7 +17,6 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
     private val policyFragment: PolicyFragment by lazy { PolicyFragment() }
     private val communityFragment: CommunityFragment by lazy { CommunityFragment() }
     private val myPageFragment: MyPageFragment by lazy { MyPageFragment() }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
@@ -51,5 +49,9 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
             }
             false
         }
+    }
+
+    fun moveToPolicy() {
+        binding.bnvMain.selectedItemId = R.id.menu_main_policy
     }
 }
