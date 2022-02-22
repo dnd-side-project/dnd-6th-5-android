@@ -21,9 +21,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "NAVER_CLIENT_ID", properties["naver_api_client_id"]
-        buildConfigField "String", "NAVER_CLIENT_SECRET", properties["naver_api_client_secret"]
-        buildConfigField "String", "NAVER_APP_NAME", properties["naver_api_app_name"]
+        buildConfigField("String", "NAVER_CLIENT_ID", properties.getProperty("naver_api_client_id"))
+        buildConfigField("String", "NAVER_CLIENT_SECRET", properties.getProperty("naver_api_client_secret"))
+        buildConfigField("String", "NAVER_APP_NAME", properties.getProperty("naver_api_app_name"))
     }
 
     buildTypes {
