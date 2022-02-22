@@ -75,10 +75,10 @@
             android:name=".presentation.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.ui.onboarding.signup.SignupActivity"
+            android:name=".presentation.ui.onboarding.view.signup.SignupActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.ui.onboarding.OnboardingActivity"
+            android:name=".presentation.ui.onboarding.view.OnboardingActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.SplashActivity"

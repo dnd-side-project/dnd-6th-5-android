@@ -7,7 +7,7 @@ import android.os.Looper
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivitySplashBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.onboarding.OnboardingActivity
+import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
 
 class SplashActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivitySplashBinding>(R.layout.activity_splash) {
