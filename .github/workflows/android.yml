@@ -36,12 +36,12 @@ jobs:
     
     - name: Access naver client secret
       env:
-        NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_SECRET }}
+        NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
       run: echo naver_api_client_secret=\"$NAVER_CLIENT_SECRET\" > ./local.properties
     
     - name: Access naver app name
       env:
-        NAVER_CLIENT_ID: ${{ secrets.NAVER_APP_NAME }}
+        NAVER_APP_NAME: ${{ secrets.NAVER_APP_NAME }}
       run: echo naver_api_app_name=\"$NAVER_APP_NAME\" > ./local.properties
     
     - name: set up JDK 11
