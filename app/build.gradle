@@ -6,6 +6,9 @@ plugins {
     id 'com.google.android.gms.oss-licenses-plugin'
 }
 
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
 android {
     compileSdk 31
 
@@ -17,6 +20,10 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "NAVER_CLIENT_ID", properties["naver_api_client_id"]
+        buildConfigField "String", "NAVER_CLIENT_SECRET", properties["naver_api_client_secret"]
+        buildConfigField "String", "NAVER_APP_NAME", properties["naver_api_app_name"]
     }
 
     buildTypes {
