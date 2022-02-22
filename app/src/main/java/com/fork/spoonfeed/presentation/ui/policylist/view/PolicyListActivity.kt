@@ -70,10 +70,7 @@ class PolicyListActivity :
     private fun setPolicyListAdapter() {
         policyListAdapter = PolicyListAdapter(false) {
             Intent(this, DetailInfoActivity::class.java).apply {
-                putExtra("category", it.category)
-                putExtra("title", it.name)
                 putExtra("id", it.id)
-                putExtra("likeCount", it.likeCount)
                 startActivity(this)
             }
         }
