@@ -23,7 +23,9 @@ class SplashActivity :
 
     private fun startActivity() {
         // 로그인 여부에 따라 Onboarding / Main으로 이동
-        val intent = Intent(baseContext, OnboardingActivity::class.java)
+        val intent = Intent(baseContext, OnboardingActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
         Handler(Looper.getMainLooper())
             .postDelayed({
                 startActivity(intent)
