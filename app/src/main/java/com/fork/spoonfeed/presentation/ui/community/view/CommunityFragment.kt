@@ -92,6 +92,5 @@ class CommunityFragment : BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.
             bottomSheetFragment.tag
         )
         policyListViewModel.filterOnClickFalse()
-        policyListViewModel.nothingSelected()
     }
 }

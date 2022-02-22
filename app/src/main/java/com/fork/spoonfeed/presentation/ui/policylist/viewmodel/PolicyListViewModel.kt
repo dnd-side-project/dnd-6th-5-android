@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
 import com.fork.spoonfeed.domain.repository.PolicyRepository
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,7 +16,7 @@ class PolicyListViewModel @Inject constructor(
     private val policyRepository: PolicyRepository
 ) : ViewModel() {
 
-    private val _isFilterClicked = MutableLiveData<Boolean>(false)
+    private val _isFilterClicked = MutableLiveData(false)
     val isFilterClicked: LiveData<Boolean>
         get() = _isFilterClicked
 
@@ -30,22 +31,8 @@ class PolicyListViewModel @Inject constructor(
     private val _policyFilteredResult = MutableLiveData<List<ResponsePolicyAllData.Data.Policy>>()
     val policyFilteredResult: LiveData<List<ResponsePolicyAllData.Data.Policy>> = _policyFilteredResult
 
-    var initSelectedFilter = ALL
-
-    fun allSelected() {
-        _selectedFilter.value = ALL
-    }
-
-    fun dwellingSelected() {
-        _selectedFilter.value = DWELLING
-    }
-
-    fun financeSelected() {
-        _selectedFilter.value = FINANCE
-    }
-
-    fun nothingSelected() {
-        _selectedFilter.value = NOTHING
+    fun setCategorySelected(category: String){
+        _selectedFilter.value = category
     }
 
     fun applyFilter() {
@@ -70,13 +57,5 @@ class PolicyListViewModel @Inject constructor(
 
     fun reWriteOnClickFalse() {
         _isReWriteClicked.value = false
-    }
-
-
-    companion object {
-        const val NOTHING = "NOTHING"
-        const val ALL = "전체"
-        const val DWELLING = "주거"
-        const val FINANCE = "금융"
     }
 }

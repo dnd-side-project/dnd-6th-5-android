@@ -12,6 +12,9 @@ import com.fork.spoonfeed.databinding.ActivityPolicyListBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.FINANCE
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
@@ -49,7 +52,7 @@ class PolicyListActivity :
                 ivPolicylistEnterBack.visibility = View.INVISIBLE
                 tvPolicylistTitle.text = "청년 정책"
             }
-            policyListViewModel?.initSelectedFilter = category
+            policyListViewModel.setCategorySelected(category)
             setFilterCategoryLayout(category)
         } else {
             showSearchDoneDialog()
@@ -58,9 +61,9 @@ class PolicyListActivity :
 
     private fun setFilterCategoryLayout(category: String) {
         when (category) {
-            ALL -> binding.tvPolicylistFilter.text = "전체"
-            DWELLING -> binding.tvPolicylistFilter.text = "주거"
-            FINANCE -> binding.tvPolicylistFilter.text = "금융"
+            ALL -> binding.tvPolicylistFilter.text = ALL
+            DWELLING -> binding.tvPolicylistFilter.text = DWELLING
+            FINANCE -> binding.tvPolicylistFilter.text = FINANCE
         }
     }
 
@@ -152,13 +155,9 @@ class PolicyListActivity :
             bottomSheetFragment.tag
         )
         policyListViewModel.filterOnClickFalse()
-//        policyListViewModel.nothingSelected()
     }
 
     companion object {
-        const val ALL = "ALL"
-        const val DWELLING = "DWELLING"
-        const val FINANCE = "FINANCE"
         const val CATEGORY = "CATEGORY"
         const val POLICY_FILTER_RESET_NAME = "com.fork.spoonfeed.presentation.ui.policylist"
         const val POLICY_FILTER_RESET_VALUE = "RESET"

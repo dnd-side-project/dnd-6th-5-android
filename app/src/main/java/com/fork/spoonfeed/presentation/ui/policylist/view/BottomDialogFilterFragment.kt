@@ -40,38 +40,14 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        applyInitSelectedFilterLayout()
         applyFilterLayout()
         setCloseBtnClickedListener()
     }
 
-    fun applyInitSelectedFilterLayout() {
-        with(binding) {
-            when (policyListViewModel?.initSelectedFilter) {
-                ALL -> {
-                    setClickedCategory(tvBottomDialogAll)
-                    setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
-                }
-                DWELLING -> {
-                    setClickedCategory(tvBottomDialogDwelling)
-                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
-                }
-                FINANCE -> {
-                    setClickedCategory(tvBottomDialogFinance)
-                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
-                }
-                else -> {
-                    setClickedCategory(tvBottomDialogFinance)
-                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
-                }
-            }
-        }
-    }
-
     private fun applyFilterLayout() {
-        policyListViewModel.selectedFilter.observe(this) { selectedFileter ->
+        policyListViewModel.selectedFilter.observe(this) { selectedFilter ->
             with(binding) {
-                when (selectedFileter) {
+                when (selectedFilter) {
                     ALL -> {
                         setClickedCategory(tvBottomDialogAll)
                         setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
@@ -88,7 +64,6 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
                         setHandler()
                     }
                 }
-                policyListViewModel?.initSelectedFilter = selectedFileter
             }
         }
     }
@@ -121,9 +96,8 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     }
 
     companion object {
-        const val NOTHING = "NOTHING"
-        const val ALL = "ALL"
-        const val DWELLING = "DWELLING"
-        const val FINANCE = "FINANCE"
+        const val ALL = "전체"
+        const val DWELLING = "주거"
+        const val FINANCE = "금융"
     }
 }
