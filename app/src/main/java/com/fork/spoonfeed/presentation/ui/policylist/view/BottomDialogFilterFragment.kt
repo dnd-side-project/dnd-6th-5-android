@@ -23,6 +23,7 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     private val policyListViewModel: PolicyListViewModel by activityViewModels()
     private var _binding: FragmentBottomDialogFilterBinding? = null
     private val binding get() = _binding ?: error("Binding이 초기화되지 않았습니다")
+    private var isInitialized = false // bottom sheet initialize check
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,29 +41,36 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        policyListViewModel.selectedFilter.value?.let { setCategoryView(it) }
         applyFilterLayout()
         setCloseBtnClickedListener()
     }
 
     private fun applyFilterLayout() {
         policyListViewModel.selectedFilter.observe(this) { selectedFilter ->
-            with(binding) {
-                when (selectedFilter) {
-                    ALL -> {
-                        setClickedCategory(tvBottomDialogAll)
-                        setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
-                        setHandler()
-                    }
-                    DWELLING -> {
-                        setClickedCategory(tvBottomDialogDwelling)
-                        setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
-                        setHandler()
-                    }
-                    FINANCE -> {
-                        setClickedCategory(tvBottomDialogFinance)
-                        setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
-                        setHandler()
-                    }
+            if (isInitialized) {
+                setCategoryView(selectedFilter)
+                setHandler()
+            } else {
+                isInitialized = true
+            }
+        }
+    }
+
+    private fun setCategoryView(selectedFilter: String) {
+        with(binding) {
+            when (selectedFilter) {
+                ALL -> {
+                    setClickedCategory(tvBottomDialogAll)
+                    setUnClickedCategory(tvBottomDialogDwelling, tvBottomDialogFinance)
+                }
+                DWELLING -> {
+                    setClickedCategory(tvBottomDialogDwelling)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogFinance)
+                }
+                FINANCE -> {
+                    setClickedCategory(tvBottomDialogFinance)
+                    setUnClickedCategory(tvBottomDialogAll, tvBottomDialogDwelling)
                 }
             }
         }
