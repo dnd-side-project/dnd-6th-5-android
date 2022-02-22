@@ -27,7 +27,22 @@ jobs:
     - name: Access kakao native key
       env:
         KAKAO_NATIVE_KEY: ${{ secrets.KAKAO_NATIVE_KEY }}
-      run: echo KAKAO_NATIVE_KEY=\"$KAKAO_NATIVE_KEY\" > ./local.properties
+      run: echo KAKAO_NATIVE_KEY=\"$KAKAO_NATIVE_KEY\" >> ./local.properties
+    
+    - name: Access naver client id
+      env:
+        NAVER_CLIENT_ID: ${{ secrets.NAVER_CLIENT_ID }}
+      run: echo naver_api_client_id=\"$NAVER_CLIENT_ID\" >> ./local.properties
+    
+    - name: Access naver client secret
+      env:
+        NAVER_CLIENT_SECRET: ${{ secrets.NAVER_CLIENT_SECRET }}
+      run: echo naver_api_client_secret=\"$NAVER_CLIENT_SECRET\" >> ./local.properties
+    
+    - name: Access naver app name
+      env:
+        NAVER_APP_NAME: ${{ secrets.NAVER_APP_NAME }}
+      run: echo naver_api_app_name=\"$NAVER_APP_NAME\" >> ./local.properties
     
     - name: set up JDK 11
       uses: actions/setup-java@v2
