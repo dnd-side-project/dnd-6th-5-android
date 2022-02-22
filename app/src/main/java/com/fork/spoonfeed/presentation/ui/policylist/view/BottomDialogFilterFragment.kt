@@ -69,7 +69,7 @@ class BottomDialogFilterFragment() : BottomSheetDialogFragment() {
     }
 
     private fun applyFilterLayout() {
-        policyListViewModel.selectedFileter.observe(this) { selectedFileter ->
+        policyListViewModel.selectedFilter.observe(this) { selectedFileter ->
             with(binding) {
                 when (selectedFileter) {
                     ALL -> {

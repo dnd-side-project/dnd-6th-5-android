@@ -1,43 +1,33 @@
 package com.fork.spoonfeed.presentation.ui.policylist.adapter
 
-import android.content.ClipData
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
 
-data class PolicyListResponseData(
-    val id: Int,
-    val category: String,
-    val title: String,
-    val sentence: String,
-    val deadline: String,
-    val likeCount: Int
-)
-
 class PolicyListAdapter(
-    private val interasted: Boolean,
-    private val policyList: List<PolicyListResponseData>,
-    private val clickListener: (PolicyListResponseData) -> Unit
-) : ListAdapter<PolicyListResponseData, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
+    private val interested: Boolean,
+    private val clickListener: (ResponsePolicyAllData.Data.Policy) -> Unit
+) : ListAdapter<ResponsePolicyAllData.Data.Policy, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
 
     inner class PolicyListViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: PolicyListResponseData) {
+        fun onBind(data: ResponsePolicyAllData.Data.Policy) {
             binding.apply {
                 tvItemCategory.text = data.category
-                tvItemPolicyTitle.text = data.title
-                tvItemPolicySentence.text = data.sentence
-                tvItemDeadline.text = data.deadline
-                tvItemLikeCount.text = data.likeCount.toString()
+                tvItemPolicyTitle.text = data.name
+                tvItemPolicySentence.text = data.summary
+                tvItemDeadline.text = data.applicationPeriod
+                tvItemLikeCount.text = data.likeCount
 
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
                 }
 
-                if(interasted){ ivItemLike.isChecked = true
+                if(interested){ ivItemLike.isChecked = true
                 }
 
                 ctlItem.setOnClickListener {
@@ -55,18 +45,18 @@ class PolicyListAdapter(
         return PolicyListViewHolder(binding)
     }
 
-    override fun getItemCount() = policyList.size
+    override fun getItemCount() = currentList.size
 
     override fun onBindViewHolder(holder: PolicyListViewHolder, position: Int) {
-        holder.onBind(policyList[position])
+        holder.onBind(currentList[position])
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<PolicyListResponseData>() {
-            override fun areContentsTheSame(oldItem: PolicyListResponseData, newItem: PolicyListResponseData) =
+        val diffUtil = object : DiffUtil.ItemCallback<ResponsePolicyAllData.Data.Policy>() {
+            override fun areContentsTheSame(oldItem: ResponsePolicyAllData.Data.Policy, newItem: ResponsePolicyAllData.Data.Policy) =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: PolicyListResponseData, newItem: PolicyListResponseData) =
+            override fun areItemsTheSame(oldItem: ResponsePolicyAllData.Data.Policy, newItem: ResponsePolicyAllData.Data.Policy) =
                 oldItem.id == newItem.id
         }
     }

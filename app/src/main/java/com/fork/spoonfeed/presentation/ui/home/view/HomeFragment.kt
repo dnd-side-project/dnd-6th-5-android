@@ -7,7 +7,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentHomeBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.mypage.view.InterastedPolicyActivity
+import com.fork.spoonfeed.presentation.ui.mypage.view.InterestedPolicyActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -47,7 +47,7 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
                 startActivity(intent)
             }
             ivHomeInterastedPolicyMore.setOnClickListener {
-                val intent = Intent(requireContext(), InterastedPolicyActivity::class.java)
+                val intent = Intent(requireContext(), InterestedPolicyActivity::class.java)
                 startActivity(intent)
             }
 

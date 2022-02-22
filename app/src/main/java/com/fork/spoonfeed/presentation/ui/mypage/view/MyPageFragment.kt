@@ -37,7 +37,7 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
                 startActivity(Intent(requireContext(), MyPostManagementActivity::class.java))
             }
             ivMypageInterestedPolicy.setOnClickListener {
-                startActivity(Intent(requireContext(), InterastedPolicyActivity::class.java))
+                startActivity(Intent(requireContext(), InterestedPolicyActivity::class.java))
             }
             ivMypageNotice.setOnClickListener {
                 startActivity(Intent(requireContext(), NoticeActivity::class.java))
