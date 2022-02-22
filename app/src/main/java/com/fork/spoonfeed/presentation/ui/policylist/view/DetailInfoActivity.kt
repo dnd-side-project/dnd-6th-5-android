@@ -32,9 +32,10 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     override fun initView() {
+        setBackBtnClickListener()
         initClickListener()
         setLikeBtn()
-        setBackBtnClickListener()
+        setDetailInfo()
     }
 
     private fun setBackBtnClickListener() {
@@ -78,6 +79,11 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
                 ivDetailInfoLikeBottom.isChecked = true
             }
         }
+    }
+
+    private fun setDetailInfo() {
+        val id = intent.getStringExtra("id")?.toInt() ?: 0
+        detailInfoViewModel.getPolicyDetailInfo(id)
     }
 
     override fun onDestroy() {
