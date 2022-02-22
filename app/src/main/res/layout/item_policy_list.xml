@@ -75,6 +75,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:text="@string/item_policylist_deadline"
+                android:maxLines="1"
                 app:layout_constraintStart_toEndOf="@id/tv_item_deadline_title"
                 app:layout_constraintTop_toTopOf="@+id/tv_item_deadline_title"
                 tools:layout_editor_absoluteX="82dp" />
