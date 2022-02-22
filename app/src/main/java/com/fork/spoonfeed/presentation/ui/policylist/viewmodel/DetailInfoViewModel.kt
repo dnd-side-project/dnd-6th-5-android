@@ -3,8 +3,32 @@ package com.fork.spoonfeed.presentation.ui.policylist.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
+import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyDetailData
+import com.fork.spoonfeed.domain.repository.PolicyRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class DetailInfoViewModel : ViewModel() {
+@HiltViewModel
+class DetailInfoViewModel @Inject constructor(
+    private val policyRepository: PolicyRepository
+) : ViewModel() {
+
+    private val _policyDetailInfo = MutableLiveData<ResponsePolicyDetailData.Data.Policy>()
+    val policyDetailInfo: LiveData<ResponsePolicyDetailData.Data.Policy>
+        get() = _policyDetailInfo
+
+    fun getPolicyDetailInfo(pk: Int) {
+        try {
+            viewModelScope.launch {
+                _policyDetailInfo.value = policyRepository.getPolicyDetail(pk).data.policy
+            }
+        } catch (e: Exception) {
+
+        }
+    }
 
     private val _isLikeClicked = MutableLiveData(false)
     val isLikeClicked: LiveData<Boolean>
