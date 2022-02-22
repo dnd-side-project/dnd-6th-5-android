@@ -15,8 +15,8 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    private val BASE_URL = "http://ec2-3-36-64-233.ap-northeast-2.compute.amazonaws.com/"
-    var gson = GsonBuilder().setLenient().create()
+    private const val BASE_URL = "http://ec2-3-36-64-233.ap-northeast-2.compute.amazonaws.com/"
+    private var gson = GsonBuilder().setLenient().create()
 
     @Provides
     @Singleton
