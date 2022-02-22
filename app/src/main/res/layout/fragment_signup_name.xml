@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".presentation.ui.onboarding.signup.SignupNameFragment">
+        tools:context=".presentation.ui.onboarding.view.signup.SignupNameFragment">
 
         <TextView
             android:id="@+id/tv_signup_name_title"

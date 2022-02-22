@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.di
 
+import com.fork.spoonfeed.data.remote.api.auth.AuthService
 import com.fork.spoonfeed.data.remote.api.policy.PolicyService
 import dagger.Module
 import dagger.Provides
@@ -11,6 +12,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object ApiModule {
+
+    @Provides
+    @Singleton
+    fun provideAuthService(retrofit: Retrofit): AuthService {
+        return retrofit.create(AuthService::class.java)
+    }
 
     @Provides
     @Singleton

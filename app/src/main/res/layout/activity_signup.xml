@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".presentation.ui.onboarding.signup.SignupActivity">
+        tools:context=".presentation.ui.onboarding.view.signup.SignupActivity">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/mt_signup_title"
@@ -30,7 +30,7 @@
 
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fcv_signup"
-            android:name="com.fork.spoonfeed.presentation.ui.onboarding.signup.SignupNameFragment"
+            android:name="com.fork.spoonfeed.presentation.ui.onboarding.view.signup.SignupNameFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"

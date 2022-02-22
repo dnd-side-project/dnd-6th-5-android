@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/primary_blue"
-        tools:context=".presentation.ui.onboarding.OnboardingActivity">
+        tools:context=".presentation.ui.onboarding.view.OnboardingActivity">
 
         <ImageView
             android:id="@+id/iv_onboarding_logo"

@@ -1,4 +1,4 @@
-package com.fork.spoonfeed.presentation.ui.onboarding.signup
+package com.fork.spoonfeed.presentation.ui.onboarding.view.signup
 
 import android.content.res.ColorStateList
 import android.os.Bundle
