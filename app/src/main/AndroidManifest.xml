@@ -11,7 +11,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SpoonFeed">
+        android:theme="@style/Theme.SpoonFeed"
+        android:usesCleartextTraffic="true">
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:theme="@style/LicenseTheme" />
@@ -62,7 +63,7 @@
             android:name=".presentation.ui.policy.view.filter.PolicyFilterActivity"
             android:exported="true" />
         <activity
-            android:name=".presentation.ui.mypage.view.InterastedPolicyActivity"
+            android:name=".presentation.ui.mypage.view.InterestedPolicyActivity"
             android:exported="true" />
         <activity
             android:name=".presentation.ui.policylist.view.PolicyListActivity"

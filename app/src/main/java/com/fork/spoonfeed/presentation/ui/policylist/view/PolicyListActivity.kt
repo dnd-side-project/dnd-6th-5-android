@@ -12,14 +12,17 @@ import com.fork.spoonfeed.databinding.ActivityPolicyListBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
-import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListResponseData
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.FINANCE
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyListBinding>(R.layout.activity_policy_list) {
+class PolicyListActivity :
+    BaseViewUtil.BaseAppCompatActivity<ActivityPolicyListBinding>(R.layout.activity_policy_list) {
     private val policyListViewModel: PolicyListViewModel by viewModels()
     private lateinit var policyListAdapter: PolicyListAdapter
 
@@ -32,22 +35,13 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     override fun initView() {
-        setPolicyListAdapter(
-            mutableListOf(
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2),
-                PolicyListResponseData(1, "주거", "청년 우대 통장", "아이조아아이조아아이조아", "2022.02-0222.02", 2)
-            )
-        )
+        setPolicyListAdapter()
         this.setBackBtnClickListener(binding.ivPolicylistBack)
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
         setInitLayout()
+        policyListViewModel.applyFilter()
     }
 
     private fun setInitLayout() {
@@ -58,7 +52,7 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
                 ivPolicylistEnterBack.visibility = View.INVISIBLE
                 tvPolicylistTitle.text = "청년 정책"
             }
-            policyListViewModel?.initSelectedFilter = category
+            policyListViewModel.setCategorySelected(category)
             setFilterCategoryLayout(category)
         } else {
             showSearchDoneDialog()
@@ -67,17 +61,17 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
 
     private fun setFilterCategoryLayout(category: String) {
         when (category) {
-            ALL -> binding.tvPolicylistFilter.text = "전체"
-            DWELLING -> binding.tvPolicylistFilter.text = "주거"
-            FINANCE -> binding.tvPolicylistFilter.text = "금융"
+            ALL -> binding.tvPolicylistFilter.text = ALL
+            DWELLING -> binding.tvPolicylistFilter.text = DWELLING
+            FINANCE -> binding.tvPolicylistFilter.text = FINANCE
         }
     }
 
-    private fun setPolicyListAdapter(dataList: MutableList<PolicyListResponseData>) {
-        policyListAdapter = PolicyListAdapter(false, dataList) {
+    private fun setPolicyListAdapter() {
+        policyListAdapter = PolicyListAdapter(false) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("category", it.category)
-                putExtra("title", it.title)
+                putExtra("title", it.name)
                 putExtra("id", it.id)
                 putExtra("likeCount", it.likeCount)
                 startActivity(this)
@@ -90,9 +84,9 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     private fun setPolicyListObserve() {
-        /*      policyListViewModel.policyList.observe(this) { policyList ->
-                  policyListAdapter.submitList(policyList)
-              }*/
+        policyListViewModel.policyFilteredResult.observe(this) { policyList ->
+            policyListAdapter.submitList(policyList)
+        }
     }
 
     private fun setFilterClickObserve() {
@@ -107,8 +101,9 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
     }
 
     private fun setFilterClickLayoutObserve() {
-        policyListViewModel.selectedFileter.observe(this) { category ->
+        policyListViewModel.selectedFilter.observe(this) { category ->
             setFilterCategoryLayout(category)
+            policyListViewModel.applyFilter()
         }
     }
 
@@ -160,13 +155,9 @@ class PolicyListActivity : BaseViewUtil.BaseAppCompatActivity<ActivityPolicyList
             bottomSheetFragment.tag
         )
         policyListViewModel.filterOnClickFalse()
-        policyListViewModel.nothingSelected()
     }
 
     companion object {
-        const val ALL = "ALL"
-        const val DWELLING = "DWELLING"
-        const val FINANCE = "FINANCE"
         const val CATEGORY = "CATEGORY"
         const val POLICY_FILTER_RESET_NAME = "com.fork.spoonfeed.presentation.ui.policylist"
         const val POLICY_FILTER_RESET_VALUE = "RESET"

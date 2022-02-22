@@ -3,11 +3,20 @@ package com.fork.spoonfeed.presentation.ui.policylist.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
+import com.fork.spoonfeed.domain.repository.PolicyRepository
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class PolicyListViewModel : ViewModel() {
+@HiltViewModel
+class PolicyListViewModel @Inject constructor(
+    private val policyRepository: PolicyRepository
+) : ViewModel() {
 
-
-    private val _isFilterClicked = MutableLiveData<Boolean>(false)
+    private val _isFilterClicked = MutableLiveData(false)
     val isFilterClicked: LiveData<Boolean>
         get() = _isFilterClicked
 
@@ -15,30 +24,22 @@ class PolicyListViewModel : ViewModel() {
     val isReWriteClicked: LiveData<Boolean>
         get() = _isReWriteClicked
 
-    private val _selectedFileter = MutableLiveData(NOTHING)
-    val selectedFileter: LiveData<String>
-        get() = _selectedFileter
+    private val _selectedFilter = MutableLiveData(ALL)
+    val selectedFilter: LiveData<String>
+        get() = _selectedFilter
 
-    var initSelectedFilter = ALL
+    private val _policyFilteredResult = MutableLiveData<List<ResponsePolicyAllData.Data.Policy>>()
+    val policyFilteredResult: LiveData<List<ResponsePolicyAllData.Data.Policy>> = _policyFilteredResult
 
-    fun allSelected() {
-        _selectedFileter.value = ALL
-    }
-
-    fun dwellingSelected() {
-        _selectedFileter.value = DWELLING
-    }
-
-    fun financeSelected() {
-        _selectedFileter.value = FINANCE
-    }
-
-    fun nothingSelected() {
-        _selectedFileter.value = NOTHING
+    fun setCategorySelected(category: String){
+        _selectedFilter.value = category
     }
 
     fun applyFilter() {
-
+        val filter = _selectedFilter.value ?: return
+        viewModelScope.launch {
+            _policyFilteredResult.value = policyRepository.getPolicyAll(filter).data.policy
+        }
     }
 
     fun filterOnClick() {
@@ -56,13 +57,5 @@ class PolicyListViewModel : ViewModel() {
 
     fun reWriteOnClickFalse() {
         _isReWriteClicked.value = false
-    }
-
-
-    companion object {
-        const val NOTHING = "NOTHING"
-        const val ALL = "ALL"
-        const val DWELLING = "DWELLING"
-        const val FINANCE = "FINANCE"
     }
 }

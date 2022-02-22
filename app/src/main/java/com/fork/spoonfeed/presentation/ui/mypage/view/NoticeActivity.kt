@@ -8,7 +8,6 @@ import com.fork.spoonfeed.databinding.ActivityNoticeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.NoticeAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.NoticeResponseData
-import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListResponseData
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 
 class NoticeActivity : BaseViewUtil.BaseAppCompatActivity<ActivityNoticeBinding>(R.layout.activity_notice) {

@@ -3,7 +3,9 @@ package com.fork.spoonfeed.presentation.ui.community.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.FINANCE
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
+import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.DWELLING
 
 class CommunityViewModel : ViewModel() {
 
@@ -12,26 +14,22 @@ class CommunityViewModel : ViewModel() {
         get() = _isFilterClicked
 
 
-    private val _selectedFileter = MutableLiveData(PolicyListViewModel.NOTHING)
-    val selectedFileter: LiveData<String>
-        get() = _selectedFileter
+    private val _selectedFilter = MutableLiveData(ALL)
+    val selectedFilter: LiveData<String>
+        get() = _selectedFilter
 
-    var initSelectedFilter = PolicyListViewModel.ALL
+    var initSelectedFilter = ALL
 
     fun allSelected() {
-        _selectedFileter.value = PolicyListViewModel.ALL
+        _selectedFilter.value = ALL
     }
 
     fun dwellingSelected() {
-        _selectedFileter.value = PolicyListViewModel.DWELLING
+        _selectedFilter.value = DWELLING
     }
 
     fun financeSelected() {
-        _selectedFileter.value = PolicyListViewModel.FINANCE
-    }
-
-    fun nothingSelected() {
-        _selectedFileter.value = PolicyListViewModel.NOTHING
+        _selectedFilter.value = FINANCE
     }
 
     fun filterOnClick() {
