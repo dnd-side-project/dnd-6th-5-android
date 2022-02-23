@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/policy_filter_horizontal_margin_24"
+        android:paddingVertical="16dp">
+
+        <TextView
+            android:id="@+id/tv_item_user_name"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/community_user_name"
+            android:textColor="@color/gray04"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_item_dot"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="·"
+            android:textColor="@color/gray04"
+            app:layout_constraintStart_toEndOf="@id/tv_item_user_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_item_user_name" />
+
+        <TextView
+            android:id="@+id/tv_item_deadline"
+            style="@style/TextView.Label.Regular.12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/community_policy_deadline"
+            android:textColor="@color/gray04"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_user_name"
+            app:layout_constraintStart_toEndOf="@id/tv_item_dot"
+            app:layout_constraintTop_toTopOf="@id/tv_item_user_name" />
+
+        <ImageView
+            android:id="@+id/iv_item_edit"
+            android:layout_width="20dp"
+            android:paddingVertical="5dp"
+            android:layout_height="20dp"
+            android:backgroundTint="@color/gray06"
+            android:src="@drawable/ic_edit"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_user_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_item_user_name" />
+
+        <TextView
+            android:id="@+id/tv_item_explain"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/community_policy_explain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_item_user_name" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -2,36 +2,57 @@
 <resources>
 
     <!--  Heading TextView  -->
+    <style name="TextView.Heading.ExtraBold.12" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
+        <item name="fontFamily">@font/suit_extrabold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">20sp</item>
+    </style>
+
+    <style name="TextView.Heading.Bold.24" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="lineHeight">30sp</item>
+    </style>
+
     <style name="TextView.Heading.Bold.20" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_bold</item>
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">30sp</item>
     </style>
 
-    <style name="TextView.Heading.SemiBold.30" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+    <style name="TextView.Heading.SemiBold.20" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_semibold</item>
         <item name="android:textSize">20sp</item>
         <item name="lineHeight">30sp</item>
     </style>
 
     <style name="TextView.Heading.Bold.16" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24sp</item>
     </style>
 
     <style name="TextView.Heading.SemiBold.16" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_semibold</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24sp</item>
     </style>
 
-    <style name="TextView.Heading.Bold.14" parent="Widget.AppCompat.TextView">
+    <style name="TextView.Heading.SemiBold.12" parent="Widget.AppCompat.TextView">
         <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_semibold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="lineHeight">24sp</item>
+    </style>
+
+    <style name="TextView.Heading.Bold.14" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_bold</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">21sp</item>
@@ -39,35 +60,42 @@
 
     <!--  Label TextView  -->
     <style name="TextView.Label.Bold.16" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_bold</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24sp</item>
     </style>
 
     <style name="TextView.Label.Regular.16" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_regular</item>
         <item name="android:textSize">16sp</item>
         <item name="lineHeight">24sp</item>
     </style>
 
     <style name="TextView.Label.Medium.14" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_medium</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">21sp</item>
     </style>
 
-    <style name="TextView.Label.Regular.14" parent="Widget.AppCompat.TextView">
+    <style name="TextView.Label.Medium.16" parent="Widget.AppCompat.TextView">
         <item name="color">@color/gray06</item>
+        <item name="fontFamily">@font/suit_medium</item>
+        <item name="android:textSize">16sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <style name="TextView.Label.Regular.14" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">21sp</item>
     </style>
 
     <style name="TextView.Label.Regular.12" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_regular</item>
         <item name="android:textSize">12sp</item>
         <item name="lineHeight">18sp</item>
@@ -75,9 +103,103 @@
 
     <!--  Paragraph TextView  -->
     <style name="TextView.Paragraph.Regular.14" parent="Widget.AppCompat.TextView">
-        <item name="color">@color/gray06</item>
+        <item name="android:textColor">@color/gray06</item>
         <item name="fontFamily">@font/suit_regular</item>
         <item name="android:textSize">14sp</item>
         <item name="lineHeight">21sp</item>
+    </style>
+
+    <!--  Shortcut TextView  -->
+    <style name="TextView.Shortcut.Regular.14" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/gray06</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+    </style>
+
+    <!--  Material Button  -->
+    <style name="MaterialButton.Bold.16" parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="lineHeight">24sp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">14dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+    </style>
+
+    <style name="MaterialButton.Outline.Medium.14" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="fontFamily">@font/suit_medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textColor">@color/gray04</item>
+        <item name="strokeColor">@color/gray02</item>
+    </style>
+
+    <!--  Chip Button  -->
+    <style name="Chip.Regular.14" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/selector_chip_background_color</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/selector_chip_text_color</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipStrokeColor">@color/selector_chip_stroke_tint</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="chipEndPadding">0dp</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="textEndPadding">24dp</item>
+        <item name="textStartPadding">24dp</item>
+    </style>
+
+    <style name="Chip.Regular.14.Disabled" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">@color/gray01</item>
+        <item name="fontFamily">@font/suit_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="lineHeight">21sp</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="android:textColor">@color/selector_chip_text_color_disabled</item>
+        <item name="chipCornerRadius">20dp</item>
+        <item name="chipStrokeColor">@color/selector_chip_stroke_tint_disabled</item>
+        <item name="ensureMinTouchTargetSize">false</item>
+        <item name="chipEndPadding">0dp</item>
+        <item name="chipStartPadding">0dp</item>
+        <item name="textEndPadding">24dp</item>
+        <item name="textStartPadding">24dp</item>
+    </style>
+
+    <!--  BottomDialog  -->
+    <style name="BottomDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <!--  TabLayout  -->
+    <style name="TabLayout">
+        <item name="tabIndicatorColor">@color/gray06</item>
+        <item name="tabIndicatorHeight">2dp</item>
+        <item name="tabTextAppearance">@style/TextView.Heading.Bold.14</item>
+        <item name="tabSelectedTextColor">@color/gray06</item>
+        <item name="tabTextColor">@color/gray04</item>
+        <item name="tabMode">fixed</item>
+        <item name="tabGravity">fill</item>
+    </style>
+
+    <!--  Oss License  -->
+    <style name="LicenseTheme" parent="Theme.MaterialComponents.Light">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/primary_blue</item>
+        <item name="colorSecondary">@color/secondary_lightblue</item>
+        <item name="fontFamily">@font/suit_bold</item>
+        <item name="android:statusBarColor" >@color/white</item>
     </style>
 </resources>

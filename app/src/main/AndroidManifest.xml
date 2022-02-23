@@ -11,7 +11,67 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SpoonFeed">
+        android:theme="@style/Theme.SpoonFeed"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
+            android:theme="@style/LicenseTheme" />
+        <activity
+            android:name=".presentation.ui.communitypost.view.CommunityPostActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".presentation.ui.communitypost.view.CommunityPostInfoUpdateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.communitypost.view.CommunityPostCreateActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.SecessionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.QuestionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.NoticeDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.mypage.view.NoticeActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.MyPostManagementActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.MyPageMyInfoActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.community.view.SearchInputActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policylist.view.ApplyExplainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policylist.view.ApplyQualificationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policy.view.filter.tooltip.NetWorthTooltipActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.policy.view.filter.tooltip.MedianIncomeTooltipActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.policy.view.filter.PolicyFilterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.mypage.view.InterestedPolicyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.policylist.view.PolicyListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.policylist.view.DetailInfoActivity"
+            android:exported="false" />
+
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
@@ -27,7 +87,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.ui.login.KakaoLogInActivity"
+            android:name=".presentation.MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.onboarding.view.signup.SignupActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.ui.onboarding.view.OnboardingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".presentation.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,9 +104,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".presentation.MainActivity"
-            android:exported="true"></activity>
     </application>
 
 </manifest>

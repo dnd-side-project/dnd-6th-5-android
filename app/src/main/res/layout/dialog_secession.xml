@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius_20dp"
+        android:paddingHorizontal="34dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_secession_dialog_title"
+            style="@style/TextView.Heading.Bold.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:text="@string/dialog_secession_title"
+            android:textColor="@color/gray06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/tv_secession_dialog_cancel"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/selector_rewrite"
+            android:fontFamily="@font/suit_bold"
+            android:includeFontPadding="false"
+            android:text="@string/dialog_secession_cancle"
+            android:textColor="@color/gray03"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/tv_secession_dialog_confirm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_secession_dialog_title" />
+
+        <Button
+            android:id="@+id/tv_secession_dialog_confirm"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/selector_rewrite"
+            android:fontFamily="@font/suit_bold"
+            android:includeFontPadding="false"
+            android:text="@string/dialog_secession_confirm"
+            android:textColor="@color/primary_blue"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_secession_dialog_cancel"
+            app:layout_constraintTop_toBottomOf="@id/tv_secession_dialog_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

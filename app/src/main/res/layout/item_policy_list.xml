@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_item"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:background="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/iv_item_like"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_item_category"
+                style="@style/TextView.Label.Regular.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dwelling_blue_radius_4dp"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="4dp"
+                android:text="@string/item_policylist_category"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_item_policy_title"
+                style="@style/TextView.Label.Medium.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/policylist_title"
+                android:textColor="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
+                app:layout_constraintStart_toEndOf="@+id/tv_item_category"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_category" />
+
+            <TextView
+                android:id="@+id/tv_item_policy_sentence"
+                style="@style/TextView.Label.Regular.14"
+                android:layout_width="214dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="@string/item_policylist_sentence"
+                android:textColor="@color/gray04"
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="@id/tv_item_policy_title"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_policy_title" />
+
+
+            <TextView
+                android:id="@+id/tv_item_deadline_title"
+                style="@style/TextView.Heading.SemiBold.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="@string/item_policylist_deadline_title"
+                app:layout_constraintStart_toStartOf="@id/tv_item_policy_sentence"
+                app:layout_constraintTop_toBottomOf="@id/tv_item_policy_sentence" />
+
+            <TextView
+                android:id="@+id/tv_item_deadline"
+                style="@style/TextView.Label.Regular.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="@string/item_policylist_deadline"
+                android:maxLines="1"
+                app:layout_constraintStart_toEndOf="@id/tv_item_deadline_title"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_deadline_title"
+                tools:layout_editor_absoluteX="82dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/div_policy_list_item_gray02_1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_item_like"
+            app:layout_constraintStart_toStartOf="@+id/ctl_item"
+            app:layout_constraintTop_toBottomOf="@id/ctl_item" />
+
+        <CheckedTextView
+            android:id="@+id/iv_item_like"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="5dp"
+            android:checkMark="@drawable/selector_like_24"
+            android:checked="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="34dp" />
+
+        <TextView
+            android:id="@+id/tv_item_like_count"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="24"
+            app:layout_constraintEnd_toEndOf="@id/iv_item_like"
+            app:layout_constraintStart_toStartOf="@id/iv_item_like"
+            app:layout_constraintTop_toBottomOf="@id/iv_item_like" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

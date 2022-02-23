@@ -2,4 +2,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <dimen name="design_bottom_navigation_text_size" tools:override="true">10sp</dimen>
     <dimen name="design_bottom_navigation_active_text_size" tools:override="true">10sp</dimen>
+
+    <!--  Policy Filter  -->
+    <dimen name="policy_filter_level_size">24dp</dimen>
+    <dimen name="policy_filter_level_top_margin">51dp</dimen>
+    <dimen name="policy_filter_horizontal_margin_24">24dp</dimen>
+    <dimen name="policy_filter_title_top_margin">8dp</dimen>
+    <dimen name="policy_filter_form_top_margin">64dp</dimen>
+    <dimen name="policy_filter_edittext_padding">16dp</dimen>
+    <dimen name="policy_filter_edittext_height">48dp</dimen>
+    <dimen name="policy_filter_edittext_suffix_end_margin">16dp</dimen>
+    <dimen name="policy_filter_decorator_height">16dp</dimen>
+    <dimen name="policy_filter_decorator_margin">40dp</dimen>
+    <dimen name="policy_filter_horizontal_margin_20">20dp</dimen>
+    <dimen name="policy_filter_chip_group_horizontal_spacing">8dp</dimen>
+    <dimen name="policy_filter_chip_group_vertical_spacing">16dp</dimen>
+    <dimen name="policy_filter_chip_height">40dp</dimen>
+    <dimen name="policy_filter_next_btn_height">56dp</dimen>
+    <dimen name="policy_filter_bottom_content_top_margin">104dp</dimen>
+    <dimen name="policy_filter_bottom_content_bottom_margin">16dp</dimen>
+    <dimen name="policy_filter_tooltip_padding">3.75dp</dimen>
+
+    <!--  Signup  -->
+    <dimen name="signup_terms_condition_check_box_size">18dp</dimen>
+    <dimen name="signup_terms_condition_chevron_width">7.12dp</dimen>
+    <dimen name="signup_terms_condition_chevron_height">12.5dp</dimen>
+    <dimen name="signup_terms_condition_chevron_margin_end">30.25dp</dimen>
 </resources>

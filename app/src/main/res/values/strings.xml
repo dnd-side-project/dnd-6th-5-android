@@ -5,17 +5,353 @@
     <string name="bottom_policy">맞춤정책</string>
     <string name="bottom_community">커뮤니티</string>
     <string name="bottom_mypage">마이페이지</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <!--home-->
-    <string name="home_customized_policy_title">맞춤 정책</string>
-    <string name="home_customized_policy_explain">나에게 딱 맞는 맞춤 정책을\n찾아보세요</string>
+    <!--  Toolbar Title  -->
+    <string name="title_policy">맞춤 정책</string>
+
+    <!--  Policy Main -->
+    <string name="policy_subtitle">Spoon Feed 스푼피드에서\n 내게 맞는 정책을 찾아보세요!</string>
+    <string name="policy_description">떠먹여주는 맞춤 정책 정보 Spoon Feed 스푼 피드는\n모르고 쉽게 지나칠 수 있는 많은 정책 정보를 개인 맞춤 필터를 적용해 한눈에 보기 쉽도록 만들었어요.\n\n온라인 청년센터에 제공되는 공식 정보를 참고하여 제작했으며, 자세한 내용은 온라인 청년센터 홈페이지에서\n확인이 가능합니다!</string>
+    <string name="policy_youth_center_shortcut"><u>온라인 청년센터 바로가기</u></string>
+    <string name="policy_find_fit_policy">맞춤 정책 찾기</string>
+
+    <!--  Policy Filter Progress -->
+    <string name="policy_filter_title">맞춤 정책 찾기</string>
+    <string name="policy_filter_progress_one">1/3</string>
+    <string name="policy_filter_progress_two">2/3</string>
+    <string name="policy_filter_progress_three">3/3</string>
+
+    <!--  Policy Filter  -->
+    <string name="policy_filter_next">다음</string>
+    <string name="policy_filter_save">지금까지 입력한 정보를 저장해서 다음에도 불러옵니다.</string>
+    <string name="policy_filter_finish">맞춤 정책 확인하기</string>
+
+    <string name="policy_filter_level_one">1</string>
+    <string name="policy_filter_level_one_title">내게 맞는 정책을 찾기 위해\n기본 정보를 알려주세요</string>
+    <string name="policy_filter_level_one_subtitle">정부 정책은 주로 만 나이 기준으로 제공되기 때문에 생년월일 정보가 필요하며, 혼인 여부에 따라 맞는 정책이 다를 수 있습니다.</string>
+    <string name="policy_filter_level_one_age">나이</string>
+    <string name="policy_filter_level_one_age_year_hint">YYYY</string>
+    <string name="policy_filter_level_one_age_year">년</string>
+    <string name="policy_filter_level_one_age_month_hint">MM</string>
+    <string name="policy_filter_level_one_age_month">월</string>
+    <string name="policy_filter_level_one_age_day_hint">DD</string>
+    <string name="policy_filter_level_one_age_day">일</string>
+    <string name="policy_filter_level_one_marriage">혼인여부</string>
+    <string name="policy_filter_level_one_marriage_true">기혼</string>
+    <string name="policy_filter_level_one_marriage_false">미혼</string>
+
+    <string name="policy_filter_level_two">2</string>
+    <string name="policy_filter_level_two_title">내게 맞는 정책을 찾기 위해\n재직 정보를 알려주세요</string>
+    <string name="policy_filter_level_two_subtitle">재직 여부 및 회사 규모에 따라 지원하는 정책이 달라지기 때문에 정보에 맞춰 정책 정보를 제공해드립니다.</string>
+    <string name="policy_filter_level_two_employment_availability">재직여부</string>
+    <string name="policy_filter_level_two_employment_incumbent">재직자</string>
+    <string name="policy_filter_level_two_unemployed">미취업자</string>
+    <string name="policy_filter_level_two_company_size">회사규모</string>
+    <string name="policy_filter_level_two_company_small">중소기업</string>
+    <string name="policy_filter_level_two_company_mid">중견기업</string>
+    <string name="policy_filter_level_two_company_self">자영업자</string>
+    <string name="policy_filter_level_two_company_founder">(예비)창업자</string>
+    <string name="policy_filter_level_two_company_nothing">해당없음</string>
+
+    <string name="policy_filter_level_three">3</string>
+    <string name="policy_filter_level_three_title">더 적합한 정책을 찾기 위해\n추가 정보를 입력해주세요</string>
+    <string name="policy_filter_level_three_subtitle">중위소득, 연소득, 순자산, 세대주 및 주택 소유 여부에\n따라 지원하는 정책이 달라집니다.</string>
+    <string name="policy_filter_level_three_median_income">중위소득</string>
+    <string name="policy_filter_level_three_median_income_tooltip"><u>중위소득 알아보기</u></string>
+    <string name="policy_filter_level_three_median_income_under_30">30%이하</string>
+    <string name="policy_filter_level_three_median_income_under_40">40%이하</string>
+    <string name="policy_filter_level_three_median_income_under_45">45%이하</string>
+    <string name="policy_filter_level_three_median_income_under_50">50%이하</string>
+    <string name="policy_filter_level_three_median_income_under_100">100%이하</string>
+    <string name="policy_filter_level_three_median_income_nothing">해당없음</string>
+    <string name="policy_filter_level_three_median_income_private">미공개</string>
+    <string name="policy_filter_level_three_median_income_under_72">72%이하</string>
+    <string name="policy_filter_level_three_annual_income">연소득</string>
+    <string name="policy_filter_level_three_annual_income_couple_under_2">부부합산 2천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_couple_under_5">부부합산 5천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_single_under_3">외벌이 3천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_single_under_3_5">외벌이 3.5천만원 이하</string>
+    <string name="policy_filter_level_three_annual_income_nothing">해당없음</string>
+    <string name="policy_filter_level_three_annual_income_private">미공개</string>
+    <string name="policy_filter_level_three_net_worth">순자산</string>
+    <string name="policy_filter_level_three_net_worth_tooltip"><u>순자산 알아보기</u></string>
+    <string name="policy_filter_level_three_net_worth_under_2_92">2.92억원 이하</string>
+    <string name="policy_filter_level_three_net_worth_over_2_92">2.92억원 초과</string>
+    <string name="policy_filter_level_three_net_worth_private">미공개</string>
+    <string name="policy_filter_level_three_house_holder_status_owner">예비 세대주 또는 세대주</string>
+    <string name="policy_filter_level_three_house_holder_status_member">세대구성원</string>
+    <string name="policy_filter_level_three_house_holder_status_private">미공개</string>
+    <string name="policy_filter_level_three_home_ownership_homeless">무주택자</string>
+    <string name="policy_filter_level_three_home_ownership_owner">유주택자</string>
+    <string name="policy_filter_level_three_home_ownership_private">미공개</string>
+    <string name="policy_filter_level_three_house_holder_status">세대주 여부</string>
+    <string name="policy_filter_level_three_home_ownership">주택소유 여부</string>
+
+    <!--  Median Income Tooltip  -->
+    <string name="median_income_tooltip_title">중위소득 알아보기</string>
+    <string name="median_income_tooltip_subtitle">‘중위소득’은 어떻게\n알 수 있나요?</string>
+    <string name="median_income_tooltip_description">기준 중위소득은 모든 가구의 소득을 순서대로 세웠을 때, 정확히 중간 지점에 있는 가구의 소득을 의미합니다.\n\n통계청의 자료를 바탕으로 보건복지부에서 매년 8월마다 공표하며, 중위소득에 따라 생계 ‧ 의료급여를 선정하고, 최저보장수준을 정합니다.\n\n예를 들어 30%이하는 기준 중위소득에 비해 30%만큼 적은 소득을 뜻합니다. 정확한 금액은 오른쪽 하단 버튼을\n눌러 확인해주세요.</string>
+    <string name="median_income_tooltip_ref">* 2022년 중위소득 : 보건복지부 고시 제2021–21호 참조</string>
+    <string name="median_income_tooltip_close">닫기</string>
+    <string name="median_income_tooltip_shortcut">중위소득 확인하기</string>
+
+    <!--  Net Worth Tooltip  -->
+    <string name="net_worth_tooltip_title">순자산 알아보기</string>
+    <string name="net_worth_tooltip_subtitle">‘순자산’은 어떻게\n알 수 있나요?</string>
+    <string name="net_worth_tooltip_description">순자산이란 자산 총액에서 부채를 뺀 나머지 금액입니다.\n주로 재무 현황을 알기 위해 파악하며 ‘현재\' 중심으로 계산합니다.\n\n예를 들면, 예적금 및 현금, 소유 재산, 투자 차익, 전세 보증금, 자동차 보유 자산 가치 등을 모두 더한 자산합계에서m학자금 대출, 신용카드 할부 잔액, 전세 대출 잔액 등 모든 부채를 뺀 금액입니다.\n\n순자산 = (자산합계-부채합계)</string>
+    <string name="net_worth_tooltip_close">닫기</string>
+    <string name="net_worth_tooltip_shortcut">순자산 알아보기</string>
+
+    <!--  Home  -->
+    <string name="home_customized_policy_title">맞춤정책</string>
+    <string name="home_customized_policy_explain">나에게 딱 맞는 맞춤 정책을\n스푼피드에서 찾아보세요!</string>
     <string name="home_policy_search_title">청년정책 살펴보기</string>
     <string name="home_policy_search_explain">어떤 청년정책이 진행되고 있는지 살펴보세요</string>
-    <string name="home_policy_search_all">전체</string>
-    <string name="home_policy_search_dwelling">주거</string>
-    <string name="home_policy_search_finance">금융</string>
-    <string name="home_interested_policy_title">관심있는 정책</string>
-    <string name="home_interested_policy_explain">관심있는 정책을 모아 바로 확인하세요</string>
-    <string name="home_not_interested_policy_explain">아직 관심있는 정책이 없어요</string>
+    <string name="home_all">전체</string>
+    <string name="home_dwelling">주거</string>
+    <string name="home_finance">금융</string>
+    <string name="home_agency">국토교통부</string>
+    <string name="home_policy_category">주거</string>
+    <string name="home_policy_title">청년전용 버팀목 전세자금대출 정부정책</string>
+    <string name="home_interasted_policy_title">관심있는 정책</string>
+    <string name="home_interasted_policy_explain">관심있는 정책을 모아 바로 확인하세요</string>
+    <string name="home_no_interasted_policy_explain">아직 관심있는 정책이 없어요</string>
+    <string name="spoon_feed_notice_title">&lt;스푼피드에서 알려드립니다&gt;</string>
+    <string name="spoon_feed_notice_explain">스푼피드에서 제공하는 정책 정보는 온라인 청년 센터의 자료를 기반으로\n업데이트됩니다.
+        개인이 취합한 내용으로 공식적인 근거 자료로 활용될 수\n &#160; &#160; &#160;  &#160; &#160;&#160; &#160;없습니다.
+        해당 앱에서 제공하는 내용의 사용에 대한 책임은\n &#160; &#160; &#160; &#160; &#160; &#160;  &#160; &#160; &#160;&#160; &#160; &#160; &#160; &#160; &#160;
+        전적으로 사용사에게 있음을 알립니다.</string>
+
+    <!--  PolicyList  -->
+    <string name="policylist_title">맞춤 정책 리스트</string>
+    <string name="policylist_rewrite">다시 입력하기</string>
+    <string name="policylist_all">전체</string>
+
+    <!--  Item Policylist  -->
+    <string name="item_policylist_category">주거</string>
+    <string name="item_policylist_title">청년 우대 청약통장</string>
+    <string name="item_policylist_sentence">저소즉 무주택자 청년의 주택자금</string>
+    <string name="item_policylist_deadline_title">기한</string>
+    <string name="item_policylist_deadline">2022.03.01 - 2022.12.31</string>
+
+    <!--  Bottom Dialog Filter  -->
+    <string name="bottom_dialog_filter_sort">정렬</string>
+    <string name="bottom_dialog_filter_all">전체</string>
+    <string name="bottom_dialog_filter_dwelling">주거</string>
+    <string name="bottom_dialog_filter_finance">금융</string>
+
+    <!--  Dialog Rewrite  -->
+    <string name="dialog_rewrite_title">정보를 다시 입력하시겠어요?"</string>
+    <string name="dialog_rewrite_explain">이전에 입력한 정보들은\n &#160; 모두 초기화 됩니다.</string>
+    <string name="dialog_rewrite_cancle">취소</string>
+    <string name="dialog_rewrite_confirm">확인</string>
+
+    <!--  Detail Info  -->
+    <string name="detail_info_title">정책 상세정보</string>
+    <string name="detail_info_category">주거</string>
+    <string name="detail_info_policy_title">청년 우대형 청약통장</string>
+    <string name="detail_info_policy_num_text">정책번호</string>
+    <string name="detail_info_num">R12345678988</string>
+
+    <string name="detail_info_policy_summary">정책 요약</string>
+    <string name="detail_info_policy_name">정책이름</string>
+    <string name="detail_info_policy_name_sentence">청년우대형 청약통장</string>
+    <string name="detail_info_policy_category">정책유형</string>
+    <string name="detail_info_policy_category_sentence">주거지원</string>
+    <string name="detail_info_policy_explain">지원내용</string>
+    <string name="detail_info_policy_explain_sentence">저소득 무주택 청년의 주택구매 및 임차자금 마련 지원을 위해 재형 기능을 강화한 청약통장</string>
+    <string name="detail_info_agency">주관기관</string>
+    <string name="detail_info_agency_sentence">국토교통부</string>
+    <string name="detail_info_application_period">신청기간</string>
+    <string name="detail_info_application_period_sentence">2022.03.01~2022.12.31(연중상시)</string>
+    <string name="detail_info_selection_announcement">선정발표</string>
+    <string name="detail_info_selection_announcement_sentence">신청한 은행에서 별도 안내</string>
+    <string name="detail_info_duration">진행기간</string>
+    <string name="detail_info_duration_sentence">-</string>
+
+    <string name="detail_info_apply_qualifications">신청 자격</string>
+    <string name="detail_info_age">연령</string>
+    <string name="detail_info_age_sentence">만19세 ~ 만 34세 이하</string>
+    <string name="detail_info_residence_and_income">거주지 및\n 소득</string>
+    <string name="detail_info_residence_and_income_sentence">만 19세 이상 만34세 이하\n - (병역증명서에 의한 병역 이행기간이증명되는 경우 현재 연령에서 병역 이행 기간(최대6년)을
+        빼고 계산한 연령이 만34세 이하인 사람 포함)\n- 직전년도 신고소득이 있는 자로 연소득 3천만원 이하(근로.사업.기타소득자에 한함)(근로기간 1년 미만으로 직전년도 신고소득이 없는 근로소득자에 한해 당해 급여명세표 등으로 연소득 환산 후 가입 가능하고맥스라인 테스테스테테스트테스트세트세테스트텥슷트트를 위한 텍스트)</string>
+    <string name="detail_info_specialization_field">특화 분야</string>
+
+    <string name="detail_info_apply_explain">지원 내용</string>
+    <string name="detail_info_apply_explain_sentence">- 납입원금 5,000만원 한도 내에서 신규가입일로부터 2년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기간에 한하여기존 주택청약종합저축, 이율에 우대이율(1.5퍼센트포인트)을 더한 이율을 적용</string>
+    <string name="detail_info_note">참고 사항</string>
+    <string name="detail_info_note_sentence">- 납입원금 5,000만원 한도 내에서 신규가입일로부터 2년 이상인 경우 가입일로부터 10년 이내에서 무주택인 기간에 한하여 기존 주택청약종합저축, 이율에 우대이율(1.5퍼센트포인트)을 더한 이율을 적용</string>
+    <string name="detail_info_restriction_subject">제한 대상</string>
+    <string name="detail_info_restriction_subject_sentence">제한없음</string>
+    <string name="detail_info_apply_support_scale">지원 규모</string>
+    <string name="detail_info_apply_support_scale_sentence">-</string>
+
+    <string name="detail_info_apply_way">신청 방법</string>
+    <string name="detail_info_apply_procedure">신청 절차</string>
+    <string name="detail_info_apply_procedure_sentence">주택도시기금 수탁은행(우리,국민,신한,농협,기업,하나,대구,부산,경남은행)에서 신청가능</string>
+    <string name="detail_info_apply_site">신청 사이트</string>
+    <string name="detail_info_apply_site_sentence">주택도시기금</string>
+    <string name="detail_info_submit_document">제출 서류</string>
+    <string name="detail_info_submit_document_sentence">소득증빙:소득확인증명서(청년우대형주택청약종합저축 가입 및 과세특례 신청용)
+    병적증명서:해당하는자각서(양식제공)(비과세신청시)비과세 신청자용 각서 및 정보제공 동의서(양식제공)</string>
+
+    <string name="detail_info_etc">기타</string>
+    <string name="detail_info_etc_sentence">변동금리로서 정부 고시에 의하여 변경될수 있으며, 이율이 변경되는 경우 변경일기준으로 기존 가입고객 포함하여 변경</string>
+    <string name="detail_info_etc_agency">주관기관</string>
+    <string name="detail_info_etc_agency_sentence">국토교통부 주택기금과</string>
+    <string name="detail_info_operating_agency">운영기관</string>
+    <string name="detail_info_operating_agency_sentence">주택도기보증공사 기금기획실</string>
+    <string name="detail_info_reference_site_one">참고사이트 1</string>
+    <string name="detail_info_reference_site_one_sentence">청년우대청약통장 | 정부서비스</string>
+    <string name="detail_info_reference_site_two">참고사이트 2</string>
+    <string name="detail_info_reference_site_two_sentence">주택도시보증공사 기금기획실</string>
+    <string name="detail_info_check_custom_policy">맞춤 정책 확인하기</string>
+
+    <!--  Apply Qualification  -->
+    <string name="apply_qualification_residence_and_income">거주지 및 소득</string>
+    <string name="apply_qualification_residence_specialization_field">특화 분야</string>
+    <string name="apply_qualification_residence_specialization_field_sentence">저소득층, 무주택청년</string>
+
+    <!--  Dialog Policy List Search Done  -->
+    <string name="dialog_policy_list_search_done_title">맞춤 정책 찾기 완료!</string>
+    <string name="dialog_policy_list_search_done_explain">입력한 정보와 가장 관련있는\n 정책부터 확인해보세요.\n 스푼피드를 통해 다양한 청년 정책의\n 혜택을 받을 수 있길 바랄게요!</string>
+    <string name="dialog_policy_list_search_done_confirm">확인</string>
+
+    <!--  Onboarding  -->
+    <string name="onboarding_skip"><u>둘러보기</u></string>
+    <string name="onboarding_title">나에게 맞는 정책을\n스푼피드와 함께 찾아보세요:)</string>
+    <string name="onboarding_kakao_login">카카오로 시작하기</string>
+    <string name="onboarding_naver_login">네이버로 시작하기</string>
+
+    <!--  Signup  -->
+    <string name="signup_title">시작하기</string>
+    <string name="signup_next">다음</string>
+    <string name="signup_name_title">스푼피드에선\n어떤 이름을 쓸까요?</string>
+    <string name="signup_name_hint">닉네임을 입력해주세요</string>
+
+    <string name="signup_terms_condition_title">스푼피드 이용 약관 동의</string>
+    <string name="signup_terms_condition_subtitle">스푼피드에 오신 것을 환영합니다!\n이용을 위해 아래의 약관 동의가 필요합니다.</string>
+    <string name="signup_terms_condition_all_agree">모두 동의합니다.</string>
+    <string name="signup_terms_condition_digital_content">(필수) 디지털콘텐츠 이용 표준약관</string>
+    <string name="signup_terms_condition_user_protect">(필수) 콘텐츠 이용자 보호지침</string>
+    <string name="signup_terms_condition_personal_info">(필수) 개인정보 처리방침</string>
+
+    <string name="signup_finish_title">준비 완료!</string>
+    <string name="signup_finish_description">스푼피드와 함께 다양한\n청년 정책을 만나보세요!</string>
+    <string name="signup_finish_start_spoonfeed">스푼피드 시작하기</string>
+
+    <!--  Community  -->
+    <string name="community_policy_category">주거</string>
+    <string name="community_title">커뮤니티</string>
+    <string name="community_policy_title">청년전용 버팀목 전세자금</string>
+    <string name="community_policy_explain">이 헌법시행 당시의 법령과 조약은 이 헌법에 위배되지 아니하는 한 그 효력을 지속한다. 민주평화통일자문회의의 조직,직무범위 기타 필요한 사항은 법률로 정한다. 원장은 국회의 동의를 얻어 대통령이 임명하고 테스트를 위한 텍스트입니다.</string>
+    <string name="community_user_name">김별명</string>
+    <string name="community_policy_deadline">2021/01/21</string>
+    <string name="community_comment_count">7</string>
+
+    <!--  Search Input  -->
+    <string name="search_input_hint">정책을 검색하세요!</string>
+    <string name="search_input_category_all">전체</string>
+    <string name="search_input_category_dwelling">주거</string>
+    <string name="search_input_category_finance">금융</string>
+    <string name="search_input_no_result">관련된 글이 없어요</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--  Community Post  -->
+    <string name="community_post_create_title">커뮤니티 글쓰기</string>
+    <string name="community_post_create_category">카테고리 선택</string>
+    <string name="community_post_create_title_hint">글 제목(최대 22자)</string>
+    <string name="community_post_create_content_hint">커뮤니티 글을 올릴 때는 어떤 정책에 대한 것인지,\n어떤 상황인지 등 구체적으로 남겨주시면, 다른 분들도\n이해하고 도움을 주고 받기에 훨씬 편리할 거에요!\n\n-개인정보는 조심해주세요 :)\n-욕설/음란성/선정성 게시글 금지\n-홍보성 게시글 금지</string>
+    <string name="community_post_create_detail">상세정보</string>
+    <string name="community_post_create_detail_description">상세정보는 기존에 저장된 정보를 불러옵니다.\n추가 정보에 대한 공개를 설정해주세요.</string>
+    <string name="community_post_create_update_detail">상세정보 수정</string>
+    <string name="community_post_create">글쓰기</string>
+
+    <string name="community_post_info_update_title">상세정보 수정</string>
+    <string name="community_post_info_update_subtitle">스푼피드에서 알려드립니다!</string>
+    <string name="community_post_info_update_description">정보를 공유해주시면 비슷한 상황의 사용자들에게 도움이 됩니다. 기본 정보와 재직 정보는 변경할 수 없습니다.\n경험을 나누어주셔서 정말 감사합니다.\n커뮤니티에서 유익한 정보를 나눌 수 있기를 바랍니다. :)</string>
+    <string name="community_post_info_update_basic">기본 정보</string>
+    <string name="community_post_info_update_employ">재직 정보</string>
+    <string name="community_post_info_update_extra">추가 정보</string>
+    <string name="community_post_info_update_confirm">확인</string>
+
+    <string name="community_post_title">커뮤니티</string>
+    <string name="community_post_detail">상세정보</string>
+    <string name="community_post_detail_age">나이</string>
+    <string name="community_post_detail_marriage">혼인여부</string>
+    <string name="community_post_detail_employment">재직여부</string>
+    <string name="community_post_detail_company_size">회사규모</string>
+    <string name="community_post_detail_median_income">중위소득</string>
+    <string name="community_post_detail_annual_income">연소득</string>
+    <string name="community_post_detail_net_worth">순자산</string>
+    <string name="community_post_detail_house_holder">세대주여부</string>
+    <string name="community_post_detail_home_ownership">주택소유여부</string>
+    <string name="community_post_comment">댓글</string>
+    <string name="community_post_comment_hint">궁금한 점들을 물어보세요 :)</string>
+
+    <!--  MyInfoUpdate  -->
+    <string name="mypage_my_info_update_name">닉네임</string>
+    <string name="mypage_my_info_update_save">수정한 정보를 저장해서 필터링에도 불러옵니다.</string>
+    <string name="mypage_my_info_update_confirm">수정하기</string>
+
+    <!--  MyPostManagement  -->
+    <string name="mypostmanagement_title">내 글 관리</string>
+    <string name="mypostmanagement_tab_post">게시글</string>
+    <string name="mypostmanagement_tab_comment">댓글</string>
+    <string name="mypostmanagement_comment_sentence">후기 남깁니다 너무 좋았던 정책입니다. 일단 저는 직장인이고요</string>
+    <string name="mypostmanagement_comment_category">[내일채움공제 후기]</string>
+    <string name="mypostmanagement_comment_writed_date">2021/01/21</string>
+    <string name="mypostmanagement_comment_write">작성</string>
+    <string name="mypostmanagement_dot">·</string>
+
+    <!--  Interasted Policy  -->
+    <string name="interasted_policy_title">관심있는 정책</string>
+
+    <!--  Notice  -->
+    <string name="notice_title">공지사항</string>
+    <string name="notice_sentece_title">스푼피드에 오신 것을 환영합니다!</string>
+    <string name="notice_spoonfeed">스푼피드</string>
+    <string name="notice_writed_date">2021/1/21</string>
+    <string name="notice_sentence">스푼피드는 내게 맞는 정책을 좀 더 편리하게 찾을 수 있도록 만든 플랫폼입니다. 모르고 놓치는 정책들이 없도록 스푼피드가 함께 하겠습니다.\n\n앱을 사용하다 불편한 부분이나 개선이 필요한 점이 있으면 문의하기를 통해 남겨주세요. 참고하여 더 좋은 서비스로 만들겠습니다.\n\n스푼피드는 이제 막 첫걸음을 디딘 사회초년생들을 응원합니다!\n\n감사합니다 : )</string>
+
+    <!--  Question  -->
+    <string name="question_title">문의하기</string>
+    <string name="question_email_hint">답변받을 e-mail을 알려주세요</string>
+    <string name="question_sentence_hint">서비스를 이용하면서 불편하거나 아쉬웠던 점을 알려주세요\n 알려주신 피드백을 바탕으로 더 좋은 서비스를 제공하도록\n 노력하겠습니다 관심과 응원 감사합니다 :)</string>
+
+    <!-- Dialog Logout  -->
+    <string name="dialog_logout_title">로그아웃 하시겠어요?</string>
+    <string name="dialog_logout_cancle">취소</string>
+    <string name="dialog_logout_confirm">로그아웃</string>
+
+    <!--  Secession  -->
+    <string name="secession_title">탈퇴하기</string>
+    <string name="secession_sentence_title">탈퇴하기 전에 확인해주세요!</string>
+    <string name="secession_sentence_one">탈퇴하면 그 동안의 활동한 데이터들은 모두 삭제\n되어 복구할 수 없게 됩니다.</string>
+    <string name="secession_sentence_two">스푼피드는 맞춤 정책 정보를 제공하기위해 다양한\n컨텐츠를 지속적으로 업데이트 합니다.</string>
+    <string name="secession_sentence_three">사용하면서 불편했던 점이나 아쉬운 점이 있으면\n문의하기를 통해 의견을 남겨주세요.</string>
+
+    <!-- Dialog Secession  -->
+    <string name="dialog_secession_title">스푼피드를 또 찾아주세요!</string>
+    <string name="dialog_secession_cancle">취소</string>
+    <string name="dialog_secession_confirm">탈퇴하기</string>
+
+    <!--  Mypage  -->
+    <string name="mypage_title">마이페이지</string>
+    <string name="mypage_my_info">내 정보</string>
+    <string name="mypage_my_post">내 글 관리</string>
+    <string name="mypage_interested_policy">관심있는 정책</string>
+    <string name="mypage_notice">공지사항</string>
+    <string name="mypage_terms_condition">이용약관</string>
+    <string name="mypage_protect">보호 지침</string>
+    <string name="mypage_personal_info">이용약관</string>
+    <string name="mypage_open_source">오픈소스 라이센스</string>
+    <string name="mypage_question">문의하기</string>
+    <string name="mypage_logout">로그아웃</string>
+    <string name="mypage_secession">회원탈퇴</string>
+    <string name="oss_license_title">오픈소스 라이센스</string>
+
+    <!--  Dialog Comment  -->
+    <string name="dialog_comment_edit">수정하기</string>
+    <string name="dialog_comment_delete">삭제하기</string>
 </resources>

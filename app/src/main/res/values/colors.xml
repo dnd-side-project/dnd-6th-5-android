@@ -15,7 +15,10 @@
     <color name="gray04">#646F7C</color>
     <color name="gray05">#374553</color>
     <color name="gray06">#28323C</color>
+    <color name="comment_gray">#8D94A0</color>
     <color name="black">#111111</color>
-
+    <color name="dwelling_blue">#2CB8CB</color>
+    <color name="finance_purple">#9564FF</color>
+    <color name="delete_red">#FF5E5E</color>
 </resources>
 
