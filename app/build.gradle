@@ -5,10 +5,9 @@ plugins {
     id 'dagger.hilt.android.plugin'
     id 'com.google.android.gms.oss-licenses-plugin'
 }
-
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-
+def kakao_key_manifest = properties.getProperty("kakao_key_manifest")
 android {
     compileSdk 31
 
@@ -18,12 +17,12 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
-
+        manifestPlaceholders = [kakaoKey: kakao_key_manifest]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
         buildConfigField "String", "NAVER_CLIENT_ID", properties["naver_api_client_id"]
         buildConfigField "String", "NAVER_CLIENT_SECRET", properties["naver_api_client_secret"]
         buildConfigField "String", "NAVER_APP_NAME", properties["naver_api_app_name"]
+        buildConfigField "String", "KAKAO_NATIVE_KEY", properties["kakao_native_key"]
     }
 
     buildTypes {
@@ -86,6 +85,9 @@ dependencies {
 
     // Material Design 3
     implementation "com.google.android.material:material:$materialVersion"
+
+    //kakao
+    implementation "com.kakao.sdk:v2-user:$kakaoLogInVersion"
 
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$viewmodelVersion"

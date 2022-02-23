@@ -11,6 +11,8 @@ import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.onboarding.view.signup.SignupActivity
 import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
+import com.kakao.sdk.auth.model.OAuthToken
+import com.kakao.sdk.user.UserApiClient
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.log.NidLog
 import com.navercorp.nid.oauth.OAuthLoginCallback
@@ -38,14 +40,19 @@ class OnboardingActivity :
                 startSignupActivity()
             }
         })
+        loginViewModel.isKakaoLoginSuccess.observe(this, {
+            if (it) {
+                startSignupActivity()
+            }
+        })
     }
 
     private fun setClickListener() {
-        binding.mbOnboardingKakaoLogin.setOnClickListener {
-            startSignupActivity()
-        }
         binding.mbOnboardingNaverLogin.setOnClickListener {
             setNaverLogin()
+        }
+        binding.mbOnboardingKakaoLogin.setOnClickListener {
+            setKakaoLogin()
         }
         binding.tvOnboardingSkip.setOnClickListener {
             startActivity(Intent(baseContext, MainActivity::class.java))
@@ -81,6 +88,28 @@ class OnboardingActivity :
             }
         }
         NaverIdLoginSDK.authenticate(this, oauthLoginCallback)
+    }
+
+    private fun setKakaoLogin() {
+        val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
+            if (error != null) {
+                Log.e("kakao login error", "카카오 로그인 실패", error)
+            } else if (token != null) {
+                UserApiClient.instance.me { user, error ->
+                    val accessToken = token.accessToken
+                    val refreshToken = token.refreshToken
+
+                    loginViewModel.loginWithKakao(accessToken, refreshToken)
+                }
+            }
+        }
+
+        if (UserApiClient.instance.isKakaoTalkLoginAvailable(this@OnboardingActivity)) {
+            UserApiClient.instance.loginWithKakaoTalk(this@OnboardingActivity, callback = callback)
+
+        } else {
+            UserApiClient.instance.loginWithKakaoAccount(this@OnboardingActivity, callback = callback)
+        }
     }
 
     private fun startSignupActivity() {
