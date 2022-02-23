@@ -7,7 +7,7 @@ plugins {
 }
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def kakao_key_manifest = properties.getProperty('kakao_key_manifest')
+def kakao_key_manifest = properties.getProperty("kakao_key_manifest")
 android {
     compileSdk 31
 
@@ -17,7 +17,7 @@ android {
         targetSdk 30
         versionCode 1
         versionName "1.0"
-        buildConfigField "String", "KAKAO_NATIVE_KEY", properties['kakao_native_key']
+        buildConfigField "String", "KAKAO_NATIVE_KEY", properties["kakao_native_key"]
         manifestPlaceholders = [kakaoKey: kakao_key_manifest]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "NAVER_CLIENT_ID", properties["naver_api_client_id"]
