@@ -3,15 +3,16 @@ package com.fork.spoonfeed.presentation.ui.policylist.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
 import com.fork.spoonfeed.databinding.ActivityPolicyListBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelThreeFragment
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
 import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.FINANCE
@@ -46,6 +47,12 @@ class PolicyListActivity :
     }
 
     private fun setInitLayout() {
+        val userInfo = intent.getSerializableExtra(PolicyFilterLevelThreeFragment.USER_FILTER_INFO)
+                as RequestFilteredPolicy?
+        if (userInfo != null) {
+            policyListViewModel.setUserInfo(userInfo)
+        }
+
         val category = intent.getStringExtra(CATEGORY)
         if (category != null) {
             with(binding) {

@@ -6,7 +6,6 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.tooltip.NetWorthTooltipActivity
 import com.fork.spoonfeed.R
-import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
 import com.fork.spoonfeed.databinding.FragmentPolicyFilterLevelThreeBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.tooltip.MedianIncomeTooltipActivity
@@ -41,8 +40,7 @@ class PolicyFilterLevelThreeFragment :
     private fun setObserver() {
         viewModel.filteredData.observe(viewLifecycleOwner, {
             startActivity(Intent(context, PolicyListActivity::class.java).apply {
-                val arrayList = ArrayList<ResponseFilteredPolicy.Data.Post>(it)
-                putExtra(FILTERED_DATA_NAME, arrayList)
+                putExtra(USER_FILTER_INFO, viewModel.requestUserData)
             })
         })
     }
@@ -67,6 +65,6 @@ class PolicyFilterLevelThreeFragment :
     }
 
     companion object {
-        const val FILTERED_DATA_NAME = "com.fork.spoonfeed.presentation.ui.policy.view.filter"
+        const val USER_FILTER_INFO = "com.fork.spoonfeed.presentation.ui.policy.view.filter"
     }
 }

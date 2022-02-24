@@ -63,8 +63,10 @@ class PolicyFilterViewModel @Inject constructor(
     private val _isLevelThreeValid = MutableLiveData(false)
     val isLevelThreeValid: LiveData<Boolean> = _isLevelThreeValid
 
-    private val _filteredData = MutableLiveData<List<ResponseFilteredPolicy.Data.Post>>()
-    val filteredData: LiveData<List<ResponseFilteredPolicy.Data.Post>> = _filteredData
+    private val _filteredData = MutableLiveData<List<ResponseFilteredPolicy.Data.Policy>>()
+    val filteredData: LiveData<List<ResponseFilteredPolicy.Data.Policy>> = _filteredData
+
+    var requestUserData: RequestFilteredPolicy? = null
 
     fun setYear(year: Int?) {
         _age.value = _age.value?.copy(year = year)
@@ -148,6 +150,20 @@ class PolicyFilterViewModel @Inject constructor(
 
     fun updateUserInfo() {
         val saveData = _saveData.value ?: return
+        setRequestUserInfo()
+
+        viewModelScope.launch {
+            _filteredData.value = requestUserData?.let {
+                if (saveData) {
+                    policyRepository.updateUserInfoAndGetFilteredPolicy(it).data.policy
+                } else {
+                    policyRepository.getFilteredPolicy(it).data.policy
+                }
+            }
+        }
+    }
+
+    private fun setRequestUserInfo() {
         val age = _age.value?.formatAge() ?: return
         val maritalStatus = _marriageStatus.value?.let { if (it) "기혼" else "미혼" } ?: return
         val workStatus = _employmentAvailability.value?.let { if (it) "재직자" else "미취업자" } ?: return
@@ -158,7 +174,7 @@ class PolicyFilterViewModel @Inject constructor(
         val isHouseOwner = _houseHolderStatus.value?.value ?: return
         val hasHouse = _homeOwnership.value?.value ?: return
 
-        val userFilter = RequestFilteredPolicy(
+        requestUserData = RequestFilteredPolicy(
             id = UserData.id.toString(),
             age = age,
             maritalStatus = maritalStatus,
@@ -170,14 +186,6 @@ class PolicyFilterViewModel @Inject constructor(
             isHouseOwner = isHouseOwner,
             hasHouse = hasHouse
         )
-
-        viewModelScope.launch {
-            _filteredData.value = if (saveData) {
-                policyRepository.updateUserInfoAndGetFilteredPolicy(userFilter).data.post
-            } else {
-                policyRepository.getFilteredPolicy(userFilter).data.post
-            }
-        }
     }
 
     fun clearLevelThree() {
