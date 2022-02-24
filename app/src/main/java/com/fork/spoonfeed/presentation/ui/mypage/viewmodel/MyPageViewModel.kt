@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.domain.repository.AuthRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
@@ -38,6 +39,14 @@ class MyPageViewModel @Inject constructor(
     val isMyPostEmpty: LiveData<Boolean>
         get() = _isMyPostEmpty
 
+    private val _myCommentList = MutableLiveData<List<ResponseUserCommentData.Data.Comment>>()
+    val myCommentList: LiveData<List<ResponseUserCommentData.Data.Comment>> =
+        _myCommentList
+
+    private val _isMyCommentEmpty = MutableLiveData<Boolean>(true)
+    val isMyCommentEmpty: LiveData<Boolean>
+        get() = _isMyCommentEmpty
+
     fun postBtnEnable(isEnable: Boolean) {
         _isQuestionValid.value = isEnable
     }
@@ -51,6 +60,12 @@ class MyPageViewModel @Inject constructor(
     fun getMyPost() {
         viewModelScope.launch {
             _myPostList.value = userRepository.getUserPost(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.post
+        }
+    }
+
+    fun getMyComment() {
+        viewModelScope.launch {
+            _myCommentList.value = userRepository.getUserComment(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.comment
         }
     }
 }
