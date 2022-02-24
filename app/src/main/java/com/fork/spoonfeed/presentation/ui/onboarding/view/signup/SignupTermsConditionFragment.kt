@@ -31,6 +31,7 @@ class SignupTermsConditionFragment :
                     setNextBtn()
                 } else {
                     setAllUnChecked()
+                    setNextBtn()
                 }
             }
         }
