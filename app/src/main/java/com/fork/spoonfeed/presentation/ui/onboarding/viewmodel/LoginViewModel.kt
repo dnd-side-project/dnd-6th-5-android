@@ -33,12 +33,15 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             _isNaverLoginSuccess.value =
                 authRepository.loginWithNaver(accessToken, refreshToken).run {
-                    UserData.id = data.user.id
-                    UserData.refresh_token = data.user.token.refreshToken
-                    UserData.platform = "naver"
-                    UserData.access_token = accessToken
+                    val newAccessToken = first
+                    val responseBody = second
 
-                    success
+                    UserData.id = responseBody.data.user.id
+                    UserData.accessToken = newAccessToken
+                    UserData.refreshToken = responseBody.data.user.token.refreshToken
+                    UserData.platform = "naver"
+
+                    responseBody.success
                 }
         }
     }
@@ -48,8 +51,8 @@ class LoginViewModel @Inject constructor(
             _isKakaoLoginSuccess.value =
                 authRepository.loginWithKakao(accessToken, refreshToken).run {
                     UserData.id = data.user.id
-                    UserData.refresh_token = data.user.token.refreshToken
-                    UserData.access_token = accessToken
+                    UserData.refreshToken = data.user.token.refreshToken
+                    UserData.accessToken = accessToken
                     UserData.platform = "kakao"
 
                     success

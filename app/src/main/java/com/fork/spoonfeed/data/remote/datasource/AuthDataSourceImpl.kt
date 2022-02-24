@@ -9,8 +9,9 @@ class AuthDataSourceImpl(private val authService: AuthService) : AuthDataSource 
     override suspend fun loginWithNaver(
         accessToken: String,
         refreshToken: String
-    ): ResponseLoginWithNaverData {
-        return authService.loginWithNaver(accessToken, refreshToken)
+    ): Pair<String, ResponseLoginWithNaverData> {
+        val response = authService.loginWithNaver(accessToken, refreshToken)
+        return (response.headers()["access_token"]!! to response.body()!!)
     }
 
     override suspend fun loginWithKakao(
