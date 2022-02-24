@@ -7,7 +7,9 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityPolicyFilterBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.util.addAndAddToBackStack
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class PolicyFilterActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityPolicyFilterBinding>(R.layout.activity_policy_filter) {
 

@@ -3,6 +3,10 @@ package com.fork.spoonfeed.presentation.ui.policy.view.filter
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
+import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
 import com.fork.spoonfeed.domain.model.Age
 import com.fork.spoonfeed.domain.model.AnnualIncome
 import com.fork.spoonfeed.domain.model.CompanySize
@@ -10,11 +14,15 @@ import com.fork.spoonfeed.domain.model.HomeOwnership
 import com.fork.spoonfeed.domain.model.HouseHolderStatus
 import com.fork.spoonfeed.domain.model.MedianIncome
 import com.fork.spoonfeed.domain.model.NetWorth
+import com.fork.spoonfeed.domain.repository.PolicyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class PolicyFilterViewModel @Inject constructor() : ViewModel() {
+class PolicyFilterViewModel @Inject constructor(
+    private val policyRepository: PolicyRepository
+) : ViewModel() {
 
     private val _age = MutableLiveData(Age())
     val age: LiveData<Age> = _age
@@ -54,6 +62,9 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
 
     private val _isLevelThreeValid = MutableLiveData(false)
     val isLevelThreeValid: LiveData<Boolean> = _isLevelThreeValid
+
+    private val _filteredData = MutableLiveData<List<ResponseFilteredPolicy.Data.Post>>()
+    val filteredData: LiveData<List<ResponseFilteredPolicy.Data.Post>> = _filteredData
 
     fun setYear(year: Int?) {
         _age.value = _age.value?.copy(year = year)
@@ -133,6 +144,40 @@ class PolicyFilterViewModel @Inject constructor() : ViewModel() {
         _isLevelThreeValid.value = _medianIncome.value != null && _annualIncome.value != null
                 && _netWorth.value != null && _houseHolderStatus.value != null
                 && _homeOwnership.value != null
+    }
+
+    fun updateUserInfo() {
+        val saveData = _saveData.value ?: return
+        val age = _age.value?.formatAge() ?: return
+        val maritalStatus = _marriageStatus.value?.let { if (it) "기혼" else "미혼" } ?: return
+        val workStatus = _employmentAvailability.value?.let { if (it) "재직자" else "미취업자" } ?: return
+        val companyScale = _companySize.value?.value ?: return
+        val medianIncome = _medianIncome.value?.value ?: return
+        val annualIncome = _annualIncome.value?.value ?: return
+        val asset = _netWorth.value?.value ?: return
+        val isHouseOwner = _houseHolderStatus.value?.value ?: return
+        val hasHouse = _homeOwnership.value?.value ?: return
+
+        val userFilter = RequestFilteredPolicy(
+            id = UserData.id.toString(),
+            age = age,
+            maritalStatus = maritalStatus,
+            workStatus = workStatus,
+            companyScale = companyScale,
+            medianIncome = medianIncome,
+            annualIncome = annualIncome,
+            asset = asset,
+            isHouseOwner = isHouseOwner,
+            hasHouse = hasHouse
+        )
+
+        viewModelScope.launch {
+            _filteredData.value = if (saveData) {
+                policyRepository.updateUserInfoAndGetFilteredPolicy(userFilter).data.post
+            } else {
+                policyRepository.getFilteredPolicy(userFilter).data.post
+            }
+        }
     }
 
     fun clearLevelThree() {
