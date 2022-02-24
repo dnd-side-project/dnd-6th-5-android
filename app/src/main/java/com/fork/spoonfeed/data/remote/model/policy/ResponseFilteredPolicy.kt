@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.data.remote.model.policy
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ResponseFilteredPolicy(
     @SerializedName("success") val success: Boolean,
@@ -32,7 +33,7 @@ data class ResponseFilteredPolicy(
             @SerializedName("category") val category: String,
             @SerializedName("summary") val summary: String,
             @SerializedName("applicationPeriod") val applicationPeriod: String,
-            @SerializedName("like_cnt") val like_cnt: Int,
-        )
+            @SerializedName("like_cnt") val like_cnt: String,
+        ): Serializable
     }
 }
