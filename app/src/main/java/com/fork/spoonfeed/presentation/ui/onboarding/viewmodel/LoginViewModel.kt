@@ -26,7 +26,7 @@ class LoginViewModel @Inject constructor(
 
     var nickNameText = MutableLiveData<String>()
 
-    private val _nickNameSetStatus = MutableLiveData(false)
+    var _nickNameSetStatus = MutableLiveData(false)
     val nickNameSetStatus: LiveData<Boolean> get() = _nickNameSetStatus
 
     fun loginWithNaver(accessToken: String, refreshToken: String) {
