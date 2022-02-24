@@ -8,9 +8,13 @@ import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import androidx.activity.viewModels
+import androidx.fragment.app.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
+import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,9 +22,11 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
-
+    private val myPageViewModel: MyPageViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.myPageViewModel = myPageViewModel
         initView()
     }
 
@@ -65,6 +71,7 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
         val cancelBtn = dialog.findViewById<Button>(R.id.tv_logout_dialog_cancel)
 
         confirmBtn.setOnClickListener {
+            myPageViewModel.logoutWithKakao()
             dialog.dismiss()
         }
 
