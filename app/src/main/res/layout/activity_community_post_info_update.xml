@@ -187,7 +187,8 @@
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_info_update_marriage">
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_info_update_marriage"
+                    app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_community_post_info_update_marriage_true"
@@ -247,7 +248,8 @@
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_info_update_employment_availability">
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_info_update_employment_availability"
+                    app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_community_post_info_update_employment_incumbent"
@@ -288,7 +290,8 @@
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_info_update_company_size">
+                    app:layout_constraintTop_toBottomOf="@id/tv_community_post_info_update_company_size"
+                    app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip_community_post_info_update_company_small"

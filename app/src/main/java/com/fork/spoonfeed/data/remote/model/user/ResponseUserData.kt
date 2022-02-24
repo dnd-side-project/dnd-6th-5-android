@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.data.remote.model.user
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class ResponseUserData(
     @SerializedName("success") val success: Boolean,
@@ -24,6 +25,6 @@ data class ResponseUserData(
             @SerializedName("email") val email: String,
             @SerializedName("createdAt") val createdAt: String,
             @SerializedName("updatedAt") val updatedAt: String,
-        )
+        ): Serializable
     }
 }
