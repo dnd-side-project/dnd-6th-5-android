@@ -10,7 +10,7 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
     override suspend fun loginWithNaver(
         accessToken: String,
         refreshToken: String
-    ): ResponseLoginWithNaverData {
+    ): Pair<String, ResponseLoginWithNaverData> {
         return authDataSource.loginWithNaver(accessToken, refreshToken)
     }
 

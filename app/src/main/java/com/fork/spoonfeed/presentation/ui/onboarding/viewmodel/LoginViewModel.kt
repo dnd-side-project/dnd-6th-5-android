@@ -23,12 +23,15 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
         viewModelScope.launch {
             _isNaverLoginSuccess.value =
                 authRepository.loginWithNaver(accessToken, refreshToken).run {
-                    UserData.id = data.user.id
-                    UserData.accessToken = accessToken
-                    UserData.refreshToken = data.user.token.refreshToken
+                    val newAccessToken = first
+                    val responseBody = second
+
+                    UserData.id = responseBody.data.user.id
+                    UserData.accessToken = newAccessToken
+                    UserData.refreshToken = responseBody.data.user.token.refreshToken
                     UserData.platform = "naver"
 
-                    success
+                    responseBody.success
                 }
         }
     }
