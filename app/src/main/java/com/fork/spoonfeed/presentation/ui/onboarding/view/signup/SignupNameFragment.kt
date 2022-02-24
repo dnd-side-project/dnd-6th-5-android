@@ -10,7 +10,6 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentSignupNameBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
-import com.fork.spoonfeed.presentation.util.shortToast
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

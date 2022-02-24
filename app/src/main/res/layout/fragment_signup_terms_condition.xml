@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="signUpTermsConditionFragment"
+            type="com.fork.spoonfeed.presentation.ui.onboarding.view.signup.SignupTermsConditionFragment" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -77,6 +80,7 @@
             android:background="@drawable/selector_check_round"
             android:backgroundTint="@color/selector_check_round_background_color"
             android:button="@null"
+            android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
             app:layout_constraintStart_toStartOf="@id/cb_signup_terms_condition_all_agree"
             app:layout_constraintTop_toBottomOf="@id/view_decorator" />
 
@@ -110,6 +114,7 @@
             android:background="@drawable/selector_check_round"
             android:backgroundTint="@color/selector_check_round_background_color"
             android:button="@null"
+            android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
             app:layout_constraintStart_toStartOf="@id/cb_signup_terms_condition_all_agree"
             app:layout_constraintTop_toBottomOf="@id/cb_signup_terms_condition_digital_content" />
 
@@ -143,6 +148,7 @@
             android:background="@drawable/selector_check_round"
             android:backgroundTint="@color/selector_check_round_background_color"
             android:button="@null"
+            android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
             app:layout_constraintStart_toStartOf="@id/cb_signup_terms_condition_all_agree"
             app:layout_constraintTop_toBottomOf="@id/cb_signup_terms_condition_user_protect" />
 
