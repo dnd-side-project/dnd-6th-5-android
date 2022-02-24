@@ -1,6 +1,8 @@
 package com.fork.spoonfeed.presentation.di
 
 import com.fork.spoonfeed.data.remote.api.auth.AuthService
+import com.fork.spoonfeed.data.remote.api.community.CommentService
+import com.fork.spoonfeed.data.remote.api.community.PostService
 import com.fork.spoonfeed.data.remote.api.policy.PolicyService
 import com.fork.spoonfeed.data.remote.api.user.UserService
 import dagger.Module
@@ -24,6 +26,18 @@ object ApiModule {
     @Singleton
     fun providePolicyService(retrofit: Retrofit): PolicyService {
         return retrofit.create(PolicyService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun providePostService(retrofit: Retrofit): PostService {
+        return retrofit.create(PostService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideCommentService(retrofit: Retrofit): CommentService {
+        return retrofit.create(CommentService::class.java)
     }
 
     @Provides
