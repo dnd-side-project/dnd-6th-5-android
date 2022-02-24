@@ -8,9 +8,9 @@ import com.fork.spoonfeed.databinding.FragmentHomeBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterestedPolicyActivity
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.DWELLING
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.FINANCE
+import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
+import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
+import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.FINANCE
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity.Companion.CATEGORY

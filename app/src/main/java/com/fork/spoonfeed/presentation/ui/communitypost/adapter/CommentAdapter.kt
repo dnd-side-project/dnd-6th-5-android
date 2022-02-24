@@ -5,17 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.databinding.ItemCommunityPostCommentBinding
 
-data class CommentResponseData(
-    val id: Int,
-    val nickname: String,
-    val deadline: String,
-    val content: String
-)
-
 class CommentAdapter :
-    ListAdapter<CommentResponseData, CommentAdapter.CommentViewHolder>(diffUtil) {
+    ListAdapter<ResponsePostData.Data.Comment, CommentAdapter.CommentViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         return CommentViewHolder(
@@ -34,10 +28,10 @@ class CommentAdapter :
     class CommentViewHolder(private val binding: ItemCommunityPostCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(commentResponseData: CommentResponseData) {
+        fun bind(commentResponseData: ResponsePostData.Data.Comment) {
             with(binding) {
-                tvItemUserName.text = commentResponseData.nickname
-                tvItemDeadline.text = commentResponseData.deadline
+                tvItemUserName.text = commentResponseData.commenter
+                tvItemDeadline.text = commentResponseData.createdAt
                 tvItemExplain.text = commentResponseData.content
             }
 
@@ -46,17 +40,17 @@ class CommentAdapter :
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<CommentResponseData>() {
+        val diffUtil = object : DiffUtil.ItemCallback<ResponsePostData.Data.Comment>() {
             override fun areContentsTheSame(
-                oldItem: CommentResponseData,
-                newItem: CommentResponseData
+                oldItem: ResponsePostData.Data.Comment,
+                newItem: ResponsePostData.Data.Comment
             ): Boolean {
                 return oldItem == newItem
             }
 
             override fun areItemsTheSame(
-                oldItem: CommentResponseData,
-                newItem: CommentResponseData
+                oldItem: ResponsePostData.Data.Comment,
+                newItem: ResponsePostData.Data.Comment
             ): Boolean {
                 return oldItem.id == newItem.id
             }

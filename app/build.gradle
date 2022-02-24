@@ -8,6 +8,7 @@ plugins {
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 def kakao_key_manifest = properties.getProperty("kakao_key_manifest")
+
 android {
     compileSdk 31
 

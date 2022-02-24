@@ -2,20 +2,17 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPostManagementBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.community.adapter.PostAdapter
-import com.fork.spoonfeed.presentation.ui.community.adapter.PostResponseData
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyPostAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
-import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostManagementBinding>(R.layout.fragment_my_post_management) {
@@ -57,6 +54,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun initRvAdapter() {
+
         myPostManagementPostAdapter = MyPostAdapter {
             val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
             startActivity(intent)

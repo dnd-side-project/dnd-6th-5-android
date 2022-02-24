@@ -1,13 +1,14 @@
 package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.databinding.ItemCommentBinding
+
+
 
 class MyCommentAdapter(
     private val clickListener: (ResponseUserCommentData.Data.Comment) -> Unit

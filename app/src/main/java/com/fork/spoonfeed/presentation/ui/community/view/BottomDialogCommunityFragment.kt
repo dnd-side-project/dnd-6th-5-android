@@ -1,4 +1,4 @@
-package com.fork.spoonfeed.presentation.ui.policylist.view
+package com.fork.spoonfeed.presentation.ui.community.view
 
 import android.graphics.Typeface
 import android.os.Bundle
@@ -10,15 +10,11 @@ import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentBottomDialogFilterBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
-import dagger.hilt.android.AndroidEntryPoint
+import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
 
-
-@AndroidEntryPoint
-class BottomDialogFilterFragment() :
+class BottomDialogCommunityFragment() :
     BaseViewUtil.BaseCategoryBottomDialogFragment<FragmentBottomDialogFilterBinding>(R.layout.fragment_bottom_dialog_filter) {
-
-    private val policyListViewModel: PolicyListViewModel by activityViewModels()
+    private val communityViewModel: CommunityViewModel by activityViewModels()
     private var isInitialized = false // bottom sheet initialize check
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -27,14 +23,14 @@ class BottomDialogFilterFragment() :
     }
 
     override fun initView() {
-        policyListViewModel.selectedFilter.value?.let { setCategoryView(it) }
+        communityViewModel.selectedFilter.value?.let { setCategoryView(it) }
         applyFilterLayout()
-        setCloseBtnClickedListener()
         setClickListener()
+        setCloseBtnClickedListener()
     }
 
     private fun applyFilterLayout() {
-        policyListViewModel.selectedFilter.observe(this) { selectedFilter ->
+        communityViewModel.selectedFilter.observe(this) { selectedFilter ->
             if (isInitialized) {
                 setCategoryView(selectedFilter)
                 setHandler()
@@ -82,13 +78,13 @@ class BottomDialogFilterFragment() :
 
     private fun setClickListener() {
         binding.tvBottomDialogAll.setOnClickListener {
-            policyListViewModel.setCategorySelected(ALL)
+            communityViewModel.setCategorySelected(ALL)
         }
         binding.tvBottomDialogDwelling.setOnClickListener {
-            policyListViewModel.setCategorySelected(DWELLING)
+            communityViewModel.setCategorySelected(DWELLING)
         }
         binding.tvBottomDialogFinance.setOnClickListener {
-            policyListViewModel.setCategorySelected(FINANCE)
+            communityViewModel.setCategorySelected(FINANCE)
         }
     }
 
@@ -98,3 +94,4 @@ class BottomDialogFilterFragment() :
         }
     }
 }
+
