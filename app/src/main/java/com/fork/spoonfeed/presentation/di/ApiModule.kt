@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.di
 
 import com.fork.spoonfeed.data.remote.api.auth.AuthService
 import com.fork.spoonfeed.data.remote.api.policy.PolicyService
+import com.fork.spoonfeed.data.remote.api.user.UserService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,5 +24,11 @@ object ApiModule {
     @Singleton
     fun providePolicyService(retrofit: Retrofit): PolicyService {
         return retrofit.create(PolicyService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserService(retrofit: Retrofit): UserService {
+        return retrofit.create(UserService::class.java)
     }
 }

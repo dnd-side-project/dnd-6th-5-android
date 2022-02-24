@@ -2,10 +2,8 @@ package com.fork.spoonfeed.presentation.di
 
 import com.fork.spoonfeed.data.remote.api.auth.AuthService
 import com.fork.spoonfeed.data.remote.api.policy.PolicyService
-import com.fork.spoonfeed.data.remote.datasource.AuthDataSource
-import com.fork.spoonfeed.data.remote.datasource.AuthDataSourceImpl
-import com.fork.spoonfeed.data.remote.datasource.PolicyDataSource
-import com.fork.spoonfeed.data.remote.datasource.PolicyDataSourceImpl
+import com.fork.spoonfeed.data.remote.api.user.UserService
+import com.fork.spoonfeed.data.remote.datasource.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -26,5 +24,11 @@ object DataSourceModule {
     @Singleton
     fun providePolicyDataSource(policyService: PolicyService): PolicyDataSource {
         return PolicyDataSourceImpl(policyService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserDataSource(userService: UserService): UserDataSource {
+        return UserDataSourceImpl(userService)
     }
 }
