@@ -1,5 +1,7 @@
 package com.fork.spoonfeed.data.remote.model.policy
 
+import java.io.Serializable
+
 data class RequestFilteredPolicy(
     val id: String,
     val age: String,
@@ -11,4 +13,4 @@ data class RequestFilteredPolicy(
     val asset: String,
     val isHouseOwner: String,
     val hasHouse: String,
-)
+): Serializable
