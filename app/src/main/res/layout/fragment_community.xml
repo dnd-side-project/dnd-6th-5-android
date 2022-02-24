@@ -8,10 +8,6 @@
         <variable
             name="communityViewModel"
             type="com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel" />
-
-        <variable
-            name="policyListViewModel"
-            type="com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +57,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_stroke_gray02_1dp"
-                    android:onClick="@{()->policyListViewModel.filterOnClick()}"
+                    android:onClick="@{()->communityViewModel.filterOnClick()}"
                     android:paddingVertical="10dp"
                     android:paddingStart="16dp"
                     android:paddingEnd="38dp"

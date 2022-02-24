@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface PostService {
 
-    @GET
+    @GET("posts")
     suspend fun getPostAll(): ResponsePostAllData
 }

@@ -1,18 +1,11 @@
 package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
-import android.content.ClipData
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ItemCommentBinding
-import com.fork.spoonfeed.databinding.ItemPostBinding
-import com.fork.spoonfeed.presentation.ui.community.adapter.PostAdapter
-import com.fork.spoonfeed.presentation.ui.community.adapter.PostResponseData
-
 
 data class MyCommentResponseData(
     val id: Int,
