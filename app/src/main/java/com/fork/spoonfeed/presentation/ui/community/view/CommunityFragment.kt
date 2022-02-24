@@ -10,6 +10,7 @@ import com.fork.spoonfeed.databinding.FragmentCommunityBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.adapter.PostAdapter
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -39,10 +40,9 @@ class CommunityFragment :
 
     private fun setCommunityAdapter() {
         communityAdapter = PostAdapter(false) {
-            // TODO 상세 페이지 연결
-            /*      Intent(requireContext(), DetailInfoActivity::class.java).apply {
-                      startActivity(this)
-                  }*/
+            startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
+                putExtra(POST_PK, it.id)
+            })
         }
         with(binding) {
             rvCommunity.adapter = communityAdapter
@@ -94,5 +94,9 @@ class CommunityFragment :
             bottomSheetFragment.tag
         )
         communityViewModel.filterOnClickFalse()
+    }
+
+    companion object {
+        const val POST_PK = "com.fork.spoonfeed.presentation.ui.community.view"
     }
 }

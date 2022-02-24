@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +51,7 @@
                     android:background="@drawable/bg_finance_purple_radius_4dp"
                     android:paddingHorizontal="9.5dp"
                     android:paddingVertical="3dp"
-                    android:text="금융"
+                    android:text="@{viewModel.postDetailData.category}"
                     android:textColor="@color/white"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -60,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginEnd="22dp"
-                    android:text="청년 버팀목 전세자금으로 이사했습니당."
+                    android:text="@{viewModel.postDetailData.title}"
                     app:layout_constraintEnd_toStartOf="@id/iv_community_post_edit"
                     app:layout_constraintStart_toEndOf="@id/tv_community_post_category"
                     app:layout_constraintTop_toTopOf="@id/tv_community_post_category" />
@@ -83,7 +86,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="8dp"
-                    android:text="@string/community_user_name"
+                    android:text="@{viewModel.postDetailData.author}"
                     android:textColor="@color/gray04"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_community_post_title" />
@@ -106,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:text="@string/community_policy_deadline"
+                    android:text="@{viewModel.postDetailData.createdAt}"
                     android:textColor="@color/gray04"
                     app:layout_constraintBottom_toBottomOf="@id/tv_community_post_user_name"
                     app:layout_constraintStart_toEndOf="@id/tv_community_post_dot"
@@ -119,7 +122,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    android:text="스푼피드로 저도 해당되는걸 알고나서 신청했더니\n잘 받을 수 있었습니당 서류제출도 생각보다 어렵지 않았어요! 비슷한 상황이신 분들도 한번 도전해보세요^^!\n\n제 상세정보도 꼭 확인하시길 바랍니다~~~~"
+                    android:text="@{viewModel.postDetailData.content}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_community_post_user_name" />
@@ -189,7 +192,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="20대"
+                            android:text="@{viewModel.postDetailData.age}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -212,7 +215,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="미혼"
+                            android:text="@{viewModel.postDetailData.maritalStatus}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -235,7 +238,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="재직자"
+                            android:text="@{viewModel.postDetailData.workStatus}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -258,7 +261,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="중소기업"
+                            android:text="@{viewModel.postDetailData.companyScale}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -281,7 +284,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="40%이하"
+                            android:text="@{viewModel.postDetailData.medianIncome}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -304,7 +307,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="외벌이 3천만원 이하"
+                            android:text="@{viewModel.postDetailData.annualIncome}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -327,7 +330,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="2.92억원 이하"
+                            android:text="@{viewModel.postDetailData.asset}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -350,7 +353,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="세대구성원"
+                            android:text="@{viewModel.postDetailData.hasHouse}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
 
@@ -373,7 +376,7 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight="2"
-                            android:text="무주택자"
+                            android:text="@{viewModel.postDetailData.isHouseOwner}"
                             android:textColor="@color/gray06" />
                     </LinearLayout>
                 </LinearLayout>
@@ -404,7 +407,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
                     android:drawablePadding="8dp"
-                    android:text="3"
+                    android:text="@{viewModel.postDetailData.commentCount}"
                     app:drawableStartCompat="@drawable/ic_comment_filled_24"
                     app:drawableTint="@color/gray04"
                     app:layout_constraintBottom_toBottomOf="@id/tv_community_post_comment"
