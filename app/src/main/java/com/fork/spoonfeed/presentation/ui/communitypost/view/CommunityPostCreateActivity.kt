@@ -151,9 +151,9 @@ class CommunityPostCreateActivity :
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                     val view = super.getView(position, convertView, parent)
                     val color = if (position == 0) {
-                        R.color.finance_purple
-                    } else {
                         R.color.dwelling_blue
+                    } else {
+                        R.color.finance_purple
                     }
                     (view as TextView).setTextColor(ContextCompat.getColor(context, color))
                     return view
