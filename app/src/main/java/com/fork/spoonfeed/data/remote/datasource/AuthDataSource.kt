@@ -8,7 +8,7 @@ interface AuthDataSource {
     suspend fun loginWithNaver(
         accessToken: String,
         refreshToken: String
-    ): ResponseLoginWithNaverData
+    ): Pair<String, ResponseLoginWithNaverData>
 
     suspend fun loginWithKakao(
         accessToken: String,

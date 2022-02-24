@@ -26,4 +26,17 @@ data class Age(
             false
         }
     }
+
+    // yyyyMMdd
+    fun formatAge(): String? {
+        val formattedYear = year?.toString() ?: return null
+        val formattedMonth = month?.let {
+            if (it > 10) it.toString() else "0$it"
+        } ?: return null
+        val formattedDay = day?.let {
+            if (it > 10) it.toString() else "0$it"
+        } ?: return null
+
+        return formattedYear + formattedMonth + formattedDay
+    }
 }

@@ -25,7 +25,7 @@ class DetailInfoViewModel @Inject constructor(
     fun getPolicyDetailInfo(id: Int) {
         try {
             viewModelScope.launch {
-                _policyDetailInfo.value = policyRepository.getPolicyDetail(UserData.access_token!!, UserData.platform!!, id).data.policy
+                _policyDetailInfo.value = policyRepository.getPolicyDetail(UserData.accessToken!!, UserData.platform!!, id).data.policy
             }
         } catch (e: Exception) {
 
