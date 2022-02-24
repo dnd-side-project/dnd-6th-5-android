@@ -88,14 +88,18 @@
                     <TextView
                         android:id="@+id/tv_detail_info_policy_title"
                         style="@style/TextView.Label.Medium.16"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
+                        android:layout_marginEnd="10dp"
+                        android:ellipsize="end"
+                        android:ems="1"
+                        android:maxLines="2"
                         android:text="@{detailInfoViewModel.policyDetailInfo.name}"
                         android:textColor="@color/gray06"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_detail_info_category"
+                        app:layout_constraintEnd_toStartOf="@+id/iv_detail_info_like"
                         app:layout_constraintStart_toEndOf="@id/tv_detail_info_category"
-                        app:layout_constraintTop_toTopOf="@id/tv_detail_info_category"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="@string/detail_info_policy_title" />
 
                     <TextView
@@ -191,12 +195,13 @@
                     <TextView
                         android:id="@+id/tv_detail_info_policy_name_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="40dp"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.name}"
                         android:textColor="@color/gray06"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_detail_info_policy_name"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/tv_detail_info_policy_name"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_policy_name"
                         tools:text="@string/detail_info_policy_title" />
@@ -240,6 +245,7 @@
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.summary}"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -261,10 +267,12 @@
                     <TextView
                         android:id="@+id/tv_detail_info_agency_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.host}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_policy_explain_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_agency"
                         tools:text="@string/detail_info_agency_sentence" />
@@ -283,10 +291,12 @@
                     <TextView
                         android:id="@+id/tv_detail_info_application_period_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.applicationPeriod}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_agency_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_application_period"
                         tools:text="@string/detail_info_application_period_sentence" />
@@ -305,10 +315,12 @@
                     <TextView
                         android:id="@+id/tv_detail_info_selection_announcement_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.announcement}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_application_period_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_selection_announcement"
                         tools:text="@string/detail_info_selection_announcement_sentence" />
@@ -327,11 +339,13 @@
                     <TextView
                         android:id="@+id/tv_detail_info_duration_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.policyDuration}"
                         android:textColor="@color/gray06"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_selection_announcement_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_duration"
                         tools:text="@string/detail_info_duration_sentence" />
@@ -393,11 +407,13 @@
                     <TextView
                         android:id="@+id/tv_detail_info_age_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="64dp"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.limitAge}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@id/tv_detail_info_age"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_age"
                         tools:text="@string/detail_info_age_sentence" />
@@ -419,6 +435,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:ellipsize="end"
+                        android:ems="1"
                         android:maxLines="8"
                         android:text="@{detailInfoViewModel.policyDetailInfo.limitAreaAsset}"
                         android:textColor="@color/gray06"
@@ -469,13 +486,15 @@
 
                     <TextView
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:ellipsize="end"
+                        android:ems="1"
                         android:maxLines="4"
                         android:text="@{detailInfoViewModel.policyDetailInfo.content}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_apply_explain"
                         tools:text="@string/detail_info_apply_explain_sentence" />
@@ -525,6 +544,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="36dp"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.applicationProcess}"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -546,10 +566,12 @@
                     <TextView
                         android:id="@+id/tv_detail_info_apply_site_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.applicationSiteName}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_apply_procedure_sentence"
                         app:layout_constraintTop_toTopOf="@+id/tv_detail_info_apply_site"
                         tools:text="@string/detail_info_apply_site_sentence" />
@@ -570,6 +592,7 @@
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.submission}"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -624,6 +647,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="64dp"
                         android:ellipsize="end"
+                        android:ems="1"
                         android:maxLines="3"
                         android:text="@{detailInfoViewModel.policyDetailInfo.otherInfo}"
                         android:textColor="@color/gray06"
@@ -646,10 +670,12 @@
                     <TextView
                         android:id="@+id/tv_detail_info_etc_agency_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.host}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_etc_sentence"
                         app:layout_constraintTop_toTopOf="@+id/tv_detail_info_etc_agency"
                         tools:text="@string/detail_info_etc_agency_sentence" />
@@ -668,10 +694,12 @@
                     <TextView
                         android:id="@+id/tv_detail_info_operating_agency_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:ems="1"
                         android:text="@{detailInfoViewModel.policyDetailInfo.operatingInstitute}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_etc_agency_sentence"
                         app:layout_constraintTop_toTopOf="@+id/tv_detail_info_operating_agency"
                         tools:text="@string/detail_info_operating_agency_sentence" />
@@ -694,9 +722,10 @@
                         android:layout_height="wrap_content"
                         android:text="@{detailInfoViewModel.policyDetailInfo.referenceSite1}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_detail_info_etc_sentence"
+                        app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_operating_agency_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_reference_site_one"
-                        tools:layout_editor_absoluteX="76dp"
                         tools:text="@string/detail_info_reference_site_one_sentence" />
 
                     <View
@@ -726,6 +755,8 @@
                         android:layout_height="wrap_content"
                         android:text="@{detailInfoViewModel.policyDetailInfo.referenceSite2}"
                         android:textColor="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/detail_info_reference_site_one_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_reference_site_two"
                         tools:text="@string/detail_info_reference_site_two_sentence" />

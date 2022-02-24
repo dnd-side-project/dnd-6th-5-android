@@ -26,6 +26,7 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
                     UserData.id = data.user.id
                     UserData.refresh_token = data.user.token.refreshToken
                     UserData.platform = "naver"
+                    UserData.access_token = accessToken
 
                     success
                 }
@@ -38,6 +39,7 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
                 authRepository.loginWithKakao(accessToken, refreshToken).run {
                     UserData.id = data.user.id
                     UserData.refresh_token = data.user.token.refreshToken
+                    UserData.access_token = accessToken
                     UserData.platform = "kakao"
 
                     success

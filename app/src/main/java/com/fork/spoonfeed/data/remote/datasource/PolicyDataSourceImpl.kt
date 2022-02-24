@@ -13,7 +13,9 @@ class PolicyDataSourceImpl @Inject constructor(
         return policyService.getPolicyAll(category)
     }
 
-    override suspend fun getPolicyDetail(pk: Int): ResponsePolicyDetailData {
-        return policyService.getPolicyDetail(pk)
+    override suspend fun getPolicyDetail(accessToken: String, platform: String, id: Int): ResponsePolicyDetailData {
+        return policyService.getPolicyDetail(accessToken, platform, id)
     }
 }
+
+

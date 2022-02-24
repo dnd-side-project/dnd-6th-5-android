@@ -82,7 +82,7 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     private fun setDetailInfo() {
-        val id = intent.getStringExtra("id")?.toInt() ?: 0
+        val id = intent.getIntExtra("id",2)
         detailInfoViewModel.getPolicyDetailInfo(id)
     }
 
