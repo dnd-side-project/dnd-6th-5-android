@@ -3,7 +3,7 @@ package com.fork.spoonfeed.presentation.ui.community.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentCommunityBinding
@@ -11,14 +11,13 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.adapter.PostAdapter
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CommunityFragment :
     BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.layout.fragment_community) {
 
-    private val communityViewModel: CommunityViewModel by viewModels()
+    private val communityViewModel: CommunityViewModel by activityViewModels()
     private lateinit var communityAdapter: PostAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,6 +54,9 @@ class CommunityFragment :
         communityViewModel.postData.observe(viewLifecycleOwner, {
             communityAdapter.submitList(it)
         })
+        communityViewModel.selectedFilter.observe(viewLifecycleOwner, {
+            communityViewModel.getPostData()
+        })
     }
 
     private fun initData() {
@@ -86,7 +88,7 @@ class CommunityFragment :
     }
 
     private fun showBottomFilterDialog() {
-        val bottomSheetFragment = BottomDialogFilterFragment()
+        val bottomSheetFragment = BottomDialogCommunityFragment()
         bottomSheetFragment.show(
             requireActivity().supportFragmentManager,
             bottomSheetFragment.tag

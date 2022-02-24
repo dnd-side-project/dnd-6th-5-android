@@ -6,9 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.domain.repository.PostRepository
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.FINANCE
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.ALL
-import com.fork.spoonfeed.presentation.ui.policylist.view.BottomDialogFilterFragment.Companion.DWELLING
+import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -29,11 +27,11 @@ class CommunityViewModel @Inject constructor(
     val selectedFilter: LiveData<String>
         get() = _selectedFilter
 
-    var initSelectedFilter = ALL
-
     fun getPostData() {
+        val filter = _selectedFilter.value ?: return
+
         viewModelScope.launch {
-            _postData.value = if (_selectedFilter.value == ALL) {
+            _postData.value = if (filter == ALL) {
                 postRepository.getPostAll().data.post
             } else {
                 postRepository.getPostAll().data.post.filter { it.category == _selectedFilter.value }
@@ -43,18 +41,6 @@ class CommunityViewModel @Inject constructor(
 
     fun setCategorySelected(category: String) {
         _selectedFilter.value = category
-    }
-
-    fun allSelected() {
-        _selectedFilter.value = ALL
-    }
-
-    fun dwellingSelected() {
-        _selectedFilter.value = DWELLING
-    }
-
-    fun financeSelected() {
-        _selectedFilter.value = FINANCE
     }
 
     fun filterOnClick() {
