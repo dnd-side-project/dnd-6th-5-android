@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="loginViewModel"
+            type="com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

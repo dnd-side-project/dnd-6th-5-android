@@ -26,6 +26,8 @@ class OnboardingActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding.loginViewModel = loginViewModel
+        binding.lifecycleOwner = this
         initView()
     }
 
@@ -98,7 +100,7 @@ class OnboardingActivity :
                 UserApiClient.instance.me { user, error ->
                     val accessToken = token.accessToken
                     val refreshToken = token.refreshToken
-
+                    Log.e("kakao login error", token.accessToken)
                     loginViewModel.loginWithKakao(accessToken, refreshToken)
                 }
             }
