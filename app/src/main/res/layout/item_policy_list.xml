@@ -34,14 +34,15 @@
             <TextView
                 android:id="@+id/tv_item_policy_title"
                 style="@style/TextView.Label.Medium.16"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:ems="1"
                 android:text="@string/policylist_title"
                 android:textColor="@color/gray06"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/tv_item_category"
-                app:layout_constraintTop_toTopOf="@+id/tv_item_category" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/tv_item_policy_sentence"
@@ -74,8 +75,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/item_policylist_deadline"
                 android:maxLines="1"
+                android:text="@string/item_policylist_deadline"
                 app:layout_constraintStart_toEndOf="@id/tv_item_deadline_title"
                 app:layout_constraintTop_toTopOf="@+id/tv_item_deadline_title"
                 tools:layout_editor_absoluteX="82dp" />
