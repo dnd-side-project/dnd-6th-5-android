@@ -65,7 +65,7 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             kotlin.runCatching {
                 var requestUserNickNameData = RequestUserNickNameData(UserData.id.toString(), nickNameText.value.toString())
-                userRepository.patchUserNickName(UserData.access_token!!, UserData.platform!!, requestUserNickNameData)
+                userRepository.patchUserNickName(UserData.accessToken!!, UserData.platform!!, requestUserNickNameData)
             }.onSuccess {
                 _nickNameSetStatus.setValue(true)
             }.onFailure {
