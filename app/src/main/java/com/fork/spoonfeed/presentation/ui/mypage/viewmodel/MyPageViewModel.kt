@@ -8,6 +8,7 @@ import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
 import com.fork.spoonfeed.domain.repository.AuthRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -47,6 +48,14 @@ class MyPageViewModel @Inject constructor(
     val isMyCommentEmpty: LiveData<Boolean>
         get() = _isMyCommentEmpty
 
+    private val _myInterastedtPoLicyList = MutableLiveData<List<ResponseUserUserLikePolicyData.Data.Policy>>()
+    val myInterastedtPoLicyList: LiveData<List<ResponseUserUserLikePolicyData.Data.Policy>>
+        get() = _myInterastedtPoLicyList
+
+    private val _isMyInterastedPolicyEmpty = MutableLiveData<Boolean>(true)
+    val isMyInterastedPolicyEmpty: LiveData<Boolean>
+        get() = _isMyInterastedPolicyEmpty
+
     fun postBtnEnable(isEnable: Boolean) {
         _isQuestionValid.value = isEnable
     }
@@ -66,6 +75,12 @@ class MyPageViewModel @Inject constructor(
     fun getMyComment() {
         viewModelScope.launch {
             _myCommentList.value = userRepository.getUserComment(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.comment
+        }
+    }
+
+    fun getMyInterastedPolicy() {
+        viewModelScope.launch {
+            _myInterastedtPoLicyList.value = userRepository.getUserLikePolicy(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.policy
         }
     }
 }

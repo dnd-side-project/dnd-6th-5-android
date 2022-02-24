@@ -16,7 +16,7 @@ data class ResponseUserUserLikePolicyData(
             @SerializedName("name") val NAME: String,
             @SerializedName("content") val content: String,
             @SerializedName("application_period") val applicationPeriod: String,
-            @SerializedName("cnt") val createdAt: String,
+            @SerializedName("cnt") val cnt: String,
         )
     }
 }
