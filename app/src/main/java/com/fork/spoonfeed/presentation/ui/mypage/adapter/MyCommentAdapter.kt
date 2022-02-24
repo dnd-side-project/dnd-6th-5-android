@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.databinding.ItemCommentBinding
 
-
-
 class MyCommentAdapter(
     private val clickListener: (ResponseUserCommentData.Data.Comment) -> Unit
 ) : ListAdapter<ResponseUserCommentData.Data.Comment, MyCommentAdapter.MyCommentViewHolder>(diffUtil) {

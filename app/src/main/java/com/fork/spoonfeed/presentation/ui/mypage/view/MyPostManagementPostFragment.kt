@@ -13,7 +13,6 @@ import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyPostAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostManagementBinding>(R.layout.fragment_my_post_management) {
     private lateinit var myPostManagementPostAdapter: MyPostAdapter
@@ -54,7 +53,6 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun initRvAdapter() {
-
         myPostManagementPostAdapter = MyPostAdapter {
             val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
             startActivity(intent)
