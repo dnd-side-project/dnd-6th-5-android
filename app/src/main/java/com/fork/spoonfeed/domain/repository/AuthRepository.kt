@@ -2,6 +2,7 @@ package com.fork.spoonfeed.domain.repository
 
 import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithKakaoData
 import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithNaverData
+import com.fork.spoonfeed.data.remote.model.auth.ResponseLogoutWithKakaoData
 
 interface AuthRepository {
 
@@ -14,5 +15,9 @@ interface AuthRepository {
         accessToken: String,
         refreshToken: String
     ): ResponseLoginWithKakaoData
+
+    suspend fun logoutWithKakao(
+        accessToken: String,
+    ): ResponseLogoutWithKakaoData
 }
 

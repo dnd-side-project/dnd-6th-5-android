@@ -24,9 +24,10 @@ class PostAdapter(
                 tvItemCategory.text = data.category
                 tvItemPolicyTitle.text = data.title
                 tvItemUserName.text = data.author
-                tvItemDeadline.text = data.createdAt
+                tvItemCreated.text = data.createdAt
                 tvItemPolicyExplain.text = data.content
                 tvItemCommentCount.text = data.commentCount
+
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
                 }

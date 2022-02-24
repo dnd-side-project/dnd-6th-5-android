@@ -8,7 +8,9 @@ import com.fork.spoonfeed.databinding.ActivitySecessionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBinding>(R.layout.activity_secession) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,26 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.databinding.ItemCommentBinding
 
-data class MyCommentResponseData(
-    val id: Int,
-    val sentence: String,
-    val category: String,
-    val writedData: String,
-)
-
 class MyCommentAdapter(
-    private val postList: List<MyCommentResponseData>,
-    private val clickListener: (MyCommentResponseData) -> Unit
-) : ListAdapter<MyCommentResponseData, MyCommentAdapter.MyCommentViewHolder>(diffUtil) {
+    private val clickListener: (ResponseUserCommentData.Data.Comment) -> Unit
+) : ListAdapter<ResponseUserCommentData.Data.Comment, MyCommentAdapter.MyCommentViewHolder>(diffUtil) {
 
     inner class MyCommentViewHolder(private val binding: ItemCommentBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: MyCommentResponseData) {
+        fun onBind(data: ResponseUserCommentData.Data.Comment) {
             binding.apply {
-                tvItemCommentSentence.text = data.sentence
-                tvItemCommentCategory.text = data.category
-                tvItemCommentWritedData.text = data.writedData
+                tvItemCommentSentence.text = data.content
+                tvItemCommentCategory.text = data.title
+                tvItemCommentWritedData.text = data.createdAt
                 ivItemCommentEdit.setOnClickListener {
                     clickListener(data)
                 }
@@ -38,19 +31,19 @@ class MyCommentAdapter(
         return MyCommentViewHolder(binding)
     }
 
-    override fun getItemCount() = postList.size
+    override fun getItemCount() = currentList.size
 
     override fun onBindViewHolder(holder: MyCommentAdapter.MyCommentViewHolder, position: Int) {
-        holder.onBind(postList[position])
+        holder.onBind(currentList[position])
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<MyCommentResponseData>() {
-            override fun areContentsTheSame(oldItem: MyCommentResponseData, newItem: MyCommentResponseData) =
+        val diffUtil = object : DiffUtil.ItemCallback<ResponseUserCommentData.Data.Comment>() {
+            override fun areContentsTheSame(oldItem: ResponseUserCommentData.Data.Comment, newItem: ResponseUserCommentData.Data.Comment) =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: MyCommentResponseData, newItem: MyCommentResponseData) =
-                oldItem.id == newItem.id
+            override fun areItemsTheSame(oldItem: ResponseUserCommentData.Data.Comment, newItem: ResponseUserCommentData.Data.Comment) =
+                oldItem.commentId == newItem.commentId
         }
     }
 

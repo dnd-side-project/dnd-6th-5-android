@@ -8,7 +8,9 @@ import com.fork.spoonfeed.databinding.ActivityQuestionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class QuestionActivity : BaseViewUtil.BaseAppCompatActivity<ActivityQuestionBinding>(R.layout.activity_question) {
     private val myPageViewModel: MyPageViewModel by viewModels()
     var isValidBtn = false
