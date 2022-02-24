@@ -1,7 +1,10 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.view.View
 import android.view.WindowManager
@@ -34,6 +37,7 @@ class CommunityPostActivity :
         binding.viewModel = communityPostViewModel
         binding.lifecycleOwner = this
         setCommentAdapter()
+        setCommentEditor()
         setClickListener()
         setObserver()
         initData()
@@ -44,6 +48,18 @@ class CommunityPostActivity :
         binding.rvCommunityPostComment.adapter = commentAdapter
         binding.rvCommunityPostComment.addItemDecoration(ItemDecoration())
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
+    }
+
+    private fun setCommentEditor() {
+        binding.etCommunityPostCommentInput.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                communityPostViewModel.setCommentInput(s?.toString())
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
     }
 
     private fun setClickListener() {
@@ -62,6 +78,9 @@ class CommunityPostActivity :
         binding.ivCommunityPostEdit.setOnClickListener {
             showEditDialog()
         }
+        binding.ivCommunityPostCommentInput.setOnClickListener {
+            communityPostViewModel.postComment()
+        }
     }
 
     private fun setObserver() {
@@ -71,10 +90,23 @@ class CommunityPostActivity :
         communityPostViewModel.postCommentData.observe(this, {
             commentAdapter.submitList(it)
         })
+        communityPostViewModel.commentInput.observe(this, {
+            binding.ivCommunityPostCommentInput.backgroundTintList = if (it != null) {
+                ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.gray06))
+            } else {
+                ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.gray03))
+            }
+        })
+        communityPostViewModel.isCommentPostSuccess.observe(this, {
+            if (it){
+                binding.etCommunityPostCommentInput.setText("")
+            }
+            communityPostViewModel.initData()
+        })
     }
 
     private fun setCategoryBackground(category: String) {
-        binding.tvCommunityPostCategory.background = if (category == DWELLING){
+        binding.tvCommunityPostCategory.background = if (category == DWELLING) {
             ContextCompat.getDrawable(baseContext, R.drawable.bg_dwelling_blue_radius_4dp)
         } else {
             ContextCompat.getDrawable(baseContext, R.drawable.bg_finance_purple_radius_4dp)
