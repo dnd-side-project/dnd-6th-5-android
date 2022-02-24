@@ -8,7 +8,9 @@ import com.fork.spoonfeed.databinding.FragmentMyPostManagementCommentBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyCommentAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyCommentResponseData
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPostManagementCommentBinding>(R.layout.fragment_my_post_management_comment) {
     private lateinit var myCommentAdapter: MyCommentAdapter
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

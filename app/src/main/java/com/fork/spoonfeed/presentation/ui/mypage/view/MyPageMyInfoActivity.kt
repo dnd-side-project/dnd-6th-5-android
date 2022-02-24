@@ -5,7 +5,9 @@ import android.text.Editable
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMyPageMyInfoBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageMyInfoActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityMyPageMyInfoBinding>(R.layout.activity_my_page_my_info) {
 

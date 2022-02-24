@@ -72,7 +72,7 @@
             tools:layout_editor_absoluteX="82dp" />
 
         <TextView
-            android:id="@+id/tv_item_deadline"
+            android:id="@+id/tv_item_created"
             style="@style/TextView.Label.Regular.12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

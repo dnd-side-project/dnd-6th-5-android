@@ -44,7 +44,7 @@ class PostAdapter(
                 tvItemCategory.text = data.category
                 tvItemPolicyTitle.text = data.title
                 tvItemUserName.text = data.nickname
-                tvItemDeadline.text = data.deadline
+                tvItemCreated.text = data.deadline
                 tvItemPolicyExplain.text = data.sentence
                 tvItemCommentCount.text = data.commentCount.toString()
                 if (data.category == "금융") {

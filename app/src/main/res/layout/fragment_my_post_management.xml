@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="myPageViewModel"
+            type="com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,6 +21,7 @@
             android:id="@+id/rv_mypostmanagement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="visible"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="6"
             tools:listitem="@layout/item_post" />
