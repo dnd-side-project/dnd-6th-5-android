@@ -3,6 +3,8 @@ package com.fork.spoonfeed.presentation.ui.communitypost.view
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -12,24 +14,101 @@ import com.fork.spoonfeed.databinding.ActivityCommunityPostCreateBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import android.widget.ArrayAdapter
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostCreateViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CommunityPostCreateActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityCommunityPostCreateBinding>(R.layout.activity_community_post_create) {
 
+    private val communityPostCreateViewModel: CommunityPostCreateViewModel by viewModels()
+    private lateinit var registerForActivity: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setRegisterForActivityResult()
         initView()
     }
 
+    private fun setRegisterForActivityResult() {
+        registerForActivity =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+                communityPostCreateViewModel.setUserInfo(
+                    it.data?.getSerializableExtra(CommunityPostInfoUpdateActivity.INFO_UPDATE_RESULT)
+                            as ResponseUserData.Data.User
+                )
+
+                communityPostCreateViewModel.isValid()
+                setUpdateButtonActive()
+            }
+    }
+
     override fun initView() {
+        setEditField()
+        setObserver()
         setOnClickListener()
+    }
+
+    private fun setEditField() {
+        binding.etCommunityPostCreateTitle.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    communityPostCreateViewModel.setTitle(null)
+                } else {
+                    communityPostCreateViewModel.setTitle(s.toString())
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+        binding.etCommunityPostCreateContent.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.isNullOrEmpty()) {
+                    communityPostCreateViewModel.setContent(null)
+                } else {
+                    communityPostCreateViewModel.setContent(s.toString())
+                }
+            }
+
+            override fun afterTextChanged(s: Editable?) {}
+        })
+    }
+
+    private fun setObserver() {
+        communityPostCreateViewModel.category.observe(this, {
+            communityPostCreateViewModel.isValid()
+        })
+        communityPostCreateViewModel.title.observe(this, {
+            communityPostCreateViewModel.isValid()
+        })
+        communityPostCreateViewModel.content.observe(this, {
+            communityPostCreateViewModel.isValid()
+        })
+        communityPostCreateViewModel.isValid.observe(this, {
+            setNextButtonActive(it)
+        })
+        communityPostCreateViewModel.sendSuccess.observe(this, {
+            if (it) {
+                finish()
+//                TODO 게시물 ID 값을 받아서 작성한 글의 상세페이지로 이동하도록 구현
+//                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
+            }
+        })
     }
 
     private fun setOnClickListener() {
         binding.mbCommunityPostCreate.setOnClickListener {
-            startActivity(Intent(baseContext, CommunityPostActivity::class.java))
+            communityPostCreateViewModel.sendPost()
             finish()
         }
         binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
@@ -39,15 +118,13 @@ class CommunityPostCreateActivity :
             showMenu()
         }
         binding.mbCommunityPostCreateUpdateDetail.setOnClickListener {
-            startActivity(Intent(baseContext, CommunityPostInfoUpdateActivity::class.java))
-
-            // TODO 현재 뷰모델 없이 임의로 상세정보 수정 버튼을 누르면 활성화 되도록 구현
-            // 뷰모델과 연결지어 모든 값이 입력되고, 수정페이지 방문 후 현재 화면으로 돌아왔을때 활성화되도록 수정 필요
-            setButtonActive()
+            registerForActivity.launch(
+                Intent(baseContext, CommunityPostInfoUpdateActivity::class.java)
+            )
         }
     }
 
-    private fun setButtonActive() {
+    private fun setUpdateButtonActive() {
         with(binding.mbCommunityPostCreateUpdateDetail) {
             icon = ContextCompat.getDrawable(context, R.drawable.ic_check_round_filled)
             iconTint = ColorStateList.valueOf(ContextCompat.getColor(context, R.color.primary_blue))
@@ -56,12 +133,16 @@ class CommunityPostCreateActivity :
             strokeColor =
                 ColorStateList.valueOf(ContextCompat.getColor(context, R.color.primary_blue))
         }
-
-        binding.mbCommunityPostCreate.isEnabled = true
-        binding.mbCommunityPostCreate.backgroundTintList =
-            ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.primary_blue))
     }
 
+    private fun setNextButtonActive(isActive: Boolean) {
+        binding.mbCommunityPostCreate.isEnabled = isActive
+        binding.mbCommunityPostCreate.backgroundTintList = if (isActive) {
+            ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.primary_blue))
+        } else {
+            ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.gray03))
+        }
+    }
 
     private fun showMenu() {
         val items = resources.getStringArray(R.array.category_popup)
@@ -72,9 +153,9 @@ class CommunityPostCreateActivity :
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
                     val view = super.getView(position, convertView, parent)
                     val color = if (position == 0) {
-                        R.color.finance_purple
-                    } else {
                         R.color.dwelling_blue
+                    } else {
+                        R.color.finance_purple
                     }
                     (view as TextView).setTextColor(ContextCompat.getColor(context, color))
                     return view
@@ -101,6 +182,7 @@ class CommunityPostCreateActivity :
                 text = view.text
                 setTextAppearance(R.style.TextView_Heading_Bold_14)
                 setTextColor(ContextCompat.getColor(context, textColor))
+                communityPostCreateViewModel.setCategory(view.text.toString())
             }
         }
         popup.show()

@@ -29,10 +29,14 @@ class CommunityFragment :
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        initData()
+    }
+
     override fun initView() {
         setCommunityAdapter()
         setObserver()
-        initData()
         setFilterClickObserve()
         setSearchClickListener()
         setFloatingClickListener()
