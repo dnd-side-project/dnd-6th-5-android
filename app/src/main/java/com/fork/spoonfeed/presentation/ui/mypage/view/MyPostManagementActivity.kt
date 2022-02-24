@@ -7,7 +7,9 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.adapter.TabLayoutAdapter
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPostManagementActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMyPostManagementBinding>(R.layout.activity_my_post_management) {
     private lateinit var myPostManagementAdapter: TabLayoutAdapter
     override fun onCreate(savedInstanceState: Bundle?) {

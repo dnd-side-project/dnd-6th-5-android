@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.ui.onboarding.view.signup
 
 import android.content.res.ColorStateList
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -46,7 +47,7 @@ class SignupNameFragment : BaseViewUtil.BaseFragment<FragmentSignupNameBinding>(
 
     private fun setOnClickListener() {
         binding.mbSignupName.setOnClickListener {
-            loginViewModel.patchUserNickName()
+            loginViewModel.patchUserNickName(binding.tietSignupName.text.toString())
         }
     }
 

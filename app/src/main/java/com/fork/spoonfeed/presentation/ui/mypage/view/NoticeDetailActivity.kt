@@ -7,7 +7,9 @@ import com.fork.spoonfeed.databinding.ActivityDetailInfoBinding
 import com.fork.spoonfeed.databinding.ActivityNoticeDetailBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NoticeDetailActivity : BaseViewUtil.BaseAppCompatActivity<ActivityNoticeDetailBinding>(R.layout.activity_notice_detail) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
