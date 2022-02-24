@@ -17,8 +17,8 @@ class PolicyDataSourceImpl @Inject constructor(
         return policyService.getPolicyAll(category)
     }
 
-    override suspend fun getPolicyDetail(pk: Int): ResponsePolicyDetailData {
-        return policyService.getPolicyDetail(pk)
+    override suspend fun getPolicyDetail(accessToken: String, platform: String, id: Int): ResponsePolicyDetailData {
+        return policyService.getPolicyDetail(accessToken, platform, id)
     }
 
     override suspend fun updateUserInfoAndGetFilteredPolicy(body: RequestFilteredPolicy): ResponseFilteredPolicy {
@@ -33,3 +33,5 @@ class PolicyDataSourceImpl @Inject constructor(
         return policyService.getFilteredPolicy(body = jsonObject)
     }
 }
+
+

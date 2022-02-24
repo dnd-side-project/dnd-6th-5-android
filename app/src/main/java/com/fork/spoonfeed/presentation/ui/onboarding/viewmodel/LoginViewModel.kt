@@ -38,8 +38,8 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
             _isKakaoLoginSuccess.value =
                 authRepository.loginWithKakao(accessToken, refreshToken).run {
                     UserData.id = data.user.id
-                    UserData.accessToken = accessToken
                     UserData.refreshToken = data.user.token.refreshToken
+                    UserData.accessToken = accessToken
                     UserData.platform = "kakao"
 
                     success

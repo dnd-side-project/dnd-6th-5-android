@@ -9,7 +9,7 @@ interface PolicyRepository {
 
     suspend fun getPolicyAll(category: String): ResponsePolicyAllData
 
-    suspend fun getPolicyDetail(pk: Int): ResponsePolicyDetailData
+    suspend fun getPolicyDetail(accessToken: String, platform: String, id: Int): ResponsePolicyDetailData
 
     suspend fun updateUserInfoAndGetFilteredPolicy(body: RequestFilteredPolicy): ResponseFilteredPolicy
 

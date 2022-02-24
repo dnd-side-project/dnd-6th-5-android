@@ -1,11 +1,9 @@
 package com.fork.spoonfeed.data
 
-import kotlin.properties.Delegates
-
 object UserData {
 
-    var id by Delegates.notNull<Int>()
-    lateinit var accessToken: String
-    lateinit var refreshToken: String
-    lateinit var platform: String
+    var id: Int? = null
+    var refreshToken: String? = null
+    var accessToken: String? = null
+    var platform: String? = null
 }
