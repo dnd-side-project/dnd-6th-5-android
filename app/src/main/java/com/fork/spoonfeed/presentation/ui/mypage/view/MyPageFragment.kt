@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.service.autofill.UserData
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
@@ -18,6 +19,7 @@ import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.navercorp.nid.oauth.NidOAuthLogin
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -71,7 +73,9 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
         val cancelBtn = dialog.findViewById<Button>(R.id.tv_logout_dialog_cancel)
 
         confirmBtn.setOnClickListener {
-            myPageViewModel.logoutWithKakao()
+            if (com.fork.spoonfeed.data.UserData.platform == "kakao")
+                myPageViewModel.logoutWithKakao()
+            else NidOAuthLogin().logout()
             dialog.dismiss()
         }
 
