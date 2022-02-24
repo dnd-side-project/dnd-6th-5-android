@@ -15,3 +15,4 @@ interface AuthRepository {
         refreshToken: String
     ): ResponseLoginWithKakaoData
 }
+

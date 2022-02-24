@@ -46,4 +46,17 @@ class LoginViewModel @Inject constructor(private val authRepository: AuthReposit
                 }
         }
     }
+
+    fun loginWithKakao(accessToken: String, refreshToken: String) {
+        viewModelScope.launch {
+            _isKakaoLoginSuccess.value =
+                authRepository.loginWithKakao(accessToken, refreshToken).run {
+                    UserData.id = data.user.id
+                    UserData.refresh_token = data.user.token.refreshToken
+                    UserData.platform = "kakao"
+
+                    success
+                }
+        }
+    }
 }

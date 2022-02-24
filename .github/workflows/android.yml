@@ -22,12 +22,12 @@ jobs:
     - name: Access kakao key
       env:
         KAKAO_KEY_MANIFEST: ${{ secrets.KAKAO_KEY_MANIFEST }}
-      run: echo KAKAO_KEY_MANIFEST=\"$KAKAO_KEY_MANIFEST\" > ./local.properties
+      run: echo kakao_key_manifest=\"$KAKAO_KEY_MANIFEST\" >> ./local.properties
 
     - name: Access kakao native key
       env:
         KAKAO_NATIVE_KEY: ${{ secrets.KAKAO_NATIVE_KEY }}
-      run: echo KAKAO_NATIVE_KEY=\"$KAKAO_NATIVE_KEY\" >> ./local.properties
+      run: echo kakao_native_key=\"$KAKAO_NATIVE_KEY\" >> ./local.properties
     
     - name: Access naver client id
       env:
