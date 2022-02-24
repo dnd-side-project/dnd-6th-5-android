@@ -12,6 +12,8 @@ import com.fork.spoonfeed.data.remote.datasource.PolicyDataSource
 import com.fork.spoonfeed.data.remote.datasource.PolicyDataSourceImpl
 import com.fork.spoonfeed.data.remote.datasource.PostDataSource
 import com.fork.spoonfeed.data.remote.datasource.PostDataSourceImpl
+import com.fork.spoonfeed.data.remote.api.user.UserService
+import com.fork.spoonfeed.data.remote.datasource.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -44,5 +46,11 @@ object DataSourceModule {
     @Singleton
     fun provideCommentDataSource(commentService: CommentService): CommentDataSource {
         return CommentDataSourceImpl(commentService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserDataSource(userService: UserService): UserDataSource {
+        return UserDataSourceImpl(userService)
     }
 }
