@@ -69,7 +69,7 @@ class MyPageViewModel @Inject constructor(
     fun getMyPost() {
         viewModelScope.launch {
             _myPostList.value = userRepository.getUserPost(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.post
-            _isMyCommentEmpty.value = false
+            _isMyPostEmpty.value = false
         }
     }
 
