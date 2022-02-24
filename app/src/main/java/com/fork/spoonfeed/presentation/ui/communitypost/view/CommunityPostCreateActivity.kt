@@ -99,7 +99,9 @@ class CommunityPostCreateActivity :
         })
         communityPostCreateViewModel.sendSuccess.observe(this, {
             if (it) {
-                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
+                finish()
+//                TODO 게시물 ID 값을 받아서 작성한 글의 상세페이지로 이동하도록 구현
+//                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
             }
         })
     }

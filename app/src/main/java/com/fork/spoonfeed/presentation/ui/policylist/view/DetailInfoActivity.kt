@@ -36,6 +36,7 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
         initClickListener()
         setLikeBtn()
         setDetailInfo()
+        setCategoryObserve()
     }
 
     private fun setBackBtnClickListener() {
@@ -82,8 +83,16 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     private fun setDetailInfo() {
-        val id = intent.getIntExtra("id",2)
+        val id = intent.getIntExtra("id", 2)
         detailInfoViewModel.getPolicyDetailInfo(id)
+    }
+
+    private fun setCategoryObserve() {
+        detailInfoViewModel.policyDetailInfo.observe(this) {
+            if (it.category == "금융") {
+                binding.tvDetailInfoCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
+            }
+        }
     }
 
     override fun onDestroy() {

@@ -5,6 +5,9 @@
 
     <data>
 
+        <variable
+            name="myPageViewModel"
+            type="com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

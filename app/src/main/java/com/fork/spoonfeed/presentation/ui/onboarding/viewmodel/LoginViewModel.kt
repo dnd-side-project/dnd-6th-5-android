@@ -60,11 +60,11 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun patchUserNickName() {
+    fun patchUserNickName(userNickName: String) {
 
         viewModelScope.launch {
             kotlin.runCatching {
-                var requestUserNickNameData = RequestUserNickNameData(UserData.id.toString(), nickNameText.value.toString())
+                val requestUserNickNameData = RequestUserNickNameData(UserData.id.toString(), userNickName)
                 userRepository.patchUserNickName(UserData.accessToken!!, UserData.platform!!, requestUserNickNameData)
             }.onSuccess {
                 _nickNameSetStatus.setValue(true)

@@ -350,6 +350,7 @@
     <string name="mypage_logout">로그아웃</string>
     <string name="mypage_secession">회원탈퇴</string>
     <string name="oss_license_title">오픈소스 라이센스</string>
+    <string name="mypage_no_interasted_policy">아직 관심있는 정책이 없어요</string>
 
     <!--  Dialog Comment  -->
     <string name="dialog_comment_edit">수정하기</string>
