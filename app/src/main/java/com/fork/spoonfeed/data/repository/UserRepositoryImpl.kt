@@ -3,6 +3,7 @@ package com.fork.spoonfeed.data.repository
 import com.fork.spoonfeed.data.remote.api.user.UserService
 import com.fork.spoonfeed.data.remote.datasource.UserDataSource
 import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.domain.repository.UserRepository
@@ -18,5 +19,9 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun getUserPost(accessToken: String, platform: String, userId: Int): ResponseUserPostData {
         return userDataSource.getUserPost(accessToken, platform, userId)
+    }
+
+    override suspend fun getUserComment(accessToken: String, platform: String, userId: Int): ResponseUserCommentData {
+        return userDataSource.getUserComment(accessToken, platform, userId)
     }
 }
