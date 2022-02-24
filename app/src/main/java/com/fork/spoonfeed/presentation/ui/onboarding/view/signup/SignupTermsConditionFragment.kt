@@ -7,7 +7,9 @@ import androidx.core.content.ContextCompat
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentSignupTermsConditionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignupTermsConditionFragment :
     BaseViewUtil.BaseFragment<FragmentSignupTermsConditionBinding>(R.layout.fragment_signup_terms_condition) {
 

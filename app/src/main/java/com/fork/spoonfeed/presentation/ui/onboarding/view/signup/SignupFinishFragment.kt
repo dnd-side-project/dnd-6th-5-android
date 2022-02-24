@@ -7,7 +7,9 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentSignupFinishBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignupFinishFragment :
     BaseViewUtil.BaseFragment<FragmentSignupFinishBinding>(R.layout.fragment_signup_finish) {
 
