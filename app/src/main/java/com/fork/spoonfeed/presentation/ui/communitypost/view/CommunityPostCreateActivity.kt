@@ -109,10 +109,9 @@ class CommunityPostCreateActivity :
     private fun setOnClickListener() {
         binding.mbCommunityPostCreate.setOnClickListener {
             communityPostCreateViewModel.sendPost()
-            finish()
         }
         binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
-            finish()
+            communityPostCreateViewModel.sendPost()
         }
         binding.tvCommunityPostCreateCategory.setOnClickListener {
             showMenu()
