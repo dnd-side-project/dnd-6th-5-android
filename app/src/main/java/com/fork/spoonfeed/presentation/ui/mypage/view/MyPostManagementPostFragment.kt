@@ -53,7 +53,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun initRvAdapter() {
-        myPostManagementPostAdapter = MyPostAdapter {
+        myPostManagementPostAdapter = MyPostAdapter(requireActivity()) {
             val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
             startActivity(intent)
         }

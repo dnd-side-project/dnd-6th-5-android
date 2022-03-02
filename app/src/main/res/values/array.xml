@@ -4,4 +4,9 @@
         <item>주거</item>
         <item>금융</item>
     </string-array>
+
+    <string-array name="mypage_popup">
+        <item>수정하기</item>
+        <item>삭제하기</item>
+    </string-array>
 </resources>
