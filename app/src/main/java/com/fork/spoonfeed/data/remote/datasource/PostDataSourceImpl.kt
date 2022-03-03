@@ -1,12 +1,10 @@
 package com.fork.spoonfeed.data.remote.datasource
 
 import com.fork.spoonfeed.data.remote.api.community.PostService
-import com.fork.spoonfeed.data.remote.model.community.RequestSendPostData
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
-import com.fork.spoonfeed.data.remote.model.community.ResponseSendPostData
+import com.fork.spoonfeed.data.remote.model.community.*
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 
-class PostDataSourceImpl(private val postService: PostService): PostDataSource {
+class PostDataSourceImpl(private val postService: PostService) : PostDataSource {
 
     override suspend fun getPostAll(): ResponsePostAllData {
         return postService.getPostAll()
@@ -18,5 +16,9 @@ class PostDataSourceImpl(private val postService: PostService): PostDataSource {
 
     override suspend fun getPostDetail(pk: Int): ResponsePostData {
         return postService.getPostDetail(pk = pk)
+    }
+
+    override suspend fun patchPost(pk: Int, body: RequestPatchPostData): ResponsePatchPostData {
+        return postService.patchPost(pk = pk, body = body)
     }
 }

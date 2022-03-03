@@ -1,9 +1,11 @@
 package com.fork.spoonfeed.data.remote.datasource
 
-import com.fork.spoonfeed.data.remote.model.community.RequestSendPostData
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
-import com.fork.spoonfeed.data.remote.model.community.ResponseSendPostData
+import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.remote.model.community.*
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
+import retrofit2.http.Header
+import retrofit2.http.PATCH
+import retrofit2.http.Path
 
 interface PostDataSource {
 
@@ -12,4 +14,6 @@ interface PostDataSource {
     suspend fun sendPost(body: RequestSendPostData): ResponseSendPostData
 
     suspend fun getPostDetail(pk: Int): ResponsePostData
+
+    suspend fun patchPost(pk: Int, body: RequestPatchPostData): ResponsePatchPostData
 }

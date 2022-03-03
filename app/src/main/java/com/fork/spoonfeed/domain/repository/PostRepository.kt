@@ -1,9 +1,7 @@
 package com.fork.spoonfeed.domain.repository
 
-import com.fork.spoonfeed.data.remote.model.community.RequestSendPostData
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
-import com.fork.spoonfeed.data.remote.model.community.ResponseSendPostData
+import com.fork.spoonfeed.data.remote.model.community.*
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 
 interface PostRepository {
 
@@ -12,4 +10,6 @@ interface PostRepository {
     suspend fun sendPost(body: RequestSendPostData): ResponseSendPostData
 
     suspend fun getPostDetail(pk: Int): ResponsePostData
+
+    suspend fun patchPost(pk: Int, body: RequestPatchPostData): ResponsePatchPostData
 }
