@@ -9,6 +9,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPostManagementCommentBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyCommentAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import dagger.hilt.android.AndroidEntryPoint

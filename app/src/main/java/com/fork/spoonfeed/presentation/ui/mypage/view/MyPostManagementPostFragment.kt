@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPostManagementBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyPostAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
@@ -69,9 +71,10 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun initRvAdapter() {
-        myPostManagementPostAdapter = MyPostAdapter(myPageViewModel, requireActivity()) {
-            val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-            startActivity(intent)
+        myPostManagementPostAdapter = MyPostAdapter(myPageViewModel, requireActivity()){
+            startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
+                putExtra(CommunityFragment.POST_PK, it.postId)
+            })
         }
         with(binding) {
             rvMypostmanagement.adapter = myPostManagementPostAdapter
