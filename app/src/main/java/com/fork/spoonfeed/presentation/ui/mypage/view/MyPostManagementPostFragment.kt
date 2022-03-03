@@ -25,6 +25,11 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        initData()
+    }
+
     override fun initView() {
         myPageViewModel.getMyPost()
         setisMyPostEmptyObserve()
@@ -50,10 +55,18 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
         myPageViewModel.myPostList.observe(this) { myPostList ->
             myPostManagementPostAdapter.submitList(myPostList)
         }
+        myPageViewModel.deleteSuccess.observe(this) { deleteSuccess ->
+            if (deleteSuccess)
+                initData()
+        }
+    }
+
+    private fun initData() {
+        myPageViewModel.getMyPost()
     }
 
     private fun initRvAdapter() {
-        myPostManagementPostAdapter = MyPostAdapter(requireActivity()) {
+        myPostManagementPostAdapter = MyPostAdapter(myPageViewModel, requireActivity()) {
             val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
             startActivity(intent)
         }

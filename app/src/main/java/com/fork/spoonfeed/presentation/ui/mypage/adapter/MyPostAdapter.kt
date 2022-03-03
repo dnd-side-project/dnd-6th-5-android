@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
 import android.app.Activity
+import android.content.Intent
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -15,9 +16,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.databinding.ItemPostBinding
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity.Companion.POST_ID
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx
 
 class MyPostAdapter(
+    private val myPageViewModel:MyPageViewModel,
     private val context: Activity,
     private val clickListener: (ResponseUserPostData.Data.Post) -> Unit
 ) : ListAdapter<ResponseUserPostData.Data.Post, MyPostAdapter.MyPostViewHolder>(diffUtil) {
@@ -32,11 +37,17 @@ class MyPostAdapter(
                 tvItemPolicyTitle.text = data.title
                 tvItemCommentCount.text = data.cnt
 
+                if (data.category == "금융") {
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
+                }else{
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_dwelling_blue_radius_4dp)
+                }
+
                 root.setOnClickListener {
                     clickListener(data)
                 }
                 ivItemPostEdit.setOnClickListener {
-                    showMenu(binding)
+                    showMenu(binding, data)
                 }
             }
         }
@@ -63,7 +74,7 @@ class MyPostAdapter(
         }
     }
 
-    private fun showMenu(binding: ItemPostBinding) {
+    private fun showMenu(binding: ItemPostBinding, data: ResponseUserPostData.Data.Post) {
         val items = context.resources.getStringArray(R.array.mypage_popup)
 
         val popupAdapter =
@@ -90,16 +101,15 @@ class MyPostAdapter(
         }
 
         popup.setOnItemClickListener { _, view, _, _ ->
-            val textColor = if ((view as TextView).text == "수정하기") {
-                R.color.gray04
+            if ((view as TextView).text == "수정하기") {
+                val intent = Intent(context, CommunityPostCreateActivity::class.java).let {
+                    it.putExtra(POST_ID, data.postId)
+                }
+                context.startActivity(intent)
+                popup.dismiss()
             } else {
-                R.color.delete_red
-            }
-
-            with(view) {
-                text = view.text
-                setTextAppearance(R.style.TextView_Heading_Bold_14)
-                setTextColor(ContextCompat.getColor(context, textColor))
+                myPageViewModel.deleteMyPost(data.postId)
+                popup.dismiss()
             }
         }
         popup.show()
