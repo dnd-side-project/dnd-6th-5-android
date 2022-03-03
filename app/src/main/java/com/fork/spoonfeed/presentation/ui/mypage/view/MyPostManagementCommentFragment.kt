@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPostManagementCommentBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyCommentAdapter
@@ -25,8 +26,13 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        initData()
+    }
+
     override fun initView() {
-        myPageViewModel.getMyComment()
+        initData()
         setisMyCommentEmptyObserve()
         setMyCommentListObserve()
         initRvAdapter()
@@ -53,10 +59,15 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
         }
     }
 
+    private fun initData() {
+        myPageViewModel.getMyComment()
+    }
+
     private fun initRvAdapter() {
-        myCommentAdapter = MyCommentAdapter {
-            val intent = Intent(requireActivity(), CommunityPostActivity::class.java)
-            startActivity(intent)
+        myCommentAdapter = MyCommentAdapter(requireActivity()) {
+            startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
+                putExtra(CommunityFragment.POST_PK, it.postId)
+            })
         }
         with(binding) {
             rvMypostmanagement.adapter = myCommentAdapter
