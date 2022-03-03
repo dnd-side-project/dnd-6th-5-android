@@ -19,9 +19,11 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.databinding.ItemCommentBinding
 import com.fork.spoonfeed.databinding.ItemPostBinding
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx
 
 class MyCommentAdapter(
+    private val myPageViewModel: MyPageViewModel,
     private val context: Activity,
     private val clickListener: (ResponseUserCommentData.Data.Comment) -> Unit
 ) : ListAdapter<ResponseUserCommentData.Data.Comment, MyCommentAdapter.MyCommentViewHolder>(diffUtil) {
@@ -39,7 +41,6 @@ class MyCommentAdapter(
                     showMenu(binding, data)
                 }
             }
-            // setClickListenerItemPostEdit(binding)
         }
     }
 
@@ -68,7 +69,6 @@ class MyCommentAdapter(
         with(binding) {
             ivItemCommentEdit.setOnClickListener {
                 ctlItemPostEditDialog.visibility = android.view.View.VISIBLE
-                //     activity.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
             }
             tvCommentDialogEdit.setOnClickListener {
                 ctlItemPostEditDialog.visibility = android.view.View.INVISIBLE
@@ -110,7 +110,7 @@ class MyCommentAdapter(
                 clickListener(data)
                 popup.dismiss()
             } else {
-                //    myPageViewModel.deleteMyPost(data.postId)
+                myPageViewModel.deleteMyComment(data.postId,data.commentId)
                 popup.dismiss()
             }
         }

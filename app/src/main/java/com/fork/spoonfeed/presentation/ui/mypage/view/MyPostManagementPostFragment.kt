@@ -59,7 +59,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
         myPageViewModel.myPostList.observe(this) { myPostList ->
             myPostManagementPostAdapter.submitList(myPostList)
         }
-        myPageViewModel.deleteSuccess.observe(this) { deleteSuccess ->
+        myPageViewModel.deletePostSuccess.observe(this) { deleteSuccess ->
             if (deleteSuccess)
                 initData()
         }

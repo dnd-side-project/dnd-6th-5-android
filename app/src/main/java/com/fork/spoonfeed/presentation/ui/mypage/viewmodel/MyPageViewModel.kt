@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
@@ -58,9 +59,13 @@ class MyPageViewModel @Inject constructor(
     val isMyInterastedPolicyEmpty: LiveData<Boolean>
         get() = _isMyInterastedPolicyEmpty
 
-    private val _deleteSuccess = MutableLiveData(false)
-    val deleteSuccess: LiveData<Boolean>
-        get() = _deleteSuccess
+    private val _deletePostSuccess = MutableLiveData(false)
+    val deletePostSuccess: LiveData<Boolean>
+        get() = _deletePostSuccess
+
+    private val _deleteCommentSuccess = MutableLiveData(false)
+    val deleteCommentSuccess: LiveData<Boolean>
+        get() = _deleteCommentSuccess
 
     private val _userNickName = MutableLiveData<String>()
     val userNickName: LiveData<String> = _userNickName
@@ -91,7 +96,14 @@ class MyPageViewModel @Inject constructor(
 
     fun deleteMyPost(postId: Int) {
         viewModelScope.launch {
-            _deleteSuccess.value = postRepository.deletePost(postId).success
+            _deletePostSuccess.value = postRepository.deletePost(postId).success
+        }
+    }
+
+    fun deleteMyComment(postId: Int, commentId: String) {
+        val requestDeleteCommentData = RequestDeleteCommentData(commentId.toInt())
+        viewModelScope.launch {
+            _deleteCommentSuccess.value = postRepository.deleteComment(postId, requestDeleteCommentData).success
         }
     }
 

@@ -57,6 +57,10 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
         myPageViewModel.myCommentList.observe(this) { myCommentList ->
             myCommentAdapter.submitList(myCommentList)
         }
+        myPageViewModel.deleteCommentSuccess.observe(this) { deleteCommentSuccess ->
+            if (deleteCommentSuccess)
+                initData()
+        }
     }
 
     private fun initData() {
@@ -64,7 +68,7 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
     }
 
     private fun initRvAdapter() {
-        myCommentAdapter = MyCommentAdapter(requireActivity()) {
+        myCommentAdapter = MyCommentAdapter(myPageViewModel, requireActivity()) {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(CommunityFragment.POST_PK, it.postId)
             })
