@@ -38,5 +38,13 @@ interface PostService {
         @Header("access_token") accessToken: String = UserData.accessToken!!,
         @Header("platform") platform: String= UserData.platform!!,
         @Path("pk") pk: Int,
-    ): ResponseDeletePost
+    ): ResponseDeletePostData
+
+    @DELETE("posts/{pk}/comment")
+    suspend fun deleteComment(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+        @Header("platform") platform: String= UserData.platform!!,
+        @Path("pk") pk: Int,
+        @Body body: RequestDeleteCommentData
+    ): ResponseDeleteCommentData
 }

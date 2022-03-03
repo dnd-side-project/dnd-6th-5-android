@@ -24,7 +24,11 @@ class PostRepositoryImpl @Inject constructor(private val postDataSource: PostDat
         return postDataSource.patchPost(pk = pk, body = body)
     }
 
-    override suspend fun deletePost(pk: Int): ResponseDeletePost {
+    override suspend fun deletePost(pk: Int): ResponseDeletePostData {
         return postDataSource.deletePost(pk = pk)
+    }
+
+    override suspend fun deleteComment(pk: Int, body: RequestDeleteCommentData): ResponseDeleteCommentData {
+        return postDataSource.deleteComment(pk = pk, body = body)
     }
 }

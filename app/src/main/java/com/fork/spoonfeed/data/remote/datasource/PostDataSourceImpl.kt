@@ -2,7 +2,6 @@ package com.fork.spoonfeed.data.remote.datasource
 
 import com.fork.spoonfeed.data.remote.api.community.PostService
 import com.fork.spoonfeed.data.remote.model.community.*
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 
 class PostDataSourceImpl(private val postService: PostService) : PostDataSource {
 
@@ -22,7 +21,11 @@ class PostDataSourceImpl(private val postService: PostService) : PostDataSource 
         return postService.patchPost(pk = pk, body = body)
     }
 
-    override suspend fun deletePost(pk: Int): ResponseDeletePost {
+    override suspend fun deletePost(pk: Int): ResponseDeletePostData {
         return postService.deletePost(pk = pk)
+    }
+
+    override suspend fun deleteComment(pk: Int, body: RequestDeleteCommentData): ResponseDeleteCommentData {
+        return postService.deleteComment(pk = pk, body = body)
     }
 }
