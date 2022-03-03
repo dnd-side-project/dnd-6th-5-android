@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
@@ -58,7 +59,11 @@ class MyPageViewModel @Inject constructor(
         get() = _isMyInterastedPolicyEmpty
 
     private val _deleteSuccess = MutableLiveData(false)
-    val deleteSuccess: LiveData<Boolean> = _deleteSuccess
+    val deleteSuccess: LiveData<Boolean>
+        get() = _deleteSuccess
+
+    private val _userNickName = MutableLiveData<String>()
+    val userNickName: LiveData<String> = _userNickName
 
     fun postBtnEnable(isEnable: Boolean) {
         _isQuestionValid.value = isEnable
@@ -86,13 +91,19 @@ class MyPageViewModel @Inject constructor(
 
     fun deleteMyPost(postId: Int) {
         viewModelScope.launch {
-            _deleteSuccess.value= postRepository.deletePost(postId).success
+            _deleteSuccess.value = postRepository.deletePost(postId).success
         }
     }
 
     fun getMyInterastedPolicy() {
         viewModelScope.launch {
             _myInterastedtPoLicyList.value = userRepository.getUserLikePolicy(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.policy
+        }
+    }
+
+    fun getNickName() {
+        viewModelScope.launch {
+            _userNickName.value = userRepository.getUserData().data.user.nickname
         }
     }
 }

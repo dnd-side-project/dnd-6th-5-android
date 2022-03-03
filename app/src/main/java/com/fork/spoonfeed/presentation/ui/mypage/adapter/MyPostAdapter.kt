@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListPopupWindow
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,10 +21,11 @@ import com.fork.spoonfeed.databinding.ItemPostBinding
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity.Companion.POST_ID
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
+import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx
 
 class MyPostAdapter(
-    private val myPageViewModel:MyPageViewModel,
+    private val myPageViewModel: MyPageViewModel,
     private val context: Activity,
     private val clickListener: (ResponseUserPostData.Data.Post) -> Unit
 ) : ListAdapter<ResponseUserPostData.Data.Post, MyPostAdapter.MyPostViewHolder>(diffUtil) {
@@ -36,10 +39,11 @@ class MyPostAdapter(
                 tvItemCreated.text = data.createdAt
                 tvItemPolicyTitle.text = data.title
                 tvItemCommentCount.text = data.cnt
+                tvItemUserName.text = myPageViewModel.userNickName.value
 
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
-                }else{
+                } else {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_dwelling_blue_radius_4dp)
                 }
 

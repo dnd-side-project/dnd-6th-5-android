@@ -11,12 +11,14 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyPostAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
+import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostManagementBinding>(R.layout.fragment_my_post_management) {
     private lateinit var myPostManagementPostAdapter: MyPostAdapter
     private val myPageViewModel: MyPageViewModel by viewModels()
+    private val loginViewModel: LoginViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +33,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     override fun initView() {
-        myPageViewModel.getMyPost()
+        initData()
         setisMyPostEmptyObserve()
         setMyPolicyListObserve()
         initRvAdapter()
@@ -63,6 +65,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
 
     private fun initData() {
         myPageViewModel.getMyPost()
+        myPageViewModel.getNickName()
     }
 
     private fun initRvAdapter() {
