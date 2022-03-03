@@ -32,4 +32,11 @@ interface PostService {
         @Path("pk") pk: Int,
         @Body body: RequestPatchPostData
     ): ResponsePatchPostData
+
+    @DELETE("posts/{pk}")
+    suspend fun deletePost(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+        @Header("platform") platform: String= UserData.platform!!,
+        @Path("pk") pk: Int,
+    ): ResponseDeletePost
 }

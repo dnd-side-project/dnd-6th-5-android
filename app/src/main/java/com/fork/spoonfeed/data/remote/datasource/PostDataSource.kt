@@ -16,4 +16,6 @@ interface PostDataSource {
     suspend fun getPostDetail(pk: Int): ResponsePostData
 
     suspend fun patchPost(pk: Int, body: RequestPatchPostData): ResponsePatchPostData
+
+    suspend fun deletePost(pk: Int): ResponseDeletePost
 }

@@ -21,4 +21,8 @@ class PostDataSourceImpl(private val postService: PostService) : PostDataSource 
     override suspend fun patchPost(pk: Int, body: RequestPatchPostData): ResponsePatchPostData {
         return postService.patchPost(pk = pk, body = body)
     }
+
+    override suspend fun deletePost(pk: Int): ResponseDeletePost {
+        return postService.deletePost(pk = pk)
+    }
 }
