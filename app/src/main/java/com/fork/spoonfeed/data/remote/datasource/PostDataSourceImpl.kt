@@ -2,8 +2,9 @@ package com.fork.spoonfeed.data.remote.datasource
 
 import com.fork.spoonfeed.data.remote.api.community.PostService
 import com.fork.spoonfeed.data.remote.model.community.*
+import javax.inject.Inject
 
-class PostDataSourceImpl(private val postService: PostService) : PostDataSource {
+class PostDataSourceImpl @Inject constructor(private val postService: PostService) : PostDataSource {
 
     override suspend fun getPostAll(): ResponsePostAllData {
         return postService.getPostAll()

@@ -5,8 +5,9 @@ import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponseCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponseDeleteCommentData
+import javax.inject.Inject
 
-class CommentDataSourceImpl(private val commentService: CommentService) : CommentDataSource {
+class CommentDataSourceImpl @Inject constructor(private val commentService: CommentService) : CommentDataSource {
 
     override suspend fun postComment(pk: Int, body: RequestCommentData): ResponseCommentData {
         return commentService.postComment(pk = pk, body = body)
