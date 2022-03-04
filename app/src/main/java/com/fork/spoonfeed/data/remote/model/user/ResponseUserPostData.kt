@@ -8,7 +8,7 @@ data class ResponseUserPostData(
     @SerializedName("data") val data: Data
 ) {
     data class Data(
-        @SerializedName("post") val post: List<Post>,
+        @SerializedName("post") val post: List<Post?>,
     ) {
         data class Post(
             @SerializedName("user_id") val userId: Int,

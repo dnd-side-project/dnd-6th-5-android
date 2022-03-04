@@ -41,7 +41,6 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
 
     private fun setisMyCommentEmptyObserve() {
         myPageViewModel.isMyCommentEmpty.observe(this) { isMyCommentEmpty ->
-            isMyCommentEmpty.let {
                 if (isMyCommentEmpty) {
                     binding.rvMypostmanagement.visibility = View.GONE
                     binding.ctlMypostmanagementNoComment.visibility = View.VISIBLE
@@ -49,7 +48,6 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
                     binding.ctlMypostmanagementNoComment.visibility = View.GONE
                     binding.rvMypostmanagement.visibility = View.VISIBLE
                 }
-            }
         }
     }
 

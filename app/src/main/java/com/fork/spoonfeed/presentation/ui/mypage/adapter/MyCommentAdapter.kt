@@ -35,10 +35,10 @@ class MyCommentAdapter(
                 tvItemCommentCategory.text = data.title
                 tvItemCommentWritedData.text = data.createdAt
                 ivItemCommentEdit.setOnClickListener {
-                    clickListener(data)
-                }
-                ivItemCommentEdit.setOnClickListener {
                     showMenu(binding, data)
+                }
+                root.setOnClickListener {
+                    clickListener(data)
                 }
             }
         }
@@ -62,20 +62,6 @@ class MyCommentAdapter(
 
             override fun areItemsTheSame(oldItem: ResponseUserCommentData.Data.Comment, newItem: ResponseUserCommentData.Data.Comment) =
                 oldItem.commentId == newItem.commentId
-        }
-    }
-
-    private fun setClickListenerItemPostEdit(binding: ItemCommentBinding) {
-        with(binding) {
-            ivItemCommentEdit.setOnClickListener {
-                ctlItemPostEditDialog.visibility = android.view.View.VISIBLE
-            }
-            tvCommentDialogEdit.setOnClickListener {
-                ctlItemPostEditDialog.visibility = android.view.View.INVISIBLE
-            }
-            tvCommentDialogDelete.setOnClickListener {
-                ctlItemPostEditDialog.visibility = android.view.View.INVISIBLE
-            }
         }
     }
 
@@ -110,7 +96,7 @@ class MyCommentAdapter(
                 clickListener(data)
                 popup.dismiss()
             } else {
-                myPageViewModel.deleteMyComment(data.postId,data.commentId)
+                myPageViewModel.deleteMyComment(data.postId, data.commentId)
                 popup.dismiss()
             }
         }

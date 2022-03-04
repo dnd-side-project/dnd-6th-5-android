@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
@@ -13,11 +14,14 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
 import com.fork.spoonfeed.databinding.ActivityCommunityPostBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.ui.communitypost.adapter.CommentAdapter
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
+import com.fork.spoonfeed.presentation.ui.mypage.view.MyPostManagementCommentFragment
+import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelThreeFragment
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -40,6 +44,7 @@ class CommunityPostActivity :
         setCommentEditor()
         setClickListener()
         setObserver()
+        setInitLayout()
         initData()
     }
 
@@ -50,12 +55,16 @@ class CommunityPostActivity :
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
     }
 
+    private fun setInitLayout() {
+
+    }
+
     private fun setCommentEditor() {
         binding.etCommunityPostCommentInput.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.isNullOrEmpty()){
+                if (s.isNullOrEmpty()) {
                     communityPostViewModel.setCommentInput(null)
                 } else {
                     communityPostViewModel.setCommentInput(s.toString())
@@ -80,7 +89,7 @@ class CommunityPostActivity :
             }
         }
         binding.ivCommunityPostEdit.setOnClickListener {
-            showEditDialog()
+
         }
         binding.ivCommunityPostCommentInput.setOnClickListener {
             communityPostViewModel.postComment()
@@ -102,7 +111,7 @@ class CommunityPostActivity :
             }
         })
         communityPostViewModel.isCommentPostSuccess.observe(this, {
-            if (it){
+            if (it) {
                 binding.etCommunityPostCommentInput.setText("")
             }
             communityPostViewModel.initData()
@@ -119,33 +128,6 @@ class CommunityPostActivity :
 
     private fun initData() {
         communityPostViewModel.initData()
-    }
-
-    @SuppressLint("ResourceType")
-    fun showEditDialog() {
-        val dialog = this.showFloatingDialog(R.layout.dialog_comment)
-        val edit = dialog.findViewById<Button>(R.id.tv_comment_dialog_edit)
-        val delete = dialog.findViewById<Button>(R.id.tv_comment_dialog_delete)
-        dialog.getWindow()?.clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-
-
-        val wm = getSystemService(WINDOW_SERVICE) as WindowManager
-        val display = wm.defaultDisplay
-        val metrics = DisplayMetrics()
-        display.getMetrics(metrics)
-        val params: WindowManager.LayoutParams? = dialog.getWindow()?.getAttributes()
-        params?.y = -110
-        params?.x = 380
-
-        dialog.getWindow()?.setAttributes(params)
-
-        edit.setOnClickListener {
-            dialog.dismiss()
-        }
-
-        delete.setOnClickListener {
-            dialog.dismiss()
-        }
     }
 }
 

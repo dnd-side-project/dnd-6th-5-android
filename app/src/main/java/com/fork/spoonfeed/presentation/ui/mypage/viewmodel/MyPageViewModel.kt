@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
-import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
@@ -35,19 +34,19 @@ class MyPageViewModel @Inject constructor(
     val sentence: LiveData<String>
         get() = _sentence
 
-    private val _myPostList = MutableLiveData<List<ResponseUserPostData.Data.Post>>()
-    val myPostList: LiveData<List<ResponseUserPostData.Data.Post>> =
+    private val _myPostList = MutableLiveData<List<ResponseUserPostData.Data.Post?>>()
+    val myPostList: LiveData<List<ResponseUserPostData.Data.Post?>> =
         _myPostList
 
-    private val _isMyPostEmpty = MutableLiveData<Boolean>(true)
+    private val _isMyPostEmpty = MutableLiveData(true)
     val isMyPostEmpty: LiveData<Boolean>
         get() = _isMyPostEmpty
 
-    private val _myCommentList = MutableLiveData<List<ResponseUserCommentData.Data.Comment>>()
-    val myCommentList: LiveData<List<ResponseUserCommentData.Data.Comment>> =
+    private val _myCommentList = MutableLiveData<List<ResponseUserCommentData.Data.Comment?>>()
+    val myCommentList: LiveData<List<ResponseUserCommentData.Data.Comment?>> =
         _myCommentList
 
-    private val _isMyCommentEmpty = MutableLiveData<Boolean>(true)
+    private val _isMyCommentEmpty = MutableLiveData(true)
     val isMyCommentEmpty: LiveData<Boolean>
         get() = _isMyCommentEmpty
 
@@ -55,7 +54,7 @@ class MyPageViewModel @Inject constructor(
     val myInterastedtPoLicyList: LiveData<List<ResponseUserUserLikePolicyData.Data.Policy>>
         get() = _myInterastedtPoLicyList
 
-    private val _isMyInterastedPolicyEmpty = MutableLiveData<Boolean>(true)
+    private val _isMyInterastedPolicyEmpty = MutableLiveData(true)
     val isMyInterastedPolicyEmpty: LiveData<Boolean>
         get() = _isMyInterastedPolicyEmpty
 
@@ -83,14 +82,15 @@ class MyPageViewModel @Inject constructor(
     fun getMyPost() {
         viewModelScope.launch {
             _myPostList.value = userRepository.getUserPost(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.post
-            _isMyPostEmpty.value = false
+            _isMyPostEmpty.value = _myPostList.value!![0]?.title.isNullOrEmpty() == true
         }
     }
+
 
     fun getMyComment() {
         viewModelScope.launch {
             _myCommentList.value = userRepository.getUserComment(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.comment
-            _isMyCommentEmpty.value = false
+            _isMyCommentEmpty.value = _myCommentList.value?.isNullOrEmpty() == true
         }
     }
 

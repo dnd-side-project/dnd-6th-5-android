@@ -20,6 +20,7 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.databinding.ItemPostBinding
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity.Companion.POST_ID
+import com.fork.spoonfeed.presentation.ui.mypage.view.MyPostManagementPostFragment
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx

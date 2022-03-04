@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,8 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostManagementBinding>(R.layout.fragment_my_post_management) {
     private lateinit var myPostManagementPostAdapter: MyPostAdapter
     private val myPageViewModel: MyPageViewModel by viewModels()
-    private val loginViewModel: LoginViewModel by viewModels()
-
+    private var initPostNull = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -36,21 +36,19 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
 
     override fun initView() {
         initData()
-        setisMyPostEmptyObserve()
         setMyPolicyListObserve()
         initRvAdapter()
+        setisMyPostEmptyObserve()
     }
 
-    private fun setisMyPostEmptyObserve() {
+    fun setisMyPostEmptyObserve() {
         myPageViewModel.isMyPostEmpty.observe(this) { isMyPostEmpty ->
-            isMyPostEmpty.let {
-                if (isMyPostEmpty) {
-                    binding.rvMypostmanagement.visibility = View.GONE
-                    binding.ctlMypostmanagementNoPost.visibility = View.VISIBLE
-                } else {
-                    binding.ctlMypostmanagementNoPost.visibility = View.GONE
-                    binding.rvMypostmanagement.visibility = View.VISIBLE
-                }
+            if (isMyPostEmpty) {
+                binding.rvMypostmanagement.visibility = View.GONE
+                binding.ctlMypostmanagementNoPost.visibility = View.VISIBLE
+            } else {
+                binding.ctlMypostmanagementNoPost.visibility = View.GONE
+                binding.rvMypostmanagement.visibility = View.VISIBLE
             }
         }
     }
@@ -59,6 +57,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
         myPageViewModel.myPostList.observe(this) { myPostList ->
             myPostManagementPostAdapter.submitList(myPostList)
         }
+
         myPageViewModel.deletePostSuccess.observe(this) { deleteSuccess ->
             if (deleteSuccess)
                 initData()
@@ -71,7 +70,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun initRvAdapter() {
-        myPostManagementPostAdapter = MyPostAdapter(myPageViewModel, requireActivity()){
+        myPostManagementPostAdapter = MyPostAdapter(myPageViewModel, requireActivity()) {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(CommunityFragment.POST_PK, it.postId)
             })

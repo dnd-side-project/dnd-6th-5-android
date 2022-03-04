@@ -60,8 +60,8 @@ class CommunityPostCreateActivity :
     }
 
     private fun setEditMyPost() {
-        val postId = intent.getIntExtra(POST_ID, 0)
-        if (postId != null) {
+        val postId = intent.getIntExtra(POST_ID, -1)
+        if (postId != -1) {
             binding.mbCommunityPostCreate.text = "수정하기"
             communityPostCreateViewModel.initData(postId)
             setEditObserve()
