@@ -44,12 +44,4 @@ interface PostService {
         @Header("platform") platform: String = UserData.platform!!,
         @Path("pk") pk: Int,
     ): ResponseDeletePostData
-
-    @HTTP(method = "DELETE", path = "posts/{pk}/comment", hasBody = true)
-    suspend fun deleteComment(
-        @Header("access_token") accessToken: String = UserData.accessToken!!,
-        @Header("platform") platform: String = UserData.platform!!,
-        @Path("pk") pk: Int,
-        @Body body: RequestDeleteCommentData
-    ): ResponseDeleteCommentData
 }

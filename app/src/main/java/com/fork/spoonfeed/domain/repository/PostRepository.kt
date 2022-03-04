@@ -14,6 +14,4 @@ interface PostRepository {
     suspend fun patchPost(pk: Int, body: RequestPatchPostData): ResponsePatchPostData
 
     suspend fun deletePost(pk: Int): ResponseDeletePostData
-
-    suspend fun deleteComment(pk: Int, body: RequestDeleteCommentData): ResponseDeleteCommentData
 }

@@ -24,8 +24,4 @@ class PostDataSourceImpl(private val postService: PostService) : PostDataSource 
     override suspend fun deletePost(pk: Int): ResponseDeletePostData {
         return postService.deletePost(pk = pk)
     }
-
-    override suspend fun deleteComment(pk: Int, body: RequestDeleteCommentData): ResponseDeleteCommentData {
-        return postService.deleteComment(pk = pk, body = body)
-    }
 }

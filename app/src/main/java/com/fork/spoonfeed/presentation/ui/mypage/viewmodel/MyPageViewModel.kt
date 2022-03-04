@@ -10,6 +10,7 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
 import com.fork.spoonfeed.domain.repository.AuthRepository
+import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -18,6 +19,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyPageViewModel @Inject constructor(
+    private val commentRepository: CommentRepository,
     private val postRepository: PostRepository,
     private val authRepository: AuthRepository,
     private val userRepository: UserRepository
@@ -103,7 +105,7 @@ class MyPageViewModel @Inject constructor(
     fun deleteMyComment(postId: Int, commentId: String) {
         val requestDeleteCommentData = RequestDeleteCommentData(commentId.toInt())
         viewModelScope.launch {
-            _deleteCommentSuccess.value = postRepository.deleteComment(postId, requestDeleteCommentData).success
+            _deleteCommentSuccess.value = commentRepository.deleteComment(postId, requestDeleteCommentData).success
         }
     }
 
