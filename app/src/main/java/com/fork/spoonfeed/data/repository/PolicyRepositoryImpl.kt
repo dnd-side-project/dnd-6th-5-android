@@ -1,10 +1,7 @@
 package com.fork.spoonfeed.data.repository
 
 import com.fork.spoonfeed.data.remote.datasource.PolicyDataSource
-import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
-import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyDetailData
+import com.fork.spoonfeed.data.remote.model.policy.*
 import com.fork.spoonfeed.domain.repository.PolicyRepository
 import javax.inject.Inject
 
@@ -26,5 +23,9 @@ class PolicyRepositoryImpl @Inject constructor(
 
     override suspend fun getFilteredPolicy(body: RequestFilteredPolicy): ResponseFilteredPolicy {
         return policyDataSource.getFilteredPolicy(body = body)
+    }
+
+    override suspend fun postPolicyLike(body: RequestPolicyLikeData): ResponsePolicyLikeData {
+        return policyDataSource.postPolicyLike(body = body)
     }
 }

@@ -1,9 +1,6 @@
 package com.fork.spoonfeed.domain.repository
 
-import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
-import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyDetailData
+import com.fork.spoonfeed.data.remote.model.policy.*
 
 interface PolicyRepository {
 
@@ -14,4 +11,6 @@ interface PolicyRepository {
     suspend fun updateUserInfoAndGetFilteredPolicy(body: RequestFilteredPolicy): ResponseFilteredPolicy
 
     suspend fun getFilteredPolicy(body: RequestFilteredPolicy): ResponseFilteredPolicy
+
+    suspend fun postPolicyLike(body: RequestPolicyLikeData): ResponsePolicyLikeData
 }

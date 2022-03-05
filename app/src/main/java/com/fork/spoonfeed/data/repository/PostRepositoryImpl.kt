@@ -2,6 +2,8 @@ package com.fork.spoonfeed.data.repository
 
 import com.fork.spoonfeed.data.remote.datasource.PostDataSource
 import com.fork.spoonfeed.data.remote.model.community.*
+import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
+import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyLikeData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 import com.fork.spoonfeed.domain.repository.PostRepository
 import javax.inject.Inject
