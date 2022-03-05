@@ -33,13 +33,13 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
 
     override fun initView() {
         initData()
-        setisMyCommentEmptyObserve()
+        setMyCommentListEmptyObserve()
         setMyCommentListObserve()
         initRvAdapter()
 
     }
 
-    private fun setisMyCommentEmptyObserve() {
+    private fun setMyCommentListEmptyObserve() {
         myPageViewModel.isMyCommentEmpty.observe(this) { isMyCommentEmpty ->
                 if (isMyCommentEmpty) {
                     binding.rvMypostmanagement.visibility = View.GONE

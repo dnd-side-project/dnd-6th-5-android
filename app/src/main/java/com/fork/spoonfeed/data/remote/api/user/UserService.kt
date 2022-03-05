@@ -6,7 +6,7 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -45,8 +45,8 @@ interface UserService {
 
     @GET("user/{userId}/like/policy")
     suspend fun getUserLikePolicy(
-        @Header("access_token") accessToken: String,
-        @Header("platform") platform: String,
-        @Path("userId") id: Int,
-    ): ResponseUserUserLikePolicyData
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+        @Header("platform") platform: String = UserData.platform!!,
+        @Path("userId") userId: Int = UserData.id!!
+    ): ResponseUserLikePolicyData
 }

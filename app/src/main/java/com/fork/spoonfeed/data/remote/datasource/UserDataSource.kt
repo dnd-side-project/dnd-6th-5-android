@@ -5,7 +5,7 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 
 
 interface UserDataSource {
@@ -18,5 +18,5 @@ interface UserDataSource {
 
     suspend fun getUserComment(accessToken: String, platform: String, userId: Int): ResponseUserCommentData
 
-    suspend fun getUserLikePolicy(accessToken: String, platform: String, id: Int): ResponseUserUserLikePolicyData
+    suspend fun getUserLikePolicy(): ResponseUserLikePolicyData
 }

@@ -1,6 +1,5 @@
 package com.fork.spoonfeed.presentation.ui.mypage.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -10,7 +9,7 @@ import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.user.RequestQuestionData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.domain.repository.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -52,9 +51,9 @@ class MyPageViewModel @Inject constructor(
     val isMyCommentEmpty: LiveData<Boolean>
         get() = _isMyCommentEmpty
 
-    private val _myInterastedtPoLicyList = MutableLiveData<List<ResponseUserUserLikePolicyData.Data.Policy>>()
-    val myInterastedtPoLicyList: LiveData<List<ResponseUserUserLikePolicyData.Data.Policy>>
-        get() = _myInterastedtPoLicyList
+    private val _myLikePoLicyList = MutableLiveData<List<ResponseUserLikePolicyData.Data.Policy>>()
+    val myLikePoLicyList: LiveData<List<ResponseUserLikePolicyData.Data.Policy>>
+        get() = _myLikePoLicyList
 
     private val _isMyInterastedPolicyEmpty = MutableLiveData(true)
     val isMyInterastedPolicyEmpty: LiveData<Boolean>
@@ -113,9 +112,9 @@ class MyPageViewModel @Inject constructor(
         }
     }
 
-    fun getMyInterastedPolicy() {
+    fun getMyLikePolicy() {
         viewModelScope.launch {
-            _myInterastedtPoLicyList.value = userRepository.getUserLikePolicy(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.policy
+            _myLikePoLicyList.value = userRepository.getUserLikePolicy().data.policy
         }
     }
 

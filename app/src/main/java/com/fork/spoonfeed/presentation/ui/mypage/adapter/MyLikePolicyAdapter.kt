@@ -5,15 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
 
-class MyInterastedPolicyAdapter(
-    private val clickListener: (ResponseUserUserLikePolicyData.Data.Policy) -> Unit
-) : ListAdapter<ResponseUserUserLikePolicyData.Data.Policy, MyInterastedPolicyAdapter.MyInterastedViewHolder>(diffUtil) {
+class MyLikePolicyAdapter(
+    private val clickListener: (ResponseUserLikePolicyData.Data.Policy) -> Unit
+) : ListAdapter<ResponseUserLikePolicyData.Data.Policy, MyLikePolicyAdapter.MyLikePolicyViewHolder>(diffUtil) {
 
-    inner class MyInterastedViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ResponseUserUserLikePolicyData.Data.Policy) {
+    inner class MyLikePolicyViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(data: ResponseUserLikePolicyData.Data.Policy) {
             binding.apply {
                 tvItemPolicySentence.text = data.content
                 tvItemCategory.text = data.category
@@ -30,23 +30,23 @@ class MyInterastedPolicyAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyInterastedPolicyAdapter.MyInterastedViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyLikePolicyAdapter.MyLikePolicyViewHolder {
         val binding = ItemPolicyListBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MyInterastedViewHolder(binding)
+        return MyLikePolicyViewHolder(binding)
     }
 
     override fun getItemCount() = currentList.size
 
-    override fun onBindViewHolder(holder: MyInterastedPolicyAdapter.MyInterastedViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyViewHolder, position: Int) {
         holder.onBind(currentList[position])
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<ResponseUserUserLikePolicyData.Data.Policy>() {
-            override fun areContentsTheSame(oldItem: ResponseUserUserLikePolicyData.Data.Policy, newItem: ResponseUserUserLikePolicyData.Data.Policy) =
+        val diffUtil = object : DiffUtil.ItemCallback<ResponseUserLikePolicyData.Data.Policy>() {
+            override fun areContentsTheSame(oldItem: ResponseUserLikePolicyData.Data.Policy, newItem: ResponseUserLikePolicyData.Data.Policy) =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: ResponseUserUserLikePolicyData.Data.Policy, newItem: ResponseUserUserLikePolicyData.Data.Policy) =
+            override fun areItemsTheSame(oldItem: ResponseUserLikePolicyData.Data.Policy, newItem: ResponseUserLikePolicyData.Data.Policy) =
                 oldItem.policyId == newItem.policyId
         }
     }

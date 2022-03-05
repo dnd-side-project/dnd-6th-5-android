@@ -38,10 +38,10 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
         initData()
         setMyPolicyListObserve()
         initRvAdapter()
-        setisMyPostEmptyObserve()
+        setMyPolicyListEmptyObserve()
     }
 
-    fun setisMyPostEmptyObserve() {
+    fun setMyPolicyListEmptyObserve() {
         myPageViewModel.isMyPostEmpty.observe(this) { isMyPostEmpty ->
             if (isMyPostEmpty) {
                 binding.rvMypostmanagement.visibility = View.GONE
