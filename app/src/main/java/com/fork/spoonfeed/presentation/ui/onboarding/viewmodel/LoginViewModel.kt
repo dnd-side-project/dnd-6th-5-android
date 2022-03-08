@@ -49,15 +49,12 @@ class LoginViewModel @Inject constructor(
 
     fun loginWithKakao(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
-            _isKakaoLoginSuccess.value =
-                authRepository.loginWithKakao(accessToken, refreshToken).run {
-                    UserData.id = data.user.id
-                    UserData.refreshToken = data.user.token.refreshToken
-                    UserData.accessToken = accessToken
-                    UserData.platform = "kakao"
-
-                    success
-                }
+          val responseData = authRepository.loginWithKakao(accessToken, refreshToken)
+            _isKakaoLoginSuccess.value=responseData.success
+            UserData.id = responseData.data.user.id
+            UserData.refreshToken = responseData.data.user.token.refreshToken
+            UserData.accessToken = accessToken
+            UserData.platform = "kakao"
         }
     }
 

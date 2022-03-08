@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
+import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
 import com.fork.spoonfeed.data.remote.model.user.RequestQuestionData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
@@ -21,7 +22,8 @@ class MyPageViewModel @Inject constructor(
     private val commentRepository: CommentRepository,
     private val postRepository: PostRepository,
     private val authRepository: AuthRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val policyRepository: PolicyRepository
 ) : ViewModel() {
     private val _isQuestionValid = MutableLiveData(false)
     val isQuestionValid: LiveData<Boolean>
@@ -51,13 +53,17 @@ class MyPageViewModel @Inject constructor(
     val isMyCommentEmpty: LiveData<Boolean>
         get() = _isMyCommentEmpty
 
-    private val _myLikePoLicyList = MutableLiveData<List<ResponseUserLikePolicyData.Data.Policy>>()
-    val myLikePoLicyList: LiveData<List<ResponseUserLikePolicyData.Data.Policy>>
-        get() = _myLikePoLicyList
+    private val _myLikePolicyList = MutableLiveData<List<ResponseUserLikePolicyData.Data.Policy>>()
+    val myLikePolicyList: LiveData<List<ResponseUserLikePolicyData.Data.Policy>>
+        get() = _myLikePolicyList
 
-    private val _isMyInterastedPolicyEmpty = MutableLiveData(true)
-    val isMyInterastedPolicyEmpty: LiveData<Boolean>
-        get() = _isMyInterastedPolicyEmpty
+    private val _isMyLikePolicyListEmpty = MutableLiveData(true)
+    val isMyLikePolicyListEmpty: LiveData<Boolean>
+        get() = _isMyLikePolicyListEmpty
+
+    private val _postMyLikePolicySuccess = MutableLiveData(false)
+    val postMyLikePolicySuccess: LiveData<Boolean>
+        get() = _postMyLikePolicySuccess
 
     private val _deletePostSuccess = MutableLiveData(false)
     val deletePostSuccess: LiveData<Boolean>
@@ -71,6 +77,10 @@ class MyPageViewModel @Inject constructor(
     val postQuestionSuccess: LiveData<Boolean>
         get() = _postQuestionSuccess
 
+    private val _logoutWithKakaoSuccess = MutableLiveData(false)
+    val logoutWithKakaoSuccess: LiveData<Boolean>
+        get() = _logoutWithKakaoSuccess
+
     private val _userNickName = MutableLiveData<String>()
     val userNickName: LiveData<String> = _userNickName
 
@@ -80,7 +90,7 @@ class MyPageViewModel @Inject constructor(
 
     fun logoutWithKakao() {
         viewModelScope.launch {
-            authRepository.logoutWithKakao(UserData.accessToken!!)
+            _logoutWithKakaoSuccess.value = authRepository.logoutWithKakao(UserData.accessToken!!).success
         }
     }
 
@@ -90,7 +100,6 @@ class MyPageViewModel @Inject constructor(
             _isMyPostEmpty.value = _myPostList.value!![0]?.title.isNullOrEmpty() == true
         }
     }
-
 
     fun getMyComment() {
         viewModelScope.launch {
@@ -112,12 +121,6 @@ class MyPageViewModel @Inject constructor(
         }
     }
 
-    fun getMyLikePolicy() {
-        viewModelScope.launch {
-            _myLikePoLicyList.value = userRepository.getUserLikePolicy().data.policy
-        }
-    }
-
     fun getNickName() {
         viewModelScope.launch {
             _userNickName.value = userRepository.getUserData().data.user.nickname
@@ -133,6 +136,19 @@ class MyPageViewModel @Inject constructor(
         )
         viewModelScope.launch {
             _postQuestionSuccess.value = questionRepository.postQuestion(requestPostQuestionRepository).success
+        }
+    }
+
+    fun getMyLikePolicy() {
+        viewModelScope.launch {
+            _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
+        }
+    }
+
+    fun postMyLikePolicy(policyId: String) {
+        val requestPolicyLiveData = RequestPolicyLikeData(policyId = policyId)
+        viewModelScope.launch {
+            _postMyLikePolicySuccess.value = policyRepository.postPolicyLike(requestPolicyLiveData).success
         }
     }
 }
