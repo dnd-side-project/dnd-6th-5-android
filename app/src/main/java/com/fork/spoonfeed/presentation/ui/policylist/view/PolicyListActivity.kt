@@ -3,6 +3,7 @@ package com.fork.spoonfeed.presentation.ui.policylist.view
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import androidx.activity.viewModels
@@ -39,10 +40,12 @@ class PolicyListActivity :
     override fun initView() {
         setPolicyListAdapter()
         this.setBackBtnClickListener(binding.ivPolicylistBack)
+        initLikeData()
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
         setInitLayout()
+        setLikePolicyObserve()
         policyListViewModel.applyFilter()
     }
 
@@ -67,6 +70,10 @@ class PolicyListActivity :
         }
     }
 
+    private fun initLikeData() {
+        policyListViewModel.getMyLikePolicy()
+    }
+
     private fun setFilterCategoryLayout(category: String) {
         when (category) {
             ALL -> binding.tvPolicylistFilter.text = ALL
@@ -76,7 +83,7 @@ class PolicyListActivity :
     }
 
     private fun setPolicyListAdapter() {
-        policyListAdapter = PolicyListAdapter(false) {
+        policyListAdapter = PolicyListAdapter(this,policyListViewModel) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("id", it.id)
                 startActivity(this)
@@ -118,6 +125,20 @@ class PolicyListActivity :
                 if (isReWriteClicked) {
                     showReWriteDialog()
                 }
+            }
+        }
+    }
+
+    private fun setLikePolicyObserve() {
+
+        policyListViewModel.myLikePolicyList.observe(this) { myLikePolicyList ->
+            for (list in myLikePolicyList) {
+               // Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", list.toString())
+            }
+        }
+        policyListViewModel.copyList.observe(this) { copyList ->
+            for (list in copyList) {
+                Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", list.toString())
             }
         }
     }

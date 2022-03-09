@@ -39,9 +39,9 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
     }
 
     private fun setMyLikePostEmptyObserve() {
-        myPageViewModel.isMyInterastedPolicyEmpty.observe(this) { isMyInterastedPolicyEmpty ->
-            isMyInterastedPolicyEmpty.let {
-                if (isMyInterastedPolicyEmpty) {
+        myPageViewModel.isMyLikePolicyListEmpty.observe(this) { isMyLikePolicyListEmpty ->
+            isMyLikePolicyListEmpty.let {
+                if (isMyLikePolicyListEmpty) {
                     binding.rvLikepolicy.visibility = View.INVISIBLE
                     binding.ctlLikepolicyNoComment.visibility = View.VISIBLE
                 } else {
@@ -53,14 +53,18 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
     }
 
     private fun setMyLikePostListObserve() {
-        myPageViewModel.myLikePoLicyList.observe(this) { myLikePoLicyList ->
-            myLikePolicyAdapter.submitList(myLikePoLicyList)
+        myPageViewModel.myLikePolicyList.observe(this) { myLikePolicyList ->
+            myLikePolicyAdapter.submitList(myLikePolicyList)
+        }
+        myPageViewModel.postMyLikePolicySuccess.observe(this) { postMyLikePolicySuccess ->
+            if (postMyLikePolicySuccess)
+                initData()
         }
     }
 
 
     private fun initRvAdapter() {
-        myLikePolicyAdapter = MyLikePolicyAdapter {
+        myLikePolicyAdapter = MyLikePolicyAdapter (myPageViewModel){
             Intent(this, DetailInfoActivity::class.java).apply {
                 /*  putExtra("category", it.category)
                   putExtra("title", it.name)

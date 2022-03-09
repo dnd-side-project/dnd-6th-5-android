@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 
 class MyLikePolicyAdapter(
+    private val myPageViewModel: MyPageViewModel,
     private val clickListener: (ResponseUserLikePolicyData.Data.Policy) -> Unit
 ) : ListAdapter<ResponseUserLikePolicyData.Data.Policy, MyLikePolicyAdapter.MyLikePolicyViewHolder>(diffUtil) {
 
@@ -25,6 +27,9 @@ class MyLikePolicyAdapter(
                 ivItemLike.isChecked = true
                 ivItemLike.setOnClickListener {
                     ivItemLike.toggle()
+                    if(ivItemLike.isChecked==false){
+                        myPageViewModel.postMyLikePolicy(data.policyId.toString())
+                    }
                 }
             }
         }

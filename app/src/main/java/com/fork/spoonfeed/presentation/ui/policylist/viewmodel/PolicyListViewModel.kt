@@ -5,9 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
+import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
 import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.domain.repository.PolicyRepository
+import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,6 +18,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PolicyListViewModel @Inject constructor(
+    private val userRepository: UserRepository,
     private val policyRepository: PolicyRepository
 ) : ViewModel() {
 
@@ -36,6 +40,18 @@ class PolicyListViewModel @Inject constructor(
     private val _policyFilteredResult = MutableLiveData<List<ResponsePolicyAllData.Data.Policy>>()
     val policyFilteredResult: LiveData<List<ResponsePolicyAllData.Data.Policy>> =
         _policyFilteredResult
+
+    private val _postMyLikePolicySuccess = MutableLiveData(false)
+    val postMyLikePolicySuccess: LiveData<Boolean>
+        get() = _postMyLikePolicySuccess
+
+    private val _myLikePolicyList = MutableLiveData<List<ResponseUserLikePolicyData.Data.Policy>>()
+    val myLikePolicyList: LiveData<List<ResponseUserLikePolicyData.Data.Policy>>
+        get() = _myLikePolicyList
+
+    private val _copyList = MutableLiveData<MutableList<Int>>()
+    val copyList: LiveData<MutableList<Int>>
+        get() = _copyList
 
     fun setUserInfo(data: RequestFilteredPolicy) {
         userInfo = data
@@ -99,5 +115,23 @@ class PolicyListViewModel @Inject constructor(
 
     fun reWriteOnClickFalse() {
         _isReWriteClicked.value = false
+    }
+
+    fun postMyLikePolicy(policyId: String) {
+        val requestPolicyLiveData = RequestPolicyLikeData(policyId = policyId)
+        viewModelScope.launch {
+            _postMyLikePolicySuccess.value = policyRepository.postPolicyLike(requestPolicyLiveData).success
+        }
+    }
+
+    fun getMyLikePolicy() {
+        viewModelScope.launch {
+            _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
+       /*     for (list in _myLikePolicyList.value!!) {
+                _copyList.value?.add(
+                    list.policyId
+                )
+            }*/
+        }
     }
 }
