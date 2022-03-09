@@ -2,7 +2,7 @@ package com.fork.spoonfeed.data.remote.model.user
 
 import com.google.gson.annotations.SerializedName
 
-data class ResponseUserUserLikePolicyData(
+data class ResponseUserLikePolicyData(
     @SerializedName("success") val success: Boolean,
     @SerializedName("data") val data: Data
 ) {

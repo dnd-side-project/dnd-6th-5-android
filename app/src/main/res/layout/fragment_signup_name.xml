@@ -54,7 +54,6 @@
                 android:paddingStart="0dp"
                 android:paddingTop="0dp"
                 android:paddingBottom="16dp"
-                android:text="@{loginViewModel.nickNameText}"
                 android:textColor="@color/gray06"
                 android:textColorHint="@color/gray04"
                 tools:ignore="RtlSymmetry" />

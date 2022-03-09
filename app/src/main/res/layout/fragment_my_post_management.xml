@@ -21,7 +21,7 @@
             android:id="@+id/rv_mypostmanagement"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="visible"
+            android:visibility="invisible"
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="6"
             tools:listitem="@layout/item_post" />

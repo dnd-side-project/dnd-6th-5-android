@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+    </data>
+
+    <TextView
+        android:id="@+id/details"
+        style="@style/TextView.Heading.Bold.14"
+        android:layout_width="169dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="28dp"
+        android:text="수정하기" />
+</layout>

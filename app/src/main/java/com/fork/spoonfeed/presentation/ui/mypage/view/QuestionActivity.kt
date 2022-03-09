@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.core.widget.doAfterTextChanged
 import com.fork.spoonfeed.R
@@ -9,6 +10,8 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 
 @AndroidEntryPoint
 class QuestionActivity : BaseViewUtil.BaseAppCompatActivity<ActivityQuestionBinding>(R.layout.activity_question) {
@@ -25,7 +28,42 @@ class QuestionActivity : BaseViewUtil.BaseAppCompatActivity<ActivityQuestionBind
 
     override fun initView() {
         initFocusEvent()
+        setOnClickListener()
+        setObserve()
         this.setBackBtnClickListener(binding.ivQuestionBack)
+    }
+
+    fun isEmail(email: String): Boolean {
+        var isEmailFormat = false
+        val regex = "^[_a-zA-Z0-9-\\.]+@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$"
+        val pattern = Pattern.compile(regex)
+        val matcher = pattern.matcher(email)
+        if (matcher.matches()) {
+            isEmailFormat = true
+        }
+        return isEmailFormat
+    }
+
+
+    private fun setOnClickListener() {
+        binding.btnQuestion.setOnClickListener {
+            val email = binding.etQuestionEmail.text.toString()
+            val sentence = binding.etQuestionSentence.text.toString()
+            if (isEmail(email)) {
+                myPageViewModel.postQuestion(sentence, email)
+            } else {
+                Toast.makeText(this, "이메일 형식을 다시 확인해주세요", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun setObserve() {
+        myPageViewModel.postQuestionSuccess.observe(this) { postQuestionSuccess ->
+            if (postQuestionSuccess) {
+                Toast.makeText(this, "문의가 완료되었습니다.", Toast.LENGTH_LONG).show()
+                finish()
+            }
+        }
     }
 
     private fun initFocusEvent() {
@@ -66,11 +104,7 @@ class QuestionActivity : BaseViewUtil.BaseAppCompatActivity<ActivityQuestionBind
     }
 
     fun setBtn() {
-        if (binding.etQuestionEmail.length() > 0 && binding.etQuestionSentence.length() > 0) {
-            isValidBtn = true
-        } else {
-            isValidBtn = false
-        }
+        isValidBtn = binding.etQuestionEmail.length() > 0 && binding.etQuestionSentence.length() > 0
         myPageViewModel.postBtnEnable(isValidBtn)
     }
 

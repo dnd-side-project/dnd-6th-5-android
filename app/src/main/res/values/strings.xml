@@ -344,7 +344,7 @@
     <string name="mypage_notice">공지사항</string>
     <string name="mypage_terms_condition">이용약관</string>
     <string name="mypage_protect">보호 지침</string>
-    <string name="mypage_personal_info">이용약관</string>
+    <string name="mypage_personal_info">개인정보 처리방침</string>
     <string name="mypage_open_source">오픈소스 라이센스</string>
     <string name="mypage_question">문의하기</string>
     <string name="mypage_logout">로그아웃</string>

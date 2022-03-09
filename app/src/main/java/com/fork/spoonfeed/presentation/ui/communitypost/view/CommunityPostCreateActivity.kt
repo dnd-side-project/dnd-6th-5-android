@@ -2,24 +2,28 @@ package com.fork.spoonfeed.presentation.ui.communitypost.view
 
 import android.content.Intent
 import android.content.res.ColorStateList
+import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ListPopupWindow
-import com.fork.spoonfeed.R
-import com.fork.spoonfeed.databinding.ActivityCommunityPostCreateBinding
-import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import android.widget.ArrayAdapter
+import android.widget.ListPopupWindow
 import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
+import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
+import com.fork.spoonfeed.databinding.ActivityCommunityPostCreateBinding
+import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostCreateViewModel
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,9 +54,43 @@ class CommunityPostCreateActivity :
     }
 
     override fun initView() {
-        setEditField()
+        setEditMyPost()
         setObserver()
-        setOnClickListener()
+        setEditField()
+    }
+
+    private fun setEditMyPost() {
+        val postId = intent.getIntExtra(POST_ID, RESULT_OK)
+        if (postId != RESULT_OK) {
+            binding.mbCommunityPostCreate.text = "수정하기"
+            communityPostCreateViewModel.initData(postId)
+            setEditObserve()
+            setOnClickListener(true, postId)
+        } else {
+            setOnClickListener(false, postId)
+
+        }
+    }
+
+    private fun setEditObserve() {
+        with(binding) {
+            communityPostCreateViewModel.postDetailData.observe(this@CommunityPostCreateActivity, {
+                tvCommunityPostCreateCategory.text = it.category
+                etCommunityPostCreateTitle.setText(it.title)
+                etCommunityPostCreateContent.setText(it.content)
+                communityPostCreateViewModel.setCategory(it.category)
+                communityPostCreateViewModel.setTitle(it.title)
+                communityPostCreateViewModel.setContent(it.content)
+                if (it.category == "금융") {
+                    tvCommunityPostCreateCategory.setTextColor(getColor(R.color.finance_purple))
+                } else {
+                    tvCommunityPostCreateCategory.setTextColor(getColor(R.color.dwelling_blue))
+                }
+                val typeFaceBold = Typeface.createFromAsset(assets, "suit_bold.otf")
+                binding.tvCommunityPostCreateCategory.setTypeface(typeFaceBold)
+
+            })
+        }
     }
 
     private fun setEditField() {
@@ -104,15 +142,33 @@ class CommunityPostCreateActivity :
 //                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
             }
         })
+        communityPostCreateViewModel.patchSuccess.observe(this, {
+            if (it) {
+                finish()
+//                TODO 게시물 ID 값을 받아서 작성한 글의 상세페이지로 이동하도록 구현
+//                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
+            }
+        })
     }
 
-    private fun setOnClickListener() {
-        binding.mbCommunityPostCreate.setOnClickListener {
-            communityPostCreateViewModel.sendPost()
+
+    private fun setOnClickListener(edit: Boolean, postId: Int) {
+        if (edit) {
+            binding.mbCommunityPostCreate.setOnClickListener {
+                communityPostCreateViewModel.editPost(postId)
+            }
+            binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
+                communityPostCreateViewModel.editPost(postId)
+            }
+        } else {
+            binding.mbCommunityPostCreate.setOnClickListener {
+                communityPostCreateViewModel.sendPost()
+            }
+            binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
+                communityPostCreateViewModel.sendPost()
+            }
         }
-        binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
-            communityPostCreateViewModel.sendPost()
-        }
+
         binding.tvCommunityPostCreateCategory.setOnClickListener {
             showMenu()
         }
@@ -185,5 +241,9 @@ class CommunityPostCreateActivity :
             }
         }
         popup.show()
+    }
+
+    companion object {
+        const val POST_ID = "POSTID"
     }
 }

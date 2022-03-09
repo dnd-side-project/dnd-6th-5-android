@@ -6,7 +6,7 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.domain.repository.UserRepository
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class UserRepositoryImpl @Inject constructor(
         return userDataSource.getUserComment(accessToken, platform, userId)
     }
 
-    override suspend fun getUserLikePolicy(accessToken: String, platform: String, userId: Int): ResponseUserUserLikePolicyData {
-        return userDataSource.getUserLikePolicy(accessToken, platform, userId)
+    override suspend fun getUserLikePolicy(): ResponseUserLikePolicyData {
+        return userDataSource.getUserLikePolicy()
     }
 }

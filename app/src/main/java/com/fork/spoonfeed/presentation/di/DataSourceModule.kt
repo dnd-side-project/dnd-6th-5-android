@@ -4,6 +4,7 @@ import com.fork.spoonfeed.data.remote.api.auth.AuthService
 import com.fork.spoonfeed.data.remote.api.community.CommentService
 import com.fork.spoonfeed.data.remote.api.community.PostService
 import com.fork.spoonfeed.data.remote.api.policy.PolicyService
+import com.fork.spoonfeed.data.remote.api.user.QuestionService
 import com.fork.spoonfeed.data.remote.datasource.AuthDataSource
 import com.fork.spoonfeed.data.remote.datasource.AuthDataSourceImpl
 import com.fork.spoonfeed.data.remote.datasource.CommentDataSource
@@ -52,5 +53,11 @@ object DataSourceModule {
     @Singleton
     fun provideUserDataSource(userService: UserService): UserDataSource {
         return UserDataSourceImpl(userService)
+    }
+
+    @Provides
+    @Singleton
+    fun provideQuestioinDataSource(questionService: QuestionService): QuestionDataSource {
+        return QuestionDataSourceImpl(questionService)
     }
 }

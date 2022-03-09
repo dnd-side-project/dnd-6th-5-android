@@ -6,9 +6,11 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.service.autofill.UserData
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.fork.spoonfeed.R
@@ -73,14 +75,24 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
         val cancelBtn = dialog.findViewById<Button>(R.id.tv_logout_dialog_cancel)
 
         confirmBtn.setOnClickListener {
-            if (com.fork.spoonfeed.data.UserData.platform == "kakao")
+            if (com.fork.spoonfeed.data.UserData.platform == "kakao") {
                 myPageViewModel.logoutWithKakao()
-            else NidOAuthLogin().logout()
-            dialog.dismiss()
+            } else {
+                NidOAuthLogin().logout()
+                Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
         }
 
         cancelBtn.setOnClickListener {
             dialog.dismiss()
+        }
+
+        myPageViewModel.logoutWithKakaoSuccess.observe(this) { logoutSuccess ->
+            if (logoutSuccess) {
+                Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+                dialog.dismiss()
+            }
         }
     }
 }

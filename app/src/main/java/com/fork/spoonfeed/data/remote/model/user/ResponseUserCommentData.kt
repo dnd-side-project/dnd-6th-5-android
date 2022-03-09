@@ -7,7 +7,7 @@ data class ResponseUserCommentData(
     @SerializedName("data") val data: Data
 ) {
     data class Data(
-        @SerializedName("comment") val comment: List<Comment>,
+        @SerializedName("comment") val comment: List<Comment?>,
     ) {
         data class Comment(
             @SerializedName("user_id") val userId: Int,

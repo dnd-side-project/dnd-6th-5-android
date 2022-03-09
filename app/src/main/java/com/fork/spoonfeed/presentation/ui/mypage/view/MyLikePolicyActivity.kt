@@ -8,16 +8,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityInterastedPolicyBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyInterastedPolicyAdapter
+import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyLikePolicyAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
-import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInterastedPolicyBinding>(R.layout.activity_interasted_policy) {
-    private lateinit var myInterastedPolicyAdapter: MyInterastedPolicyAdapter
+    private lateinit var myLikePolicyAdapter: MyLikePolicyAdapter
     private val myPageViewModel: MyPageViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,36 +27,44 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
     }
 
     override fun initView() {
-        myPageViewModel.getMyInterastedPolicy()
-        setisInterastedEmptyObserve()
-        setInterestedPolicyListAdapter()
-        setInterastedListObserve()
-        this.setBackBtnClickListener(binding.ivInterastedpolicyBack)
+        initData()
+        initRvAdapter()
+        setMyLikePostEmptyObserve()
+        setMyLikePostListObserve()
+        this.setBackBtnClickListener(binding.ivLikepolicyBack)
     }
 
-    private fun setisInterastedEmptyObserve() {
-        myPageViewModel.isMyInterastedPolicyEmpty.observe(this) { isMyInterastedPolicyEmpty ->
-            isMyInterastedPolicyEmpty.let {
-                if (isMyInterastedPolicyEmpty) {
-                    binding.rvInterastedpolicy.visibility = View.INVISIBLE
-                    binding.ctlInterastedpolicyNoComment.visibility = View.VISIBLE
+    private fun initData() {
+        myPageViewModel.getMyLikePolicy()
+    }
+
+    private fun setMyLikePostEmptyObserve() {
+        myPageViewModel.isMyLikePolicyListEmpty.observe(this) { isMyLikePolicyListEmpty ->
+            isMyLikePolicyListEmpty.let {
+                if (isMyLikePolicyListEmpty) {
+                    binding.rvLikepolicy.visibility = View.INVISIBLE
+                    binding.ctlLikepolicyNoComment.visibility = View.VISIBLE
                 } else {
-                    binding.ctlInterastedpolicyNoComment.visibility = View.INVISIBLE
-                    binding.rvInterastedpolicy.visibility = View.VISIBLE
+                    binding.ctlLikepolicyNoComment.visibility = View.INVISIBLE
+                    binding.rvLikepolicy.visibility = View.VISIBLE
                 }
             }
         }
     }
 
-    private fun setInterastedListObserve() {
-        myPageViewModel.myInterastedtPoLicyList.observe(this) { myInterastedtPoLicyList ->
-            myInterastedPolicyAdapter.submitList(myInterastedtPoLicyList)
+    private fun setMyLikePostListObserve() {
+        myPageViewModel.myLikePolicyList.observe(this) { myLikePolicyList ->
+            myLikePolicyAdapter.submitList(myLikePolicyList)
+        }
+        myPageViewModel.postMyLikePolicySuccess.observe(this) { postMyLikePolicySuccess ->
+            if (postMyLikePolicySuccess)
+                initData()
         }
     }
 
 
-    private fun setInterestedPolicyListAdapter() {
-        myInterastedPolicyAdapter = MyInterastedPolicyAdapter {
+    private fun initRvAdapter() {
+        myLikePolicyAdapter = MyLikePolicyAdapter (myPageViewModel){
             Intent(this, DetailInfoActivity::class.java).apply {
                 /*  putExtra("category", it.category)
                   putExtra("title", it.name)
@@ -67,8 +74,8 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
             }
         }
         with(binding) {
-            rvInterastedpolicy.adapter = myInterastedPolicyAdapter
-            rvInterastedpolicy.layoutManager = LinearLayoutManager(this@InterestedPolicyActivity)
+            rvLikepolicy.adapter = myLikePolicyAdapter
+            rvLikepolicy.layoutManager = LinearLayoutManager(this@InterestedPolicyActivity)
         }
     }
 }
