@@ -2,25 +2,18 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.service.autofill.UserData
-import android.util.Log
-import android.view.Gravity
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
-import com.fork.spoonfeed.presentation.ui.onboarding.viewmodel.LoginViewModel
+import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.navercorp.nid.oauth.NidOAuthLogin
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -79,8 +72,8 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
                 myPageViewModel.logoutWithKakao()
             } else {
                 NidOAuthLogin().logout()
-                Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
+                moveToOnBoardingActivity()
             }
         }
 
@@ -90,9 +83,17 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
 
         myPageViewModel.logoutWithKakaoSuccess.observe(this) { logoutSuccess ->
             if (logoutSuccess) {
-                Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
                 dialog.dismiss()
+                moveToOnBoardingActivity()
             }
         }
+    }
+
+    private fun moveToOnBoardingActivity() {
+        Toast.makeText(requireContext(), "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
+        startActivity(Intent(requireContext(), OnboardingActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        })
     }
 }
