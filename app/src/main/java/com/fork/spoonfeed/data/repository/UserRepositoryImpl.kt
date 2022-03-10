@@ -1,12 +1,7 @@
 package com.fork.spoonfeed.data.repository
 
 import com.fork.spoonfeed.data.remote.datasource.UserDataSource
-import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.*
 import com.fork.spoonfeed.domain.repository.UserRepository
 import javax.inject.Inject
 
@@ -32,5 +27,9 @@ class UserRepositoryImpl @Inject constructor(
 
     override suspend fun getUserLikePolicy(): ResponseUserLikePolicyData {
         return userDataSource.getUserLikePolicy()
+    }
+
+    override suspend fun patchUserFilter(body: RequestPatchUserFilterData): ResponsePatchUserFilterData {
+        return userDataSource.patchUserFilter(body = body)
     }
 }
