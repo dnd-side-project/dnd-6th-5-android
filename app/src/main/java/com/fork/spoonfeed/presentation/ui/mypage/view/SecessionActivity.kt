@@ -1,11 +1,14 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.Toast
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivitySecessionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,12 +39,18 @@ class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBi
 
         confirmBtn.setOnClickListener {
             dialog.dismiss()
-            finish()
+            moveToOnBoardingActivity()
         }
 
         cancelBtn.setOnClickListener {
             dialog.dismiss()
-            finish()
         }
+    }
+
+    private fun moveToOnBoardingActivity() {
+        startActivity(Intent(this, OnboardingActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        })
     }
 }
