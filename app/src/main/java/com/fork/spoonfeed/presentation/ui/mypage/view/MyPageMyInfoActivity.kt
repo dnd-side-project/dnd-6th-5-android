@@ -24,6 +24,9 @@ class MyPageMyInfoActivity :
     }
 
     override fun initView() {
+        binding.lifecycleOwner = this
+        binding.viewModel = myPageMyInfoViewModel
+        binding.activity = this
         myPageMyInfoViewModel.getUserData()
         setObserver()
         setChipOnClickListener()
@@ -139,11 +142,10 @@ class MyPageMyInfoActivity :
     }
 
 
-
     private fun setOnClickListener() {
-   /*     binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
-            finish()
-        }*/
+        /*     binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
+                 finish()
+             }*/
         binding.ivMypageMyInfoUpdateNameClear.setOnClickListener {
             binding.etMypageMyInfoUpdateName.setText("")
         }
@@ -206,18 +208,17 @@ class MyPageMyInfoActivity :
                 }
             )
         }
-        binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
+ /*       binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
             setResult(RESULT_OK, Intent().apply {
                 putExtra(INFO_UPDATE_RESULT, myPageMyInfoViewModel.updatedUserData)
             })
             finish()
-        }
+        }*/
         binding.mbMypageMyInfoUpdate.setOnClickListener {
-         myPageMyInfoViewModel.patchUserFilter()
+            myPageMyInfoViewModel.patchUserFilter()
         }
     }
-
-    companion object {
+      companion object {
         const val INFO_UPDATE_RESULT = "com.fork.spoonfeed.presentation.ui.communitypost.view"
     }
 }

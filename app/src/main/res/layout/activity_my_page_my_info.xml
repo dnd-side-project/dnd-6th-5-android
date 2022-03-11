@@ -5,6 +5,19 @@
 
     <data>
 
+        <import type="com.fork.spoonfeed.presentation.util.StringExtKt" />
+
+        <import type="com.fork.spoonfeed.domain.model.ChipInputType" />
+
+        <import type="com.fork.spoonfeed.domain.model.AgeInputType" />
+
+        <variable
+            name="activity"
+            type="com.fork.spoonfeed.presentation.ui.mypage.view.MyPageMyInfoActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,6 +117,8 @@
                 <EditText
                     android:id="@+id/et_mypage_my_info_update_age_year"
                     style="@style/TextView.Paragraph.Regular.14"
+                    ageInputType="@{AgeInputType.YEAR}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/policy_filter_edittext_height"
                     android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
@@ -132,6 +147,8 @@
                 <EditText
                     android:id="@+id/et_mypage_my_info_update_age_month"
                     style="@style/TextView.Paragraph.Regular.14"
+                    ageInputType="@{AgeInputType.MONTH}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/policy_filter_edittext_height"
                     android:layout_marginHorizontal="12dp"
@@ -159,6 +176,8 @@
                 <EditText
                     android:id="@+id/et_mypage_my_info_update_age_day"
                     style="@style/TextView.Paragraph.Regular.14"
+                    ageInputType="@{AgeInputType.DAY}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/policy_filter_edittext_height"
                     android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
@@ -688,8 +707,9 @@
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="18dp"
-                    android:backgroundTint="@color/primary_blue"
                     android:text="@string/mypage_my_info_update_confirm"
+                    android:backgroundTint="@{viewModel.isPatchUserFilterValid ? @color/primary_blue : @color/gray03}"
+                    android:enabled="@{viewModel.isPatchUserFilterValid}"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
