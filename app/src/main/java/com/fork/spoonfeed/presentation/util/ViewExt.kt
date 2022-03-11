@@ -4,6 +4,7 @@ import android.app.Activity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
@@ -48,13 +49,19 @@ fun setOnCheckedChanged(view: ChipGroup, viewModel: ViewModel, type: ChipInputTy
             ChipInputType.MARRIAGE -> {
                 (viewModel as? PolicyFilterViewModel)
                     ?.setMarriageStatus(getMarriageStatusFromCheckedId(checkedId))
+                (viewModel as? MyPageMyInfoViewModel)
+                    ?.setMarriageStatus(getMarriageStatusFromCheckedId(checkedId))
             }
             ChipInputType.EMPLOYMENT -> {
                 (viewModel as? PolicyFilterViewModel)
                     ?.setEmploymentAvailability(getEmploymentFromCheckedId(checkedId))
+                (viewModel as? MyPageMyInfoViewModel)
+                    ?.setEmploymentAvailability(getEmploymentFromCheckedId(checkedId))
             }
             ChipInputType.COMPANY_SIZE -> {
                 (viewModel as? PolicyFilterViewModel)
+                    ?.setCompanySize(getCompanySizeFromCheckedId(checkedId))
+                (viewModel as? MyPageMyInfoViewModel)
                     ?.setCompanySize(getCompanySizeFromCheckedId(checkedId))
             }
             ChipInputType.MEDIAN_INCOME -> {

@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.mypage.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -70,54 +71,72 @@ class MyPageMyInfoViewModel @Inject constructor(
 
     fun setMarriageStatus(status: Boolean) {
         _marriageStatus.value = status
+        setIsPatchUserFilterValid()
+    }
+
+    fun setEmploymentAvailability(status: Boolean) {
+        _employmentAvailability.value = status
+        setIsPatchUserFilterValid()
+    }
+
+    fun setCompanySize(size: CompanySize) {
+        _companySize.value = size
+        setIsPatchUserFilterValid()
     }
 
     fun updateMedianIncome(data: String) {
         updatedUserData = updatedUserData?.copy(
             medianIncome = data
         )
+        setIsPatchUserFilterValid()
     }
 
     fun updateAnnualIncome(data: String) {
         updatedUserData = updatedUserData?.copy(
             annualIncome = data
         )
+        setIsPatchUserFilterValid()
     }
 
     fun updateAsset(data: String) {
         updatedUserData = updatedUserData?.copy(
             asset = data
         )
+        setIsPatchUserFilterValid()
     }
 
     fun updateHouseOwner(data: String) {
         updatedUserData = updatedUserData?.copy(
             isHouseOwner = data
         )
+        setIsPatchUserFilterValid()
     }
 
     fun updateHasHouse(data: String) {
         updatedUserData = updatedUserData?.copy(
             hasHouse = data
         )
+        setIsPatchUserFilterValid()
     }
 
     fun patchUserFilter() {
         val age = _age.value?.formatAge() ?: return
+        val maritalStatus = _marriageStatus.value?.let { if (it) "기혼" else "미혼" } ?: return
+        val workStatus = _employmentAvailability.value?.let { if (it) "재직자" else "미취업자" } ?: return
+        val companyScale = _companySize.value?.value ?: return
         val updatedUserData = updatedUserData ?: return
         val requestPatchUserFilterData = RequestPatchUserFilterData(
             id = UserData.id.toString(),
             age = age,
-            maritalStatus = updatedUserData.maritalStatus,
-            workStatus = updatedUserData.workStatus,
-            companyScale = updatedUserData.companyScale,
+            maritalStatus = maritalStatus,
+            workStatus = workStatus,
+            companyScale = companyScale,
             medianIncome = updatedUserData.medianIncome,
             annualIncome = updatedUserData.annualIncome,
             asset = updatedUserData.asset,
             isHouseOwner = updatedUserData.isHouseOwner,
             hasHouse = updatedUserData.hasHouse
         )
-
         viewModelScope.launch {
             userRepository.patchUserFilter(requestPatchUserFilterData)
         }

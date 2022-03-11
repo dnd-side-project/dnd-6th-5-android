@@ -3,6 +3,7 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import androidx.activity.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMyPageMyInfoBinding
@@ -208,17 +209,18 @@ class MyPageMyInfoActivity :
                 }
             )
         }
- /*       binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
-            setResult(RESULT_OK, Intent().apply {
-                putExtra(INFO_UPDATE_RESULT, myPageMyInfoViewModel.updatedUserData)
-            })
-            finish()
-        }*/
+        /*       binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
+                   setResult(RESULT_OK, Intent().apply {
+                       putExtra(INFO_UPDATE_RESULT, myPageMyInfoViewModel.updatedUserData)
+                   })
+                   finish()
+               }*/
         binding.mbMypageMyInfoUpdate.setOnClickListener {
             myPageMyInfoViewModel.patchUserFilter()
         }
     }
-      companion object {
+
+    companion object {
         const val INFO_UPDATE_RESULT = "com.fork.spoonfeed.presentation.ui.communitypost.view"
     }
 }

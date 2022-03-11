@@ -214,11 +214,12 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_mypage_my_info_update_marriage"
+                    type="@{ChipInputType.MARRIAGE}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_marriage_false"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -272,6 +273,8 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_mypage_my_info_update_employment_availability"
+                    type="@{ChipInputType.EMPLOYMENT}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -312,6 +315,8 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_mypage_my_info_update_company_size"
+                    type="@{ChipInputType.COMPANY_SIZE}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
@@ -707,9 +712,9 @@
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="18dp"
-                    android:text="@string/mypage_my_info_update_confirm"
                     android:backgroundTint="@{viewModel.isPatchUserFilterValid ? @color/primary_blue : @color/gray03}"
                     android:enabled="@{viewModel.isPatchUserFilterValid}"
+                    android:text="@string/mypage_my_info_update_confirm"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
