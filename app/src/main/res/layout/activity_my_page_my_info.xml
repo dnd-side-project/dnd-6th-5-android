@@ -17,7 +17,7 @@
 
         <variable
             name="viewModel"
-            type="com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel" />
+            type="com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,6 +62,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:text="@{viewModel.userNickName}"
                     android:id="@+id/et_mypage_my_info_update_name"
                     style="@style/TextView.Paragraph.Regular.14"
                     android:layout_width="0dp"
