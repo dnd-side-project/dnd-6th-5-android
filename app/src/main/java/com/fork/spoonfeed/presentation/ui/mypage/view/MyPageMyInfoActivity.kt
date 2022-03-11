@@ -213,10 +213,7 @@ class MyPageMyInfoActivity :
             finish()
         }
         binding.mbMypageMyInfoUpdate.setOnClickListener {
-            setResult(RESULT_OK, Intent().apply {
-                putExtra(INFO_UPDATE_RESULT, myPageMyInfoViewModel.updatedUserData)
-            })
-            finish()
+         myPageMyInfoViewModel.patchUserFilter()
         }
     }
 
