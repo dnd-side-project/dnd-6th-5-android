@@ -15,6 +15,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.databinding.ActivityCommunityPostBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
@@ -50,10 +51,18 @@ class CommunityPostActivity :
     }
 
     private fun setCommentAdapter() {
-        commentAdapter = CommentAdapter()
+        commentAdapter = CommentAdapter(::commentUpdate, ::commentDelete)
         binding.rvCommunityPostComment.adapter = commentAdapter
         binding.rvCommunityPostComment.addItemDecoration(ItemDecoration())
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
+    }
+
+    private fun commentUpdate(comment: ResponsePostData.Data.Comment) {
+        // TODO("Not yet implemented")
+    }
+
+    private fun commentDelete(comment: ResponsePostData.Data.Comment) {
+        communityPostViewModel.deleteComment(comment)
     }
 
     private fun setCommentEditor() {
@@ -117,6 +126,9 @@ class CommunityPostActivity :
             if (it) {
                 finish()
             }
+        }
+        communityPostViewModel.deleteCommentSuccess.observe(this) {
+            communityPostViewModel.initData()
         }
     }
 

@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
+import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
@@ -38,6 +39,9 @@ class CommunityPostViewModel @Inject constructor(
 
     private val _deletePostSuccess = MutableLiveData(false)
     val deletePostSuccess: LiveData<Boolean> = _deletePostSuccess
+
+    private val _deleteCommentSuccess = MutableLiveData(false)
+    val deleteCommentSuccess: LiveData<Boolean> = _deleteCommentSuccess
 
     fun initData() {
         viewModelScope.launch {
@@ -74,6 +78,14 @@ class CommunityPostViewModel @Inject constructor(
     fun deletePost() {
         viewModelScope.launch {
             _deletePostSuccess.value = pk?.let { postRepository.deletePost(it).success }
+        }
+    }
+
+    fun deleteComment(comment: ResponsePostData.Data.Comment) {
+        val requestDeleteCommentData = RequestDeleteCommentData(comment.id)
+        viewModelScope.launch {
+            _deleteCommentSuccess.value =
+                pk?.let { commentRepository.deleteComment(it, requestDeleteCommentData).success }
         }
     }
 }

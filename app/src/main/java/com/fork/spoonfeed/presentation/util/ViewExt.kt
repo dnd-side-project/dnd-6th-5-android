@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.util
 
 import android.app.Activity
+import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
@@ -140,7 +141,7 @@ fun Activity.setBackBtnClickListener(imageView: ImageView) {
     }
 }
 
-fun Activity.dpToPx(dp: Int): Int {
+fun Context.dpToPx(dp: Int): Int {
     val displayMetrics = resources.displayMetrics
     return (dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
 }
