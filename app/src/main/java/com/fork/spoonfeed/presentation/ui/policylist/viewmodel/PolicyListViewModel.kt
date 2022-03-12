@@ -127,11 +127,6 @@ class PolicyListViewModel @Inject constructor(
     fun getMyLikePolicy() {
         viewModelScope.launch {
             _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
-       /*     for (list in _myLikePolicyList.value!!) {
-                _copyList.value?.add(
-                    list.policyId
-                )
-            }*/
         }
     }
 }
