@@ -19,18 +19,16 @@ class PolicyListAdapter(
     private val clickListener: (ResponsePolicyAllData.Data.Policy) -> Unit
 ) : ListAdapter<ResponsePolicyAllData.Data.Policy, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
 
+
     inner class PolicyListViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponsePolicyAllData.Data.Policy) {
             binding.apply {
-                var likeCountInt = 0
-
-
+                var  likeCountInt = data.likeCount.toInt()
                 tvItemCategory.text = data.category
                 tvItemPolicyTitle.text = data.name
                 tvItemPolicySentence.text = data.summary
                 tvItemDeadline.text = data.applicationPeriod
                 tvItemLikeCount.text = data.likeCount
-                likeCountInt = data.likeCount.toInt()
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
                 }
@@ -38,23 +36,25 @@ class PolicyListAdapter(
                 ctlItem.setOnClickListener {
                     clickListener(data)
                 }
+
                 ivItemLike.setOnClickListener {
                     ivItemLike.toggle()
 
                     if (ivItemLike.isChecked) {
                         tvItemLikeCount.text = (++likeCountInt).toString()
-                        policyListViewModel.getMyLikePolicy()
                     } else if (!ivItemLike.isChecked) {
                         tvItemLikeCount.text = (--likeCountInt).toString()
-                        policyListViewModel.getMyLikePolicy()
                     }
                     policyListViewModel.postMyLikePolicy(data.id.toString())
                 }
+
                 policyListViewModel.myLikePolicyList.observe(context) { myLikePolicyList ->
-                    for(list in myLikePolicyList){
-                        if(list.policyId==data.id){
-                            ivItemLike.isChecked
-                        }
+                    for (list in myLikePolicyList) {
+                        if (list.policyId == data.id)
+                            ivItemLike.isChecked = true
+
+                        if(likeCountInt==0)
+                            ivItemLike.isChecked = false
                     }
                 }
             }

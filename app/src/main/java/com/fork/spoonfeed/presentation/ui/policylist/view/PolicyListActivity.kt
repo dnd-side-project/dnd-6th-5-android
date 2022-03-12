@@ -40,13 +40,12 @@ class PolicyListActivity :
     override fun initView() {
         setPolicyListAdapter()
         this.setBackBtnClickListener(binding.ivPolicylistBack)
-        initLikeData()
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
         setInitLayout()
-        setLikePolicyObserve()
         policyListViewModel.applyFilter()
+        policyListViewModel.getMyLikePolicy()
     }
 
     private fun setInitLayout() {
@@ -70,11 +69,7 @@ class PolicyListActivity :
         }
     }
 
-    private fun initLikeData() {
-        policyListViewModel.getMyLikePolicy()
-    }
-
-    private fun setFilterCategoryLayout(category: String) {
+  private fun setFilterCategoryLayout(category: String) {
         when (category) {
             ALL -> binding.tvPolicylistFilter.text = ALL
             DWELLING -> binding.tvPolicylistFilter.text = DWELLING
@@ -83,7 +78,7 @@ class PolicyListActivity :
     }
 
     private fun setPolicyListAdapter() {
-        policyListAdapter = PolicyListAdapter(this,policyListViewModel) {
+        policyListAdapter = PolicyListAdapter(this, policyListViewModel) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra("id", it.id)
                 startActivity(this)
@@ -98,6 +93,7 @@ class PolicyListActivity :
     private fun setPolicyListObserve() {
         policyListViewModel.policyFilteredResult.observe(this) { policyList ->
             policyListAdapter.submitList(policyList)
+            policyListViewModel.getMyLikePolicy()
         }
     }
 
@@ -125,20 +121,6 @@ class PolicyListActivity :
                 if (isReWriteClicked) {
                     showReWriteDialog()
                 }
-            }
-        }
-    }
-
-    private fun setLikePolicyObserve() {
-
-        policyListViewModel.myLikePolicyList.observe(this) { myLikePolicyList ->
-            for (list in myLikePolicyList) {
-               // Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", list.toString())
-            }
-        }
-        policyListViewModel.copyList.observe(this) { copyList ->
-            for (list in copyList) {
-                Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", list.toString())
             }
         }
     }
