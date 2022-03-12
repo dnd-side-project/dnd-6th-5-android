@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.databinding.ActivityCommunityPostBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
@@ -40,10 +41,17 @@ class CommunityPostActivity :
     override fun initView() {
         binding.viewModel = communityPostViewModel
         binding.lifecycleOwner = this
-        setCommentAdapter()
-        setCommentEditor()
-        setClickListener()
-        setObserver()
+        initUserData()
+    }
+
+    private fun initUserData() {
+        communityPostViewModel.initUserData()
+        communityPostViewModel.userData.observe(this){
+            setCommentAdapter(it)
+            setCommentEditor()
+            setClickListener()
+            setObserver()
+        }
     }
 
     override fun onResume() {
@@ -51,8 +59,8 @@ class CommunityPostActivity :
         initData()
     }
 
-    private fun setCommentAdapter() {
-        commentAdapter = CommentAdapter(::commentUpdate, ::commentDelete)
+    private fun setCommentAdapter(userData: ResponseUserData.Data.User) {
+        commentAdapter = CommentAdapter(userData, ::commentUpdate, ::commentDelete)
         binding.rvCommunityPostComment.adapter = commentAdapter
         binding.rvCommunityPostComment.addItemDecoration(ItemDecoration())
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
@@ -107,6 +115,8 @@ class CommunityPostActivity :
     private fun setObserver() {
         communityPostViewModel.postDetailData.observe(this, {
             setCategoryBackground(it.category)
+            binding.ivCommunityPostEdit.isVisible =
+                it.author == communityPostViewModel.getUserData()?.nickname
         })
         communityPostViewModel.postCommentData.observe(this, {
             commentAdapter.submitList(it)

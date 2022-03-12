@@ -10,8 +10,10 @@ import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
+import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -21,10 +23,14 @@ import javax.inject.Inject
 class CommunityPostViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val postRepository: PostRepository,
-    private val commentRepository: CommentRepository
+    private val commentRepository: CommentRepository,
+    private val userRepository: UserRepository
 ) : ViewModel() {
 
     private val pk = savedStateHandle.get<Int>(CommunityFragment.POST_PK)
+
+    private val _userData = MutableLiveData<ResponseUserData.Data.User>()
+    val userData: LiveData<ResponseUserData.Data.User> = _userData
 
     private val _commentInput = MutableLiveData<String?>()
     val commentInput: LiveData<String?> = _commentInput
@@ -47,6 +53,12 @@ class CommunityPostViewModel @Inject constructor(
     private val _deleteCommentSuccess = MutableLiveData(false)
     val deleteCommentSuccess: LiveData<Boolean> = _deleteCommentSuccess
 
+    fun initUserData() {
+        viewModelScope.launch {
+            _userData.value = userRepository.getUserData().data.user
+        }
+    }
+
     fun initData() {
         viewModelScope.launch {
             if (pk != null) {
@@ -58,6 +70,9 @@ class CommunityPostViewModel @Inject constructor(
         }
     }
 
+    fun getUserData(): ResponseUserData.Data.User? {
+        return _userData.value
+    }
     fun postComment() {
         val input = _commentInput.value ?: return
         val updateData = _updateComment.value

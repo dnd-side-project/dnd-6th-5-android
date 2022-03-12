@@ -9,17 +9,20 @@ import android.widget.ArrayAdapter
 import android.widget.ListPopupWindow
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.databinding.ItemCommunityPostCommentBinding
 import com.fork.spoonfeed.presentation.util.dpToPx
 
 class CommentAdapter(
-    private val commentUpdateListener: (ResponsePostData.Data.Comment) -> (Unit),
-    private val commentDeleteListener: (ResponsePostData.Data.Comment) -> (Unit)
+    private val userData: ResponseUserData.Data.User,
+    private val commentUpdateListener: (ResponsePostData.Data.Comment) -> Unit,
+    private val commentDeleteListener: (ResponsePostData.Data.Comment) -> Unit
 ) : ListAdapter<ResponsePostData.Data.Comment, CommentAdapter.CommentViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
@@ -33,7 +36,7 @@ class CommentAdapter(
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
-        holder.bind(currentList[position], commentUpdateListener, commentDeleteListener)
+        holder.bind(currentList[position], userData, commentUpdateListener, commentDeleteListener)
     }
 
     class CommentViewHolder(private val binding: ItemCommunityPostCommentBinding) :
@@ -41,6 +44,7 @@ class CommentAdapter(
 
         fun bind(
             commentResponseData: ResponsePostData.Data.Comment,
+            userData: ResponseUserData.Data.User,
             commentUpdateListener: (ResponsePostData.Data.Comment) -> Unit,
             commentDeleteListener: (ResponsePostData.Data.Comment) -> Unit
         ) {
@@ -48,14 +52,17 @@ class CommentAdapter(
                 tvItemUserName.text = commentResponseData.commenter
                 tvItemDeadline.text = commentResponseData.createdAt
                 tvItemExplain.text = commentResponseData.content
-                ivItemEdit.setOnClickListener {
-                    showMenu(
-                        binding.root.context,
-                        binding,
-                        commentResponseData,
-                        commentUpdateListener,
-                        commentDeleteListener
-                    )
+                ivItemEdit.isVisible = commentResponseData.commenter == userData.nickname
+                if (ivItemEdit.isVisible) {
+                    ivItemEdit.setOnClickListener {
+                        showMenu(
+                            binding.root.context,
+                            binding,
+                            commentResponseData,
+                            commentUpdateListener,
+                            commentDeleteListener
+                        )
+                    }
                 }
             }
 
