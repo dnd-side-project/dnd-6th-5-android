@@ -8,6 +8,7 @@ import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
+import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
@@ -40,6 +41,9 @@ class CommunityPostViewModel @Inject constructor(
     private val _deletePostSuccess = MutableLiveData(false)
     val deletePostSuccess: LiveData<Boolean> = _deletePostSuccess
 
+    private val _updateComment = MutableLiveData<ResponsePostData.Data.Comment>()
+    val updateComment: LiveData<ResponsePostData.Data.Comment> = _updateComment
+
     private val _deleteCommentSuccess = MutableLiveData(false)
     val deleteCommentSuccess: LiveData<Boolean> = _deleteCommentSuccess
 
@@ -56,13 +60,20 @@ class CommunityPostViewModel @Inject constructor(
 
     fun postComment() {
         val input = _commentInput.value ?: return
-
+        val updateData = _updateComment.value
         viewModelScope.launch {
             if (pk != null) {
-                _isCommentPostSuccess.value = commentRepository.postComment(
-                    pk,
-                    RequestCommentData(UserData.id!!, input)
-                ).success
+                if (updateData != null) {
+                    _isCommentPostSuccess.value = commentRepository.patchComment(
+                        pk,
+                        RequestPatchCommentData(updateData.id, input)
+                    ).success
+                } else {
+                    _isCommentPostSuccess.value = commentRepository.postComment(
+                        pk,
+                        RequestCommentData(UserData.id!!, input)
+                    ).success
+                }
             }
         }
     }
@@ -79,6 +90,10 @@ class CommunityPostViewModel @Inject constructor(
         viewModelScope.launch {
             _deletePostSuccess.value = pk?.let { postRepository.deletePost(it).success }
         }
+    }
+
+    fun updateComment(comment: ResponsePostData.Data.Comment) {
+        _updateComment.value = comment
     }
 
     fun deleteComment(comment: ResponsePostData.Data.Comment) {

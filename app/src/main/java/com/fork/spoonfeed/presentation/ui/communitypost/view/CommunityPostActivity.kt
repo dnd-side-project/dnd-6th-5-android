@@ -8,6 +8,7 @@ import android.text.TextWatcher
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.ListPopupWindow
 import android.widget.TextView
@@ -58,7 +59,7 @@ class CommunityPostActivity :
     }
 
     private fun commentUpdate(comment: ResponsePostData.Data.Comment) {
-        // TODO("Not yet implemented")
+        communityPostViewModel.updateComment(comment)
     }
 
     private fun commentDelete(comment: ResponsePostData.Data.Comment) {
@@ -99,6 +100,7 @@ class CommunityPostActivity :
         }
         binding.ivCommunityPostCommentInput.setOnClickListener {
             communityPostViewModel.postComment()
+            hideKeyboard()
         }
     }
 
@@ -127,9 +129,28 @@ class CommunityPostActivity :
                 finish()
             }
         }
+        communityPostViewModel.updateComment.observe(this) {
+            binding.etCommunityPostCommentInput.setText(it.content)
+            showKeyboard()
+        }
         communityPostViewModel.deleteCommentSuccess.observe(this) {
             communityPostViewModel.initData()
         }
+    }
+
+    private fun showKeyboard() {
+        binding.etCommunityPostCommentInput.requestFocus()
+        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).showSoftInput(
+            binding.etCommunityPostCommentInput,
+            0
+        )
+    }
+
+    private fun hideKeyboard() {
+        (getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager).hideSoftInputFromWindow(
+            binding.etCommunityPostCommentInput.windowToken,
+            0
+        )
     }
 
     private fun setCategoryBackground(category: String) {
