@@ -1,9 +1,13 @@
 package com.fork.spoonfeed.data.remote.datasource
 
-import com.fork.spoonfeed.data.UserData
-import com.fork.spoonfeed.data.remote.model.community.*
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
-import retrofit2.http.*
+import com.fork.spoonfeed.data.remote.model.community.RequestPatchPostData
+import com.fork.spoonfeed.data.remote.model.community.RequestSendPostData
+import com.fork.spoonfeed.data.remote.model.community.ResponseDeletePostData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePatchPostData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
+import com.fork.spoonfeed.data.remote.model.community.ResponseSearchPostAllData
+import com.fork.spoonfeed.data.remote.model.community.ResponseSendPostData
 
 interface PostDataSource {
 
@@ -17,4 +21,5 @@ interface PostDataSource {
 
     suspend fun deletePost(pk: Int): ResponseDeletePostData
 
+    suspend fun searchPost(query: String): ResponseSearchPostAllData
 }

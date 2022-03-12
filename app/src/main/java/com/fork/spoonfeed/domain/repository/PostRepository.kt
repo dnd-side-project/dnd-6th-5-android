@@ -17,4 +17,5 @@ interface PostRepository {
 
     suspend fun deletePost(pk: Int): ResponseDeletePostData
 
+    suspend fun searchPost(query: String): ResponseSearchPostAllData
 }

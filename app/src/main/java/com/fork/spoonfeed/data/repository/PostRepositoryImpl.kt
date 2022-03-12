@@ -29,4 +29,8 @@ class PostRepositoryImpl @Inject constructor(private val postDataSource: PostDat
     override suspend fun deletePost(pk: Int): ResponseDeletePostData {
         return postDataSource.deletePost(pk = pk)
     }
+
+    override suspend fun searchPost(query: String): ResponseSearchPostAllData {
+        return postDataSource.searchPost(query)
+    }
 }
