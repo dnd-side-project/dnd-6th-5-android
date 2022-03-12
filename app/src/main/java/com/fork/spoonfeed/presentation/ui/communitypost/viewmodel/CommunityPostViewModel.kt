@@ -36,6 +36,9 @@ class CommunityPostViewModel @Inject constructor(
     private val _postCommentData = MutableLiveData<List<ResponsePostData.Data.Comment>>()
     val postCommentData: LiveData<List<ResponsePostData.Data.Comment>> = _postCommentData
 
+    private val _deletePostSuccess = MutableLiveData(false)
+    val deletePostSuccess: LiveData<Boolean> = _deletePostSuccess
+
     fun initData() {
         viewModelScope.launch {
             if (pk != null) {
@@ -62,5 +65,15 @@ class CommunityPostViewModel @Inject constructor(
 
     fun setCommentInput(data: String?) {
         _commentInput.value = data
+    }
+
+    fun getPk(): Int? {
+        return pk
+    }
+
+    fun deletePost() {
+        viewModelScope.launch {
+            _deletePostSuccess.value = pk?.let { postRepository.deletePost(it).success }
+        }
     }
 }

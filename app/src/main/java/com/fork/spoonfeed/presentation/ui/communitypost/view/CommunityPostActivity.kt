@@ -1,28 +1,26 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.DisplayMetrics
+import android.view.Gravity
 import android.view.View
-import android.view.WindowManager
-import android.widget.Button
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ListPopupWindow
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
-import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
 import com.fork.spoonfeed.databinding.ActivityCommunityPostBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.ui.communitypost.adapter.CommentAdapter
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
-import com.fork.spoonfeed.presentation.ui.mypage.view.MyPostManagementCommentFragment
-import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelThreeFragment
-import com.fork.spoonfeed.presentation.util.showFloatingDialog
+import com.fork.spoonfeed.presentation.util.dpToPx
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,7 +42,10 @@ class CommunityPostActivity :
         setCommentEditor()
         setClickListener()
         setObserver()
-        setInitLayout()
+    }
+
+    override fun onResume() {
+        super.onResume()
         initData()
     }
 
@@ -53,10 +54,6 @@ class CommunityPostActivity :
         binding.rvCommunityPostComment.adapter = commentAdapter
         binding.rvCommunityPostComment.addItemDecoration(ItemDecoration())
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
-    }
-
-    private fun setInitLayout() {
-
     }
 
     private fun setCommentEditor() {
@@ -89,7 +86,7 @@ class CommunityPostActivity :
             }
         }
         binding.ivCommunityPostEdit.setOnClickListener {
-
+            showMenu()
         }
         binding.ivCommunityPostCommentInput.setOnClickListener {
             communityPostViewModel.postComment()
@@ -116,6 +113,11 @@ class CommunityPostActivity :
             }
             communityPostViewModel.initData()
         })
+        communityPostViewModel.deletePostSuccess.observe(this) {
+            if (it) {
+                finish()
+            }
+        }
     }
 
     private fun setCategoryBackground(category: String) {
@@ -128,6 +130,48 @@ class CommunityPostActivity :
 
     private fun initData() {
         communityPostViewModel.initData()
+    }
+
+    // 글 수정 popup menu
+    private fun showMenu() {
+        val items = resources.getStringArray(R.array.mypage_popup)
+
+        val popupAdapter =
+            object : ArrayAdapter<String>(this, R.layout.item_mypage_popup, items) {
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getView(position, convertView, parent)
+                    val color = if (position == 0) {
+                        R.color.gray04
+                    } else {
+                        R.color.delete_red
+                    }
+                    (view as TextView).setTextColor(ContextCompat.getColor(context, color))
+                    return view
+                }
+            }
+
+        val popup = ListPopupWindow(this).apply {
+            anchorView = binding.ivCommunityPostEdit
+            setAdapter(popupAdapter)
+            setDropDownGravity(Gravity.NO_GRAVITY)
+            width = dpToPx(169)
+            height = dpToPx(112)
+            setBackgroundDrawable(ContextCompat.getDrawable(baseContext, R.drawable.img_comment_bg))
+        }
+
+        popup.setOnItemClickListener { _, view, _, _ ->
+            if ((view as TextView).text == "수정하기") {
+                val intent = Intent(this, CommunityPostCreateActivity::class.java).apply {
+                    putExtra(CommunityPostCreateActivity.POST_ID, communityPostViewModel.getPk())
+                }
+                startActivity(intent)
+                popup.dismiss()
+            } else {
+                communityPostViewModel.deletePost()
+                popup.dismiss()
+            }
+        }
+        popup.show()
     }
 }
 
