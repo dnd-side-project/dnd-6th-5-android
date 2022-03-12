@@ -1,9 +1,13 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
+import android.util.Log
 import androidx.activity.viewModels
+import androidx.core.content.ContextCompat
+import androidx.core.widget.addTextChangedListener
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMyPageMyInfoBinding
 import com.fork.spoonfeed.domain.model.*
@@ -24,10 +28,15 @@ class MyPageMyInfoActivity :
     }
 
     override fun initView() {
+        binding.lifecycleOwner = this
+        binding.viewModel = myPageMyInfoViewModel
+        binding.activity = this
         myPageMyInfoViewModel.getUserData()
+        myPageMyInfoViewModel.getNickName()
         setObserver()
         setChipOnClickListener()
         setOnClickListener()
+        nickNameTextChanged()
     }
 
     private fun setObserver() {
@@ -41,6 +50,7 @@ class MyPageMyInfoActivity :
             initAsset(it.asset)
             initHouseOwner(it.isHouseOwner)
             initHasHouse(it.hasHouse)
+            patchUserFilterObserve()
         })
     }
 
@@ -139,17 +149,15 @@ class MyPageMyInfoActivity :
     }
 
 
-
     private fun setOnClickListener() {
-   /*     binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
-            finish()
-        }*/
         binding.ivMypageMyInfoUpdateNameClear.setOnClickListener {
             binding.etMypageMyInfoUpdateName.setText("")
         }
-/*        binding.mbMypageMyInfoUpdate.setOnClickListener {
-            finish()
-        }*/
+
+        binding.mbMypageMyInfoUpdate.setOnClickListener {
+            myPageMyInfoViewModel.patchUserFilter()
+            myPageMyInfoViewModel.patchUserNickName(binding.etMypageMyInfoUpdateName.text.toString())
+        }
     }
 
     private fun setChipOnClickListener() {
@@ -206,22 +214,26 @@ class MyPageMyInfoActivity :
                 }
             )
         }
-        binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
-            setResult(RESULT_OK, Intent().apply {
-                putExtra(INFO_UPDATE_RESULT, myPageMyInfoViewModel.updatedUserData)
-            })
-            finish()
-        }
-        binding.mbMypageMyInfoUpdate.setOnClickListener {
-            setResult(RESULT_OK, Intent().apply {
-                putExtra(INFO_UPDATE_RESULT, myPageMyInfoViewModel.updatedUserData)
-            })
-            finish()
+    }
+
+    private fun patchUserFilterObserve() {
+        myPageMyInfoViewModel.isPatchUserInfoSuccess.observe(this) { isPatchUserInfoSuccess ->
+            if (isPatchUserInfoSuccess)
+                finish()
         }
     }
 
-    companion object {
-        const val INFO_UPDATE_RESULT = "com.fork.spoonfeed.presentation.ui.communitypost.view"
+    private fun nickNameTextChanged() {
+        with(binding) {
+            etMypageMyInfoUpdateName.addTextChangedListener {
+                val updatedNickName = etMypageMyInfoUpdateName.text.toString()
+                if (!updatedNickName.isNullOrEmpty()) {
+                    myPageMyInfoViewModel.setPatchUserNickNameVaild()
+                }else{
+                    myPageMyInfoViewModel.setPatchUserNickNameInVaild()
+                }
+            }
+        }
     }
 }
 

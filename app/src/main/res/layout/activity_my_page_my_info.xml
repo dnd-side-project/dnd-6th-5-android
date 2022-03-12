@@ -5,6 +5,19 @@
 
     <data>
 
+        <import type="com.fork.spoonfeed.presentation.util.StringExtKt" />
+
+        <import type="com.fork.spoonfeed.domain.model.ChipInputType" />
+
+        <import type="com.fork.spoonfeed.domain.model.AgeInputType" />
+
+        <variable
+            name="activity"
+            type="com.fork.spoonfeed.presentation.ui.mypage.view.MyPageMyInfoActivity" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -49,6 +62,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
+                    android:text="@{viewModel.userNickName}"
                     android:id="@+id/et_mypage_my_info_update_name"
                     style="@style/TextView.Paragraph.Regular.14"
                     android:layout_width="0dp"
@@ -56,9 +70,9 @@
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_gray03_radius_8dp"
+                    android:hint="@string/mypage_my_info_update_name"
                     android:paddingHorizontal="@dimen/policy_filter_edittext_padding"
                     android:paddingVertical="13dp"
-                    android:text="닉네임"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_info_update_name" />
@@ -104,15 +118,17 @@
                 <EditText
                     android:id="@+id/et_mypage_my_info_update_age_year"
                     style="@style/TextView.Paragraph.Regular.14"
+                    ageInputType="@{AgeInputType.YEAR}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/policy_filter_edittext_height"
                     android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="8dp"
                     android:background="@drawable/bg_policy_filter_age_input"
+                    android:hint="@string/policy_filter_level_one_age_year_hint"
                     android:inputType="number"
                     android:maxLength="4"
                     android:padding="@dimen/policy_filter_edittext_padding"
-                    android:text="1955"
                     android:textColorHint="@color/gray03"
                     app:layout_constraintEnd_toStartOf="@id/et_mypage_my_info_update_age_month"
                     app:layout_constraintStart_toStartOf="parent"
@@ -132,14 +148,16 @@
                 <EditText
                     android:id="@+id/et_mypage_my_info_update_age_month"
                     style="@style/TextView.Paragraph.Regular.14"
+                    ageInputType="@{AgeInputType.MONTH}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/policy_filter_edittext_height"
                     android:layout_marginHorizontal="12dp"
                     android:background="@drawable/bg_policy_filter_age_input"
+                    android:hint="@string/policy_filter_level_one_age_month_hint"
                     android:inputType="number"
                     android:maxLength="3"
                     android:padding="@dimen/policy_filter_edittext_padding"
-                    android:text="03"
                     android:textColorHint="@color/gray03"
                     app:layout_constraintEnd_toStartOf="@id/et_mypage_my_info_update_age_day"
                     app:layout_constraintStart_toEndOf="@id/et_mypage_my_info_update_age_year"
@@ -159,14 +177,16 @@
                 <EditText
                     android:id="@+id/et_mypage_my_info_update_age_day"
                     style="@style/TextView.Paragraph.Regular.14"
+                    ageInputType="@{AgeInputType.DAY}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="@dimen/policy_filter_edittext_height"
                     android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
                     android:background="@drawable/bg_policy_filter_age_input"
+                    android:hint="@string/policy_filter_level_one_age_day_hint"
                     android:inputType="number"
                     android:maxLength="3"
                     android:padding="@dimen/policy_filter_edittext_padding"
-                    android:text="14"
                     android:textColorHint="@color/gray03"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@id/et_mypage_my_info_update_age_month"
@@ -195,11 +215,12 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_mypage_my_info_update_marriage"
+                    type="@{ChipInputType.MARRIAGE}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_marriage_false"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -253,11 +274,12 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_mypage_my_info_update_employment_availability"
+                    type="@{ChipInputType.EMPLOYMENT}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_unemployed"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -293,11 +315,12 @@
 
                 <com.google.android.material.chip.ChipGroup
                     android:id="@+id/cg_mypage_my_info_update_company_size"
+                    type="@{ChipInputType.COMPANY_SIZE}"
+                    viewModel="@{viewModel}"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_company_small"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -377,7 +400,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_median_income_nothing"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -460,7 +482,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_annual_income_couple_under_2"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -529,7 +550,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_net_worth_over_2_92"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -577,7 +597,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_house_holder_status_member"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -625,7 +644,6 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="16dp"
-                    app:checkedChip="@id/chip_mypage_my_info_update_home_ownership_homeless"
                     app:chipSpacingHorizontal="@dimen/policy_filter_chip_group_horizontal_spacing"
                     app:chipSpacingVertical="@dimen/policy_filter_chip_group_vertical_spacing"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -688,7 +706,8 @@
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="18dp"
-                    android:backgroundTint="@color/primary_blue"
+                    android:backgroundTint="@{viewModel.isPatchUserFilterValid ? @color/primary_blue : @color/gray03}"
+                    android:enabled="@{viewModel.isPatchUserFilterValid}"
                     android:text="@string/mypage_my_info_update_confirm"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"

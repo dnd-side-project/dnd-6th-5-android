@@ -1,11 +1,6 @@
 package com.fork.spoonfeed.domain.repository
 
-import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
+import com.fork.spoonfeed.data.remote.model.user.*
 
 interface UserRepository {
 
@@ -18,4 +13,6 @@ interface UserRepository {
     suspend fun getUserComment(accessToken: String, platform: String, userId: Int): ResponseUserCommentData
 
     suspend fun getUserLikePolicy(): ResponseUserLikePolicyData
+
+    suspend fun patchUserFilter(body: RequestPatchUserFilterData): ResponsePatchUserFilterData
 }

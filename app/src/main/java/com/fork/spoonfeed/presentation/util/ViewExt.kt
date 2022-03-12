@@ -4,6 +4,7 @@ import android.app.Activity
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
+import android.util.Log
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
@@ -14,6 +15,7 @@ import androidx.lifecycle.ViewModel
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.domain.model.AgeInputType
 import com.fork.spoonfeed.domain.model.ChipInputType
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel
 import com.google.android.material.chip.ChipGroup
 import kotlin.math.roundToInt
@@ -47,13 +49,19 @@ fun setOnCheckedChanged(view: ChipGroup, viewModel: ViewModel, type: ChipInputTy
             ChipInputType.MARRIAGE -> {
                 (viewModel as? PolicyFilterViewModel)
                     ?.setMarriageStatus(getMarriageStatusFromCheckedId(checkedId))
+                (viewModel as? MyPageMyInfoViewModel)
+                    ?.setMarriageStatus(getMarriageStatusFromCheckedId(checkedId))
             }
             ChipInputType.EMPLOYMENT -> {
                 (viewModel as? PolicyFilterViewModel)
                     ?.setEmploymentAvailability(getEmploymentFromCheckedId(checkedId))
+                (viewModel as? MyPageMyInfoViewModel)
+                    ?.setEmploymentAvailability(getEmploymentFromCheckedId(checkedId))
             }
             ChipInputType.COMPANY_SIZE -> {
                 (viewModel as? PolicyFilterViewModel)
+                    ?.setCompanySize(getCompanySizeFromCheckedId(checkedId))
+                (viewModel as? MyPageMyInfoViewModel)
                     ?.setCompanySize(getCompanySizeFromCheckedId(checkedId))
             }
             ChipInputType.MEDIAN_INCOME -> {
@@ -88,11 +96,14 @@ fun addTextChangeListener(view: EditText, viewModel: ViewModel, ageInputType: Ag
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             if (ageInputType == AgeInputType.YEAR) {
                 (viewModel as? PolicyFilterViewModel)?.setYear(getIntFromCharSequence(s))
+                (viewModel as? MyPageMyInfoViewModel)?.setYear(getIntFromCharSequence(s))
             } else {
                 if (ageInputType == AgeInputType.MONTH) {
                     (viewModel as? PolicyFilterViewModel)?.setMonth(getIntFromCharSequence(s))
+                    (viewModel as? MyPageMyInfoViewModel)?.setMonth(getIntFromCharSequence(s))
                 } else {
                     (viewModel as? PolicyFilterViewModel)?.setDay(getIntFromCharSequence(s))
+                    (viewModel as? MyPageMyInfoViewModel)?.setDay(getIntFromCharSequence(s))
                 }
                 s?.let { formatStringWithPrefix(it.toString(), view) }
             }
