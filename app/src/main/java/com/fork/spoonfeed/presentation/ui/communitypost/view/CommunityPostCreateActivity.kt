@@ -138,33 +138,26 @@ class CommunityPostCreateActivity :
         communityPostCreateViewModel.sendSuccess.observe(this, {
             if (it) {
                 finish()
-//                TODO 게시물 ID 값을 받아서 작성한 글의 상세페이지로 이동하도록 구현
-//                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
             }
         })
         communityPostCreateViewModel.patchSuccess.observe(this, {
             if (it) {
                 finish()
-//                TODO 게시물 ID 값을 받아서 작성한 글의 상세페이지로 이동하도록 구현
-//                startActivity(Intent(baseContext, CommunityPostActivity::class.java))
             }
         })
     }
 
 
     private fun setOnClickListener(edit: Boolean, postId: Int) {
+        binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
+            finish()
+        }
         if (edit) {
             binding.mbCommunityPostCreate.setOnClickListener {
                 communityPostCreateViewModel.editPost(postId)
             }
-            binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
-                communityPostCreateViewModel.editPost(postId)
-            }
         } else {
             binding.mbCommunityPostCreate.setOnClickListener {
-                communityPostCreateViewModel.sendPost()
-            }
-            binding.mtCommunityPostCreateTitle.setNavigationOnClickListener {
                 communityPostCreateViewModel.sendPost()
             }
         }

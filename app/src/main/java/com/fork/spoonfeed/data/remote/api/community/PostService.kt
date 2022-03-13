@@ -1,14 +1,10 @@
 package com.fork.spoonfeed.data.remote.api.community
 
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.remote.model.community.ResponseSearchPostAllData
 import com.fork.spoonfeed.data.remote.model.community.*
-import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
-import retrofit2.Call
 import retrofit2.http.*
 import retrofit2.http.Body
-
-import retrofit2.http.HTTP
 
 
 interface PostService {
@@ -44,4 +40,9 @@ interface PostService {
         @Header("platform") platform: String = UserData.platform!!,
         @Path("pk") pk: Int,
     ): ResponseDeletePostData
+
+    @GET("posts/search")
+    suspend fun searchPost(
+        @Query("query") query: String
+    ): ResponseSearchPostAllData
 }
