@@ -69,7 +69,7 @@ class PolicyListActivity :
         }
     }
 
-  private fun setFilterCategoryLayout(category: String) {
+    private fun setFilterCategoryLayout(category: String) {
         when (category) {
             ALL -> binding.tvPolicylistFilter.text = ALL
             DWELLING -> binding.tvPolicylistFilter.text = DWELLING
@@ -80,7 +80,7 @@ class PolicyListActivity :
     private fun setPolicyListAdapter() {
         policyListAdapter = PolicyListAdapter(this, policyListViewModel) {
             Intent(this, DetailInfoActivity::class.java).apply {
-                putExtra("id", it.id)
+                putExtra(DetailInfoActivity.POST_PK, it.id)
                 startActivity(this)
             }
         }

@@ -47,12 +47,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_likepolicy"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="42dp"
+            android:layout_marginTop="88dp"
             android:paddingHorizontal="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ctl_likepolicy_top"
+            app:layout_constraintTop_toTopOf="@+id/ctl_likepolicy_top"
             app:layout_constraintVertical_bias="0"
             tools:itemCount="4"
             tools:listitem="@layout/item_policy_list" />
@@ -63,9 +63,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="210dp"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/rv_likepolicy"
-            app:layout_constraintStart_toStartOf="@+id/rv_likepolicy"
-            app:layout_constraintTop_toTopOf="@+id/rv_likepolicy">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ctl_likepolicy_top">
 
             <TextView
                 android:id="@+id/tv_likepolicy_no_comment"
@@ -84,13 +84,6 @@
                 app:layout_constraintStart_toEndOf="@+id/tv_likepolicy_no_comment"
                 app:layout_constraintTop_toTopOf="@id/tv_likepolicy_no_comment" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/rv_likepolicy"
-            app:layout_constraintTop_toBottomOf="@id/rv_likepolicy" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

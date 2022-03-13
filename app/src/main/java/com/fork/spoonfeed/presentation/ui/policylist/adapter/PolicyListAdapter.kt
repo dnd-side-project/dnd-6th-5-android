@@ -23,7 +23,7 @@ class PolicyListAdapter(
     inner class PolicyListViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponsePolicyAllData.Data.Policy) {
             binding.apply {
-                var  likeCountInt = data.likeCount.toInt()
+                var likeCountInt = data.likeCount.toInt()
                 tvItemCategory.text = data.category
                 tvItemPolicyTitle.text = data.name
                 tvItemPolicySentence.text = data.summary
@@ -53,7 +53,7 @@ class PolicyListAdapter(
                         if (list.policyId == data.id)
                             ivItemLike.isChecked = true
 
-                        if(likeCountInt==0)
+                        if (likeCountInt == 0)
                             ivItemLike.isChecked = false
                     }
                 }

@@ -1,15 +1,19 @@
 package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 
 class MyLikePolicyAdapter(
+    private val context: LifecycleOwner,
     private val myPageViewModel: MyPageViewModel,
     private val clickListener: (ResponseUserLikePolicyData.Data.Policy) -> Unit
 ) : ListAdapter<ResponseUserLikePolicyData.Data.Policy, MyLikePolicyAdapter.MyLikePolicyViewHolder>(diffUtil) {
@@ -17,19 +21,31 @@ class MyLikePolicyAdapter(
     inner class MyLikePolicyViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseUserLikePolicyData.Data.Policy) {
             binding.apply {
+                var likeCountInt = data.cnt.toInt()
+                tvItemPolicyTitle.text = data.NAME
                 tvItemPolicySentence.text = data.content
                 tvItemCategory.text = data.category
                 tvItemDeadline.text = data.applicationPeriod
                 tvItemLikeCount.text = data.cnt
+
+                if (data.category == "금융") {
+                    tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
+                }
+
                 root.setOnClickListener {
                     clickListener(data)
                 }
+
                 ivItemLike.isChecked = true
                 ivItemLike.setOnClickListener {
                     ivItemLike.toggle()
-                    if(ivItemLike.isChecked==false){
-                        myPageViewModel.postMyLikePolicy(data.policyId.toString())
+
+                    if (ivItemLike.isChecked) {
+                        tvItemLikeCount.text = (++likeCountInt).toString()
+                    } else if (!ivItemLike.isChecked) {
+                        tvItemLikeCount.text = (--likeCountInt).toString()
                     }
+                    myPageViewModel.postMyLikePolicy(data.policyId.toString())
                 }
             }
         }

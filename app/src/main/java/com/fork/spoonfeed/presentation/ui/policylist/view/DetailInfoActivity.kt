@@ -1,22 +1,15 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.viewModels
-import androidx.fragment.app.FragmentContainer
-import androidx.fragment.app.FragmentContainerView
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityDetailInfoBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.policy.view.PolicyFragment
-import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterActivity
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.DetailInfoViewModel
-import com.fork.spoonfeed.presentation.util.replace
 import dagger.hilt.android.AndroidEntryPoint
-import com.fork.spoonfeed.presentation.MainActivity
+import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 
 
 @AndroidEntryPoint
@@ -32,17 +25,11 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     override fun initView() {
-        setBackBtnClickListener()
         initClickListener()
         setLikeBtn()
         setDetailInfo()
         setCategoryObserve()
-    }
-
-    private fun setBackBtnClickListener() {
-        binding.ivDetailInfoBack.setOnClickListener {
-            finish()
-        }
+        this.setBackBtnClickListener(binding.ivDetailInfoBack)
     }
 
     private fun initClickListener() {
@@ -83,7 +70,7 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     private fun setDetailInfo() {
-        val id = intent.getIntExtra("id", 2)
+        val id = intent.getIntExtra(POST_PK, 2)
         detailInfoViewModel.getPolicyDetailInfo(id)
     }
 
@@ -98,5 +85,9 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     override fun onDestroy() {
         super.onDestroy()
         ///좋아요 버튼 서버통신
+    }
+
+    companion object {
+        const val POST_PK = "com.fork.spoonfeed.presentation.ui.mypage.view"
     }
 }
