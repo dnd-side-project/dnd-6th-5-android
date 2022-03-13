@@ -78,6 +78,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_explain_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -117,6 +118,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_explain_detail_info_note_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -154,6 +156,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_explain_restriction_subject_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -194,6 +197,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_explain_support_scale_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

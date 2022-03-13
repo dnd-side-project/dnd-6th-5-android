@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityDetailInfoBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
@@ -16,6 +17,7 @@ import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfoBinding>(R.layout.activity_detail_info) {
     private val detailInfoViewModel: DetailInfoViewModel by viewModels()
     private val youthCenterUrl = "https://www.youthcenter.go.kr/main.do"
+    private var id = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,13 +47,22 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
             }
 
             ivDetailInfoApplyQualifications.setOnClickListener {
-                val intent = Intent(this@DetailInfoActivity, ApplyQualificationActivity::class.java)
-                startActivity(intent)
+                Intent(this@DetailInfoActivity, ApplyQualificationActivity::class.java).apply {
+                    putExtra("limitAge", detailInfoViewModel!!.policyDetailInfo.value!!.limitAge)
+                    putExtra("limitAreaAsset", detailInfoViewModel!!.policyDetailInfo.value!!.limitAreaAsset)
+                    putExtra("specialization", detailInfoViewModel!!.policyDetailInfo.value!!.specialization)
+                    startActivity(this)
+                }
             }
 
             ivDetailInfoApplyExplain.setOnClickListener {
-                val intent = Intent(this@DetailInfoActivity, ApplyExplainActivity::class.java)
-                startActivity(intent)
+                Intent(this@DetailInfoActivity, ApplyExplainActivity::class.java).apply {
+                    putExtra("content", detailInfoViewModel!!.policyDetailInfo.value!!.content)
+                    putExtra("otherInfo", detailInfoViewModel!!.policyDetailInfo.value!!.otherInfo)
+                    putExtra("limitedTarget", detailInfoViewModel!!.policyDetailInfo.value!!.limitedTarget)
+                    putExtra("supportScale", detailInfoViewModel!!.policyDetailInfo.value!!.supportScale)
+                    startActivity(this)
+                }
             }
             btnDetailInfoGotoCustomPolicy.setOnClickListener {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youthCenterUrl))
@@ -70,7 +81,7 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     private fun setDetailInfo() {
-        val id = intent.getIntExtra(POST_PK, 2)
+        id = intent.getIntExtra(POST_PK, 0)
         detailInfoViewModel.getPolicyDetailInfo(id)
     }
 
