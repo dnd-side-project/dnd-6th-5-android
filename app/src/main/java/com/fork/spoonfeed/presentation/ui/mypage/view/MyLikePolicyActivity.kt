@@ -11,6 +11,7 @@ import com.fork.spoonfeed.databinding.ActivityInterastedPolicyBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
+import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyLikePolicyAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
@@ -21,6 +22,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInterastedPolicyBinding>(R.layout.activity_interasted_policy) {
     private lateinit var myLikePolicyAdapter: MyLikePolicyAdapter
     private val myPageViewModel: MyPageViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()
@@ -70,10 +72,11 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
 
 
     private fun initRvAdapter() {
-        myLikePolicyAdapter = MyLikePolicyAdapter(this, myPageViewModel) {
-            startActivity(Intent(this, DetailInfoActivity::class.java).apply {
+        myLikePolicyAdapter = MyLikePolicyAdapter(myPageViewModel) {
+            Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra(DetailInfoActivity.POST_PK, it.policyId)
-            })
+                startActivity(this)
+            }
         }
         with(binding) {
             rvLikepolicy.adapter = myLikePolicyAdapter

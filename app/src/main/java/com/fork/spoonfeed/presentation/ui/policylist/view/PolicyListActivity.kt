@@ -18,6 +18,7 @@ import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.FINANCE
+import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
@@ -39,13 +40,13 @@ class PolicyListActivity :
 
     override fun initView() {
         setPolicyListAdapter()
-        this.setBackBtnClickListener(binding.ivPolicylistBack)
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
         setInitLayout()
         policyListViewModel.applyFilter()
         policyListViewModel.getMyLikePolicy()
+        this.setBackBtnClickListener(binding.ivPolicylistBack)
     }
 
     private fun setInitLayout() {

@@ -62,24 +62,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="210dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/ctl_likepolicy_top">
 
             <TextView
                 android:id="@+id/tv_likepolicy_no_comment"
+                style="@style/TextView.Label.Medium.14"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/mypage_no_interasted_policy"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:textColor="@color/gray04"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:layout_width="27dp"
                 android:layout_height="22dp"
-                android:src="@drawable/img_sad"
+                android:src="@drawable/img_curious"
                 app:layout_constraintBottom_toBottomOf="@id/tv_likepolicy_no_comment"
                 app:layout_constraintStart_toEndOf="@+id/tv_likepolicy_no_comment"
                 app:layout_constraintTop_toTopOf="@id/tv_likepolicy_no_comment" />
