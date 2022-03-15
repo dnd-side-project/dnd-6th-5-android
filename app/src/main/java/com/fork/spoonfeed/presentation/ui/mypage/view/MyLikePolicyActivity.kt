@@ -22,7 +22,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInterastedPolicyBinding>(R.layout.activity_interasted_policy) {
     private lateinit var myLikePolicyAdapter: MyLikePolicyAdapter
     private val myPageViewModel: MyPageViewModel by viewModels()
-    private val homeViewModel: HomeViewModel by viewModels()
 
     override fun onResume() {
         super.onResume()

@@ -1,10 +1,7 @@
 package com.fork.spoonfeed.data.repository
 
 import com.fork.spoonfeed.data.remote.datasource.AuthDataSource
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithKakaoData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithNaverData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLogoutWithKakaoData
-import com.fork.spoonfeed.data.remote.model.user.ResponseDeleteWithKakao
+import com.fork.spoonfeed.data.remote.model.auth.*
 import com.fork.spoonfeed.domain.repository.AuthRepository
 
 class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepository {
@@ -31,8 +28,14 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
 
     override suspend fun deleteWithKakao(
         accessToken: String
-    ): ResponseDeleteWithKakao {
+    ): ResponseDeleteWithKakaoData {
         return authDataSource.deleteWithKakao(accessToken)
+    }
+
+    override suspend fun deleteWithNaver(
+        accessToken: String
+    ): ResponseDeleteWithNaverData {
+        return authDataSource.deleteWithNaver(accessToken)
     }
 }
 

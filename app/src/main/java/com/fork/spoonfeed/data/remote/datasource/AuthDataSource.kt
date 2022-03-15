@@ -1,11 +1,6 @@
 package com.fork.spoonfeed.data.remote.datasource
 
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithKakaoData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithNaverData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLogoutWithKakaoData
-import com.fork.spoonfeed.data.remote.model.user.ResponseDeleteWithKakao
-import retrofit2.http.GET
-import retrofit2.http.Header
+import com.fork.spoonfeed.data.remote.model.auth.*
 
 interface AuthDataSource {
 
@@ -25,6 +20,10 @@ interface AuthDataSource {
 
     suspend fun deleteWithKakao(
         accessToken: String,
-    ): ResponseDeleteWithKakao
+    ): ResponseDeleteWithKakaoData
+
+    suspend fun deleteWithNaver(
+        accessToken: String,
+    ): ResponseDeleteWithNaverData
 }
 
