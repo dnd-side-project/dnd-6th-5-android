@@ -2,11 +2,7 @@ package com.fork.spoonfeed.data.remote.api.user
 
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.user.*
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Header
-import retrofit2.http.PATCH
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface UserService {
 
