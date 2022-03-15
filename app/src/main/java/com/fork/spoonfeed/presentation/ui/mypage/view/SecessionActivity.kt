@@ -45,6 +45,8 @@ class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBi
         confirmBtn.setOnClickListener {
             if (UserData.platform == "kakao") {
                 myPageViewModel.deleteWithKakao()
+            } else {
+                myPageViewModel.deleteWithNaver()
             }
         }
 
@@ -52,7 +54,14 @@ class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBi
             dialog.dismiss()
         }
 
-        myPageViewModel.deleteWithKakaoSuccess.observe(this) { deleteWithKakaoSuccess->
+        myPageViewModel.deleteWithKakaoSuccess.observe(this) { deleteWithKakaoSuccess ->
+            if (deleteWithKakaoSuccess) {
+                dialog.dismiss()
+                moveToOnBoardingActivity()
+            }
+        }
+
+        myPageViewModel.deleteWithNaverSuccess.observe(this) { deleteWithKakaoSuccess ->
             if (deleteWithKakaoSuccess) {
                 dialog.dismiss()
                 moveToOnBoardingActivity()
