@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingBottom="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_item_category"
+                style="@style/TextView.Label.Regular.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_dwelling_blue_radius_4dp"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="4dp"
+                android:text="@string/item_policylist_category"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_item_policy_title"
+                style="@style/TextView.Label.Medium.14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="40dp"
+                android:ellipsize="end"
+                android:ems="1"
+                android:maxLines="1"
+                android:text="@string/item_policylist_sentence"
+                android:textColor="@color/gray06"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
+                app:layout_constraintEnd_toStartOf="@+id/tv_item_policy_institution"
+                app:layout_constraintStart_toEndOf="@+id/tv_item_category"
+                app:layout_constraintTop_toTopOf="@id/tv_item_category" />
+
+            <TextView
+                android:id="@+id/tv_item_policy_institution"
+                style="@style/TextView.Label.Regular.12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="국토교통부"
+                android:textColor="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_item_category"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tv_item_category" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -37,6 +37,8 @@
                 android:id="@+id/tv_search_input_result_no_comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/TextView.Label.Medium.14"
+                android:textColor="@color/gray04"
                 android:text="@string/search_input_no_result"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

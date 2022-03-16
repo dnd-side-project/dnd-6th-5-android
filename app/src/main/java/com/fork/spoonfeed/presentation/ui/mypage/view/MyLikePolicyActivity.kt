@@ -2,12 +2,16 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityInterastedPolicyBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
+import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyLikePolicyAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
@@ -18,6 +22,12 @@ import dagger.hilt.android.AndroidEntryPoint
 class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInterastedPolicyBinding>(R.layout.activity_interasted_policy) {
     private lateinit var myLikePolicyAdapter: MyLikePolicyAdapter
     private val myPageViewModel: MyPageViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by viewModels()
+
+    override fun onResume() {
+        super.onResume()
+        initData()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,14 +50,12 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
 
     private fun setMyLikePostEmptyObserve() {
         myPageViewModel.isMyLikePolicyListEmpty.observe(this) { isMyLikePolicyListEmpty ->
-            isMyLikePolicyListEmpty.let {
-                if (isMyLikePolicyListEmpty) {
-                    binding.rvLikepolicy.visibility = View.INVISIBLE
-                    binding.ctlLikepolicyNoComment.visibility = View.VISIBLE
-                } else {
-                    binding.ctlLikepolicyNoComment.visibility = View.INVISIBLE
-                    binding.rvLikepolicy.visibility = View.VISIBLE
-                }
+            if (isMyLikePolicyListEmpty) {
+                binding.rvLikepolicy.visibility = View.GONE
+                binding.ctlLikepolicyNoComment.visibility = View.VISIBLE
+            } else {
+                binding.ctlLikepolicyNoComment.visibility = View.GONE
+                binding.rvLikepolicy.visibility = View.VISIBLE
             }
         }
     }
@@ -64,13 +72,10 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
 
 
     private fun initRvAdapter() {
-        myLikePolicyAdapter = MyLikePolicyAdapter (myPageViewModel){
+        myLikePolicyAdapter = MyLikePolicyAdapter(myPageViewModel) {
             Intent(this, DetailInfoActivity::class.java).apply {
-                /*  putExtra("category", it.category)
-                  putExtra("title", it.name)
-                  putExtra("id", it.id)
-                  putExtra("likeCount", it.likeCount)
-                  startActivity(this)*/
+                putExtra(DetailInfoActivity.POST_PK, it.policyId)
+                startActivity(this)
             }
         }
         with(binding) {

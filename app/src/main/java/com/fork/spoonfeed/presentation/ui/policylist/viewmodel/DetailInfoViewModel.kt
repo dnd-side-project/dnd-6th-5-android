@@ -1,12 +1,10 @@
 package com.fork.spoonfeed.presentation.ui.policylist.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyDetailData
 import com.fork.spoonfeed.domain.repository.PolicyRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

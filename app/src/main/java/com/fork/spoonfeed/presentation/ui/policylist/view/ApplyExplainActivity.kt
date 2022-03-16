@@ -15,11 +15,21 @@ class ApplyExplainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityApplyExp
 
     override fun initView() {
         setBackBtnClickListener()
+        setApplyExplain()
     }
 
     private fun setBackBtnClickListener() {
         binding.ivApplyExplainBack.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun setApplyExplain() {
+        with(binding) {
+            tvApplyExplainContent.text = intent.getStringExtra("content")
+            tvApplyExplainDetailInfoNoteContent.text = intent.getStringExtra("otherInfo")
+            tvApplyExplainRestrictionSubjectContent.text = intent.getStringExtra("limitedTarget")
+            tvApplyExplainSupportScaleContent.text = intent.getStringExtra("supportScale")
         }
     }
 }

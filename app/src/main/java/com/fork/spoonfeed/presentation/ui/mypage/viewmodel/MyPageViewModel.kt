@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.mypage.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -142,6 +143,7 @@ class MyPageViewModel @Inject constructor(
     fun getMyLikePolicy() {
         viewModelScope.launch {
             _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
+            _isMyLikePolicyListEmpty.value = _myLikePolicyList.value!![0]?.name.isNullOrEmpty() == true
         }
     }
 

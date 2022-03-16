@@ -77,11 +77,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_qualifications_age_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/detail_info_age_sentence"
+                        tools:text="@string/detail_info_age_sentence"
                         android:textColor="@color/gray06"
                         app:layout_constraintStart_toStartOf="@id/tv_apply_qualifications_age"
                         app:layout_constraintTop_toBottomOf="@id/tv_apply_qualifications_age" />
@@ -116,11 +117,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_qualification_residence_and_income_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/detail_info_residence_and_income_sentence"
+                        tools:text="@string/detail_info_residence_and_income_sentence"
                         app:layout_constraintStart_toStartOf="@id/tv_apply_qualification_residence_and_income"
                         app:layout_constraintTop_toBottomOf="@id/tv_apply_qualification_residence_and_income" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -153,11 +155,12 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
+                        android:id="@+id/tv_apply_qualification_specialization_field_content"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
-                        android:text="@string/apply_qualification_residence_specialization_field_sentence"
+                        tools:text="@string/apply_qualification_residence_specialization_field_sentence"
                         android:textColor="@color/gray06"
                         app:layout_constraintStart_toStartOf="@id/tv_apply_qualification_specialization_field"
                         app:layout_constraintTop_toBottomOf="@id/tv_apply_qualification_specialization_field" />
