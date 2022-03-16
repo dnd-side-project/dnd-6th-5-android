@@ -18,6 +18,7 @@ class MyLikePolicyAdapter(
             binding.apply {
                 tvItemPolicyTitle.text = data.name
                 tvItemCategory.text = data.category
+                tvItemPolicyInstitution.text=data.host
 
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)

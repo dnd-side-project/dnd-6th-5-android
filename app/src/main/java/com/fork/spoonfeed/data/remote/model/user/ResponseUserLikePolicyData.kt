@@ -14,6 +14,7 @@ data class ResponseUserLikePolicyData(
             @SerializedName("policy_id") val policyId: Int,
             @SerializedName("category") val category: String,
             @SerializedName("name") val name: String,
+            @SerializedName("host") val host: String,
             @SerializedName("content") val content: String,
             @SerializedName("application_period") val applicationPeriod: String,
             @SerializedName("cnt") val cnt: String,

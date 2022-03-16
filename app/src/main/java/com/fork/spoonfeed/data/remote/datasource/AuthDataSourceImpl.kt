@@ -1,9 +1,7 @@
 package com.fork.spoonfeed.data.remote.datasource
 
 import com.fork.spoonfeed.data.remote.api.auth.AuthService
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithKakaoData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithNaverData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLogoutWithKakaoData
+import com.fork.spoonfeed.data.remote.model.auth.*
 import javax.inject.Inject
 
 class AuthDataSourceImpl @Inject constructor(private val authService: AuthService) : AuthDataSource {
@@ -27,6 +25,18 @@ class AuthDataSourceImpl @Inject constructor(private val authService: AuthServic
         accessToken: String
     ): ResponseLogoutWithKakaoData {
         return authService.logoutWithKakao(accessToken)
+    }
+
+    override suspend fun deleteWithKakao(
+        accessToken: String
+    ): ResponseDeleteWithKakaoData {
+        return authService.deleteWithKakao(accessToken)
+    }
+
+    override suspend fun deleteWithNaver(
+        accessToken: String
+    ): ResponseDeleteWithNaverData {
+        return authService.deleteWithNaver(accessToken)
     }
 }
 

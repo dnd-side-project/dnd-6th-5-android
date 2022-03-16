@@ -1,10 +1,9 @@
 package com.fork.spoonfeed.data.remote.api.auth
 
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithKakaoData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithNaverData
-import com.fork.spoonfeed.data.remote.model.auth.ResponseLogoutWithKakaoData
-import retrofit2.Call
+import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.remote.model.auth.*
 import retrofit2.Response
+import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Header
 
@@ -26,4 +25,14 @@ interface AuthService {
     suspend fun logoutWithKakao(
         @Header("access_token") accessToken: String,
     ): ResponseLogoutWithKakaoData
+
+    @DELETE("user/kakao")
+    suspend fun deleteWithKakao(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+    ): ResponseDeleteWithKakaoData
+
+    @DELETE("user/naver")
+    suspend fun deleteWithNaver(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+    ): ResponseDeleteWithNaverData
 }

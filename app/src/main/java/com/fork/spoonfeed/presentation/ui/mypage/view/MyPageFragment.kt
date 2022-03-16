@@ -2,6 +2,7 @@ package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -20,6 +21,11 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
     private val myPageViewModel: MyPageViewModel by viewModels()
+    private val termsConditionUrl = "https://first-hare-34f.notion.site/348dc74a840f43dfa3d105bf22ce76d6"
+    private val protectUrl = "https://first-hare-34f.notion.site/f8761b93032c4d0b844c2b4ca798d9a5"
+    private val personalInfoUrl = "https://first-hare-34f.notion.site/f24764bf4d7e4ae28ea304080f9423d1"
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -45,6 +51,19 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
             ivMypageNotice.setOnClickListener {
                 startActivity(Intent(requireContext(), NoticeActivity::class.java))
             }
+
+            ivMypageTermsCondition.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(termsConditionUrl)))
+            }
+
+            ivMypageProtect.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(protectUrl)))
+            }
+
+            ivMypagePersonalInfo.setOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(personalInfoUrl)))
+            }
+
             ivMypageOpenSource.setOnClickListener {
                 startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
                 OssLicensesMenuActivity.setActivityTitle(getString(R.string.oss_license_title))

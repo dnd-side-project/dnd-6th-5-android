@@ -85,6 +85,14 @@ class MyPageViewModel @Inject constructor(
     private val _userNickName = MutableLiveData<String>()
     val userNickName: LiveData<String> = _userNickName
 
+    private val _deleteWithKakaoSuccess = MutableLiveData(false)
+    val deleteWithKakaoSuccess: LiveData<Boolean>
+        get() = _deleteWithKakaoSuccess
+
+    private val _deleteWithNaverSuccess = MutableLiveData(false)
+    val deleteWithNaverSuccess: LiveData<Boolean>
+        get() = _deleteWithNaverSuccess
+
     fun postBtnEnable(isEnable: Boolean) {
         _isQuestionValid.value = isEnable
     }
@@ -151,6 +159,18 @@ class MyPageViewModel @Inject constructor(
         val requestPolicyLiveData = RequestPolicyLikeData(policyId = policyId)
         viewModelScope.launch {
             _postMyLikePolicySuccess.value = policyRepository.postPolicyLike(requestPolicyLiveData).success
+        }
+    }
+
+    fun deleteWithKakao() {
+        viewModelScope.launch {
+            _deleteWithKakaoSuccess.value = authRepository.deleteWithKakao(UserData.accessToken!!).success
+        }
+    }
+
+    fun deleteWithNaver() {
+        viewModelScope.launch {
+            _deleteWithNaverSuccess.value = authRepository.deleteWithNaver(UserData.accessToken!!).success
         }
     }
 }
