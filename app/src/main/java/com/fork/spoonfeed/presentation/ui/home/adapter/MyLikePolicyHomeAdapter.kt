@@ -18,7 +18,14 @@ class MyLikePolicyAdapter(
             binding.apply {
                 tvItemPolicyTitle.text = data.name
                 tvItemCategory.text = data.category
-                tvItemPolicyInstitution.text=data.host
+
+                if (data.host.contains("\n")) {
+                    val splitArray = data.host.split("\n")
+                    tvItemPolicyInstitution.text = splitArray[0]
+                } else {
+                    tvItemPolicyInstitution.text = data.host
+                }
+
 
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)

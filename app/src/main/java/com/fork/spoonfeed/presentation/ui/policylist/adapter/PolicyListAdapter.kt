@@ -1,7 +1,5 @@
 package com.fork.spoonfeed.presentation.ui.policylist.adapter
 
-import android.app.Activity
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LifecycleOwner
@@ -19,9 +17,9 @@ class PolicyListAdapter(
     private val clickListener: (ResponsePolicyAllData.Data.Policy) -> Unit
 ) : ListAdapter<ResponsePolicyAllData.Data.Policy, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
 
-
     inner class PolicyListViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponsePolicyAllData.Data.Policy) {
+
             binding.apply {
                 var likeCountInt = data.likeCount.toInt()
                 tvItemCategory.text = data.category
@@ -52,9 +50,13 @@ class PolicyListAdapter(
                     for (list in myLikePolicyList) {
                         if (list.policyId == data.id)
                             ivItemLike.isChecked = true
+                    }
+                }
 
-                        if (likeCountInt == 0)
-                            ivItemLike.isChecked = false
+                policyListViewModel.likeBtnState.observe(context) { likeBtnState ->
+                    if (likeBtnState.id == data.id && ivItemLike.isChecked != likeBtnState.likeState) {
+                        ivItemLike.isChecked = likeBtnState.likeState
+                        tvItemLikeCount.text = likeBtnState.ctn.toString()
                     }
                 }
             }
