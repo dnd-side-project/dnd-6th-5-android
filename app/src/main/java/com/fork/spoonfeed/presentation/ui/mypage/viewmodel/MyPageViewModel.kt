@@ -100,7 +100,12 @@ class MyPageViewModel @Inject constructor(
     fun logoutWithKakao() {
         viewModelScope.launch {
             _logoutWithKakaoSuccess.value = authRepository.logoutWithKakao(UserData.accessToken!!).success
+            authRepository.setAutoLoginPlatformManager(null)
         }
+    }
+
+    fun logoutWithNaver(){
+        authRepository.setAutoLoginPlatformManager(null)
     }
 
     fun getMyPost() {
