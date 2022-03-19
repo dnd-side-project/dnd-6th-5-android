@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius_top_20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_mypage_edit"
+            style="@style/TextView.Label.Medium.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="70dp"
+            android:text="@string/bottom_dialog_mypage_edit"
+            android:textColor="@color/gray06"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view_mypage_div_one"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray02"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_mypage_edit" />
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_mypage_delete"
+            style="@style/TextView.Label.Medium.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:paddingHorizontal="70dp"
+            android:text="@string/bottom_dialog_mypage_delete"
+            android:textColor="@color/delete_red"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/view_mypage_div_one" />
+
+        <View
+            android:id="@+id/view_mypage_div_two"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/gray02"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_mypage_delete" />
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_mypage_close"
+            style="@style/TextView.Label.Bold.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:paddingHorizontal="70dp"
+            android:text="@string/bottom_dialog_mypage_close"
+            android:textColor="@color/gray06"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_mypage_div_two" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

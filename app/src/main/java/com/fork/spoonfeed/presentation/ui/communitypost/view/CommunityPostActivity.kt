@@ -1,17 +1,11 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.Gravity
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
-import android.widget.ListPopupWindow
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -23,7 +17,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.ui.communitypost.adapter.CommentAdapter
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
-import com.fork.spoonfeed.presentation.util.dpToPx
+import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -46,7 +40,7 @@ class CommunityPostActivity :
 
     private fun initUserData() {
         communityPostViewModel.initUserData()
-        communityPostViewModel.userData.observe(this){
+        communityPostViewModel.userData.observe(this) {
             setCommentAdapter(it)
             setCommentEditor()
             setClickListener()
@@ -60,7 +54,7 @@ class CommunityPostActivity :
     }
 
     private fun setCommentAdapter(userData: ResponseUserData.Data.User) {
-        commentAdapter = CommentAdapter(userData, ::commentUpdate, ::commentDelete)
+        commentAdapter = CommentAdapter(supportFragmentManager, userData, ::commentUpdate, ::commentDelete)
         binding.rvCommunityPostComment.adapter = commentAdapter
         binding.rvCommunityPostComment.addItemDecoration(ItemDecoration())
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
@@ -104,7 +98,7 @@ class CommunityPostActivity :
             }
         }
         binding.ivCommunityPostEdit.setOnClickListener {
-            showMenu()
+            showBottomDialog()
         }
         binding.ivCommunityPostCommentInput.setOnClickListener {
             communityPostViewModel.postComment()
@@ -154,6 +148,7 @@ class CommunityPostActivity :
             binding.etCommunityPostCommentInput,
             0
         )
+        binding.etCommunityPostCommentInput.setSelection(binding.etCommunityPostCommentInput.text.length)
     }
 
     private fun hideKeyboard() {
@@ -175,46 +170,12 @@ class CommunityPostActivity :
         communityPostViewModel.initData()
     }
 
-    // 글 수정 popup menu
-    private fun showMenu() {
-        val items = resources.getStringArray(R.array.mypage_popup)
-
-        val popupAdapter =
-            object : ArrayAdapter<String>(this, R.layout.item_mypage_popup, items) {
-                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
-                    val view = super.getView(position, convertView, parent)
-                    val color = if (position == 0) {
-                        R.color.gray04
-                    } else {
-                        R.color.delete_red
-                    }
-                    (view as TextView).setTextColor(ContextCompat.getColor(context, color))
-                    return view
-                }
-            }
-
-        val popup = ListPopupWindow(this).apply {
-            anchorView = binding.ivCommunityPostEdit
-            setAdapter(popupAdapter)
-            setDropDownGravity(Gravity.NO_GRAVITY)
-            width = dpToPx(169)
-            height = dpToPx(112)
-            setBackgroundDrawable(ContextCompat.getDrawable(baseContext, R.drawable.img_comment_bg))
-        }
-
-        popup.setOnItemClickListener { _, view, _, _ ->
-            if ((view as TextView).text == "수정하기") {
-                val intent = Intent(this, CommunityPostCreateActivity::class.java).apply {
-                    putExtra(CommunityPostCreateActivity.POST_ID, communityPostViewModel.getPk())
-                }
-                startActivity(intent)
-                popup.dismiss()
-            } else {
-                communityPostViewModel.deletePost()
-                popup.dismiss()
-            }
-        }
-        popup.show()
+    private fun showBottomDialog() {
+        val bottomSheetFragment = BottomDialogMyPageFragment(communityPostViewModel.getPk()!!, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.COMMUNITY_POST)
+        bottomSheetFragment.show(
+            supportFragmentManager,
+            bottomSheetFragment.tag
+        )
     }
 }
 

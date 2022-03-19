@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.data.repository
 
+import android.util.Log
 import com.fork.spoonfeed.data.remote.datasource.AuthDataSource
 import com.fork.spoonfeed.data.remote.model.auth.*
 import com.fork.spoonfeed.domain.repository.AuthRepository
@@ -19,6 +20,8 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
     ): ResponseLoginWithKakaoData {
         return authDataSource.loginWithKakao(accessToken, refreshToken)
     }
+
+
 
     override suspend fun logoutWithKakao(
         accessToken: String,

@@ -355,4 +355,9 @@
     <!--  Dialog Comment  -->
     <string name="dialog_comment_edit">수정하기</string>
     <string name="dialog_comment_delete">삭제하기</string>
+
+    <!--  Bottom Dialog MyPage  -->
+    <string name="bottom_dialog_mypage_edit">수정하기</string>
+    <string name="bottom_dialog_mypage_delete">삭제하기</string>
+    <string name="bottom_dialog_mypage_close">닫기</string>
 </resources>

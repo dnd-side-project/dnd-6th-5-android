@@ -1,25 +1,19 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.adapter
 
-import android.content.Context
-import android.view.Gravity
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.ListPopupWindow
-import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.ListAdapter
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.databinding.ItemCommunityPostCommentBinding
-import com.fork.spoonfeed.presentation.util.dpToPx
+import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 
 class CommentAdapter(
+    private val supportFragmentManager: FragmentManager,
     private val userData: ResponseUserData.Data.User,
     private val commentUpdateListener: (ResponsePostData.Data.Comment) -> Unit,
     private val commentDeleteListener: (ResponsePostData.Data.Comment) -> Unit
@@ -39,7 +33,7 @@ class CommentAdapter(
         holder.bind(currentList[position], userData, commentUpdateListener, commentDeleteListener)
     }
 
-    class CommentViewHolder(private val binding: ItemCommunityPostCommentBinding) :
+    inner class CommentViewHolder(private val binding: ItemCommunityPostCommentBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(
@@ -55,10 +49,8 @@ class CommentAdapter(
                 ivItemEdit.isVisible = commentResponseData.commenter == userData.nickname
                 if (ivItemEdit.isVisible) {
                     ivItemEdit.setOnClickListener {
-                        showMenu(
-                            binding.root.context,
-                            binding,
-                            commentResponseData,
+                        showBottomDialog(
+                            0, commentResponseData.id.toString(), commentResponseData,
                             commentUpdateListener,
                             commentDeleteListener
                         )
@@ -69,52 +61,18 @@ class CommentAdapter(
             binding.executePendingBindings()
         }
 
-        private fun showMenu(
-            context: Context,
-            binding: ItemCommunityPostCommentBinding,
-            data: ResponsePostData.Data.Comment,
+        private fun showBottomDialog(
+            postId: Int, commentId: String, data: ResponsePostData.Data.Comment,
             commentUpdateListener: (ResponsePostData.Data.Comment) -> (Unit),
             commentDeleteListener: (ResponsePostData.Data.Comment) -> (Unit)
         ) {
-            val items = context.resources.getStringArray(R.array.mypage_popup)
+            val bottomSheetFragment = BottomDialogMyPageFragment(
+                postId, commentId, BottomDialogMyPageFragment.COMMUNITY_COMMENT, data,
+                commentUpdateListener,
+                commentDeleteListener
+            )
 
-            val popupAdapter =
-                object : ArrayAdapter<String>(context, R.layout.item_mypage_popup, items) {
-                    override fun getView(
-                        position: Int,
-                        convertView: View?,
-                        parent: ViewGroup
-                    ): View {
-                        val view = super.getView(position, convertView, parent)
-                        val color = if (position == 0) {
-                            R.color.gray04
-                        } else {
-                            R.color.delete_red
-                        }
-                        (view as TextView).setTextColor(ContextCompat.getColor(context, color))
-                        return view
-                    }
-                }
-
-            val popup = ListPopupWindow(context).apply {
-                anchorView = binding.ivItemEdit
-                setAdapter(popupAdapter)
-                setDropDownGravity(Gravity.NO_GRAVITY)
-                width = context.dpToPx(169)
-                height = context.dpToPx(112)
-                setBackgroundDrawable(ContextCompat.getDrawable(context, R.drawable.img_comment_bg))
-            }
-
-            popup.setOnItemClickListener { _, view, _, _ ->
-                if ((view as TextView).text == "수정하기") {
-                    commentUpdateListener(data)
-                    popup.dismiss()
-                } else {
-                    commentDeleteListener(data)
-                    popup.dismiss()
-                }
-            }
-            popup.show()
+            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
         }
     }
 
@@ -134,6 +92,5 @@ class CommentAdapter(
                 return oldItem.id == newItem.id
             }
         }
-
     }
 }
