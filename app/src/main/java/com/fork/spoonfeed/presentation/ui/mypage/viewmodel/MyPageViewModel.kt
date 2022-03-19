@@ -165,12 +165,14 @@ class MyPageViewModel @Inject constructor(
     fun deleteWithKakao() {
         viewModelScope.launch {
             _deleteWithKakaoSuccess.value = authRepository.deleteWithKakao(UserData.accessToken!!).success
+            authRepository.setAutoLoginPlatformManager(null)
         }
     }
 
     fun deleteWithNaver() {
         viewModelScope.launch {
             _deleteWithNaverSuccess.value = authRepository.deleteWithNaver(UserData.accessToken!!).success
+            authRepository.setAutoLoginPlatformManager(null)
         }
     }
 }

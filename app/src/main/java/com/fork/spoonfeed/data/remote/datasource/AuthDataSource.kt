@@ -25,5 +25,9 @@ interface AuthDataSource {
     suspend fun deleteWithNaver(
         accessToken: String,
     ): ResponseDeleteWithNaverData
+
+    fun setAutoLoginPlatformManager(value: String?)
+
+    fun getAutoLoginPlatformManager(): String?
 }
 

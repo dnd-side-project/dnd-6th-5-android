@@ -45,6 +45,7 @@ class LoginViewModel @Inject constructor(
 
                     responseBody.success to responseBody.data.user.nickname
                 }
+            authRepository.setAutoLoginPlatformManager("naver")
         }
     }
 
@@ -57,6 +58,7 @@ class LoginViewModel @Inject constructor(
             UserData.refreshToken = responseData.data.user.token.refreshToken
             UserData.accessToken = accessToken
             UserData.platform = "kakao"
+            authRepository.setAutoLoginPlatformManager("kakao")
         }
     }
 
