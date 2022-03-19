@@ -9,6 +9,7 @@ import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
 import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
+import com.fork.spoonfeed.domain.model.LikeBtnState
 import com.fork.spoonfeed.domain.repository.PolicyRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
@@ -49,9 +50,13 @@ class PolicyListViewModel @Inject constructor(
     val myLikePolicyList: LiveData<List<ResponseUserLikePolicyData.Data.Policy>>
         get() = _myLikePolicyList
 
-    private val _copyList = MutableLiveData<MutableList<Int>>()
-    val copyList: LiveData<MutableList<Int>>
-        get() = _copyList
+    private val _getMyLikePolicySuccess = MutableLiveData(false)
+    val getMyLikePolicySuccess: LiveData<Boolean>
+        get() = _getMyLikePolicySuccess
+
+    private val _likeBtnState = MutableLiveData<LikeBtnState>()
+    val likeBtnState: LiveData<LikeBtnState>
+        get() = _likeBtnState
 
     fun setUserInfo(data: RequestFilteredPolicy) {
         userInfo = data
@@ -127,6 +132,12 @@ class PolicyListViewModel @Inject constructor(
     fun getMyLikePolicy() {
         viewModelScope.launch {
             _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
+            _getMyLikePolicySuccess.value = true
         }
     }
+
+    fun setLikeBtn(likeBtnState: LikeBtnState) {
+        _likeBtnState.value = likeBtnState
+    }
 }
+
