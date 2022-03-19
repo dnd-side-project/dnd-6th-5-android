@@ -684,25 +684,26 @@
                         android:id="@+id/tv_detail_info_operating_agency"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_etc_agency_sentence"
                         android:text="@string/detail_info_operating_agency"
                         android:textColor="@color/gray04"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_etc_agency" />
+                        tools:layout_editor_absoluteY="137dp" />
 
                     <TextView
                         android:id="@+id/tv_detail_info_operating_agency_sentence"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:ems="1"
+                        android:layout_marginTop="10dp"
                         android:text="@{detailInfoViewModel.policyDetailInfo.operatingInstitute}"
+                        android:ems="1"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_etc_agency_sentence"
-                        app:layout_constraintTop_toTopOf="@+id/tv_detail_info_operating_agency"
-                        tools:text="@string/detail_info_operating_agency_sentence" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_etc_agency_sentence" />
 
                     <TextView
                         android:id="@+id/tv_detail_info_reference_site_one"
