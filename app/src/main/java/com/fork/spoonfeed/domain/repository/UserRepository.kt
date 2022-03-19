@@ -15,4 +15,6 @@ interface UserRepository {
     suspend fun getUserLikePolicy(): ResponseUserLikePolicyData
 
     suspend fun patchUserFilter(body: RequestPatchUserFilterData): ResponsePatchUserFilterData
+
+    suspend fun checkUserNameDuplicate(nickName: String): ResponseUserNameDuplicate
 }

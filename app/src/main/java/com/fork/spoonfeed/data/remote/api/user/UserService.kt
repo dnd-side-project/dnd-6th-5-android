@@ -47,4 +47,9 @@ interface UserService {
         @Header("platform") platform: String = UserData.platform!!,
         @Body body: RequestPatchUserFilterData
     ): ResponsePatchUserFilterData
+
+    @GET("user/check-duplicate")
+    suspend fun checkUserNameDuplicate(
+        @Query("nickname") nickName: String
+    ): ResponseUserNameDuplicate
 }

@@ -32,4 +32,8 @@ class UserRepositoryImpl @Inject constructor(
     override suspend fun patchUserFilter(body: RequestPatchUserFilterData): ResponsePatchUserFilterData {
         return userDataSource.patchUserFilter(body = body)
     }
+
+    override suspend fun checkUserNameDuplicate(nickName: String): ResponseUserNameDuplicate {
+        return userDataSource.checkUserNameDuplicate(nickName)
+    }
 }
