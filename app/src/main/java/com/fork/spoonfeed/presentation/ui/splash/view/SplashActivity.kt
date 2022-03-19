@@ -40,26 +40,23 @@ class SplashActivity :
 
     private fun setObserver() {
         viewModel.autoLoginPlatform.observe(this) {
-            it?.let {
-                when (it) {
-                    "naver" -> checkNaverLogin()
-                    "kakao" -> checkKakaoLogin()
-                }
+            when (it) {
+                "naver" -> checkNaverLogin()
+                "kakao" -> checkKakaoLogin()
+                null -> moveOnboarding()
             }
         }
         viewModel.naverLoginSuccessWithName.observe(this) {
             if (it.first) {
-                Log.i("login", "main")
                 moveMain()
             } else if (!it.first) {
-                Log.i("login", "onboarding")
                 moveOnboarding()
             }
         }
         viewModel.kakaoLoginSuccessWithName.observe(this) {
             if (it.first) {
                 moveMain()
-            } else if (!it.first){
+            } else if (!it.first) {
                 moveOnboarding()
             }
         }
@@ -96,18 +93,18 @@ class SplashActivity :
     }
 
     private fun checkKakaoLogin() {
+        // TODO 자동로그인 구현 필요
+        moveOnboarding()
     }
 
-    private fun moveOnboarding(){
-        Log.i("login", "onboarding@@@@")
+    private fun moveOnboarding() {
         val intent = Intent(baseContext, OnboardingActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         }
         startNextActivityWithHandling(intent)
     }
 
-    private fun moveMain(){
-        Log.i("login", "main@@@@@")
+    private fun moveMain() {
         val intent = Intent(baseContext, MainActivity::class.java).apply {
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
