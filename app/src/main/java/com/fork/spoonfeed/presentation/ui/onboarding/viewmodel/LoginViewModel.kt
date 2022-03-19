@@ -19,11 +19,11 @@ class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    private val _isNaverLoginSuccess = MutableLiveData(false)
-    val isNaverLoginSuccess: LiveData<Boolean> = _isNaverLoginSuccess
+    private val _naverLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>(false to null)
+    val naverLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _naverLoginSuccessWithName
 
-    private val _isKakaoLoginSuccess = MutableLiveData(false)
-    val isKakaoLoginSuccess: LiveData<Boolean> = _isKakaoLoginSuccess
+    private val _kakaoLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>(false to null)
+    val kakaoLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _kakaoLoginSuccessWithName
 
     private val _isNameSpecial = MutableLiveData<Boolean>()
     val isNameSpecial: LiveData<Boolean> = _isNameSpecial
@@ -33,7 +33,7 @@ class LoginViewModel @Inject constructor(
 
     fun loginWithNaver(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
-            _isNaverLoginSuccess.value =
+            _naverLoginSuccessWithName.value =
                 authRepository.loginWithNaver(accessToken, refreshToken).run {
                     val newAccessToken = first
                     val responseBody = second
@@ -43,7 +43,7 @@ class LoginViewModel @Inject constructor(
                     UserData.refreshToken = responseBody.data.user.token.refreshToken
                     UserData.platform = "naver"
 
-                    responseBody.success
+                    responseBody.success to responseBody.data.user.nickname
                 }
         }
     }
@@ -51,7 +51,8 @@ class LoginViewModel @Inject constructor(
     fun loginWithKakao(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
             val responseData = authRepository.loginWithKakao(accessToken, refreshToken)
-            _isKakaoLoginSuccess.value = responseData.success
+            _kakaoLoginSuccessWithName.value =
+                responseData.success to responseData.data.user.nickname
             UserData.id = responseData.data.user.id
             UserData.refreshToken = responseData.data.user.token.refreshToken
             UserData.accessToken = accessToken
@@ -62,7 +63,7 @@ class LoginViewModel @Inject constructor(
     fun setUserNickName(userNickName: String) {
         Log.i("name", userNickName)
         val isNameSpecial = _isNameSpecial.value ?: false
-        if (isNameSpecial){
+        if (isNameSpecial) {
             patchUserNickName(userNickName)
         } else {
             checkUserNickName(userNickName)

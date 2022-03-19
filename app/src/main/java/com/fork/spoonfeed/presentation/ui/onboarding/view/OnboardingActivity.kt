@@ -37,14 +37,18 @@ class OnboardingActivity :
     }
 
     private fun setObserver() {
-        loginViewModel.isNaverLoginSuccess.observe(this, {
-            if (it) {
-                startSignupActivity()
+        loginViewModel.naverLoginSuccessWithName.observe(this, {
+            if (it.first) {
+                it.second?.let {
+                    startMainActivity()
+                } ?: startSignupActivity()
             }
         })
-        loginViewModel.isKakaoLoginSuccess.observe(this, {
-            if (it) {
-                startSignupActivity()
+        loginViewModel.kakaoLoginSuccessWithName.observe(this, {
+            if (it.first) {
+                it.second?.let {
+                    startMainActivity()
+                } ?: startSignupActivity()
             }
         })
     }
@@ -117,5 +121,12 @@ class OnboardingActivity :
 
     private fun startSignupActivity() {
         startActivity(Intent(baseContext, SignupActivity::class.java))
+    }
+
+    private fun startMainActivity() {
+        startActivity(Intent(baseContext, MainActivity::class.java).apply {
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        })
     }
 }
