@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
@@ -20,8 +21,8 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostManagementBinding>(R.layout.fragment_my_post_management) {
     private lateinit var myPostManagementPostAdapter: MyPostAdapter
-    private val myPageViewModel: MyPageViewModel by viewModels()
-    private var initPostNull = false
+    private val myPageViewModel: MyPageViewModel by activityViewModels()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
@@ -70,7 +71,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun initRvAdapter() {
-        myPostManagementPostAdapter = MyPostAdapter(myPageViewModel, requireActivity()) {
+        myPostManagementPostAdapter = MyPostAdapter(childFragmentManager, myPageViewModel) {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(CommunityFragment.POST_PK, it.postId)
             })
