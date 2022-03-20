@@ -25,6 +25,9 @@ class LoginViewModel @Inject constructor(
     private val _kakaoLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>(false to null)
     val kakaoLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _kakaoLoginSuccessWithName
 
+    private val _name = MutableLiveData<String?>()
+    val name: LiveData<String?> = _name
+
     private val _isNameSpecial = MutableLiveData<Boolean>()
     val isNameSpecial: LiveData<Boolean> = _isNameSpecial
 
@@ -45,7 +48,6 @@ class LoginViewModel @Inject constructor(
 
                     responseBody.success to responseBody.data.user.nickname
                 }
-            authRepository.setAutoLoginPlatformManager("naver")
         }
     }
 
@@ -58,18 +60,12 @@ class LoginViewModel @Inject constructor(
             UserData.refreshToken = responseData.data.user.token.refreshToken
             UserData.accessToken = accessToken
             UserData.platform = "kakao"
-            authRepository.setAutoLoginPlatformManager("kakao")
         }
     }
 
     fun setUserNickName(userNickName: String) {
-        Log.i("name", userNickName)
-        val isNameSpecial = _isNameSpecial.value ?: false
-        if (isNameSpecial) {
-            patchUserNickName(userNickName)
-        } else {
-            checkUserNickName(userNickName)
-        }
+        _name.value = userNickName
+        checkUserNickName(userNickName)
     }
 
     private fun checkUserNickName(userNickName: String) {
@@ -78,7 +74,8 @@ class LoginViewModel @Inject constructor(
         }
     }
 
-    fun patchUserNickName(userNickName: String) {
+    fun patchUserNickName() {
+        val userNickName = _name.value ?: return
         viewModelScope.launch {
             runCatching {
                 val requestUserNickNameData =
@@ -90,6 +87,7 @@ class LoginViewModel @Inject constructor(
                 ).data.user.nickname
             }.onSuccess {
                 _nickNameSetStatus.setValue(true)
+                authRepository.setAutoLoginPlatformManager(UserData.platform)
             }.onFailure {
                 _nickNameSetStatus.setValue(false)
             }

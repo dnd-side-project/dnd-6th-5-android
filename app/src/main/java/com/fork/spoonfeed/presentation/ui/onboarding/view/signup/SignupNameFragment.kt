@@ -71,11 +71,6 @@ class SignupNameFragment :
             if (!it) {
                 Snackbar.make(binding.root, "존재하는 닉네임입니다.", Snackbar.LENGTH_SHORT).show()
             } else {
-                loginViewModel.patchUserNickName(binding.tietSignupName.text.toString())
-            }
-        }
-        loginViewModel.nickNameSetStatus.observe(this) { nickNameSetSuccess ->
-            if (nickNameSetSuccess) {
                 moveToNextLevel()
             }
         }
