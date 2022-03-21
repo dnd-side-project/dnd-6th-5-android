@@ -13,7 +13,7 @@ data class ResponseUserData(
         data class User(
             @SerializedName("id") val id: Int,
             @SerializedName("nickname") val nickname: String,
-            @SerializedName("age") val age: String,
+            @SerializedName("age") val age: String?,
             @SerializedName("workStatus") val workStatus: String,
             @SerializedName("companyScale") val companyScale: String,
             @SerializedName("medianIncome") val medianIncome: String,
