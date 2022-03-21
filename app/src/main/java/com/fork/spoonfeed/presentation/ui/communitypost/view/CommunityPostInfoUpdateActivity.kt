@@ -1,7 +1,9 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityCommunityPostInfoUpdateBinding
@@ -13,6 +15,7 @@ import com.fork.spoonfeed.domain.model.MedianIncome
 import com.fork.spoonfeed.domain.model.NetWorth
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostInfoUpdateViewModel
+import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,28 +32,31 @@ class CommunityPostInfoUpdateActivity :
     override fun initView() {
         communityPostInfoUpdateViewModel.getUserData()
         setObserver()
-        setOnClickListener()
     }
 
     private fun setObserver() {
         communityPostInfoUpdateViewModel.initialUserInfo.observe(this) {
-
-            it.age?.let { age -> initAgeField(age) }
-            initMarriageField(it.maritalStatus)
-            initWorkStatus(it.workStatus)
-            initCompanyScale(it.companyScale)
-            initMedianIncome(it.medianIncome)
-            initAnnualIncome(it.annualIncome)
-            initAsset(it.asset)
-            initHouseOwner(it.isHouseOwner)
-            initHasHouse(it.hasHouse)
+            if (it.age != null) {
+                initAgeField(it?.age)
+                initMarriageField(it.maritalStatus)
+                initWorkStatus(it.workStatus)
+                initCompanyScale(it.companyScale)
+                initMedianIncome(it.medianIncome)
+                initAnnualIncome(it.annualIncome)
+                initAsset(it.asset)
+                initHouseOwner(it.isHouseOwner)
+                initHasHouse(it.hasHouse)
+                setOnClickListener()
+            } else {
+                showGotoPolicyDialog()
+            }
         }
     }
 
-    private fun initAgeField(age: String) {
-        binding.etCommunityPostInfoUpdateAgeYear.setText(age.substring(0..3))
-        binding.etCommunityPostInfoUpdateAgeMonth.setText(age.substring(5..6))
-        binding.etCommunityPostInfoUpdateAgeDay.setText(age.substring(8..9))
+    private fun initAgeField(age: String?) {
+        binding.etCommunityPostInfoUpdateAgeYear.setText(age?.substring(0..3))
+        binding.etCommunityPostInfoUpdateAgeMonth.setText(age?.substring(5..6))
+        binding.etCommunityPostInfoUpdateAgeDay.setText(age?.substring(8..9))
     }
 
     private fun initMarriageField(maritalStatus: String) {
@@ -206,6 +212,21 @@ class CommunityPostInfoUpdateActivity :
                 putExtra(INFO_UPDATE_RESULT, communityPostInfoUpdateViewModel.updatedUserData)
             })
             finish()
+        }
+    }
+
+    @SuppressLint("ResourceType")
+    private fun showGotoPolicyDialog() {
+        val dialog = this.showFloatingDialog(R.layout.dialog_goto_policy)
+        val inputBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_input)
+        val cancelBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_cancel)
+
+        inputBtn.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        cancelBtn.setOnClickListener {
+            dialog.dismiss()
         }
     }
 

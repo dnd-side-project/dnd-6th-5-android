@@ -46,23 +46,6 @@ class MyPageMyInfoActivity :
 
     }
 
-    @SuppressLint("ResourceType")
-    private fun showGotoPolicyDialog() {
-        val dialog = this.showFloatingDialog(R.layout.dialog_goto_policy)
-        val inputBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_input)
-        val cancelBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_cancel)
-
-        inputBtn.setOnClickListener {
-            dialog.dismiss()
-            finish()
-        }
-
-        cancelBtn.setOnClickListener {
-            dialog.dismiss()
-            finish()
-        }
-    }
-
     private fun setObserver() {
         myPageMyInfoViewModel.initialUserInfo.observe(this) {
             if (it.age != null) {
@@ -261,6 +244,23 @@ class MyPageMyInfoActivity :
                     myPageMyInfoViewModel.setPatchUserNickNameInVaild()
                 }
             }
+        }
+    }
+
+    @SuppressLint("ResourceType")
+    private fun showGotoPolicyDialog() {
+        val dialog = this.showFloatingDialog(R.layout.dialog_goto_policy)
+        val inputBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_input)
+        val cancelBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_cancel)
+
+        inputBtn.setOnClickListener {
+            dialog.dismiss()
+            finish()
+        }
+
+        cancelBtn.setOnClickListener {
+            dialog.dismiss()
+            finish()
         }
     }
 }
