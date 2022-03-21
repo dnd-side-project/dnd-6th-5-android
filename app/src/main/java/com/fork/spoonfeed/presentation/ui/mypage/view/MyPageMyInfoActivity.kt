@@ -20,6 +20,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostInfoUpdateViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -43,7 +44,8 @@ class MyPageMyInfoActivity :
         setChipOnClickListener()
         setOnClickListener()
         nickNameTextChanged()
-
+        setNickNameObserve()
+        patchUserFilterObserve()
     }
 
     private fun setObserver() {
@@ -58,7 +60,6 @@ class MyPageMyInfoActivity :
                 initAsset(it.asset)
                 initHouseOwner(it.isHouseOwner)
                 initHasHouse(it.hasHouse)
-                patchUserFilterObserve()
             } else {
                 showGotoPolicyDialog()
             }
@@ -166,8 +167,18 @@ class MyPageMyInfoActivity :
         }
 
         binding.mbMypageMyInfoUpdate.setOnClickListener {
-            myPageMyInfoViewModel.patchUserFilter()
-            myPageMyInfoViewModel.patchUserNickName(binding.etMypageMyInfoUpdateName.text.toString())
+            myPageMyInfoViewModel.setUserNickName(binding.etMypageMyInfoUpdateName.text.toString())
+        }
+    }
+
+    private fun setNickNameObserve() {
+        myPageMyInfoViewModel.isNameSpecial.observe(this) {
+            if (!it) {
+                Snackbar.make(binding.root, "존재하는 닉네임입니다.", Snackbar.LENGTH_SHORT).show()
+            } else {
+                myPageMyInfoViewModel.patchUserFilter()
+                myPageMyInfoViewModel.patchUserNickName()
+            }
         }
     }
 
