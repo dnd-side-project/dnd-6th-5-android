@@ -1,6 +1,8 @@
 package com.fork.spoonfeed.presentation.base
 
+import android.annotation.SuppressLint
 import android.app.Dialog
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +42,10 @@ sealed class BaseViewUtil {
         AppCompatActivity() {
         protected lateinit var binding: T
 
+        @SuppressLint("SourceLockedOrientationActivity")
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
+            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
             binding = DataBindingUtil.setContentView(this, layoutRes)
         }
 
