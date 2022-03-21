@@ -675,28 +675,7 @@
 
                 </com.google.android.material.chip.ChipGroup>
 
-                <CheckBox
-                    android:id="@+id/cb_mypage_my_info_update_save"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginStart="4dp"
-                    android:background="@drawable/bg_policy_filter_save"
-                    android:button="@null"
-                    android:checked="true"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_my_info_update_save"
-                    app:layout_constraintStart_toStartOf="@id/mb_mypage_my_info_update"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_my_info_update_save" />
 
-                <TextView
-                    android:id="@+id/tv_mypage_my_info_update_save"
-                    style="@style/TextView.Label.Regular.12"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="112dp"
-                    android:text="@string/mypage_my_info_update_save"
-                    app:layout_constraintStart_toEndOf="@id/cb_mypage_my_info_update_save"
-                    app:layout_constraintTop_toBottomOf="@id/cg_mypage_my_info_update_home_ownership" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/mb_mypage_my_info_update"
@@ -704,7 +683,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/policy_filter_next_btn_height"
                     android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_20"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="112dp"
                     android:layout_marginBottom="18dp"
                     android:backgroundTint="@{viewModel.isPatchUserFilterValid ? @color/primary_blue : @color/gray03}"
                     android:enabled="@{viewModel.isPatchUserFilterValid}"
@@ -713,7 +692,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_info_update_save" />
+                    app:layout_constraintTop_toBottomOf="@id/cg_mypage_my_info_update_home_ownership" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>
