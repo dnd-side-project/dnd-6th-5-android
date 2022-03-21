@@ -100,7 +100,12 @@ class MyPageViewModel @Inject constructor(
     fun logoutWithKakao() {
         viewModelScope.launch {
             _logoutWithKakaoSuccess.value = authRepository.logoutWithKakao(UserData.accessToken!!).success
+            authRepository.setAutoLoginPlatformManager(null)
         }
+    }
+
+    fun logoutWithNaver(){
+        authRepository.setAutoLoginPlatformManager(null)
     }
 
     fun getMyPost() {
@@ -165,12 +170,14 @@ class MyPageViewModel @Inject constructor(
     fun deleteWithKakao() {
         viewModelScope.launch {
             _deleteWithKakaoSuccess.value = authRepository.deleteWithKakao(UserData.accessToken!!).success
+            authRepository.setAutoLoginPlatformManager(null)
         }
     }
 
     fun deleteWithNaver() {
         viewModelScope.launch {
             _deleteWithNaverSuccess.value = authRepository.deleteWithNaver(UserData.accessToken!!).success
+            authRepository.setAutoLoginPlatformManager(null)
         }
     }
 }

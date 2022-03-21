@@ -94,6 +94,7 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
                 myPageViewModel.logoutWithKakao()
             } else {
                 NidOAuthLogin().logout()
+                myPageViewModel.logoutWithNaver()
                 dialog.dismiss()
                 moveToOnBoardingActivity()
             }

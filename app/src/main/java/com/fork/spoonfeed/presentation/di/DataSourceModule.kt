@@ -1,5 +1,7 @@
 package com.fork.spoonfeed.presentation.di
 
+import android.content.Context
+import com.fork.spoonfeed.data.local.AutoLoginPlatformManager
 import com.fork.spoonfeed.data.remote.api.auth.AuthService
 import com.fork.spoonfeed.data.remote.api.community.CommentService
 import com.fork.spoonfeed.data.remote.api.community.PostService
@@ -18,6 +20,7 @@ import com.fork.spoonfeed.data.remote.datasource.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -27,8 +30,17 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideAuthDataSource(authService: AuthService): AuthDataSource {
-        return AuthDataSourceImpl(authService)
+    fun provideAutoLoginPlatformManager(@ApplicationContext context: Context): AutoLoginPlatformManager {
+        return AutoLoginPlatformManager(context)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthDataSource(
+        authService: AuthService,
+        autoLoginPlatformManager: AutoLoginPlatformManager
+    ): AuthDataSource {
+        return AuthDataSourceImpl(authService, autoLoginPlatformManager)
     }
 
     @Provides
@@ -51,7 +63,9 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideUserDataSource(userService: UserService): UserDataSource {
+    fun provideUserDataSource(
+        userService: UserService
+    ): UserDataSource {
         return UserDataSourceImpl(userService)
     }
 

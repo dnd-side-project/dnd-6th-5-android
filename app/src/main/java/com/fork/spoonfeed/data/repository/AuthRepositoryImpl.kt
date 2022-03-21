@@ -40,5 +40,13 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
     ): ResponseDeleteWithNaverData {
         return authDataSource.deleteWithNaver(accessToken)
     }
+
+    override fun setAutoLoginPlatformManager(value: String?) {
+        authDataSource.setAutoLoginPlatformManager(value)
+    }
+
+    override fun getAutoLoginPlatformManager(): String? {
+        return authDataSource.getAutoLoginPlatformManager()
+    }
 }
 
