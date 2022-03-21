@@ -414,6 +414,7 @@
                         android:text="@{detailInfoViewModel.policyDetailInfo.limitAge}"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toEndOf="@id/tv_detail_info_age"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_age"
                         tools:text="@string/detail_info_age_sentence" />
@@ -684,12 +685,12 @@
                         android:id="@+id/tv_detail_info_operating_agency"
                         style="@style/TextView.Label.Regular.14"
                         android:layout_width="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:layout_height="wrap_content"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_etc_agency_sentence"
+                        android:layout_marginTop="10dp"
                         android:text="@string/detail_info_operating_agency"
                         android:textColor="@color/gray04"
                         app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_etc_agency_sentence"
                         tools:layout_editor_absoluteY="137dp" />
 
                     <TextView
@@ -698,8 +699,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:text="@{detailInfoViewModel.policyDetailInfo.operatingInstitute}"
                         android:ems="1"
+                        android:text="@{detailInfoViewModel.policyDetailInfo.operatingInstitute}"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_etc_agency_sentence"
@@ -717,18 +718,27 @@
                         app:layout_constraintTop_toBottomOf="@id/tv_detail_info_operating_agency_sentence" />
 
                     <TextView
-                        android:id="@+id/detail_info_reference_site_one_sentence"
+                        android:id="@+id/tv_detail_info_reference_site_one_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ems="1"
-                        android:text="@{detailInfoViewModel.policyDetailInfo.referenceSite1}"
+                        android:maxLength="35"
+                        android:text="@{detailInfoViewModel.referenceSiteOne}"
                         android:textColor="@color/gray06"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_detail_info_etc_sentence"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_detail_info_operating_agency_sentence"
                         app:layout_constraintHorizontal_bias="0"
                         app:layout_constraintStart_toStartOf="@+id/tv_detail_info_operating_agency_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_reference_site_one"
                         tools:text="@string/detail_info_reference_site_one_sentence" />
+
+                    <View
+                        android:id="@+id/view_reference_one"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="@id/tv_detail_info_reference_site_one_sentence"
+                        app:layout_constraintStart_toStartOf="@id/tv_detail_info_reference_site_one_sentence"
+                        app:layout_constraintTop_toBottomOf="@id/tv_detail_info_reference_site_one_sentence" />
 
 
                     <TextView
@@ -740,21 +750,30 @@
                         android:text="@string/detail_info_reference_site_two"
                         android:textColor="@color/gray04"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/detail_info_reference_site_one_sentence" />
+                        app:layout_constraintTop_toBottomOf="@+id/tv_detail_info_reference_site_one_sentence" />
 
                     <TextView
                         android:id="@+id/tv_detail_info_reference_site_two_sentence"
                         style="@style/TextView.Label.Regular.14"
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:ems="1"
-                        android:text="@{detailInfoViewModel.policyDetailInfo.referenceSite2}"
+                        android:maxLength="35"
+                        android:text="@{detailInfoViewModel.referenceSiteTwo}"
                         android:textColor="@color/gray06"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0"
-                        app:layout_constraintStart_toStartOf="@+id/detail_info_reference_site_one_sentence"
+                        app:layout_constraintStart_toStartOf="@+id/tv_detail_info_reference_site_one_sentence"
                         app:layout_constraintTop_toTopOf="@id/tv_detail_info_reference_site_two"
                         tools:text="@string/detail_info_reference_site_two_sentence" />
+
+                    <View
+                        android:id="@+id/view_reference_two"
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:background="@color/gray06"
+                        app:layout_constraintEnd_toEndOf="@id/tv_detail_info_reference_site_two_sentence"
+                        app:layout_constraintStart_toStartOf="@id/tv_detail_info_reference_site_two_sentence"
+                        app:layout_constraintTop_toBottomOf="@id/tv_detail_info_reference_site_two_sentence" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -775,8 +794,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="12dp"
                         android:src="@drawable/bg_gray02_stroke_circle"
-                        app:layout_constraintBottom_toTopOf="@id/iv_detail_info_share_bottom"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
                     <CheckedTextView
                         android:id="@+id/iv_detail_info_like_bottom"
@@ -789,16 +808,6 @@
                         app:layout_constraintStart_toStartOf="@id/iv_detail_info_like_circle"
                         app:layout_constraintTop_toTopOf="@id/iv_detail_info_like_circle" />
 
-                    <ImageView
-                        android:id="@+id/iv_detail_info_share_bottom"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:background="@drawable/bg_gray02_stroke_circle"
-                        android:padding="16dp"
-                        android:src="@drawable/ic_save"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/iv_detail_info_like_bottom" />
 
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_detail_info_goto_custom_policy"
@@ -812,7 +821,7 @@
                         android:text="@string/detail_info_check_custom_policy"
                         android:textColor="@color/white"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/iv_detail_info_share_bottom"
+                        app:layout_constraintTop_toBottomOf="@id/iv_detail_info_like_circle"
                         app:layout_constraintVertical_bias="1.0">
 
                     </androidx.appcompat.widget.AppCompatButton>

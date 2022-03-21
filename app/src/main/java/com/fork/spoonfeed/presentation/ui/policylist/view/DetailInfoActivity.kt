@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModelProvider
 import com.fork.spoonfeed.R
@@ -20,8 +21,8 @@ import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 @AndroidEntryPoint
 class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfoBinding>(R.layout.activity_detail_info) {
     private val detailInfoViewModel: DetailInfoViewModel by viewModels()
-    private val policyListViewModel: PolicyListViewModel by viewModels()
     private val youthCenterUrl = "https://www.youthcenter.go.kr/main.do"
+    private lateinit var referenceSite1: String
     private var id = 0
 
     private var initLikeState = false
@@ -35,11 +36,34 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     }
 
     override fun initView() {
+
         initClickListener()
         setInitLikeBtn()
         setDetailInfo()
         setCategoryObserve()
         setBackBtn()
+        setReferenceSiteInitLayout()
+    }
+
+    private fun setReferenceSiteInitLayout() {
+        with(binding) {
+            detailInfoViewModel!!.referenceSiteOne.observe(this@DetailInfoActivity) { referenceSiteOne ->
+                if (referenceSiteOne == REFERENCE_SITE_NOTHING) {
+                    viewReferenceOne.visibility = View.INVISIBLE
+                } else {
+                    viewReferenceOne.visibility = View.VISIBLE
+                    referenceOneClickListener(referenceSiteOne)
+                }
+            }
+            detailInfoViewModel!!.referenceSiteTwo.observe(this@DetailInfoActivity) { referenceSiteTwo ->
+                if (referenceSiteTwo == REFERENCE_SITE_NOTHING) {
+                    viewReferenceTwo.visibility = View.INVISIBLE
+                } else {
+                    viewReferenceTwo.visibility = View.VISIBLE
+                    referenceTwoClickListener(referenceSiteTwo)
+                }
+            }
+        }
     }
 
     private fun initClickListener() {
@@ -75,6 +99,20 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youthCenterUrl))
                 startActivity(intent)
             }
+        }
+    }
+
+    private fun referenceOneClickListener(referenceOne: String) {
+        binding.tvDetailInfoReferenceSiteOneSentence.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(referenceOne))
+            startActivity(intent)
+        }
+    }
+
+    private fun referenceTwoClickListener(referenceTwo: String) {
+        binding.tvDetailInfoReferenceSiteTwoSentence.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(referenceTwo))
+            startActivity(intent)
         }
     }
 
@@ -140,5 +178,6 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
 
     companion object {
         const val POST_PK = "com.fork.spoonfeed.presentation.ui.mypage.view"
+        const val REFERENCE_SITE_NOTHING = "-"
     }
 }
