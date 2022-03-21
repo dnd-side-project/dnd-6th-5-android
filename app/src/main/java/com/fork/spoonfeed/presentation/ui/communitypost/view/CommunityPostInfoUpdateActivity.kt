@@ -33,8 +33,9 @@ class CommunityPostInfoUpdateActivity :
     }
 
     private fun setObserver() {
-        communityPostInfoUpdateViewModel.initialUserInfo.observe(this, {
-            initAgeField(it.age)
+        communityPostInfoUpdateViewModel.initialUserInfo.observe(this) {
+
+            it.age?.let { age -> initAgeField(age) }
             initMarriageField(it.maritalStatus)
             initWorkStatus(it.workStatus)
             initCompanyScale(it.companyScale)
@@ -43,7 +44,7 @@ class CommunityPostInfoUpdateActivity :
             initAsset(it.asset)
             initHouseOwner(it.isHouseOwner)
             initHasHouse(it.hasHouse)
-        })
+        }
     }
 
     private fun initAgeField(age: String) {

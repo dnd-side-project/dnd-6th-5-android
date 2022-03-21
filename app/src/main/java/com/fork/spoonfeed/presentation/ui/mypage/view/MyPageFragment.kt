@@ -1,15 +1,19 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
+import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
@@ -24,7 +28,6 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
     private val termsConditionUrl = "https://first-hare-34f.notion.site/348dc74a840f43dfa3d105bf22ce76d6"
     private val protectUrl = "https://first-hare-34f.notion.site/f8761b93032c4d0b844c2b4ca798d9a5"
     private val personalInfoUrl = "https://first-hare-34f.notion.site/f24764bf4d7e4ae28ea304080f9423d1"
-
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

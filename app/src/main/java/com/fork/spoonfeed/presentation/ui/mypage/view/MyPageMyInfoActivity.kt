@@ -1,19 +1,25 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
+import android.widget.Button
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.databinding.ActivityMyPageMyInfoBinding
 import com.fork.spoonfeed.domain.model.*
+import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostInfoUpdateViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
+import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -37,27 +43,49 @@ class MyPageMyInfoActivity :
         setChipOnClickListener()
         setOnClickListener()
         nickNameTextChanged()
+
+    }
+
+    @SuppressLint("ResourceType")
+    private fun showGotoPolicyDialog() {
+        val dialog = this.showFloatingDialog(R.layout.dialog_goto_policy)
+        val inputBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_input)
+        val cancelBtn = dialog.findViewById<Button>(R.id.tv_dialog_goto_policy_cancel)
+
+        inputBtn.setOnClickListener {
+            dialog.dismiss()
+            finish()
+        }
+
+        cancelBtn.setOnClickListener {
+            dialog.dismiss()
+            finish()
+        }
     }
 
     private fun setObserver() {
-        myPageMyInfoViewModel.initialUserInfo.observe(this, {
-            initAgeField(it.age)
-            initMarriageField(it.maritalStatus)
-            initWorkStatus(it.workStatus)
-            initCompanyScale(it.companyScale)
-            initMedianIncome(it.medianIncome)
-            initAnnualIncome(it.annualIncome)
-            initAsset(it.asset)
-            initHouseOwner(it.isHouseOwner)
-            initHasHouse(it.hasHouse)
-            patchUserFilterObserve()
-        })
+        myPageMyInfoViewModel.initialUserInfo.observe(this) {
+            if (it.age != null) {
+                initAgeField(it.age)
+                initMarriageField(it.maritalStatus)
+                initWorkStatus(it.workStatus)
+                initCompanyScale(it.companyScale)
+                initMedianIncome(it.medianIncome)
+                initAnnualIncome(it.annualIncome)
+                initAsset(it.asset)
+                initHouseOwner(it.isHouseOwner)
+                initHasHouse(it.hasHouse)
+                patchUserFilterObserve()
+            } else {
+                showGotoPolicyDialog()
+            }
+        }
     }
 
-    private fun initAgeField(age: String) {
-        binding.etMypageMyInfoUpdateAgeYear.setText(age.substring(0..3))
-        binding.etMypageMyInfoUpdateAgeMonth.setText(age.substring(5..6))
-        binding.etMypageMyInfoUpdateAgeDay.setText(age.substring(8..9))
+    private fun initAgeField(age: String?) {
+        binding.etMypageMyInfoUpdateAgeYear.setText(age?.substring(0..3))
+        binding.etMypageMyInfoUpdateAgeMonth.setText(age?.substring(5..6))
+        binding.etMypageMyInfoUpdateAgeDay.setText(age?.substring(8..9))
     }
 
     private fun initMarriageField(maritalStatus: String) {
@@ -229,7 +257,7 @@ class MyPageMyInfoActivity :
                 val updatedNickName = etMypageMyInfoUpdateName.text.toString()
                 if (!updatedNickName.isNullOrEmpty()) {
                     myPageMyInfoViewModel.setPatchUserNickNameVaild()
-                }else{
+                } else {
                     myPageMyInfoViewModel.setPatchUserNickNameInVaild()
                 }
             }
