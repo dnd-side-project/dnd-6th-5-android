@@ -10,6 +10,7 @@ import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
@@ -144,4 +145,13 @@ fun Activity.setBackBtnClickListener(imageView: ImageView) {
 fun Context.dpToPx(dp: Int): Int {
     val displayMetrics = resources.displayMetrics
     return (dp * (displayMetrics.xdpi / DisplayMetrics.DENSITY_DEFAULT)).roundToInt()
+}
+
+fun SearchView.setTextColor(context: Context) {
+    findViewById<EditText>(R.id.search_src_text).setHintTextColor(context.getColor(R.color.gray03))
+    findViewById<EditText>(R.id.search_src_text).setTextColor(context.getColor(R.color.gray06))
+}
+
+fun SearchView.setTextSize(size: Float) {
+    findViewById<EditText>(R.id.search_src_text).textSize = size
 }

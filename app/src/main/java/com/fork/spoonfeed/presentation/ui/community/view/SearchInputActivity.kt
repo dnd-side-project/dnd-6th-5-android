@@ -1,12 +1,10 @@
 package com.fork.spoonfeed.presentation.ui.community.view
 
+import android.graphics.Typeface
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
-import android.util.Log
-import android.view.KeyEvent
-import android.view.View
+import android.widget.EditText
 import androidx.activity.viewModels
+import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
@@ -18,8 +16,11 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialo
 import com.fork.spoonfeed.presentation.ui.community.adapter.TabLayoutAdapter
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.SearchViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
+import com.fork.spoonfeed.presentation.util.setTextColor
+import com.fork.spoonfeed.presentation.util.setTextSize
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class SearchInputActivity :
@@ -37,7 +38,6 @@ class SearchInputActivity :
         initTabLayoutAdapter()
         initTabLayout()
         setObserver()
-        setOnClickListener()
         setInputField()
         this.setBackBtnClickListener(binding.ivSearchInputBack)
     }
@@ -65,7 +65,6 @@ class SearchInputActivity :
             tab.text = tabLabel[position]
         }.attach()
         binding.tlSearchInput.isVisible = false
-        binding.ivSearchInputClear.isVisible = false
     }
 
     private fun setObserver() {
@@ -77,38 +76,21 @@ class SearchInputActivity :
         }
     }
 
-    private fun setOnClickListener() {
-        binding.ivSearchInputClear.setOnClickListener {
-            binding.etSearchInputBar.setText("")
-        }
-    }
-
     private fun setInputField() {
-        with(binding.etSearchInputBar) {
-            setOnKeyListener { _, keyCode, event ->
-                if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    viewModel.updateSearchQuery(text.toString())
-                    true
-                } else {
-                    false
-                }
+        binding.etSearchInputBar.setTextSize(14f)
+        binding.etSearchInputBar.setTextColor(this)
+
+        binding.etSearchInputBar.setOnQueryTextListener(object :
+            SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(newText: String?): Boolean {
+                viewModel.updateSearchQuery(newText.toString())
+                return false
             }
-            addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-                }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                    binding.ivSearchInputClear.isVisible = s?.length ?: 0 != 0
-                }
-
-                override fun afterTextChanged(s: Editable?) {}
-            })
-        }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return false
+            }
+        })
     }
 
     companion object {
