@@ -202,16 +202,15 @@
         <item name="android:statusBarColor">@color/white</item>
     </style>
 
+    <!--  Search View  -->
     <style name="search_view" parent="Widget.AppCompat.SearchView">
         <item name="android:singleLine">true</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:textColorHighlight">#8C5ECC9C</item>
         <item name="android:fontFamily">@font/suit_medium</item>
-        <item name="android:textSize">4sp</item>
         <item name="lineHeight">21sp</item>
-        <item name="searchIcon">@color/white</item>
-        <item name="iconifiedByDefault">false</item>
-        <item name="queryHint">"@string/search_input_hint"</item>
+        <item name="android:textSize">14sp</item>
         <item name="queryBackground">@android:color/transparent</item>
+        <item name="closeIcon">@drawable/ic_close_search_input</item>
+        <item name="iconifiedByDefault">false</item>
     </style>
 </resources>

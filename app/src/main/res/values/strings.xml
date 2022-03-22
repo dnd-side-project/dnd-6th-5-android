@@ -250,7 +250,7 @@
     <string name="community_comment_count">7</string>
 
     <!--  Search Input  -->
-    <string name="search_input_hint">정책을 검색하세요!</string>
+    <string name="search_input_hint">정책을 검색해보세요!</string>
     <string name="search_input_category_all">전체</string>
     <string name="search_input_category_dwelling">주거</string>
     <string name="search_input_category_finance">금융</string>

@@ -37,9 +37,7 @@ class SearchInputActivity :
         initTabLayoutAdapter()
         initTabLayout()
         setObserver()
-        setOnClickListener()
-        setSearchView()
-        //       setInputField()
+        setInputField()
         this.setBackBtnClickListener(binding.ivSearchInputBack)
     }
 
@@ -66,7 +64,7 @@ class SearchInputActivity :
             tab.text = tabLabel[position]
         }.attach()
         binding.tlSearchInput.isVisible = false
-        binding.ivSearchInputClear.isVisible = false
+        // binding.ivSearchInputClear.isVisible = false
     }
 
     private fun setObserver() {
@@ -78,55 +76,15 @@ class SearchInputActivity :
         }
     }
 
-    private fun setOnClickListener() {
-        binding.ivSearchInputClear.setOnClickListener {
-            //      binding.etSearchInputBar.setText("")
-        }
-    }
-
-    /*    private fun setInputField() {
-            with(binding.etSearchInputBar) {
-                setOnKeyListener { _, keyCode, event ->
-                    if ((event.action == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                        viewModel.updateSearchQuery(text.toString())
-                        true
-                    } else {
-                        false
-                    }
-                }
-                addTextChangedListener(object : TextWatcher {
-                    override fun beforeTextChanged(
-                        s: CharSequence?,
-                        start: Int,
-                        count: Int,
-                        after: Int
-                    ) {
-                    }
-
-                    override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                        binding.ivSearchInputClear.isVisible = s?.length ?: 0 != 0
-                    }
-
-                    override fun afterTextChanged(s: Editable?) {}
-                })
-            }
-        }*/
-    private fun setSearchView() {
+    private fun setInputField() {
         binding.etSearchInputBar.setOnQueryTextListener(object :
             androidx.appcompat.widget.SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(newText: String?): Boolean { //완료버튼 클릭시
+            override fun onQueryTextSubmit(newText: String?): Boolean {
                 viewModel.updateSearchQuery(newText.toString())
-                //     myPageViewModel.getNameSearchFriendData(newText.toString())
                 return false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean { //검색어 변경시
-                val userInputText = newText ?: ""
-                if (userInputText.count() == 0) {  //검색어 아무것도 없을 때
-                    Log.d("아무것도 없음", "아무것도 없음")
-                //    myPageViewModel.initFriend()
-                    Log.d("getFriend", "getFriend실행")
-                }
+            override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
         })
