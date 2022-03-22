@@ -360,4 +360,11 @@
     <string name="bottom_dialog_mypage_edit">수정하기</string>
     <string name="bottom_dialog_mypage_delete">삭제하기</string>
     <string name="bottom_dialog_mypage_close">닫기</string>
+
+    <!--  Dialog goto Policy  -->
+    <string name="dialog_goto_policy_title">내 정보가 필요합니다.</string>
+    <string name="dialog_goto_policy_sentence_one">커뮤니티의 활발한 교류를 위해</string>
+    <string name="dialog_goto_policy_sentence_two">맞춤 정책에서 내 정보를 입력해주세요!</string>
+    <string name="dialog_goto_policy_cancle">취소</string>
+    <string name="dialog_goto_policy_input">입력하기</string>
 </resources>

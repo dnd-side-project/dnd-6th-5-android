@@ -57,6 +57,12 @@ class MyPageMyInfoViewModel @Inject constructor(
     private val _isPatchUserInfoSuccess = MutableLiveData(false)
     val isPatchUserInfoSuccess: LiveData<Boolean> get() = _isPatchUserInfoSuccess
 
+    private val _isNameSpecial = MutableLiveData<Boolean>()
+    val isNameSpecial: LiveData<Boolean> = _isNameSpecial
+
+    private val _name = MutableLiveData<String?>()
+    val name: LiveData<String?> = _name
+
     fun isPatchUserInfoSuccess() {
         _isPatchUserInfoSuccess.value = _isPatchUserFilterSuccess.value == true && _isPatchNickNameSuccess.value == true
     }
@@ -155,7 +161,8 @@ class MyPageMyInfoViewModel @Inject constructor(
         }
     }
 
-    fun patchUserNickName(userNickName: String) {
+    fun patchUserNickName() {
+        val userNickName = _name.value ?: return
         viewModelScope.launch {
             kotlin.runCatching {
                 val requestUserNickNameData = RequestUserNickNameData(UserData.id.toString(), userNickName)
@@ -191,6 +198,17 @@ class MyPageMyInfoViewModel @Inject constructor(
         viewModelScope.launch {
             _isPatchUserFilterSuccess.value = userRepository.patchUserFilter(requestPatchUserFilterData).success
             isPatchUserInfoSuccess()
+        }
+    }
+
+    fun setUserNickName(userNickName: String) {
+        _name.value = userNickName
+        checkUserNickName(userNickName)
+    }
+
+    fun checkUserNickName(userNickName: String) {
+        viewModelScope.launch {
+            _isNameSpecial.value = userRepository.checkUserNameDuplicate(userNickName).success
         }
     }
 }
