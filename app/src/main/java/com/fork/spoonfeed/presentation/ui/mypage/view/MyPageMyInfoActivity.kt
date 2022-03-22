@@ -266,13 +266,22 @@ class MyPageMyInfoActivity :
 
         inputBtn.setOnClickListener {
             dialog.dismiss()
-            finish()
+            startActivity(Intent(baseContext, MainActivity::class.java).apply {
+                putExtra(MY_INFO_EMPTY_KEY, MY_INFO_EMPTY)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            })
         }
 
         cancelBtn.setOnClickListener {
             dialog.dismiss()
             finish()
         }
+    }
+
+    companion object {
+        const val MY_INFO_EMPTY_KEY = "com.fork.spoonfeed.presentation.ui.mypage.view MY_INFO_EMPTY"
+        const val MY_INFO_EMPTY = "com.fork.spoonfeed.presentation.ui.mypage.view MY_INFO_EMPTY_KEY"
     }
 }
 

@@ -7,6 +7,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.home.view.HomeFragment
 import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageFragment
+import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageMyInfoActivity
 import com.fork.spoonfeed.presentation.ui.policy.view.PolicyFragment
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import com.fork.spoonfeed.presentation.util.replace
@@ -26,7 +27,10 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
     }
 
     override fun initView() {
-        replace(homeFragment)
+        intent.getStringExtra(MyPageMyInfoActivity.MY_INFO_EMPTY_KEY)?.let {
+            replace(policyFragment)
+            moveToPolicy()
+        } ?: replace(homeFragment)
         initBottomNavigation()
 
         checkPolicyReset()

@@ -13,8 +13,10 @@ import com.fork.spoonfeed.domain.model.HomeOwnership
 import com.fork.spoonfeed.domain.model.HouseHolderStatus
 import com.fork.spoonfeed.domain.model.MedianIncome
 import com.fork.spoonfeed.domain.model.NetWorth
+import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostInfoUpdateViewModel
+import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageMyInfoActivity
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -223,6 +225,11 @@ class CommunityPostInfoUpdateActivity :
 
         inputBtn.setOnClickListener {
             dialog.dismiss()
+            startActivity(Intent(baseContext, MainActivity::class.java).apply {
+                putExtra(MyPageMyInfoActivity.MY_INFO_EMPTY_KEY, MyPageMyInfoActivity.MY_INFO_EMPTY)
+                addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+                addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            })
         }
 
         cancelBtn.setOnClickListener {
