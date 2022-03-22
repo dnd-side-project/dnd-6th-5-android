@@ -51,7 +51,7 @@
                 android:id="@+id/et_search_input_bar"
                 style="@style/search_view"
                 android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_height="39dp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginStart="12dp"
                 android:layout_marginTop="8dp"

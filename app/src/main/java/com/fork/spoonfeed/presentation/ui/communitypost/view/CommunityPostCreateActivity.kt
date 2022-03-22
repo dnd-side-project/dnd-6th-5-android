@@ -6,7 +6,6 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -16,14 +15,12 @@ import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.ColorInt
 import androidx.core.content.ContextCompat
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.databinding.ActivityCommunityPostCreateBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostCreateViewModel
-import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
 import com.fork.spoonfeed.presentation.util.dpToPx
 import dagger.hilt.android.AndroidEntryPoint
 
