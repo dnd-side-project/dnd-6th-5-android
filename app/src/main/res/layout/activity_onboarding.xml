@@ -86,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/onboarding_skip"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:visibility="invisible" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
