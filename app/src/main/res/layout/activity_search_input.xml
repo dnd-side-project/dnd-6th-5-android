@@ -30,24 +30,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_search_input_bar" />
 
-            <EditText
+            <androidx.appcompat.widget.SearchView
                 android:id="@+id/et_search_input_bar"
-                style="@style/TextView.Label.Medium.14"
+                style="@style/search_view"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
                 android:layout_marginEnd="24dp"
-                android:background="@drawable/bg_filled_stroke_gray02_1dp"
-                android:hint="@string/search_input_hint"
                 android:imeOptions="actionDone"
                 android:inputType="text"
-                android:paddingVertical="10dp"
-                android:paddingStart="16dp"
-                android:textColor="@color/gray06"
-                android:textColorHint="@color/gray03"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/iv_search_input_back"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@drawable/bg_filled_stroke_gray02_1dp" />
 
             <ImageView
                 android:id="@+id/iv_search_input_clear"
