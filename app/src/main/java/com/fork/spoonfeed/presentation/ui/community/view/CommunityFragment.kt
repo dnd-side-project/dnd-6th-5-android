@@ -43,7 +43,7 @@ class CommunityFragment :
     }
 
     private fun setCommunityAdapter() {
-        communityAdapter = PostAdapter(false) {
+        communityAdapter = PostAdapter(childFragmentManager, false) {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(POST_PK, it.id)
             })

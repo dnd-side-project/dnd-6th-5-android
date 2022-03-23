@@ -3,14 +3,17 @@ package com.fork.spoonfeed.presentation.ui.community.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.databinding.ItemPostBinding
+import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 
 class PostAdapter(
+    private val supportFragmentManager: FragmentManager,
     private val user: Boolean,
     private val clickListener: (ResponsePostAllData.Data.Post) -> Unit
 ) : ListAdapter<ResponsePostAllData.Data.Post, PostAdapter.CommunityViewHolder>(diffUtil) {
@@ -31,9 +34,11 @@ class PostAdapter(
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
                 }
-                if (user) {
-                    setClickListenerItemPostEdit(binding)
+
+                ivItemPostEdit.setOnClickListener {
+                    showBottomDialog(data.id)
                 }
+
                 ctlItem.setOnClickListener {
                     clickListener(data)
                 }
@@ -68,19 +73,11 @@ class PostAdapter(
         }
     }
 
-    private fun setClickListenerItemPostEdit(binding: ItemPostBinding) {
-        with(binding) {
-            ivItemPostEdit.visibility = View.VISIBLE
-            ivItemPostEdit.setOnClickListener {
-                ctlItemPostEditDialog.visibility = View.VISIBLE
-                //     activity.window?.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE)
-            }
-            tvCommentDialogEdit.setOnClickListener {
-                ctlItemPostEditDialog.visibility = View.INVISIBLE
-            }
-            tvCommentDialogDelete.setOnClickListener {
-                ctlItemPostEditDialog.visibility = View.INVISIBLE
-            }
-        }
+    private fun showBottomDialog(postId: Int) {
+        val bottomSheetFragment = BottomDialogMyPageFragment(postId, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.MANAGEMENT_POST)
+        bottomSheetFragment.show(
+            supportFragmentManager,
+            bottomSheetFragment.tag
+        )
     }
 }
