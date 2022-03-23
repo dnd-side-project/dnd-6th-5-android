@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.policylist.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -13,6 +14,8 @@ import com.fork.spoonfeed.domain.model.LikeBtnState
 import com.fork.spoonfeed.domain.repository.PolicyRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
+import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
+import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.FINANCE
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -68,7 +71,6 @@ class PolicyListViewModel @Inject constructor(
 
     fun applyFilter() {
         val filter = _selectedFilter.value ?: return
-
         viewModelScope.launch {
             _policyFilteredResult.value = if (userInfo != null) {
                 // TODO 서버 수정되면 POST가 아닌 GET하는 메서드로 변경
@@ -98,7 +100,7 @@ class PolicyListViewModel @Inject constructor(
         return ResponsePolicyAllData.Data.Policy(
             id = response.id,
             name = response.name,
-            category = response.category,
+            category = if (response.category == FINANCE) FINANCE else DWELLING,
             summary = response.summary,
             applicationPeriod = response.applicationPeriod,
             likeCount = response.likeCnt

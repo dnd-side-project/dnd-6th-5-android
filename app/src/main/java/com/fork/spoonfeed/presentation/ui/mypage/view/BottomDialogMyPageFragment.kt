@@ -12,6 +12,8 @@ import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.databinding.FragmentBottomDialogMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
+import com.fork.spoonfeed.presentation.ui.community.view.SearchInputActivity
+import com.fork.spoonfeed.presentation.ui.community.viewmodel.SearchViewModel
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
@@ -64,6 +66,7 @@ class BottomDialogMyPageFragment(private val postId: Int, private val commentId:
                     tvBottomDialogMypageDelete.setOnClickListener {
                         setHandler()
                         myPageViewModel.deleteMyPost(postId)
+
                         if (type == COMMUNITY_POST)
                             (activity as CommunityPostActivity).finish()
                     }

@@ -1,8 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.community.view
 
-import android.graphics.Typeface
 import android.os.Bundle
-import android.widget.EditText
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.os.bundleOf
@@ -32,6 +30,11 @@ class SearchInputActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.searchPost()
     }
 
     override fun initView() {
@@ -76,7 +79,7 @@ class SearchInputActivity :
         }
     }
 
-    private fun setInputField() {
+    fun setInputField() {
         binding.etSearchInputBar.setTextSize(14f)
         binding.etSearchInputBar.setTextColor(this)
 
