@@ -32,6 +32,11 @@ class SearchInputActivity :
         initView()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.searchPost()
+    }
+
     override fun initView() {
         initTabLayoutAdapter()
         initTabLayout()
