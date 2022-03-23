@@ -2,7 +2,6 @@ package com.fork.spoonfeed.presentation.ui.onboarding.view.signup
 
 import android.content.res.ColorStateList
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.widget.addTextChangedListener
@@ -73,6 +72,14 @@ class SignupNameFragment :
                 moveToNextLevel()
             }
         }
+    }
+
+    fun setEditNameFalse() {
+        binding.tietSignupName.isEnabled = false
+    }
+
+    fun setEditNameTrue() {
+        binding.tietSignupName.isEnabled = true
     }
 
     fun moveToNextLevel() {

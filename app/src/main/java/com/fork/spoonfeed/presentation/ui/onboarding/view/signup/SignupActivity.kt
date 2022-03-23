@@ -35,7 +35,16 @@ class SignupActivity :
         }
     }
 
+    fun setEditName() {
+        val signupNameFragment = supportFragmentManager.findFragmentById(R.id.fcv_signup) as SignupNameFragment
+        signupNameFragment.setEditNameTrue()
+    }
+
     fun moveToNextLevel(newFragment: Fragment) {
+        if (newFragment is SignupTermsConditionFragment) {
+            val signupNameFragment = supportFragmentManager.findFragmentById(R.id.fcv_signup) as SignupNameFragment
+            signupNameFragment.setEditNameFalse()
+        }
         addAndAddToBackStack(R.id.fcv_signup, newFragment)
     }
 }
