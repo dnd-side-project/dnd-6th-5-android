@@ -5,7 +5,6 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
-import android.util.Log
 import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
