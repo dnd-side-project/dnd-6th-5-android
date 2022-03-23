@@ -11,15 +11,14 @@ import com.fork.spoonfeed.databinding.FragmentSignupTermsConditionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import dagger.hilt.android.AndroidEntryPoint
 
+
 @AndroidEntryPoint
 class SignupTermsConditionFragment :
     BaseViewUtil.BaseFragment<FragmentSignupTermsConditionBinding>(R.layout.fragment_signup_terms_condition) {
 
-    private val termsConditionUrl =
-        "https://first-hare-34f.notion.site/348dc74a840f43dfa3d105bf22ce76d6"
+    private val termsConditionUrl = "https://first-hare-34f.notion.site/348dc74a840f43dfa3d105bf22ce76d6"
     private val protectUrl = "https://first-hare-34f.notion.site/f8761b93032c4d0b844c2b4ca798d9a5"
-    private val personalInfoUrl =
-        "https://first-hare-34f.notion.site/f24764bf4d7e4ae28ea304080f9423d1"
+    private val personalInfoUrl = "https://first-hare-34f.notion.site/f24764bf4d7e4ae28ea304080f9423d1"
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,5 +100,10 @@ class SignupTermsConditionFragment :
 
     private fun isAllChecked(): Boolean {
         return binding.cbSignupTermsConditionDigitalContent.isChecked == true && binding.cbSignupTermsConditionUserProtect.isChecked == true && binding.cbSignupTermsConditionPersonalInfo.isChecked == true
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as SignupActivity).setEditName()
     }
 }
