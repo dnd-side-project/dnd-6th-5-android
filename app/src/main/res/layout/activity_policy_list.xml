@@ -20,23 +20,27 @@
             android:id="@+id/iv_policylist_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="26dp"
-            android:layout_marginTop="18dp"
+            android:paddingVertical="18dp"
+            android:paddingStart="26dp"
+            android:paddingEnd="18dp"
             android:src="@drawable/ic_chevron_left"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_policylist_title"
+            app:layout_constraintEnd_toStartOf="@+id/tv_policylist_title"
+            app:layout_constraintHorizontal_bias="0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/tv_policylist_title" />
 
         <TextView
             android:id="@+id/tv_policylist_title"
             style="@style/TextView.Heading.SemiBold.16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
             android:text="@string/policylist_title"
             android:textColor="@color/gray06"
-            app:layout_constraintBottom_toBottomOf="@+id/iv_policylist_back"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/iv_policylist_back" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv_policylist"

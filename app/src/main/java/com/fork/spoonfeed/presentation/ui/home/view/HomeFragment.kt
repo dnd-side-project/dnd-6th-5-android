@@ -74,10 +74,9 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
                 startActivity(intent)
             }
 
-            ivHomeGotoCustomizedPolicy.setOnClickListener {
+            ctlHomeCustomizedPolicy.setOnClickListener {
                 (activity as MainActivity).moveToPolicy()
             }
-
         }
     }
 

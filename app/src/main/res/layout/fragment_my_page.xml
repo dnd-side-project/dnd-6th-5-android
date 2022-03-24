@@ -46,189 +46,231 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_mypage_my_info"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_my_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="24dp"
                     android:layout_marginTop="32dp"
-                    android:text="@string/mypage_my_info"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/iv_mypage_my_info"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_my_info"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_my_info" />
+                    <TextView
+                        android:id="@+id/tv_mypage_my_info"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_my_info"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_mypage_my_post"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
-                    android:layout_marginTop="36dp"
-                    android:text="@string/mypage_my_post"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_info" />
+                    <ImageView
+                        android:id="@+id/iv_mypage_my_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/tv_mypage_my_info" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <ImageView
-                    android:id="@+id/iv_mypage_my_post"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_my_post"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_my_post" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_my_post"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="@id/ctl_mypage_my_info"
+                    app:layout_constraintStart_toStartOf="@id/ctl_mypage_my_info"
+                    app:layout_constraintTop_toBottomOf="@id/ctl_mypage_my_info">
 
-                <TextView
-                    android:id="@+id/tv_mypage_interested_policy"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
-                    android:layout_marginTop="36dp"
-                    android:text="@string/mypage_interested_policy"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_post" />
+                    <TextView
+                        android:id="@+id/tv_mypage_my_post"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/mypage_my_post"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <ImageView
-                    android:id="@+id/iv_mypage_interested_policy"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_interested_policy"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_interested_policy" />
+                    <ImageView
+                        android:id="@+id/iv_mypage_my_post"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_interested_policy"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintEnd_toEndOf="@id/ctl_mypage_my_post"
+                    app:layout_constraintStart_toStartOf="@id/ctl_mypage_my_post"
+                    app:layout_constraintTop_toBottomOf="@id/ctl_mypage_my_post">
+
+                    <TextView
+                        android:id="@+id/tv_mypage_interested_policy"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/mypage_interested_policy"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_interested_policy"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:id="@+id/view_decorator1"
                     android:layout_width="match_parent"
                     android:layout_height="16dp"
-                    android:layout_marginTop="36dp"
+                    android:layout_marginTop="32dp"
                     android:background="@color/gray01"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_interested_policy" />
-
-                <TextView
-                    android:id="@+id/tv_mypage_notice"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
-                    android:layout_marginTop="36dp"
-                    android:text="@string/mypage_notice"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_decorator1" />
-
-                <ImageView
-                    android:id="@+id/iv_mypage_notice"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_notice"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_notice" />
-
-                <TextView
-                    android:id="@+id/tv_mypage_terms_condition"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
-                    android:layout_marginTop="36dp"
-                    android:text="@string/mypage_terms_condition"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_notice" />
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_interested_policy" />
 
-                <ImageView
-                    android:id="@+id/iv_mypage_terms_condition"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_terms_condition"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_terms_condition" />
-
-                <TextView
-                    android:id="@+id/tv_mypage_protect"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_notice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
-                    android:text="@string/mypage_protect"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_terms_condition" />
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_interested_policy"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_interested_policy"
+                    app:layout_constraintTop_toBottomOf="@+id/view_decorator1">
 
-                <ImageView
-                    android:id="@+id/iv_mypage_protect"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_protect"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_protect" />
+                    <TextView
+                        android:id="@+id/tv_mypage_notice"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_notice"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_mypage_personal_info"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                    <ImageView
+                        android:id="@+id/iv_mypage_notice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_terms_condition"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
-                    android:text="@string/mypage_personal_info"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_protect" />
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_notice"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_notice"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_notice">
 
-                <ImageView
-                    android:id="@+id/iv_mypage_personal_info"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_personal_info"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_personal_info" />
+                    <TextView
+                        android:id="@+id/tv_mypage_terms_condition"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_terms_condition"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/tv_mypage_open_source"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                    <ImageView
+                        android:id="@+id/iv_mypage_terms_condition"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_protect"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
-                    android:text="@string/mypage_open_source"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_personal_info" />
+                    app:layout_constraintEnd_toEndOf="@id/ctl_mypage_terms_condition"
+                    app:layout_constraintStart_toStartOf="@id/ctl_mypage_terms_condition"
+                    app:layout_constraintTop_toBottomOf="@id/ctl_mypage_terms_condition">
 
-                <ImageView
-                    android:id="@+id/iv_mypage_open_source"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_open_source"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_open_source" />
+                    <TextView
+                        android:id="@+id/tv_mypage_protect"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_protect"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_protect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_personal_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_protect"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_protect"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_protect">
+
+                    <TextView
+                        android:id="@+id/tv_mypage_personal_info"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_personal_info"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_personal_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_open_source"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_personal_info"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_personal_info"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_personal_info">
+
+                    <TextView
+                        android:id="@+id/tv_mypage_open_source"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_open_source"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_open_source"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <View
                     android:id="@+id/view_decorator2"
@@ -236,75 +278,94 @@
                     android:layout_height="16dp"
                     android:layout_marginTop="36dp"
                     android:background="@color/gray01"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_open_source" />
-
-                <TextView
-                    android:id="@+id/tv_mypage_question"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
-                    android:layout_marginTop="36dp"
-                    android:text="@string/mypage_question"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/view_decorator2" />
-
-                <ImageView
-                    android:id="@+id/iv_mypage_question"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_question"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_question" />
-
-                <TextView
-                    android:id="@+id/tv_mypage_logout"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
-                    android:layout_marginTop="36dp"
-                    android:text="@string/mypage_logout"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_question" />
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_open_source" />
 
-                <ImageView
-                    android:id="@+id/iv_mypage_logout"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_logout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_logout" />
 
-                <TextView
-                    android:id="@+id/tv_mypage_secession"
-                    style="@style/TextView.Heading.SemiBold.16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_question"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_open_source"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_open_source"
+                    app:layout_constraintTop_toBottomOf="@+id/view_decorator2">
+
+                    <TextView
+                        android:id="@+id/tv_mypage_question"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/mypage_question"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_question"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_logout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="36dp"
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_question"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_question"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_question">
+
+                    <TextView
+                        android:id="@+id/tv_mypage_logout"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_logout"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_logout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_mypage_secession"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginTop="36dp"
                     android:layout_marginBottom="72dp"
-                    android:text="@string/mypage_secession"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_logout" />
+                    app:layout_constraintEnd_toEndOf="@+id/ctl_mypage_logout"
+                    app:layout_constraintStart_toStartOf="@+id/ctl_mypage_logout"
+                    app:layout_constraintTop_toBottomOf="@+id/ctl_mypage_logout">
 
-                <ImageView
-                    android:id="@+id/iv_mypage_secession"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginEnd="@dimen/policy_filter_horizontal_margin_24"
-                    android:paddingVertical="4.5dp"
-                    android:src="@drawable/ic_chevron_right"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_mypage_secession"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_mypage_secession" />
+                    <TextView
+                        android:id="@+id/tv_mypage_secession"
+                        style="@style/TextView.Heading.SemiBold.16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/mypage_secession"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/iv_mypage_secession"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_mypage_chevron"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>
     </androidx.constraintlayout.widget.ConstraintLayout>

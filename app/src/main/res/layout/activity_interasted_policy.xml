@@ -26,22 +26,25 @@
                 android:id="@+id/iv_likepolicy_back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="26dp"
-                android:layout_marginTop="18dp"
+                android:paddingStart="26dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="18dp"
                 android:src="@drawable/ic_chevron_left"
+                app:layout_constraintEnd_toStartOf="@+id/tv_likepolicy_title"
+                app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tv_likepolicy_title"
                 style="@style/TextView.Heading.SemiBold.16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/interasted_policy_title"
                 android:textColor="@color/gray06"
-                app:layout_constraintBottom_toBottomOf="@id/iv_likepolicy_back"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_likepolicy_back"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/iv_likepolicy_back" />
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
