@@ -37,6 +37,7 @@ class CommunityFragment :
     }
 
     override fun initView() {
+        myPageViewModel.getNickName()
         setCommunityAdapter()
         setObserver()
         setFilterClickObserve()
@@ -45,7 +46,7 @@ class CommunityFragment :
     }
 
     private fun setCommunityAdapter() {
-        communityAdapter = PostAdapter(childFragmentManager, false) {
+        communityAdapter = PostAdapter(myPageViewModel, viewLifecycleOwner, childFragmentManager) {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(POST_PK, it.id)
             })
