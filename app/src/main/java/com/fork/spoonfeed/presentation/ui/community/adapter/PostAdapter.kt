@@ -1,9 +1,10 @@
 package com.fork.spoonfeed.presentation.ui.community.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,12 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.databinding.ItemPostBinding
 import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 
 class PostAdapter(
+    private val myPageViewModel: MyPageViewModel,
+    private val adapterLifecycleOwner: LifecycleOwner,
     private val supportFragmentManager: FragmentManager,
-    private val user: Boolean,
     private val clickListener: (ResponsePostAllData.Data.Post) -> Unit
 ) : ListAdapter<ResponsePostAllData.Data.Post, PostAdapter.CommunityViewHolder>(diffUtil) {
 
@@ -41,6 +44,9 @@ class PostAdapter(
 
                 ctlItem.setOnClickListener {
                     clickListener(data)
+                }
+                myPageViewModel.userNickName.observe(adapterLifecycleOwner) {
+                    binding.ivItemPostEdit.isVisible = data.author == it
                 }
             }
         }
