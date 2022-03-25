@@ -31,6 +31,7 @@ class SearchInputResultFragment :
     }
 
     override fun initView() {
+        myPageViewModel.getNickName()
         initData()
         initRvAdapter()
         setObserver()

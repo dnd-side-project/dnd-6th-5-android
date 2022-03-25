@@ -73,6 +73,7 @@ class CommunityFragment :
 
     private fun initData() {
         communityViewModel.getPostData()
+        myPageViewModel.getNickName()
     }
 
     private fun setSearchClickListener() {
