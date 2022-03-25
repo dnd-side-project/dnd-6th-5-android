@@ -42,42 +42,42 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
 
     private fun setOnClickListener() {
         with(binding) {
-            ivMypageMyInfo.setOnClickListener {
+            ctlMypageMyInfo.setOnClickListener {
                 startActivity(Intent(requireContext(), MyPageMyInfoActivity::class.java))
             }
-            ivMypageMyPost.setOnClickListener {
+            ctlMypageMyPost.setOnClickListener {
                 startActivity(Intent(requireContext(), MyPostManagementActivity::class.java))
             }
-            ivMypageInterestedPolicy.setOnClickListener {
+            ctlMypageInterestedPolicy.setOnClickListener {
                 startActivity(Intent(requireContext(), InterestedPolicyActivity::class.java))
             }
-            ivMypageNotice.setOnClickListener {
+            ctlMypageNotice.setOnClickListener {
                 startActivity(Intent(requireContext(), NoticeActivity::class.java))
             }
 
-            ivMypageTermsCondition.setOnClickListener {
+            ctlMypageTermsCondition.setOnClickListener {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(termsConditionUrl)))
             }
 
-            ivMypageProtect.setOnClickListener {
+            ctlMypageProtect.setOnClickListener {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(protectUrl)))
             }
 
-            ivMypagePersonalInfo.setOnClickListener {
+            ctlMypagePersonalInfo.setOnClickListener {
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(personalInfoUrl)))
             }
 
-            ivMypageOpenSource.setOnClickListener {
+            ctlMypageOpenSource.setOnClickListener {
                 startActivity(Intent(requireContext(), OssLicensesMenuActivity::class.java))
                 OssLicensesMenuActivity.setActivityTitle(getString(R.string.oss_license_title))
             }
-            ivMypageQuestion.setOnClickListener {
+            ctlMypageQuestion.setOnClickListener {
                 startActivity(Intent(requireContext(), QuestionActivity::class.java))
             }
-            ivMypageSecession.setOnClickListener {
+            ctlMypageSecession.setOnClickListener {
                 startActivity(Intent(requireContext(), SecessionActivity::class.java))
             }
-            ivMypageLogout.setOnClickListener {
+            ctlMypageLogout.setOnClickListener {
                 showLogOutDoneDialog()
             }
         }

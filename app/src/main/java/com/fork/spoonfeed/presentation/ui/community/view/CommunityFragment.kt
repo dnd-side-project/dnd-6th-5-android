@@ -12,6 +12,7 @@ import com.fork.spoonfeed.presentation.ui.community.adapter.PostAdapter
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.CommunityViewModel
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
+import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -19,6 +20,7 @@ class CommunityFragment :
     BaseViewUtil.BaseFragment<FragmentCommunityBinding>(R.layout.fragment_community) {
 
     private val communityViewModel: CommunityViewModel by activityViewModels()
+    private val myPageViewModel: MyPageViewModel by activityViewModels()
     private lateinit var communityAdapter: PostAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -55,12 +57,17 @@ class CommunityFragment :
     }
 
     private fun setObserver() {
-        communityViewModel.postData.observe(viewLifecycleOwner, {
+        communityViewModel.postData.observe(viewLifecycleOwner) {
             communityAdapter.submitList(it)
-        })
-        communityViewModel.selectedFilter.observe(viewLifecycleOwner, {
+        }
+        communityViewModel.selectedFilter.observe(viewLifecycleOwner) {
             communityViewModel.getPostData()
-        })
+        }
+
+        myPageViewModel.deletePostSuccess.observe(viewLifecycleOwner) { deleteSuccess ->
+            if (deleteSuccess)
+                communityViewModel.getPostData()
+        }
     }
 
     private fun initData() {
