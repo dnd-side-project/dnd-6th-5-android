@@ -43,7 +43,12 @@ jobs:
       env:
         NAVER_APP_NAME: ${{ secrets.NAVER_APP_NAME }}
       run: echo naver_api_app_name=\"$NAVER_APP_NAME\" >> ./local.properties
-    
+
+    - name: Access spoon feed server api base url
+      env:
+        NAVER_APP_NAME: ${{ secrets.SPOONFEED_SERVER_API_BASE_URL }}
+      run: echo spoonfeed_server_api_base_url=\"SPOONFEED_SERVER_API_BASE_URL\" >> ./local.properties
+
     - name: set up JDK 11
       uses: actions/setup-java@v2
       with:
