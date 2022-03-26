@@ -36,8 +36,7 @@ class SignupActivity :
     }
 
     fun setEditName() {
-        val signupNameFragment = supportFragmentManager.findFragmentById(R.id.fcv_signup) as SignupNameFragment
-        signupNameFragment.setEditNameTrue()
+        (supportFragmentManager.findFragmentById(R.id.fcv_signup) as? SignupNameFragment)?.setEditNameTrue()
     }
 
     fun moveToNextLevel(newFragment: Fragment) {
