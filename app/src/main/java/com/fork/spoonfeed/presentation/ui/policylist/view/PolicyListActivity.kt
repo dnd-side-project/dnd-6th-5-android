@@ -114,6 +114,8 @@ class PolicyListActivity :
     private fun setPolicyListObserve() {
         policyListViewModel.policyFilteredResult.observe(this) { policyList ->
             policyListViewModel.getMyLikePolicy()
+            binding.clPolicylistEmptyData.visibility =
+                if (policyList.isNullOrEmpty()) View.VISIBLE else View.INVISIBLE
             policyListAdapter.submitList(policyList)
         }
     }
