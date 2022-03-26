@@ -127,29 +127,34 @@
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="214dp"
-                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_policylist_rewrite">
+
+                    <ImageView
+                        android:id="@+id/iv_policylist_no_list_explain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_empty"
+                        app:layout_constraintBottom_toTopOf="@id/tv_policylist_no_list_explain"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_chainStyle="packed" />
 
                     <TextView
                         android:id="@+id/tv_policylist_no_list_explain"
                         style="@style/TextView.Label.Regular.16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
                         android:text="해당하는 정책이 없어요"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:src="@drawable/img_sad"
-                        app:layout_constraintBottom_toBottomOf="@id/tv_policylist_no_list_explain"
-                        app:layout_constraintStart_toEndOf="@+id/tv_policylist_no_list_explain"
-                        app:layout_constraintTop_toTopOf="@+id/tv_policylist_no_list_explain" />
+                        app:layout_constraintTop_toBottomOf="@id/tv_policylist_no_list_explain"
+                        app:layout_constraintVertical_chainStyle="packed" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
