@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.di
 
+import com.fork.spoonfeed.BuildConfig
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
@@ -15,7 +16,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
 
-    private const val BASE_URL = "http://ec2-3-36-64-233.ap-northeast-2.compute.amazonaws.com/"
+    private const val BASE_URL = BuildConfig.SPOONFEED_SERVER_API_BASE_URL
     private var gson = GsonBuilder().setLenient().create()
 
     @Provides
