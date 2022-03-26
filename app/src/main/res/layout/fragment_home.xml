@@ -25,10 +25,11 @@
 
         <ImageView
             android:id="@+id/tv_home_title"
-            android:layout_width="wrap_content"
+            android:layout_width="96dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:src="@drawable/img_logo"
+            android:adjustViewBounds="true"
+            android:src="@drawable/ic_logo_text"
             app:layout_constraintBottom_toBottomOf="@id/iv_home_logo"
             app:layout_constraintStart_toEndOf="@id/iv_home_logo"
             app:layout_constraintTop_toTopOf="@id/iv_home_logo" />
@@ -51,16 +52,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
                     android:layout_marginTop="16dp"
-                    android:background="@drawable/bg_white_radius_8dp"
+                    android:background="@drawable/ic_find_background"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/iv_home_magnify_glass"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginVertical="32dp"
-                        android:layout_marginStart="28dp"
-                        android:src="@drawable/img_magnify_glass"
+                        android:layout_marginVertical="18dp"
+                        android:layout_marginStart="14dp"
+                        android:src="@drawable/ic_find"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -73,7 +74,7 @@
                         android:layout_marginStart="20dp"
                         android:layout_marginTop="16dp"
                         android:text="@string/home_customized_policy_title"
-                        android:textColor="@color/gray06"
+                        android:textColor="@color/white"
                         app:layout_constraintStart_toEndOf="@id/iv_home_magnify_glass"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -84,7 +85,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
                         android:text="@string/home_customized_policy_explain"
-                        android:textColor="@color/gray06"
+                        android:textColor="@color/white"
                         app:layout_constraintStart_toStartOf="@id/tv_home_customized_policy_title"
                         app:layout_constraintTop_toBottomOf="@id/tv_home_customized_policy_title" />
 
@@ -96,7 +97,8 @@
                         android:src="@drawable/ic_chevron_right"
                         app:layout_constraintBottom_toBottomOf="@id/tv_home_customized_policy_explain"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@id/tv_home_customized_policy_title" />
+                        app:layout_constraintTop_toTopOf="@id/tv_home_customized_policy_title"
+                        app:tint="@color/white" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -144,8 +146,8 @@
                         android:id="@+id/iv_home_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="26dp"
-                        android:src="@drawable/img_all"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/ic_policy_all"
                         app:layout_constraintEnd_toEndOf="@id/iv_home_all_background"
                         app:layout_constraintStart_toStartOf="@id/iv_home_all_background"
                         app:layout_constraintTop_toTopOf="@id/iv_home_all_background" />
@@ -176,8 +178,8 @@
                         android:id="@+id/iv_home_dwelling"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="26dp"
-                        android:src="@drawable/img_dwelling"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/ic_policy_dwelling"
                         app:layout_constraintEnd_toEndOf="@id/iv_home_dwelling_background"
                         app:layout_constraintStart_toStartOf="@id/iv_home_dwelling_background"
                         app:layout_constraintTop_toTopOf="@id/iv_home_dwelling_background" />
@@ -209,8 +211,8 @@
                         android:id="@+id/iv_home_finance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="26dp"
-                        android:src="@drawable/img_finance"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/ic_policy_finance"
                         app:layout_constraintEnd_toEndOf="@id/iv_home_finance_background"
                         app:layout_constraintStart_toStartOf="@id/iv_home_finance_background"
                         app:layout_constraintTop_toTopOf="@id/iv_home_finance_background" />
