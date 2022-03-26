@@ -327,9 +327,9 @@
     <!--  Secession  -->
     <string name="secession_title">탈퇴하기</string>
     <string name="secession_sentence_title">탈퇴하기 전에 확인해주세요!</string>
-    <string name="secession_sentence_one">탈퇴하면 그 동안의 활동한 데이터들은 모두 삭제\n되어 복구할 수 없게 됩니다.</string>
-    <string name="secession_sentence_two">스푼피드는 맞춤 정책 정보를 제공하기위해 다양한\n컨텐츠를 지속적으로 업데이트 합니다.</string>
-    <string name="secession_sentence_three">사용하면서 불편했던 점이나 아쉬운 점이 있으면\n문의하기를 통해 의견을 남겨주세요.</string>
+    <string name="secession_sentence_one">탈퇴하면 그 동안의 활동한 데이터들은 모두 삭제되어 복구할 수 없게 됩니다.</string>
+    <string name="secession_sentence_two">스푼피드는 맞춤 정책 정보를 제공하기위해 다양한 컨텐츠를 지속적으로 업데이트 합니다.</string>
+    <string name="secession_sentence_three">사용하면서 불편했던 점이나 아쉬운 점이 있으면 문의하기를 통해 의견을 남겨주세요.</string>
 
     <!-- Dialog Secession  -->
     <string name="dialog_secession_title">스푼피드를 또 찾아주세요!</string>

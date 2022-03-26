@@ -32,25 +32,16 @@
 
         </com.google.android.material.appbar.MaterialToolbar>
 
-        <ImageView
-            android:id="@+id/iv_policy_emoji"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="40dp"
-            android:src="@drawable/img_policy_sub_title"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/mt_policy_title" />
-
         <TextView
             android:id="@+id/tv_policy_subtitle"
             style="@style/TextView.Heading.Bold.20"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
-            android:layout_marginTop="8dp"
             android:text="@string/policy_subtitle"
-            app:layout_constraintTop_toBottomOf="@id/iv_policy_emoji" />
+            app:layout_constraintBottom_toTopOf="@id/tv_policy_description"
+            app:layout_constraintTop_toBottomOf="@id/mt_policy_title"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/tv_policy_description"
@@ -59,9 +50,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/policy_description"
+            app:layout_constraintBottom_toTopOf="@id/tv_policy_youth_center_shortcut"
             app:layout_constraintEnd_toEndOf="@id/tv_policy_subtitle"
             app:layout_constraintStart_toStartOf="@id/tv_policy_subtitle"
-            app:layout_constraintTop_toBottomOf="@id/tv_policy_subtitle" />
+            app:layout_constraintTop_toBottomOf="@id/tv_policy_subtitle"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/tv_policy_youth_center_shortcut"
@@ -71,6 +64,7 @@
             android:layout_marginBottom="8dp"
             android:padding="4dp"
             android:text="@string/policy_youth_center_shortcut"
+            android:textColor="@color/gray06"
             app:layout_constraintBottom_toTopOf="@id/mb_policy_find_fit_policy"
             app:layout_constraintEnd_toEndOf="@id/mb_policy_find_fit_policy"
             app:layout_constraintStart_toStartOf="@id/mb_policy_find_fit_policy" />
