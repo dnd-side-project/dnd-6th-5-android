@@ -220,7 +220,6 @@ class CommunityPostViewModel @Inject constructor(
         setReportReasonValid()
     }
 
-
     private fun setReportReasonValid() {
         _isReportReasonValid.value =
             _reportReasonOneCheck.value == true || _reportReasonTwoCheck.value == true || _reportReasonThreeCheck.value == true ||
