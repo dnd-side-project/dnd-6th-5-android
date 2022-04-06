@@ -97,37 +97,46 @@ class CommunityPostActivity :
                 binding.ivCommunityPostDetail.setImageResource(R.drawable.ic_chevron_up)
             }
         }
-        binding.ivCommunityPostEdit.setOnClickListener {
-            showBottomDialog()
-        }
         binding.ivCommunityPostCommentInput.setOnClickListener {
             communityPostViewModel.postComment()
             hideKeyboard()
         }
     }
 
+    private fun setPostEditUserClickListener() {
+        binding.ivCommunityPostEdit.setOnClickListener {
+            showUserBottomDialog()
+        }
+    }
+
+    private fun setPostEditWriterClickListener() {
+        binding.ivCommunityPostEdit.setOnClickListener {
+            showWriterBottomDialog()
+        }
+    }
+
     private fun setObserver() {
-        communityPostViewModel.postDetailData.observe(this, {
+        communityPostViewModel.postDetailData.observe(this) {
             setCategoryBackground(it.category)
-            binding.ivCommunityPostEdit.isVisible =
-                it.author == communityPostViewModel.getUserData()?.nickname
-        })
-        communityPostViewModel.postCommentData.observe(this, {
+            if (it.author == communityPostViewModel.getUserData()?.nickname) setPostEditWriterClickListener()
+            else setPostEditUserClickListener()
+        }
+        communityPostViewModel.postCommentData.observe(this) {
             commentAdapter.submitList(it)
-        })
-        communityPostViewModel.commentInput.observe(this, {
+        }
+        communityPostViewModel.commentInput.observe(this) {
             binding.ivCommunityPostCommentInput.backgroundTintList = if (it != null) {
                 ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.gray06))
             } else {
                 ColorStateList.valueOf(ContextCompat.getColor(baseContext, R.color.gray03))
             }
-        })
-        communityPostViewModel.isCommentPostSuccess.observe(this, {
+        }
+        communityPostViewModel.isCommentPostSuccess.observe(this) {
             if (it) {
                 binding.etCommunityPostCommentInput.setText("")
             }
             communityPostViewModel.initData()
-        })
+        }
         communityPostViewModel.deletePostSuccess.observe(this) {
             if (it) {
                 finish()
@@ -170,11 +179,19 @@ class CommunityPostActivity :
         communityPostViewModel.initData()
     }
 
-    private fun showBottomDialog() {
-        val bottomSheetFragment = BottomDialogMyPageFragment(communityPostViewModel.getPk()!!, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.COMMUNITY_POST)
-        bottomSheetFragment.show(
+    private fun showWriterBottomDialog() {
+        val bottomDialogMyPageFragment = BottomDialogMyPageFragment(communityPostViewModel.getPk()!!, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.COMMUNITY_POST)
+        bottomDialogMyPageFragment.show(
             supportFragmentManager,
-            bottomSheetFragment.tag
+            bottomDialogMyPageFragment.tag
+        )
+    }
+
+    private fun showUserBottomDialog() {
+        val bottomDialogReportUser = BottomDialogReportUser()
+        bottomDialogReportUser.show(
+            supportFragmentManager,
+            bottomDialogReportUser.tag
         )
     }
 }

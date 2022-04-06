@@ -35,7 +35,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/et_community_post_comment_input"
-            app:layout_constraintTop_toBottomOf="@id/mt_community_post_title">
+            app:layout_constraintTop_toBottomOf="@id/mt_community_post_title"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="186dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"

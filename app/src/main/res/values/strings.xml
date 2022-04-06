@@ -367,4 +367,7 @@
     <string name="dialog_goto_policy_sentence_two">맞춤 정책에서 내 정보를 입력해주세요!</string>
     <string name="dialog_goto_policy_cancle">취소</string>
     <string name="dialog_goto_policy_input">입력하기</string>
+
+    <!--  Bottom Dialog Report User  -->
+    <string name="bottom_dialog_report_user">신고하기</string>
 </resources>
