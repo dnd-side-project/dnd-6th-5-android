@@ -91,6 +91,10 @@ dependencies {
     //kakao
     implementation "com.kakao.sdk:v2-user:$kakaoLogInVersion"
 
+    //Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    annotationProcessor "androidx.room:room-compiler:$roomVersion"
+
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
