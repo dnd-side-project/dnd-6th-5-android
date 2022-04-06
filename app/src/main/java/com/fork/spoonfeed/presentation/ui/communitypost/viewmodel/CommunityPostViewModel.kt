@@ -1,10 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.viewmodel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.SavedStateHandle
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
@@ -53,6 +49,27 @@ class CommunityPostViewModel @Inject constructor(
     private val _deleteCommentSuccess = MutableLiveData(false)
     val deleteCommentSuccess: LiveData<Boolean> = _deleteCommentSuccess
 
+    private val _reportReasonOneCheck = MutableLiveData<Boolean>()
+    val reportReasonOneCheck: LiveData<Boolean> = _reportReasonOneCheck
+
+    private val _reportReasonTwoCheck = MutableLiveData<Boolean>()
+    val reportReasonTwoCheck: LiveData<Boolean> = _reportReasonTwoCheck
+
+    private val _reportReasonThreeCheck = MutableLiveData<Boolean>()
+    val reportReasonThreeCheck: LiveData<Boolean> = _reportReasonThreeCheck
+
+    private val _reportReasonFourCheck = MutableLiveData<Boolean>()
+    val reportReasonFourCheck: LiveData<Boolean> = _reportReasonFourCheck
+
+    private val _reportReasonFiveCheck = MutableLiveData<Boolean>()
+    val reportReasonFiveCheck: LiveData<Boolean> = _reportReasonFiveCheck
+
+    private val _reportReasonSixCheck = MutableLiveData<Boolean>()
+    val reportReasonSixCheck: LiveData<Boolean> = _reportReasonSixCheck
+
+    private val _isReportReasonValid = MutableLiveData(false)
+    val isReportReasonValid: LiveData<Boolean> = _isReportReasonValid
+
     fun initUserData() {
         viewModelScope.launch {
             _userData.value = userRepository.getUserData().data.user
@@ -73,6 +90,7 @@ class CommunityPostViewModel @Inject constructor(
     fun getUserData(): ResponseUserData.Data.User? {
         return _userData.value
     }
+
     fun postComment() {
         val input = _commentInput.value ?: return
         val updateData = _updateComment.value
@@ -117,5 +135,85 @@ class CommunityPostViewModel @Inject constructor(
             _deleteCommentSuccess.value =
                 pk?.let { commentRepository.deleteComment(it, requestDeleteCommentData).success }
         }
+    }
+
+    fun setReportReasonOneStatus(status: Boolean) {
+        _reportReasonOneCheck.value = status
+        if (status) {
+            _reportReasonTwoCheck.value = false
+            _reportReasonThreeCheck.value = false
+            _reportReasonFourCheck.value = false
+            _reportReasonFiveCheck.value = false
+            _reportReasonSixCheck.value = false
+        }
+        setReportReasonValid()
+    }
+
+    fun setReportReasonTwoStatus(status: Boolean) {
+        _reportReasonTwoCheck.value = status
+        if (status) {
+            _reportReasonOneCheck.value = false
+            _reportReasonThreeCheck.value = false
+            _reportReasonFourCheck.value = false
+            _reportReasonFiveCheck.value = false
+            _reportReasonSixCheck.value = false
+        }
+        setReportReasonValid()
+    }
+
+    fun setReportReasonThreeStatus(status: Boolean) {
+        _reportReasonThreeCheck.value = status
+        if (status) {
+            _reportReasonTwoCheck.value = false
+            _reportReasonOneCheck.value = false
+            _reportReasonFourCheck.value = false
+            _reportReasonFiveCheck.value = false
+            _reportReasonSixCheck.value = false
+        }
+        setReportReasonValid()
+    }
+
+    fun setReportReasonFourStatus(status: Boolean) {
+        _reportReasonFourCheck.value = status
+        if (status) {
+            _reportReasonTwoCheck.value = false
+            _reportReasonThreeCheck.value = false
+            _reportReasonOneCheck.value = false
+            _reportReasonFiveCheck.value = false
+            _reportReasonSixCheck.value = false
+        }
+        setReportReasonValid()
+    }
+
+    fun setReportReasonFiveStatus(status: Boolean) {
+        _reportReasonFiveCheck.value = status
+        if (status) {
+            _reportReasonTwoCheck.value = false
+            _reportReasonThreeCheck.value = false
+            _reportReasonOneCheck.value = false
+            _reportReasonFourCheck.value = false
+            _reportReasonSixCheck.value = false
+        }
+        setReportReasonValid()
+    }
+
+    fun setReportReasonSixStatus(status: Boolean) {
+        _reportReasonSixCheck.value = status
+        if (status) {
+            _reportReasonTwoCheck.value = false
+            _reportReasonThreeCheck.value = false
+            _reportReasonOneCheck.value = false
+            _reportReasonFourCheck.value = false
+            _reportReasonFiveCheck.value = false
+        }
+        setReportReasonValid()
+    }
+
+
+    private fun setReportReasonValid() {
+        _isReportReasonValid.value =
+            _reportReasonOneCheck.value == true || _reportReasonTwoCheck.value == true || _reportReasonThreeCheck.value == true ||
+                    _reportReasonFourCheck.value == true || _reportReasonFiveCheck.value == true || _reportReasonSixCheck.value == true
+
     }
 }

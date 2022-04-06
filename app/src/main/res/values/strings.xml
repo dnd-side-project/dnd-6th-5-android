@@ -370,4 +370,16 @@
 
     <!--  Bottom Dialog Report User  -->
     <string name="bottom_dialog_report_user">신고하기</string>
+
+    <!--  User Report Reason Activity  -->
+    <string name="user_report_title">신고하기</string>
+    <string name="user_report_reason_title">해당 글 신고 사유</string>
+    <string name="user_report_reason_one">스팸광고/도배글</string>
+    <string name="user_report_reason_two">음란물/선정성 게시글</string>
+    <string name="user_report_reason_three">욕설 및 비속어, 혐오와 같은 불쾌한 표현</string>
+    <string name="user_report_reason_four">개인정보 노출</string>
+    <string name="user_report_reason_five">부적절한 닉네임</string>
+    <string name="user_report_reason_six">주제와 무관한 내용</string>
+    <string name="user_report_reason_confirm">확인</string>
+
 </resources>

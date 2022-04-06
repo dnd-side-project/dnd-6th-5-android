@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
 import android.widget.CheckBox
+import android.widget.CheckedTextView
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModel
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.domain.model.AgeInputType
 import com.fork.spoonfeed.domain.model.ChipInputType
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel
 import com.google.android.material.chip.ChipGroup
@@ -112,6 +114,21 @@ fun addTextChangeListener(view: EditText, viewModel: ViewModel, ageInputType: Ag
 
         override fun afterTextChanged(s: Editable?) {}
     })
+}
+
+@BindingAdapter("viewModel", "reasonNumber")
+fun setOnCheckedChanged(view: CheckedTextView, viewModel: ViewModel, reasonNumber: Int) {
+    view.setOnClickListener {
+        view.toggle()
+        when (reasonNumber) {
+            1 -> (viewModel as? CommunityPostViewModel)?.setReportReasonOneStatus(view.isChecked)
+            2 -> (viewModel as? CommunityPostViewModel)?.setReportReasonTwoStatus(view.isChecked)
+            3 -> (viewModel as? CommunityPostViewModel)?.setReportReasonThreeStatus(view.isChecked)
+            4 -> (viewModel as? CommunityPostViewModel)?.setReportReasonFourStatus(view.isChecked)
+            5 -> (viewModel as? CommunityPostViewModel)?.setReportReasonFiveStatus(view.isChecked)
+            6 -> (viewModel as? CommunityPostViewModel)?.setReportReasonSixStatus(view.isChecked)
+        }
+    }
 }
 
 private fun formatStringWithPrefix(input: String, editText: EditText) {
