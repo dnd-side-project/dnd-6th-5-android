@@ -298,6 +298,7 @@
             android:backgroundTint="@{communityPostViewModel.isReportReasonValid ? @color/user_report : @color/gray03}"
             android:enabled="@{communityPostViewModel.isReportReasonValid}"
             android:text="@string/user_report_reason_confirm"
+            android:onClick="@{()->communityPostViewModel.userReport()}"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="20dp" />

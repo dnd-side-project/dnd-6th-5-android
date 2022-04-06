@@ -1,12 +1,7 @@
 package com.fork.spoonfeed.data.remote.datasource
 
 import com.fork.spoonfeed.data.remote.api.policy.PolicyService
-import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
-import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
-import com.fork.spoonfeed.data.remote.model.policy.ResponseFilteredPolicy
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyDetailData
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyLikeData
+import com.fork.spoonfeed.data.remote.model.policy.*
 import javax.inject.Inject
 
 class PolicyDataSourceImpl @Inject constructor(

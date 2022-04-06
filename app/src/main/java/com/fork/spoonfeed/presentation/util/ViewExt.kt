@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModel
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.domain.model.AgeInputType
 import com.fork.spoonfeed.domain.model.ChipInputType
+import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel
@@ -117,16 +118,16 @@ fun addTextChangeListener(view: EditText, viewModel: ViewModel, ageInputType: Ag
 }
 
 @BindingAdapter("viewModel", "reasonNumber")
-fun setOnCheckedChanged(view: CheckedTextView, viewModel: ViewModel, reasonNumber: Int) {
+fun setOnCheckedChanged(view: CheckedTextView, viewModel: ViewModel, reasonNumber: String) {
     view.setOnClickListener {
         view.toggle()
         when (reasonNumber) {
-            1 -> (viewModel as? CommunityPostViewModel)?.setReportReasonOneStatus(view.isChecked)
-            2 -> (viewModel as? CommunityPostViewModel)?.setReportReasonTwoStatus(view.isChecked)
-            3 -> (viewModel as? CommunityPostViewModel)?.setReportReasonThreeStatus(view.isChecked)
-            4 -> (viewModel as? CommunityPostViewModel)?.setReportReasonFourStatus(view.isChecked)
-            5 -> (viewModel as? CommunityPostViewModel)?.setReportReasonFiveStatus(view.isChecked)
-            6 -> (viewModel as? CommunityPostViewModel)?.setReportReasonSixStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? CommunityPostViewModel)?.setReportReasonOneStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? CommunityPostViewModel)?.setReportReasonTwoStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? CommunityPostViewModel)?.setReportReasonThreeStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_FOUR-> (viewModel as? CommunityPostViewModel)?.setReportReasonFourStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? CommunityPostViewModel)?.setReportReasonFiveStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? CommunityPostViewModel)?.setReportReasonSixStatus(view.isChecked)
         }
     }
 }

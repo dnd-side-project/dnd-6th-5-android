@@ -3,7 +3,9 @@ package com.fork.spoonfeed.data.repository
 import com.fork.spoonfeed.data.remote.datasource.PostDataSource
 import com.fork.spoonfeed.data.remote.model.community.*
 import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
+import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyLikeData
+import com.fork.spoonfeed.data.remote.model.policy.ResponseReportData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
 import com.fork.spoonfeed.domain.repository.PostRepository
 import javax.inject.Inject
@@ -32,5 +34,9 @@ class PostRepositoryImpl @Inject constructor(private val postDataSource: PostDat
 
     override suspend fun searchPost(query: String): ResponseSearchPostAllData {
         return postDataSource.searchPost(query)
+    }
+
+    override suspend fun postReport(postPk: Int, body: RequestReportData): ResponseReportData {
+        return postDataSource.postReport(postPk = postPk, body = body)
     }
 }

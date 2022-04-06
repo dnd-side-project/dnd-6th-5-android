@@ -188,7 +188,7 @@ class CommunityPostActivity :
     }
 
     private fun showUserBottomDialog() {
-        val bottomDialogReportUser = BottomDialogReportUser()
+        val bottomDialogReportUser = BottomDialogReportUser(communityPostViewModel.getPk()!!)
         bottomDialogReportUser.show(
             supportFragmentManager,
             bottomDialogReportUser.tag

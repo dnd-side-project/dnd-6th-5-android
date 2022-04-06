@@ -6,11 +6,13 @@ import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
+import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
+import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -69,6 +71,12 @@ class CommunityPostViewModel @Inject constructor(
 
     private val _isReportReasonValid = MutableLiveData(false)
     val isReportReasonValid: LiveData<Boolean> = _isReportReasonValid
+
+    private val _reportPostPk = MutableLiveData<Int>()
+    val reportPostPk: LiveData<Int> = _reportPostPk
+
+    private val _isUserReportSuccess = MutableLiveData<Boolean>()
+    val isUserReportSuccess: LiveData<Boolean> = _isUserReportSuccess
 
     fun initUserData() {
         viewModelScope.launch {
@@ -215,5 +223,30 @@ class CommunityPostViewModel @Inject constructor(
             _reportReasonOneCheck.value == true || _reportReasonTwoCheck.value == true || _reportReasonThreeCheck.value == true ||
                     _reportReasonFourCheck.value == true || _reportReasonFiveCheck.value == true || _reportReasonSixCheck.value == true
 
+    }
+
+    fun userReport() {
+        val reportPostPk = _reportPostPk.value ?: return
+        var reportReason = ""
+
+        if (_reportReasonOneCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_ONE
+        if (_reportReasonTwoCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_TWO
+        if (_reportReasonThreeCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_THREE
+        if (_reportReasonFourCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_FOUR
+        if (_reportReasonFiveCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_FIVE
+        if (_reportReasonSixCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_SIX
+
+        viewModelScope.launch {
+            kotlin.runCatching {
+                postRepository.postReport(reportPostPk, RequestReportData(reason = reportReason))
+            }.onSuccess {
+                _isUserReportSuccess.value = true
+            }.onFailure {
+            }
+        }
+    }
+
+    fun setReportId(reportPostPk: Int) {
+        _reportPostPk.value = reportPostPk
     }
 }
