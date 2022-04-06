@@ -13,7 +13,6 @@ import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
-import com.fork.spoonfeed.domain.repository.ReportPostRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity

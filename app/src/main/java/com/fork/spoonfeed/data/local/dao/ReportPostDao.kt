@@ -9,7 +9,7 @@ import com.fork.spoonfeed.data.local.entity.ReportPostData
 interface ReportPostDao {
 
     @Query("SELECT * FROM report_post_table")
-    suspend fun getAll(): MutableList<ReportPostData>
+    suspend fun getAll(): MutableList<ReportPostData>?
 
     @Insert
     suspend fun insert(reportPostData: ReportPostData)
