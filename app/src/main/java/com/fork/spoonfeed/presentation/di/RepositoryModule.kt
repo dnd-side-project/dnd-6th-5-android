@@ -16,13 +16,6 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideAnswerRepository(
-        reportPostDao: ReportPostDao,
-    ): ReportPostRepository =
-        ReportPostRepositoryImpl(reportPostDao)
-
-    @Provides
-    @Singleton
     fun provideAuthRepository(authDataSource: AuthDataSource): AuthRepository {
         return AuthRepositoryImpl(authDataSource)
     }

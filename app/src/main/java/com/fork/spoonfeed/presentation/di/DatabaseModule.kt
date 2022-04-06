@@ -20,11 +20,11 @@ object DatabaseModule {
         Room.databaseBuilder(
             context.applicationContext,
             AppDatabase::class.java,
-            "answer record database"
+            "report record database"
         ).fallbackToDestructiveMigration()
             .build()
 
     @Provides
-    fun provideAnswerDao(database: AppDatabase): ReportPostDao =
+    fun provideReportPostDao(database: AppDatabase): ReportPostDao =
         database.reportPostDao
 }

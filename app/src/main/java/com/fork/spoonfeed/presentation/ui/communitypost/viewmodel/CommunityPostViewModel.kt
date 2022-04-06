@@ -1,7 +1,10 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.local.dao.ReportPostDao
+import com.fork.spoonfeed.data.local.entity.ReportPostData
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
@@ -10,6 +13,7 @@ import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
+import com.fork.spoonfeed.domain.repository.ReportPostRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
 import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
@@ -22,7 +26,8 @@ class CommunityPostViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val postRepository: PostRepository,
     private val commentRepository: CommentRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val dataBase: ReportPostDao
 ) : ViewModel() {
 
     private val pk = savedStateHandle.get<Int>(CommunityFragment.POST_PK)
@@ -241,6 +246,7 @@ class CommunityPostViewModel @Inject constructor(
                 postRepository.postReport(reportPostPk, RequestReportData(reason = reportReason))
             }.onSuccess {
                 _isUserReportSuccess.value = true
+                saveReportPostPk()
             }.onFailure {
             }
         }
@@ -248,5 +254,18 @@ class CommunityPostViewModel @Inject constructor(
 
     fun setReportId(reportPostPk: Int) {
         _reportPostPk.value = reportPostPk
+    }
+
+    fun saveReportPostPk() {
+        val reportPostPk = _reportPostPk.value ?: return
+        Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", reportPostPk.toString())
+        viewModelScope.launch {
+            kotlin.runCatching {
+                dataBase.insert(ReportPostData(postPk = reportPostPk))
+            }.onSuccess {
+                Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", "삽입성공")
+            }.onFailure {
+            }
+        }
     }
 }
