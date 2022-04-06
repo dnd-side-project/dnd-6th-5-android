@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.di
 
+import com.fork.spoonfeed.data.local.dao.ReportPostDao
 import com.fork.spoonfeed.data.remote.datasource.*
 import com.fork.spoonfeed.data.repository.*
 import com.fork.spoonfeed.domain.repository.*
@@ -12,6 +13,13 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
+
+    @Provides
+    @Singleton
+    fun provideAnswerRepository(
+        reportPostDao: ReportPostDao,
+    ): ReportPostRepository =
+        ReportPostRepositoryImpl(reportPostDao)
 
     @Provides
     @Singleton
