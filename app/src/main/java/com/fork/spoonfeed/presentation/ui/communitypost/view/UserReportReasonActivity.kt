@@ -30,8 +30,8 @@ class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUser
     }
 
     private fun initData() {
-        val reportPostPk = intent.getIntExtra("postPk", 0)
-        communityPostViewModel.setReportId(reportPostPk)
+        val reportedPostPk = intent.getIntExtra("postPk", 0)
+        communityPostViewModel.setReportedPostPk(reportedPostPk)
     }
 
     private fun setObserve() {

@@ -1,11 +1,8 @@
 package com.fork.spoonfeed.domain.repository
 
 import com.fork.spoonfeed.data.remote.model.community.*
-import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
-import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
-import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyLikeData
-import com.fork.spoonfeed.data.remote.model.policy.ResponseReportData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserNickNameData
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 
 interface PostRepository {
 
@@ -21,5 +18,5 @@ interface PostRepository {
 
     suspend fun searchPost(query: String): ResponseSearchPostAllData
 
-    suspend fun postReport(postPk: Int, body: RequestReportData): ResponseReportData
+    suspend fun postReport(postPk: Int, body: RequestPostReportData): ResponsePostReportData
 }

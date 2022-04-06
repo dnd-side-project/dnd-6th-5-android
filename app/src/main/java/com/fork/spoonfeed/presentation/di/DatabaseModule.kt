@@ -2,7 +2,7 @@ package com.fork.spoonfeed.presentation.di
 
 import android.content.Context
 import androidx.room.Room
-import com.fork.spoonfeed.data.local.dao.ReportPostDao
+import com.fork.spoonfeed.data.local.dao.PostReportDao
 import com.fork.spoonfeed.data.local.database.AppDatabase
 import dagger.Module
 import dagger.Provides
@@ -25,6 +25,6 @@ object DatabaseModule {
             .build()
 
     @Provides
-    fun provideReportPostDao(database: AppDatabase): ReportPostDao =
-        database.reportPostDao
+    fun provideReportPostDao(database: AppDatabase): PostReportDao =
+        database.postReportDao
 }

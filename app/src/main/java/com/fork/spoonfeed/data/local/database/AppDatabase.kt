@@ -4,12 +4,12 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.fork.spoonfeed.data.local.dao.ReportPostDao
-import com.fork.spoonfeed.data.local.entity.ReportPostData
+import com.fork.spoonfeed.data.local.dao.PostReportDao
+import com.fork.spoonfeed.data.local.entity.PostReportData
 
-@Database(entities = arrayOf(ReportPostData::class), version = 1, exportSchema = false)
+@Database(entities = arrayOf(PostReportData::class), version = 1, exportSchema = false)
 abstract class AppDatabase: RoomDatabase() {
-    abstract val reportPostDao: ReportPostDao
+    abstract val postReportDao: PostReportDao
 
     companion object {
         @Volatile

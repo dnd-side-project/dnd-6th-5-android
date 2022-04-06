@@ -1,15 +1,14 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.*
 import com.fork.spoonfeed.data.UserData
-import com.fork.spoonfeed.data.local.dao.ReportPostDao
-import com.fork.spoonfeed.data.local.entity.ReportPostData
+import com.fork.spoonfeed.data.local.dao.PostReportDao
+import com.fork.spoonfeed.data.local.entity.PostReportData
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
-import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
@@ -26,7 +25,7 @@ class CommunityPostViewModel @Inject constructor(
     private val postRepository: PostRepository,
     private val commentRepository: CommentRepository,
     private val userRepository: UserRepository,
-    private val dataBase: ReportPostDao
+    private val dataBase: PostReportDao
 ) : ViewModel() {
 
     private val pk = savedStateHandle.get<Int>(CommunityFragment.POST_PK)
@@ -76,8 +75,8 @@ class CommunityPostViewModel @Inject constructor(
     private val _isReportReasonValid = MutableLiveData(false)
     val isReportReasonValid: LiveData<Boolean> = _isReportReasonValid
 
-    private val _reportPostPk = MutableLiveData<Int>()
-    val reportPostPk: LiveData<Int> = _reportPostPk
+    private val _reportedPostPk = MutableLiveData<Int>()
+    val reportedPostPk: LiveData<Int> = _reportedPostPk
 
     private val _isUserReportSuccess = MutableLiveData<Boolean>()
     val isUserReportSuccess: LiveData<Boolean> = _isUserReportSuccess
@@ -230,7 +229,7 @@ class CommunityPostViewModel @Inject constructor(
     }
 
     fun userReport() {
-        val reportPostPk = _reportPostPk.value ?: return
+        val reportPostPk = _reportedPostPk.value ?: return
         var reportReason = ""
 
         if (_reportReasonOneCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_ONE
@@ -242,27 +241,25 @@ class CommunityPostViewModel @Inject constructor(
 
         viewModelScope.launch {
             kotlin.runCatching {
-                postRepository.postReport(reportPostPk, RequestReportData(reason = reportReason))
+                postRepository.postReport(reportPostPk, RequestPostReportData(reason = reportReason))
             }.onSuccess {
                 _isUserReportSuccess.value = true
-                saveReportPostPk()
+                insertReportedPostPk()
             }.onFailure {
             }
         }
     }
 
-    fun setReportId(reportPostPk: Int) {
-        _reportPostPk.value = reportPostPk
+    fun setReportedPostPk(reportedPostPk: Int) {
+        _reportedPostPk.value = reportedPostPk
     }
 
-    fun saveReportPostPk() {
-        val reportPostPk = _reportPostPk.value ?: return
-        Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", reportPostPk.toString())
+    private fun insertReportedPostPk() {
+        val reportedPostPk = _reportedPostPk.value ?: return
         viewModelScope.launch {
             kotlin.runCatching {
-                dataBase.insert(ReportPostData(postPk = reportPostPk))
+                dataBase.insertReportedPost(PostReportData(postPk = reportedPostPk))
             }.onSuccess {
-                Log.d("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ", "삽입성공")
             }.onFailure {
             }
         }

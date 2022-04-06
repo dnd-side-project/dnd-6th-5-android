@@ -8,8 +8,8 @@ import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.data.remote.model.community.ResponseSearchPostAllData
 import com.fork.spoonfeed.data.remote.model.community.ResponseSendPostData
-import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
-import com.fork.spoonfeed.data.remote.model.policy.ResponseReportData
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 
 interface PostDataSource {
 
@@ -25,5 +25,5 @@ interface PostDataSource {
 
     suspend fun searchPost(query: String): ResponseSearchPostAllData
 
-    suspend fun postReport(postPk: Int, body: RequestReportData): ResponseReportData
+    suspend fun postReport(postPk: Int, body: RequestPostReportData): ResponsePostReportData
 }

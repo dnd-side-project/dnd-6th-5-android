@@ -1,16 +1,13 @@
 package com.fork.spoonfeed.presentation.ui.community.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.fork.spoonfeed.data.local.dao.ReportPostDao
-import com.fork.spoonfeed.data.local.entity.ReportPostData
+import com.fork.spoonfeed.data.local.dao.PostReportDao
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.domain.repository.PostRepository
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
-import com.google.gson.annotations.SerializedName
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,7 +17,7 @@ data class User(val name: String, val age: Int)
 @HiltViewModel
 class CommunityViewModel @Inject constructor(
     private val postRepository: PostRepository,
-    private val dataBase: ReportPostDao
+    private val dataBase: PostReportDao
 ) : ViewModel() {
 
     private val _postData = MutableLiveData<List<ResponsePostAllData.Data.Post>>()
@@ -47,9 +44,9 @@ class CommunityViewModel @Inject constructor(
                 postRepository.getPostAll().data.post.filter { it.category == _selectedFilter.value }
             }
 
-            val reportedPostIdList = dataBase.getAll()?.map { it.postPk }
-            if (reportedPostIdList != null) {
-                _filteredPostData.value = _postData.value?.filterNot { reportedPostIdList.contains(it.id) }?.map {
+            val reportedPostPkList = dataBase.getAllReportedPost()?.map { it.postPk }
+            if (reportedPostPkList != null) {
+                _filteredPostData.value = _postData.value?.filterNot { reportedPostPkList.contains(it.id) }?.map {
                     ResponsePostAllData.Data.Post(
                         id = it.id,
                         author = it.author,

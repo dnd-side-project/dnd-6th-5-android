@@ -2,8 +2,8 @@ package com.fork.spoonfeed.data.remote.datasource
 
 import com.fork.spoonfeed.data.remote.api.community.PostService
 import com.fork.spoonfeed.data.remote.model.community.*
-import com.fork.spoonfeed.data.remote.model.policy.RequestReportData
-import com.fork.spoonfeed.data.remote.model.policy.ResponseReportData
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 import javax.inject.Inject
 
 class PostDataSourceImpl @Inject constructor(private val postService: PostService) : PostDataSource {
@@ -32,7 +32,7 @@ class PostDataSourceImpl @Inject constructor(private val postService: PostServic
         return postService.searchPost(query)
     }
 
-    override suspend fun postReport(postPk: Int, body: RequestReportData): ResponseReportData {
-        return postService.postReport(postPk = postPk, body = body)
+    override suspend fun postReport(postPk: Int, body: RequestPostReportData): ResponsePostReportData {
+        return postService.postPostReport(postPk = postPk, body = body)
     }
 }
