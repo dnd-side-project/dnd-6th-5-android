@@ -10,6 +10,11 @@ properties.load(project.rootProject.file('local.properties').newDataInputStream(
 def kakao_key_manifest = properties.getProperty("kakao_key_manifest")
 
 android {
+
+    lintOptions {
+        abortOnError false
+    }
+
     compileSdk 31
 
     defaultConfig {
@@ -90,6 +95,11 @@ dependencies {
 
     //kakao
     implementation "com.kakao.sdk:v2-user:$kakaoLogInVersion"
+
+    //Room
+    implementation "androidx.room:room-runtime:$roomVersion"
+    kapt "androidx.room:room-compiler:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.4.1'

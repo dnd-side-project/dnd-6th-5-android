@@ -13,4 +13,5 @@ interface PolicyRepository {
     suspend fun getFilteredPolicy(body: RequestFilteredPolicy): ResponseFilteredPolicy
 
     suspend fun postPolicyLike(body: RequestPolicyLikeData): ResponsePolicyLikeData
+
 }

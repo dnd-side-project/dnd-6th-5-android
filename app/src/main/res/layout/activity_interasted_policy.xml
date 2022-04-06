@@ -77,6 +77,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/mypage_no_interasted_policy"
                 android:textColor="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 

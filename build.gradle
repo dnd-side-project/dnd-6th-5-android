@@ -13,6 +13,7 @@ buildscript {
         viewmodelVersion = "2.4.1"
         liveDataVersion = "2.4.1"
         lifecycleVersion = "2.4.1"
+        roomVersion="2.4.2"
     }
     repositories {
         google()

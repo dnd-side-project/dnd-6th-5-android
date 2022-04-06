@@ -58,7 +58,7 @@ class CommunityFragment :
     }
 
     private fun setObserver() {
-        communityViewModel.postData.observe(viewLifecycleOwner) {
+        communityViewModel.filteredPostData.observe(viewLifecycleOwner) {
             communityAdapter.submitList(it)
         }
         communityViewModel.selectedFilter.observe(viewLifecycleOwner) {

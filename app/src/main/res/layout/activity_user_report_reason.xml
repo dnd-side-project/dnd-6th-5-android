@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="communityPostViewModel"
+            type="com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel" />
+
+        <variable
+            name="userReportActivity"
+            type="com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.ui.communitypost.view.UserReportReasonActivity">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/mt_user_report"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_chevron_left">
+
+            <TextView
+                style="@style/TextView.Heading.SemiBold.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/bottom_dialog_report_user" />
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_report_user_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mt_user_report">
+
+            <ImageView
+                android:id="@+id/iv_user_report"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="4dp"
+                android:src="@drawable/ic_report_user"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                style="@style/TextView.Heading.Bold.20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="@string/user_report_reason_title"
+                android:textColor="@color/gray06"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/iv_user_report" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_user_report_reason"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/ctl_report_user_top"
+            app:layout_constraintStart_toStartOf="@+id/ctl_report_user_top"
+            app:layout_constraintTop_toBottomOf="@+id/ctl_report_user_top">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_user_reason_reason_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <CheckedTextView
+                    android:id="@+id/ctv_user_report_reason_one"
+                    reasonNumber="@{userReportActivity.REPORT_REASON_ONE}"
+                    viewModel="@{communityPostViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="@drawable/ic_selector_user_report"
+                    android:checked="false"
+                    android:clickable="@{communityPostViewModel.reportReasonOneCheck}"
+                    android:focusable="true"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_report_reason_one"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/user_report_reason_one"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@+id/ctv_user_report_reason_one"
+                    app:layout_constraintStart_toEndOf="@+id/ctv_user_report_reason_one"
+                    app:layout_constraintTop_toTopOf="@+id/ctv_user_report_reason_one" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_user_reason_reason_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_one">
+
+                <CheckedTextView
+                    android:id="@+id/ctv_user_report_reason_two"
+                    reasonNumber="@{userReportActivity.REPORT_REASON_TWO}"
+                    viewModel="@{communityPostViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="@drawable/ic_selector_user_report"
+                    android:checked="false"
+                    android:clickable="@{communityPostViewModel.reportReasonTwoCheck}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_report_reason_two"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/user_report_reason_two"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@+id/ctv_user_report_reason_two"
+                    app:layout_constraintStart_toEndOf="@+id/ctv_user_report_reason_two"
+                    app:layout_constraintTop_toTopOf="@+id/ctv_user_report_reason_two" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_user_reason_reason_three"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_two">
+
+                <CheckedTextView
+                    android:id="@+id/ctv_user_report_reason_three"
+                    reasonNumber="@{userReportActivity.REPORT_REASON_THREE}"
+                    viewModel="@{communityPostViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="@drawable/ic_selector_user_report"
+                    android:checked="false"
+                    android:clickable="@{communityPostViewModel.reportReasonThreeCheck}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_report_reason_three"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/user_report_reason_three"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@+id/ctv_user_report_reason_three"
+                    app:layout_constraintStart_toEndOf="@+id/ctv_user_report_reason_three"
+                    app:layout_constraintTop_toTopOf="@+id/ctv_user_report_reason_three" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_user_reason_reason_four"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_three">
+
+                <CheckedTextView
+                    android:id="@+id/ctv_user_report_reason_four"
+                    reasonNumber="@{userReportActivity.REPORT_REASON_FOUR}"
+                    viewModel="@{communityPostViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="@drawable/ic_selector_user_report"
+                    android:checked="false"
+                    android:clickable="@{communityPostViewModel.reportReasonFourCheck}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_report_reason_four"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/user_report_reason_four"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@+id/ctv_user_report_reason_four"
+                    app:layout_constraintStart_toEndOf="@+id/ctv_user_report_reason_four"
+                    app:layout_constraintTop_toTopOf="@+id/ctv_user_report_reason_four" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_user_reason_reason_five"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_four">
+
+                <CheckedTextView
+                    android:id="@+id/ctv_user_report_reason_five"
+                    reasonNumber="@{userReportActivity.REPORT_REASON_FIVE}"
+                    viewModel="@{communityPostViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="@drawable/ic_selector_user_report"
+                    android:checked="false"
+                    android:clickable="@{communityPostViewModel.reportReasonFiveCheck}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_report_reason_five"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/user_report_reason_five"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@+id/ctv_user_report_reason_five"
+                    app:layout_constraintStart_toEndOf="@+id/ctv_user_report_reason_five"
+                    app:layout_constraintTop_toTopOf="@+id/ctv_user_report_reason_five" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/ctl_user_reason_reason_six"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingHorizontal="3dp"
+                android:paddingVertical="3dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_five">
+
+                <CheckedTextView
+                    android:id="@+id/ctv_user_report_reason_six"
+                    reasonNumber="@{userReportActivity.REPORT_REASON_SIX}"
+                    viewModel="@{communityPostViewModel}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkMark="@drawable/ic_selector_user_report"
+                    android:checked="false"
+                    android:clickable="@{communityPostViewModel.reportReasonSixCheck}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tv_user_report_reason_six"
+                    style="@style/TextView.Label.Regular.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/user_report_reason_six"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintBottom_toBottomOf="@+id/ctv_user_report_reason_six"
+                    app:layout_constraintStart_toEndOf="@+id/ctv_user_report_reason_six"
+                    app:layout_constraintTop_toTopOf="@+id/ctv_user_report_reason_six" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_user_report"
+            style="@style/MaterialButton.Bold.16"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@{communityPostViewModel.isReportReasonValid ? @color/user_report : @color/gray03}"
+            android:enabled="@{communityPostViewModel.isReportReasonValid}"
+            android:text="@string/user_report_reason_confirm"
+            android:onClick="@{()->communityPostViewModel.userReport()}"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="20dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

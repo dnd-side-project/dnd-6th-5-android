@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.SpoonFeed"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="false">
+        <activity
+            android:name=".presentation.ui.communitypost.view.UserReportReasonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".presentation.ui.communitypost.view.BottomDialogReportUser"
+            android:exported="false" />
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:theme="@style/LicenseTheme" />
@@ -71,7 +77,6 @@
         <activity
             android:name=".presentation.ui.policylist.view.DetailInfoActivity"
             android:exported="false" />
-
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">

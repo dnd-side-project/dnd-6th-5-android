@@ -3,6 +3,8 @@ package com.fork.spoonfeed.data.remote.api.community
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.ResponseSearchPostAllData
 import com.fork.spoonfeed.data.remote.model.community.*
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 import retrofit2.http.*
 import retrofit2.http.Body
 
@@ -45,4 +47,13 @@ interface PostService {
     suspend fun searchPost(
         @Query("query") query: String
     ): ResponseSearchPostAllData
+
+
+    @POST("posts/{pk}/report")
+    suspend fun postPostReport(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+        @Header("platform") platform: String = UserData.platform!!,
+        @Path("pk") postPk: Int,
+        @Body body: RequestPostReportData
+    ) : ResponsePostReportData
 }

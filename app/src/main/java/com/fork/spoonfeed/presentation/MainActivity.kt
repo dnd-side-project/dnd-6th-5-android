@@ -5,6 +5,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMainBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
+import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
 import com.fork.spoonfeed.presentation.ui.home.view.HomeFragment
 import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageFragment
 import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageMyInfoActivity
@@ -31,9 +32,16 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
             replace(policyFragment)
             moveToPolicy()
         } ?: replace(homeFragment)
+
         initBottomNavigation()
 
         checkPolicyReset()
+
+
+        intent.getStringExtra(UserReportReasonActivity.USER_REPORT_KEY)?.let {
+            replace(communityFragment)
+            moveToCommunity()
+        }
     }
 
     private fun checkPolicyReset() {
@@ -68,5 +76,9 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
 
     fun moveToPolicy() {
         binding.bnvMain.selectedItemId = R.id.menu_main_policy
+    }
+
+    fun moveToCommunity() {
+        binding.bnvMain.selectedItemId = R.id.menu_main_community
     }
 }
