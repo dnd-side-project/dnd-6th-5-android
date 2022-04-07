@@ -11,10 +11,6 @@ def kakao_key_manifest = properties.getProperty("kakao_key_manifest")
 
 android {
 
-    lintOptions {
-        abortOnError false
-    }
-
     compileSdk 31
 
     defaultConfig {
