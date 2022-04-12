@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.local.dao.PostReportDao
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.domain.repository.PostRepository
@@ -55,7 +56,7 @@ class CommunityViewModel @Inject constructor(
                         content = it.content,
                         commentCount = it.commentCount,
                         createdAt = it.createdAt,
-                        updatedAt = it.updatedAt
+                        updatedAt = it.updatedAt,
                     )
                 }
             }

@@ -15,10 +15,9 @@
         android:usesCleartextTraffic="false">
         <activity
             android:name=".presentation.ui.communitypost.view.UserReportReasonActivity"
-            android:exported="false" />
-        <activity
-            android:name=".presentation.ui.communitypost.view.BottomDialogReportUser"
-            android:exported="false" />
+            android:exported="true">
+
+        </activity>
         <activity
             android:name="com.google.android.gms.oss.licenses.OssLicensesMenuActivity"
             android:theme="@style/LicenseTheme" />

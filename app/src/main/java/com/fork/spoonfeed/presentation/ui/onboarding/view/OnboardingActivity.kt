@@ -82,7 +82,7 @@ class OnboardingActivity :
             override fun onSuccess() {
                 val accessToken = NaverIdLoginSDK.getAccessToken() ?: return
                 val refreshToken = NaverIdLoginSDK.getRefreshToken() ?: return
-
+                Log.e("kakao login", accessToken.toString())
                 loginViewModel.loginWithNaver(accessToken, refreshToken)
             }
         }

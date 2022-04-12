@@ -39,7 +39,7 @@ class SearchViewModel @Inject constructor(
                     data.content,
                     data.commentCount,
                     data.createdAt,
-                    data.updatedAt
+                    data.updatedAt,
                 )
             }
         }
