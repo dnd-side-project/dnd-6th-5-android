@@ -24,11 +24,12 @@ interface PostService {
         @Body body: RequestSendPostData
     ): ResponseSendPostData
 
-    @GET("posts/{pk}")
+    @GET("user/{userId}/posts/{pk}")
     suspend fun getPostDetail(
         @Header("access_token") accessToken: String = UserData.accessToken!!,
         @Header("platform") platform: String = UserData.platform!!,
-        @Path("pk") pk: Int
+        @Path("pk") pk: Int,
+        @Path("userId") userId: Int = UserData.id!!
     ): ResponsePostData
 
     @PATCH("posts/{pk}")
