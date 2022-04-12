@@ -11,8 +11,10 @@ import retrofit2.http.Body
 
 interface PostService {
 
-    @GET("posts")
-    suspend fun getPostAll(): ResponsePostAllData
+    @GET("user/{userId}/posts")
+    suspend fun getPostAll(
+        @Path("userId") userId: Int
+    ): ResponsePostAllData
 
     @POST("posts")
     suspend fun sendPost(

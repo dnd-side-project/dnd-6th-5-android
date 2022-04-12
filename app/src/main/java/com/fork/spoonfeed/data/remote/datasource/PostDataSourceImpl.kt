@@ -8,8 +8,8 @@ import javax.inject.Inject
 
 class PostDataSourceImpl @Inject constructor(private val postService: PostService) : PostDataSource {
 
-    override suspend fun getPostAll(): ResponsePostAllData {
-        return postService.getPostAll()
+    override suspend fun getPostAll(userId: Int): ResponsePostAllData {
+        return postService.getPostAll(userId = userId)
     }
 
     override suspend fun sendPost(body: RequestSendPostData): ResponseSendPostData {
