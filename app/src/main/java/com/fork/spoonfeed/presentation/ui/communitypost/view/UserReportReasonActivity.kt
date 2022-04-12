@@ -35,26 +35,11 @@ class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUser
     }
 
     private fun setObserve() {
-        communityPostViewModel.isReportReasonValid.observe(this) { isReportReasonValid ->
-            if (!isReportReasonValid) setClickable()
-        }
         communityPostViewModel.isUserReportSuccess.observe(this) { isUserReportSuccess ->
             if (isUserReportSuccess) {
-                Toast.makeText(this, "게시물 신고가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "게시물 신고가 완료되었습니다.", Toast.LENGTH_LONG).show()
                 moveToCommunityFragment()
             }
-        }
-    }
-
-    private fun setClickable() {
-        with(binding) {
-            if (!mbUserReport.isCheckable)
-                ctvUserReportReasonOne.isClickable = true
-            ctvUserReportReasonTwo.isClickable = true
-            ctvUserReportReasonThree.isClickable = true
-            ctvUserReportReasonFour.isClickable = true
-            ctvUserReportReasonFive.isClickable = true
-            ctvUserReportReasonSix.isClickable = true
         }
     }
 

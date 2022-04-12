@@ -84,15 +84,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <CheckedTextView
+                <ImageButton
                     android:id="@+id/ctv_user_report_reason_one"
+                    isSelected="@{communityPostViewModel.reportReasonOneCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_ONE}"
                     viewModel="@{communityPostViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkMark="@drawable/ic_selector_user_report"
-                    android:checked="false"
-                    android:clickable="@{communityPostViewModel.reportReasonOneCheck}"
+                    android:background="@drawable/ic_selector_user_report"
                     android:focusable="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -120,15 +119,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_one">
 
-                <CheckedTextView
+                <ImageButton
                     android:id="@+id/ctv_user_report_reason_two"
+                    isSelected="@{communityPostViewModel.reportReasonTwoCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_TWO}"
                     viewModel="@{communityPostViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkMark="@drawable/ic_selector_user_report"
-                    android:checked="false"
-                    android:clickable="@{communityPostViewModel.reportReasonTwoCheck}"
+                    android:background="@drawable/ic_selector_user_report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -155,15 +153,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_two">
 
-                <CheckedTextView
+                <ImageButton
                     android:id="@+id/ctv_user_report_reason_three"
+                    isSelected="@{communityPostViewModel.reportReasonThreeCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_THREE}"
                     viewModel="@{communityPostViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkMark="@drawable/ic_selector_user_report"
-                    android:checked="false"
-                    android:clickable="@{communityPostViewModel.reportReasonThreeCheck}"
+                    android:background="@drawable/ic_selector_user_report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -190,15 +187,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_three">
 
-                <CheckedTextView
+                <ImageButton
                     android:id="@+id/ctv_user_report_reason_four"
+                    isSelected="@{communityPostViewModel.reportReasonFourCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_FOUR}"
                     viewModel="@{communityPostViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkMark="@drawable/ic_selector_user_report"
-                    android:checked="false"
-                    android:clickable="@{communityPostViewModel.reportReasonFourCheck}"
+                    android:background="@drawable/ic_selector_user_report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -225,15 +221,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_four">
 
-                <CheckedTextView
+                <ImageButton
                     android:id="@+id/ctv_user_report_reason_five"
+                    isSelected="@{communityPostViewModel.reportReasonFiveCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_FIVE}"
                     viewModel="@{communityPostViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkMark="@drawable/ic_selector_user_report"
-                    android:checked="false"
-                    android:clickable="@{communityPostViewModel.reportReasonFiveCheck}"
+                    android:background="@drawable/ic_selector_user_report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -260,15 +255,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ctl_user_reason_reason_five">
 
-                <CheckedTextView
+                <ImageButton
                     android:id="@+id/ctv_user_report_reason_six"
+                    isSelected="@{communityPostViewModel.reportReasonSixCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_SIX}"
                     viewModel="@{communityPostViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:checkMark="@drawable/ic_selector_user_report"
-                    android:checked="false"
-                    android:clickable="@{communityPostViewModel.reportReasonSixCheck}"
+                    android:background="@drawable/ic_selector_user_report"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -297,8 +291,8 @@
             android:layout_marginBottom="16dp"
             android:backgroundTint="@{communityPostViewModel.isReportReasonValid ? @color/user_report : @color/gray03}"
             android:enabled="@{communityPostViewModel.isReportReasonValid}"
-            android:text="@string/user_report_reason_confirm"
             android:onClick="@{()->communityPostViewModel.userReport()}"
+            android:text="@string/user_report_reason_confirm"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             tools:layout_editor_absoluteX="20dp" />
