@@ -5,10 +5,7 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
-import android.widget.CheckBox
-import android.widget.CheckedTextView
-import android.widget.EditText
-import android.widget.ImageView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
@@ -117,19 +114,19 @@ fun addTextChangeListener(view: EditText, viewModel: ViewModel, ageInputType: Ag
     })
 }
 
-@BindingAdapter("viewModel", "reasonNumber")
-fun setOnCheckedChanged(view: CheckedTextView, viewModel: ViewModel, reasonNumber: String) {
+@BindingAdapter("viewModel", "reasonNumber","isSelected")
+fun setOnCheckedChanged(view: ImageButton, viewModel: ViewModel, reasonNumber: String,selected: Boolean) {
     view.setOnClickListener {
-        view.toggle()
         when (reasonNumber) {
-            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? CommunityPostViewModel)?.setReportReasonOneStatus(view.isChecked)
-            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? CommunityPostViewModel)?.setReportReasonTwoStatus(view.isChecked)
-            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? CommunityPostViewModel)?.setReportReasonThreeStatus(view.isChecked)
-            UserReportReasonActivity.REPORT_REASON_FOUR-> (viewModel as? CommunityPostViewModel)?.setReportReasonFourStatus(view.isChecked)
-            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? CommunityPostViewModel)?.setReportReasonFiveStatus(view.isChecked)
-            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? CommunityPostViewModel)?.setReportReasonSixStatus(view.isChecked)
+            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? CommunityPostViewModel)?.setReportReasonOneStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? CommunityPostViewModel)?.setReportReasonTwoStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? CommunityPostViewModel)?.setReportReasonThreeStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_FOUR-> (viewModel as? CommunityPostViewModel)?.setReportReasonFourStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? CommunityPostViewModel)?.setReportReasonFiveStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? CommunityPostViewModel)?.setReportReasonSixStatus(!view.isSelected)
         }
     }
+    view.isSelected = selected
 }
 
 private fun formatStringWithPrefix(input: String, editText: EditText) {

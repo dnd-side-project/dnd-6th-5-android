@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.local.dao.PostReportDao
@@ -237,7 +238,6 @@ class CommunityPostViewModel @Inject constructor(
         if (_reportReasonFourCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_FOUR
         if (_reportReasonFiveCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_FIVE
         if (_reportReasonSixCheck.value == true) reportReason = UserReportReasonActivity.REPORT_REASON_SIX
-
         viewModelScope.launch {
             kotlin.runCatching {
                 postRepository.postReport(reportPostPk, RequestPostReportData(reason = reportReason))

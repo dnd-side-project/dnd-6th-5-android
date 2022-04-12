@@ -5,14 +5,17 @@ import com.fork.spoonfeed.data.remote.model.community.ResponseSearchPostAllData
 import com.fork.spoonfeed.data.remote.model.community.*
 import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import retrofit2.http.*
 import retrofit2.http.Body
 
 
 interface PostService {
 
-    @GET("posts")
-    suspend fun getPostAll(): ResponsePostAllData
+    @GET("user/{userId}/posts")
+    suspend fun getPostAll(
+        @Path("userId") userId: Int = UserData.id!!
+    ): ResponsePostAllData
 
     @POST("posts")
     suspend fun sendPost(
@@ -21,11 +24,12 @@ interface PostService {
         @Body body: RequestSendPostData
     ): ResponseSendPostData
 
-    @GET("posts/{pk}")
+    @GET("user/{userId}/posts/{pk}")
     suspend fun getPostDetail(
         @Header("access_token") accessToken: String = UserData.accessToken!!,
         @Header("platform") platform: String = UserData.platform!!,
-        @Path("pk") pk: Int
+        @Path("pk") pk: Int,
+        @Path("userId") userId: Int = UserData.id!!
     ): ResponsePostData
 
     @PATCH("posts/{pk}")
@@ -43,9 +47,10 @@ interface PostService {
         @Path("pk") pk: Int,
     ): ResponseDeletePostData
 
-    @GET("posts/search")
+    @GET("user/{userId}/posts/search")
     suspend fun searchPost(
-        @Query("query") query: String
+        @Query("query") query: String,
+        @Path("userId") userId: Int = UserData.id!!
     ): ResponseSearchPostAllData
 
 
