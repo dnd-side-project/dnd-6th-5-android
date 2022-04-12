@@ -12,7 +12,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BottomDialogReportUser(private val postPk: Int) :
+class BottomDialogReport(private val postPk: Int) :
     BaseViewUtil.BaseCategoryBottomDialogFragment<FragmentBottomDialogReportUserBinding>(R.layout.fragment_bottom_dialog_report_user) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
