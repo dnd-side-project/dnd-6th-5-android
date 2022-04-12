@@ -1,11 +1,11 @@
 package com.fork.spoonfeed.presentation.ui.onboarding.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.local.AutoLoginManager
 import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
 import com.fork.spoonfeed.domain.repository.AuthRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
@@ -19,11 +19,8 @@ class LoginViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    private val _naverLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>(false to null)
-    val naverLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _naverLoginSuccessWithName
-
-    private val _kakaoLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>(false to null)
-    val kakaoLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _kakaoLoginSuccessWithName
+    private val _loginSuccess = MutableLiveData<Boolean>()
+    val loginSuccess: LiveData<Boolean> = _loginSuccess
 
     private val _name = MutableLiveData<String?>()
     val name: LiveData<String?> = _name
@@ -36,7 +33,7 @@ class LoginViewModel @Inject constructor(
 
     fun loginWithNaver(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
-            _naverLoginSuccessWithName.value =
+            _loginSuccess.value =
                 authRepository.loginWithNaver(accessToken, refreshToken).run {
                     val newAccessToken = first
                     val responseBody = second
@@ -46,20 +43,45 @@ class LoginViewModel @Inject constructor(
                     UserData.refreshToken = responseBody.data.user.token.refreshToken
                     UserData.platform = "naver"
 
-                    responseBody.success to responseBody.data.user.nickname
+                    authRepository.setAutoLoginManager(AutoLoginManager.Companion.UserInfo(
+                        refreshToken = responseBody.data.user.token.refreshToken,
+                        accessToken = newAccessToken,
+                        platform = "naver"
+                    ))
+
+                    if (responseBody.data.user.nickname == null){
+                        false
+                    } else {
+                        responseBody.success
+                    }
                 }
         }
     }
 
     fun loginWithKakao(accessToken: String, refreshToken: String) {
         viewModelScope.launch {
-            val responseData = authRepository.loginWithKakao(accessToken, refreshToken)
-            _kakaoLoginSuccessWithName.value =
-                responseData.success to responseData.data.user.nickname
-            UserData.id = responseData.data.user.id
-            UserData.refreshToken = responseData.data.user.token.refreshToken
-            UserData.accessToken = accessToken
-            UserData.platform = "kakao"
+            _loginSuccess.value =
+                authRepository.loginWithKakao(accessToken, refreshToken).run {
+                    val newAccessToken = first
+                    val responseBody = second
+
+                    UserData.id = responseBody.data.user.id
+                    UserData.accessToken = newAccessToken
+                    UserData.refreshToken = responseBody.data.user.token.refreshToken
+                    UserData.platform = "kakao"
+
+                    authRepository.setAutoLoginManager(AutoLoginManager.Companion.UserInfo(
+                        refreshToken = responseBody.data.user.token.refreshToken,
+                        accessToken = newAccessToken,
+                        platform = "kakao"
+                    ))
+
+                    if (responseBody.data.user.nickname == null){
+                        false
+                    } else {
+                        responseBody.success
+                    }
+                }
         }
     }
 
@@ -86,10 +108,14 @@ class LoginViewModel @Inject constructor(
                     requestUserNickNameData
                 ).data.user.nickname
             }.onSuccess {
-                _nickNameSetStatus.setValue(true)
-                authRepository.setAutoLoginPlatformManager(UserData.platform)
+                authRepository.setAutoLoginManager(AutoLoginManager.Companion.UserInfo(
+                    refreshToken = UserData.refreshToken!!,
+                    accessToken = UserData.accessToken!!,
+                    platform = UserData.platform!!
+                ))
+                _nickNameSetStatus.value = true
             }.onFailure {
-                _nickNameSetStatus.setValue(false)
+                _nickNameSetStatus.value = false
             }
         }
     }

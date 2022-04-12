@@ -37,7 +37,21 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
     }
 
     override fun initView() {
+        setObserver()
         setOnClickListener()
+    }
+
+    private fun setObserver() {
+        myPageViewModel.logoutWithKakaoSuccess.observe(viewLifecycleOwner) { logoutSuccess ->
+            if (logoutSuccess) {
+                moveToOnBoardingActivity()
+            }
+        }
+        myPageViewModel.logoutWithNaverSuccess.observe(viewLifecycleOwner) { logoutSuccess ->
+            if (logoutSuccess) {
+                moveToOnBoardingActivity()
+            }
+        }
     }
 
     private fun setOnClickListener() {
@@ -92,23 +106,15 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
         confirmBtn.setOnClickListener {
             if (com.fork.spoonfeed.data.UserData.platform == "kakao") {
                 myPageViewModel.logoutWithKakao()
+                dialog.dismiss()
             } else {
-                NidOAuthLogin().logout()
                 myPageViewModel.logoutWithNaver()
                 dialog.dismiss()
-                moveToOnBoardingActivity()
             }
         }
 
         cancelBtn.setOnClickListener {
             dialog.dismiss()
-        }
-
-        myPageViewModel.logoutWithKakaoSuccess.observe(this) { logoutSuccess ->
-            if (logoutSuccess) {
-                dialog.dismiss()
-                moveToOnBoardingActivity()
-            }
         }
     }
 
