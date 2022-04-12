@@ -17,4 +17,6 @@ interface UserRepository {
     suspend fun patchUserFilter(body: RequestPatchUserFilterData): ResponsePatchUserFilterData
 
     suspend fun checkUserNameDuplicate(nickName: String): ResponseUserNameDuplicate
+
+    suspend fun blockUser(blockedId: Int): ResponseBlockUserData
 }

@@ -52,4 +52,12 @@ interface UserService {
     suspend fun checkUserNameDuplicate(
         @Query("nickname") nickName: String
     ): ResponseUserNameDuplicate
+
+    @POST("user/{userId}/block/{blockedId}")
+    suspend fun blockUser(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+        @Header("platform") platform: String = UserData.platform!!,
+        @Path("userId") userId: Int = UserData.id!!,
+        @Path("blockedId") blockedId: Int,
+    ): ResponseBlockUserData
 }

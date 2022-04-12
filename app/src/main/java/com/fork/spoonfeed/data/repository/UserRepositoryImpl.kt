@@ -8,6 +8,9 @@ import javax.inject.Inject
 class UserRepositoryImpl @Inject constructor(
     private val userDataSource: UserDataSource
 ) : UserRepository {
+    override suspend fun blockUser(blockedId: Int): ResponseBlockUserData {
+        return userDataSource.blockUser(blockedId = blockedId)
+    }
 
     override suspend fun getUserData(): ResponseUserData {
         return userDataSource.getUserData()
