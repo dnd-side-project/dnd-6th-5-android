@@ -1,7 +1,7 @@
 package com.fork.spoonfeed.presentation.di
 
 import android.content.Context
-import com.fork.spoonfeed.data.local.AutoLoginPlatformManager
+import com.fork.spoonfeed.data.local.AutoLoginManager
 import com.fork.spoonfeed.data.remote.api.auth.AuthService
 import com.fork.spoonfeed.data.remote.api.community.CommentService
 import com.fork.spoonfeed.data.remote.api.community.PostService
@@ -30,17 +30,17 @@ object DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideAutoLoginPlatformManager(@ApplicationContext context: Context): AutoLoginPlatformManager {
-        return AutoLoginPlatformManager(context)
+    fun provideAutoLoginManager(@ApplicationContext context: Context): AutoLoginManager {
+        return AutoLoginManager(context)
     }
 
     @Provides
     @Singleton
     fun provideAuthDataSource(
         authService: AuthService,
-        autoLoginPlatformManager: AutoLoginPlatformManager
+        autoLoginManager: AutoLoginManager
     ): AuthDataSource {
-        return AuthDataSourceImpl(authService, autoLoginPlatformManager)
+        return AuthDataSourceImpl(authService, autoLoginManager)
     }
 
     @Provides

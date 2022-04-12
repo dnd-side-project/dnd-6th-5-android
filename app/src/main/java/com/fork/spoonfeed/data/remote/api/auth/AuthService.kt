@@ -19,7 +19,12 @@ interface AuthService {
     suspend fun loginWithKakao(
         @Header("access_token") accessToken: String,
         @Header("refresh_token") refreshToken: String
-    ): ResponseLoginWithKakaoData
+    ): Response<ResponseLoginWithKakaoData>
+
+    @GET("logout/naver")
+    suspend fun logoutWithNaver(
+        @Header("access_token") accessToken: String,
+    ): ResponseLogoutWithNaverData
 
     @GET("logout/kakao")
     suspend fun logoutWithKakao(
@@ -35,4 +40,10 @@ interface AuthService {
     suspend fun deleteWithNaver(
         @Header("access_token") accessToken: String = UserData.accessToken!!,
     ): ResponseDeleteWithNaverData
+
+    @GET("token")
+    suspend fun getToken(
+        @Header("refresh_token") refreshToken: String,
+        @Header("platform") platform: String
+    ): Response<ResponseTokenData>
 }
