@@ -6,7 +6,7 @@ import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 
 interface PostRepository {
 
-    suspend fun getPostAll(userId: Int): ResponsePostAllData
+    suspend fun getPostAll(): ResponsePostAllData
 
     suspend fun sendPost(body: RequestSendPostData): ResponseSendPostData
 

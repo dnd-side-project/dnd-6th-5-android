@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:checkMark="@drawable/ic_selector_user_report"
                     android:checked="false"
-                    android:onItemSelected="@{communityPostViewModel.reportReasonOneCheck}"
+                    android:clickable="@{communityPostViewModel.reportReasonOneCheck}"
                     android:focusable="true"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />

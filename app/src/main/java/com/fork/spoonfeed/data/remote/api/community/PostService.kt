@@ -5,6 +5,7 @@ import com.fork.spoonfeed.data.remote.model.community.ResponseSearchPostAllData
 import com.fork.spoonfeed.data.remote.model.community.*
 import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import retrofit2.http.*
 import retrofit2.http.Body
 
@@ -13,7 +14,7 @@ interface PostService {
 
     @GET("user/{userId}/posts")
     suspend fun getPostAll(
-        @Path("userId") userId: Int
+        @Path("userId") userId: Int = UserData.id!!
     ): ResponsePostAllData
 
     @POST("posts")

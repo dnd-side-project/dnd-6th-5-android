@@ -9,8 +9,8 @@ import javax.inject.Inject
 
 class PostRepositoryImpl @Inject constructor(private val postDataSource: PostDataSource) : PostRepository {
 
-    override suspend fun getPostAll(userId: Int): ResponsePostAllData {
-        return postDataSource.getPostAll(userId=userId)
+    override suspend fun getPostAll(): ResponsePostAllData {
+        return postDataSource.getPostAll()
     }
 
     override suspend fun sendPost(body: RequestSendPostData): ResponseSendPostData {

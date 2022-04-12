@@ -15,7 +15,7 @@ import retrofit2.http.Path
 
 interface PostDataSource {
 
-    suspend fun getPostAll(userId: Int): ResponsePostAllData
+    suspend fun getPostAll(): ResponsePostAllData
 
     suspend fun sendPost(body: RequestSendPostData): ResponseSendPostData
 

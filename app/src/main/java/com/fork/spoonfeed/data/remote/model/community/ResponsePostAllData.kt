@@ -17,7 +17,7 @@ data class ResponsePostAllData(
             @SerializedName("content") val content: String,
             @SerializedName("commentCount") val commentCount: String,
             @SerializedName("createdAt") val createdAt: String,
-            @SerializedName("updatedAt") val updatedAt: String
+            @SerializedName("updatedAt") val updatedAt: String,
         )
     }
 }
