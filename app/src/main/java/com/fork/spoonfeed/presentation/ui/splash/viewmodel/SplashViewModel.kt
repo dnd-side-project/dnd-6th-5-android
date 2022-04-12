@@ -5,6 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.local.AutoLoginManager
+import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithKakaoData
+import com.fork.spoonfeed.data.remote.model.auth.ResponseLoginWithNaverData
 import com.fork.spoonfeed.domain.repository.AuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,59 +18,106 @@ class SplashViewModel @Inject constructor(
     private val authRepository: AuthRepository
 ) : ViewModel() {
 
-    private val _autoLoginPlatform = MutableLiveData<String?>()
-    val autoLoginPlatform: LiveData<String?> = _autoLoginPlatform
+    private val _autoLogin = MutableLiveData<AutoLoginManager.Companion.UserInfo?>()
+    val autoLogin: LiveData<AutoLoginManager.Companion.UserInfo?> = _autoLogin
 
-    private val _naverLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>()
-    val naverLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _naverLoginSuccessWithName
+    private val _loginSuccess = MutableLiveData<Boolean>()
+    val loginSuccess: LiveData<Boolean> = _loginSuccess
 
-    private val _kakaoLoginSuccessWithName = MutableLiveData<Pair<Boolean, String?>>()
-    val kakaoLoginSuccessWithName: LiveData<Pair<Boolean, String?>> = _kakaoLoginSuccessWithName
+    private val _isTokenValid = MutableLiveData<Boolean>()
+    val isTokenInvalid: LiveData<Boolean> = _isTokenValid
 
-    fun loginWithNaver(accessToken: String?, refreshToken: String?) {
-        if (accessToken == null || refreshToken == null){
-            _naverLoginSuccessWithName.value = false to null
-        }
-
-        val access = accessToken ?: return
-        val refresh = refreshToken ?: return
-
-        viewModelScope.launch {
-            _naverLoginSuccessWithName.value =
-                authRepository.loginWithNaver(access, refresh).run {
-                    val newAccessToken = first
-                    val responseBody = second
-
-                    UserData.id = responseBody.data.user.id
-                    UserData.accessToken = newAccessToken
-                    UserData.refreshToken = responseBody.data.user.token.refreshToken
-                    UserData.platform = "naver"
-
-                    responseBody.success to responseBody.data.user.nickname
+    fun autoLogin() {
+        val userLoginData = authRepository.getAutoLoginManager()
+        userLoginData?.let { userData ->
+            _autoLogin.value = userData
+            when (userData.platform) {
+                "naver" -> {
+                    loginWithNaver(userData)
                 }
+                "kakao" -> {
+                    loginWithKakao(userData)
+                }
+            }
+        } ?: run {
+            _loginSuccess.value = false
         }
     }
 
-    fun getAutoLoginPlatform() {
-        _autoLoginPlatform.value = authRepository.getAutoLoginPlatformManager()
-    }
-
-    fun loginWithKakao(accessToken: String?, refreshToken: String?) {
-        if (accessToken == null || refreshToken == null){
-            _naverLoginSuccessWithName.value = false to null
-        }
-
-        val access = accessToken ?: return
-        val refresh = refreshToken ?: return
-
+    private fun loginWithNaver(userData: AutoLoginManager.Companion.UserInfo) {
         viewModelScope.launch {
-            val responseData = authRepository.loginWithKakao(access, refresh)
-            _kakaoLoginSuccessWithName.value =
-                responseData.success to responseData.data.user.nickname
-            UserData.id = responseData.data.user.id
-            UserData.refreshToken = responseData.data.user.token.refreshToken
-            UserData.accessToken = accessToken
-            UserData.platform = "kakao"
+            runCatching {
+                authRepository.loginWithNaver(userData.accessToken, userData.refreshToken)
+            }.onSuccess {
+                loginSuccess(it, "naver")
+            }.onFailure {
+                if (_isTokenValid.value != null) {
+                    _loginSuccess.value = false
+                } else {
+                    checkToken(userData.refreshToken, userData.platform)
+                }
+            }
+        }
+    }
+
+    fun loginWithKakao(userData: AutoLoginManager.Companion.UserInfo) {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.loginWithKakao(userData.accessToken, userData.refreshToken)
+            }.onSuccess {
+                loginSuccess(it, "kakao")
+            }.onFailure {
+                if (_isTokenValid.value != null) {
+                    _loginSuccess.value = false
+                } else {
+                    checkToken(userData.refreshToken, userData.platform)
+                }
+            }
+        }
+    }
+
+    private fun loginSuccess(
+        loginData: Pair<String, Any>,
+        platform: String
+    ) {
+        val newAccessToken = loginData.first
+
+        UserData.accessToken = newAccessToken
+        UserData.platform = platform
+
+        (loginData.second as? ResponseLoginWithNaverData)?.let {
+            UserData.id = it.data.user.id
+            UserData.refreshToken = it.data.user.token.refreshToken
+            _loginSuccess.value = it.success
+        } ?: run {
+            (loginData.second as? ResponseLoginWithKakaoData)?.let {
+                UserData.id = it.data.user.id
+                UserData.refreshToken = it.data.user.token.refreshToken
+                _loginSuccess.value = it.success
+            }
+        }
+    }
+
+    private fun checkToken(refreshToken: String, platform: String) {
+        viewModelScope.launch {
+            runCatching {
+                authRepository.getToken(refreshToken, platform)
+            }.onSuccess {
+                val access = it.first ?: run {
+                    _isTokenValid.value = false
+                    return@launch
+                }
+                val refresh = it.second ?: run {
+                    _isTokenValid.value = false
+                    return@launch
+                }
+                _isTokenValid.value = true
+                _autoLogin.value =
+                    _autoLogin.value?.copy(accessToken = access, refreshToken = refresh)
+                autoLogin()
+            }.onFailure {
+                _isTokenValid.value = false
+            }
         }
     }
 }

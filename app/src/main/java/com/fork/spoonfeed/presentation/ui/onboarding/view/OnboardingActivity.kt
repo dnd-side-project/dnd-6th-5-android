@@ -37,20 +37,13 @@ class OnboardingActivity :
     }
 
     private fun setObserver() {
-        loginViewModel.naverLoginSuccessWithName.observe(this, {
-            if (it.first) {
-                it.second?.let {
-                    startMainActivity()
-                } ?: startSignupActivity()
+        loginViewModel.loginSuccess.observe(this) {
+            if (it) {
+                startMainActivity()
+            } else {
+                startSignupActivity()
             }
-        })
-        loginViewModel.kakaoLoginSuccessWithName.observe(this, {
-            if (it.first) {
-                it.second?.let {
-                    startMainActivity()
-                } ?: startSignupActivity()
-            }
-        })
+        }
     }
 
     private fun setClickListener() {
@@ -115,7 +108,10 @@ class OnboardingActivity :
             UserApiClient.instance.loginWithKakaoTalk(this@OnboardingActivity, callback = callback)
 
         } else {
-            UserApiClient.instance.loginWithKakaoAccount(this@OnboardingActivity, callback = callback)
+            UserApiClient.instance.loginWithKakaoAccount(
+                this@OnboardingActivity,
+                callback = callback
+            )
         }
     }
 

@@ -1,6 +1,6 @@
 package com.fork.spoonfeed.data.repository
 
-import android.util.Log
+import com.fork.spoonfeed.data.local.AutoLoginManager
 import com.fork.spoonfeed.data.remote.datasource.AuthDataSource
 import com.fork.spoonfeed.data.remote.model.auth.*
 import com.fork.spoonfeed.domain.repository.AuthRepository
@@ -17,11 +17,13 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
     override suspend fun loginWithKakao(
         accessToken: String,
         refreshToken: String
-    ): ResponseLoginWithKakaoData {
+    ): Pair<String, ResponseLoginWithKakaoData> {
         return authDataSource.loginWithKakao(accessToken, refreshToken)
     }
 
-
+    override suspend fun logoutWithNaver(accessToken: String): ResponseLogoutWithNaverData {
+        return authDataSource.logoutWithNaver(accessToken)
+    }
 
     override suspend fun logoutWithKakao(
         accessToken: String,
@@ -41,12 +43,16 @@ class AuthRepositoryImpl(private val authDataSource: AuthDataSource) : AuthRepos
         return authDataSource.deleteWithNaver(accessToken)
     }
 
-    override fun setAutoLoginPlatformManager(value: String?) {
-        authDataSource.setAutoLoginPlatformManager(value)
+    override suspend fun getToken(refreshToken: String, platform: String): Pair<String?, String?> {
+        return authDataSource.getToken(refreshToken, platform)
     }
 
-    override fun getAutoLoginPlatformManager(): String? {
-        return authDataSource.getAutoLoginPlatformManager()
+    override fun setAutoLoginManager(value: AutoLoginManager.Companion.UserInfo?) {
+        authDataSource.setAutoLoginManager(value)
+    }
+
+    override fun getAutoLoginManager(): AutoLoginManager.Companion.UserInfo? {
+        return authDataSource.getAutoLoginManager()
     }
 }
 

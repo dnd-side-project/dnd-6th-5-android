@@ -1,6 +1,5 @@
 package com.fork.spoonfeed.presentation.ui.mypage.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -78,6 +77,9 @@ class MyPageViewModel @Inject constructor(
     val postQuestionSuccess: LiveData<Boolean>
         get() = _postQuestionSuccess
 
+    private val _logoutWithNaverSuccess = MutableLiveData<Boolean>()
+    val logoutWithNaverSuccess: LiveData<Boolean> = _logoutWithNaverSuccess
+
     private val _logoutWithKakaoSuccess = MutableLiveData(false)
     val logoutWithKakaoSuccess: LiveData<Boolean>
         get() = _logoutWithKakaoSuccess
@@ -99,25 +101,48 @@ class MyPageViewModel @Inject constructor(
 
     fun logoutWithKakao() {
         viewModelScope.launch {
-            _logoutWithKakaoSuccess.value = authRepository.logoutWithKakao(UserData.accessToken!!).success
-            authRepository.setAutoLoginPlatformManager(null)
+            kotlin.runCatching {
+                authRepository.logoutWithKakao(UserData.accessToken!!).success
+            }.onSuccess {
+                authRepository.setAutoLoginManager(null)
+                _logoutWithKakaoSuccess.value = true
+            }.onFailure {
+                _logoutWithKakaoSuccess.value = false
+            }
         }
     }
 
-    fun logoutWithNaver(){
-        authRepository.setAutoLoginPlatformManager(null)
+    fun logoutWithNaver() {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                authRepository.logoutWithNaver(UserData.accessToken!!).success
+            }.onSuccess {
+                authRepository.setAutoLoginManager(null)
+                _logoutWithNaverSuccess.value = true
+            }.onFailure {
+                _logoutWithNaverSuccess.value = false
+            }
+        }
     }
 
     fun getMyPost() {
         viewModelScope.launch {
-            _myPostList.value = userRepository.getUserPost(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.post
+            _myPostList.value = userRepository.getUserPost(
+                UserData.accessToken!!,
+                UserData.platform!!,
+                UserData.id!!
+            ).data.post
             _isMyPostEmpty.value = _myPostList.value!![0]?.title.isNullOrEmpty() == true
         }
     }
 
     fun getMyComment() {
         viewModelScope.launch {
-            _myCommentList.value = userRepository.getUserComment(UserData.accessToken!!, UserData.platform!!, UserData.id!!).data.comment
+            _myCommentList.value = userRepository.getUserComment(
+                UserData.accessToken!!,
+                UserData.platform!!,
+                UserData.id!!
+            ).data.comment
             _isMyCommentEmpty.value = _myCommentList.value?.isNullOrEmpty() == true
         }
     }
@@ -131,7 +156,8 @@ class MyPageViewModel @Inject constructor(
     fun deleteMyComment(postId: Int, commentId: String) {
         val requestDeleteCommentData = RequestDeleteCommentData(commentId.toInt())
         viewModelScope.launch {
-            _deleteCommentSuccess.value = commentRepository.deleteComment(postId, requestDeleteCommentData).success
+            _deleteCommentSuccess.value =
+                commentRepository.deleteComment(postId, requestDeleteCommentData).success
         }
     }
 
@@ -149,35 +175,50 @@ class MyPageViewModel @Inject constructor(
             email = email
         )
         viewModelScope.launch {
-            _postQuestionSuccess.value = questionRepository.postQuestion(requestPostQuestionRepository).success
+            _postQuestionSuccess.value =
+                questionRepository.postQuestion(requestPostQuestionRepository).success
         }
     }
 
     fun getMyLikePolicy() {
         viewModelScope.launch {
             _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
-            _isMyLikePolicyListEmpty.value = _myLikePolicyList.value!![0]?.name.isNullOrEmpty() == true
+            _isMyLikePolicyListEmpty.value =
+                _myLikePolicyList.value!![0]?.name.isNullOrEmpty() == true
         }
     }
 
     fun postMyLikePolicy(policyId: String) {
         val requestPolicyLiveData = RequestPolicyLikeData(policyId = policyId)
         viewModelScope.launch {
-            _postMyLikePolicySuccess.value = policyRepository.postPolicyLike(requestPolicyLiveData).success
+            _postMyLikePolicySuccess.value =
+                policyRepository.postPolicyLike(requestPolicyLiveData).success
         }
     }
 
     fun deleteWithKakao() {
         viewModelScope.launch {
-            _deleteWithKakaoSuccess.value = authRepository.deleteWithKakao(UserData.accessToken!!).success
-            authRepository.setAutoLoginPlatformManager(null)
+            kotlin.runCatching {
+                authRepository.deleteWithKakao(UserData.accessToken!!).success
+            }.onSuccess {
+                authRepository.setAutoLoginManager(null)
+                _deleteWithKakaoSuccess.value = true
+            }.onFailure {
+                _deleteWithKakaoSuccess.value = false
+            }
         }
     }
 
     fun deleteWithNaver() {
         viewModelScope.launch {
-            _deleteWithNaverSuccess.value = authRepository.deleteWithNaver(UserData.accessToken!!).success
-            authRepository.setAutoLoginPlatformManager(null)
+            kotlin.runCatching {
+                authRepository.deleteWithNaver(UserData.accessToken!!).success
+            }.onSuccess {
+                authRepository.setAutoLoginManager(null)
+                _deleteWithNaverSuccess.value = true
+            }.onFailure {
+                _deleteWithNaverSuccess.value = false
+            }
         }
     }
 }
