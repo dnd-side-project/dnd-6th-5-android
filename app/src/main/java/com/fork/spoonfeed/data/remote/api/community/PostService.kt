@@ -46,9 +46,10 @@ interface PostService {
         @Path("pk") pk: Int,
     ): ResponseDeletePostData
 
-    @GET("posts/search")
+    @GET("user/{userId}/posts/search")
     suspend fun searchPost(
-        @Query("query") query: String
+        @Query("query") query: String,
+        @Path("userId") userId: Int = UserData.id!!
     ): ResponseSearchPostAllData
 
 
