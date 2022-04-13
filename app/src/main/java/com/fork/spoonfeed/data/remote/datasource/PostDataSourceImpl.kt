@@ -29,7 +29,7 @@ class PostDataSourceImpl @Inject constructor(private val postService: PostServic
     }
 
     override suspend fun searchPost(query: String): ResponseSearchPostAllData {
-        return postService.searchPost(query)
+        return postService.searchPost(query=query)
     }
 
     override suspend fun postReport(postPk: Int, body: RequestPostReportData): ResponsePostReportData {
