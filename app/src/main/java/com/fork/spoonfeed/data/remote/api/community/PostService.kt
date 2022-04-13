@@ -49,8 +49,8 @@ interface PostService {
 
     @GET("user/{userId}/posts/search")
     suspend fun searchPost(
-        @Query("query") query: String,
-        @Path("userId") userId: Int = UserData.id!!
+        @Path("userId") userId: Int = UserData.id!!,
+        @Query("query") query: String
     ): ResponseSearchPostAllData
 
 

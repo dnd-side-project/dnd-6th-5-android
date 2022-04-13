@@ -28,19 +28,25 @@ class SearchViewModel @Inject constructor(
 
     fun searchPost() {
         val query = _searchQuery.value ?: return
-
         viewModelScope.launch {
-            _searchPostAllData.value = repository.searchPost(query).data.post.map { data ->
-                ResponsePostAllData.Data.Post(
-                    data.id,
-                    data.author,
-                    data.title,
-                    data.category,
-                    data.content,
-                    data.commentCount,
-                    data.createdAt,
-                    data.updatedAt,
-                )
+            kotlin.runCatching {
+                repository.searchPost(query).data.post
+                    .map { data ->
+                        ResponsePostAllData.Data.Post(
+                            data.id,
+                            data.author,
+                            data.title,
+                            data.category,
+                            data.content,
+                            data.commentCount,
+                            data.createdAt,
+                            data.updatedAt,
+                        )
+                    }
+            }.onSuccess {
+                _searchPostAllData.value = it
+            }.onFailure {
+                Log.d("error", it.message.toString())
             }
         }
     }

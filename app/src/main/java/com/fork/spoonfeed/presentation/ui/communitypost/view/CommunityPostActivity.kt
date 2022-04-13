@@ -180,10 +180,14 @@ class CommunityPostActivity :
     }
 
     private fun showWriterBottomDialog() {
-        val bottomDialogMyPageFragment = BottomDialogMyPageFragment(communityPostViewModel.getPk()!!, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.COMMUNITY_POST)
-        bottomDialogMyPageFragment.show(
+        val bottomSheetFragment = BottomDialogMyPageFragment()
+        bottomSheetFragment.arguments = Bundle().apply {
+            putInt(BottomDialogMyPageFragment.POST_PK, communityPostViewModel.getPk()!!)
+            putString(BottomDialogMyPageFragment.EDIT_TYPE, BottomDialogMyPageFragment.POST)
+        }
+        bottomSheetFragment.show(
             supportFragmentManager,
-            bottomDialogMyPageFragment.tag
+            bottomSheetFragment.tag
         )
     }
 

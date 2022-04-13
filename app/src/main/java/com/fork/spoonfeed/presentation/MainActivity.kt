@@ -37,7 +37,6 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
 
         checkPolicyReset()
 
-
         intent.getStringExtra(UserReportReasonActivity.USER_REPORT_KEY)?.let {
             replace(communityFragment)
             moveToCommunity()

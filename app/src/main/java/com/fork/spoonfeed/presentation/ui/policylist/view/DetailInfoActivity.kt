@@ -176,6 +176,15 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
         }
     }
 
+    override fun onBackPressed() {
+        val intent = Intent(this@DetailInfoActivity, PolicyListActivity::class.java)
+            .putExtra("id", id)
+            .putExtra("likeState", binding.ivDetailInfoLike.isChecked)
+            .putExtra("ctn", binding.tvDetailInfoLikeNum.text.toString().toInt())
+        setResult(RESULT_OK, intent)
+        super.onBackPressed()
+    }
+
     companion object {
         const val POST_PK = "com.fork.spoonfeed.presentation.ui.mypage.view"
         const val REFERENCE_SITE_NOTHING = "-"
