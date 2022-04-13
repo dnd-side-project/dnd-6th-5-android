@@ -3,6 +3,7 @@ package com.fork.spoonfeed.presentation.ui.home.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
@@ -24,7 +25,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     private lateinit var myLikePolicyAdapter: MyLikePolicyAdapter
-    private val homeViewModel: HomeViewModel by viewModels()
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -101,7 +102,6 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
             myLikePolicyAdapter.submitList(myLikePolicyList)
         }
     }
-
 
     fun setMyPolicyListEmptyObserve() {
         homeViewModel.isMyLikePolicyListEmpty.observe(this) { isMyLikePolicyListEmpty ->

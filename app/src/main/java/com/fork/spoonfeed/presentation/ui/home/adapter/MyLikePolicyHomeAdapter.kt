@@ -19,7 +19,7 @@ class MyLikePolicyAdapter(
                 tvItemPolicyTitle.text = data.name
                 tvItemCategory.text = data.category
 
-                if (data.host.contains("\n")) {
+                if (data.host?.contains("\n") == true) {
                     val splitArray = data.host.split("\n")
                     tvItemPolicyInstitution.text = splitArray[0]
                 } else {
@@ -52,8 +52,7 @@ class MyLikePolicyAdapter(
             currentList.size
         }
 
-    override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyHomeViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+    override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyHomeViewHolder, position: Int) { holder.onBind(getItem(position))
 
     }
 
