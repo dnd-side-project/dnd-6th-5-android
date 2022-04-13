@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.mypage.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -58,7 +59,11 @@ class MyPostAdapter(
     }
 
     private fun showBottomDialog(postId: Int) {
-        val bottomSheetFragment = BottomDialogMyPageFragment(postId, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.MANAGEMENT_POST)
+        val bottomSheetFragment = BottomDialogMyPageFragment()
+        bottomSheetFragment.arguments = Bundle().apply {
+            putInt(BottomDialogMyPageFragment.POST_PK, postId)
+            putString(BottomDialogMyPageFragment.EDIT_TYPE, BottomDialogMyPageFragment.POST)
+        }
         bottomSheetFragment.show(
             supportFragmentManager,
             bottomSheetFragment.tag

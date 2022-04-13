@@ -5,42 +5,26 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
-import android.widget.TextView
 import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.R
-import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.databinding.FragmentBottomDialogMyPageBinding
+import com.fork.spoonfeed.domain.model.CommentData
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
-import com.fork.spoonfeed.presentation.ui.community.view.SearchInputActivity
-import com.fork.spoonfeed.presentation.ui.community.viewmodel.SearchViewModel
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostCreateActivity
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class BottomDialogMyPageFragment(private val postId: Int, private val commentId: String, private val type: String) :
+class BottomDialogMyPageFragment :
     BaseViewUtil.BaseCategoryBottomDialogFragment<FragmentBottomDialogMyPageBinding>(R.layout.fragment_bottom_dialog_my_page) {
-
-    private lateinit var data: ResponsePostData.Data.Comment
-    private lateinit var commentUpdateListener: (ResponsePostData.Data.Comment) -> (Unit)
-    private lateinit var commentDeleteListener: (ResponsePostData.Data.Comment) -> (Unit)
-
-    constructor(
-        postId: Int,
-        commentId: String,
-        type: String,
-        data: ResponsePostData.Data.Comment,
-        commentUpdateListener: (ResponsePostData.Data.Comment) -> (Unit),
-        commentDeleteListener: (ResponsePostData.Data.Comment) -> (Unit)
-    ) : this(postId, commentId, type) {
-        this.data = data
-        this.commentUpdateListener = commentUpdateListener
-        this.commentDeleteListener = commentDeleteListener
-    }
-
     private val myPageViewModel: MyPageViewModel by activityViewModels()
+
+    private lateinit var commentData: CommentData
+    private lateinit var editType: String
+    private lateinit var commentPk: String
+    private var postPk = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,68 +32,71 @@ class BottomDialogMyPageFragment(private val postId: Int, private val commentId:
     }
 
     override fun initView() {
+        setEditType()
         setClickListener()
     }
 
+    private fun setEditType() {
+        postPk = arguments?.getInt(POST_PK, 4) ?: 0
+        commentPk = arguments?.getString(COMMENT_PK) ?: ""
+        editType = arguments?.getString(EDIT_TYPE) ?: ""
+
+        if (arguments?.getSerializable(COMMENT_DATA) != null)
+            commentData = arguments?.getSerializable(COMMENT_DATA) as CommentData
+    }
 
     private fun setClickListener() {
         with(binding) {
-
-            when (type) {
-                MANAGEMENT_POST -> {
+            when (editType) {
+                //게시글 edit
+                POST -> {
                     tvBottomDialogMypageEdit.setOnClickListener {
-                        startActivity(Intent(context, CommunityPostCreateActivity::class.java).let {
-                            it.putExtra(CommunityPostCreateActivity.POST_ID, postId)
-                        })
+                        startActivity(
+                            Intent(context, CommunityPostCreateActivity::class.java)
+                                .putExtra(CommunityPostCreateActivity.POST_ID, postPk)
+                        )
                         dialog?.dismiss()
                     }
                     tvBottomDialogMypageDelete.setOnClickListener {
                         setHandler()
-                        myPageViewModel.deleteMyPost(postId)
+                        myPageViewModel.deleteMyPost(postPk)
 
-                        if (type == COMMUNITY_POST)
+                        if (activity is CommunityPostActivity)
                             (activity as CommunityPostActivity).finish()
                     }
                 }
-                MANAGEMENT_COMMENT -> {
+
+                //마이페이지에서 댓글 edit
+                MYPAGE_COMMENT -> {
                     tvBottomDialogMypageEdit.setOnClickListener {
-                        startActivity(Intent(context, CommunityPostActivity::class.java).let {
-                            it.putExtra(CommunityFragment.POST_PK, postId)
-                        })
+                        startActivity(
+                            Intent(context, CommunityPostActivity::class.java)
+                                .putExtra(CommunityFragment.POST_PK, postPk)
+                        )
                         dialog?.dismiss()
                     }
+
                     tvBottomDialogMypageDelete.setOnClickListener {
-                        myPageViewModel.deleteMyComment(postId, commentId)
+                        myPageViewModel.deleteMyComment(postPk, commentPk)
                         setHandler()
                     }
                 }
-                COMMUNITY_POST -> {
-                    tvBottomDialogMypageEdit.setOnClickListener {
-                        startActivity(Intent(context, CommunityPostCreateActivity::class.java).let {
-                            it.putExtra(CommunityPostCreateActivity.POST_ID, postId)
-                        })
-                        dialog?.dismiss()
-                    }
-                    tvBottomDialogMypageDelete.setOnClickListener {
-                        setHandler()
-                        myPageViewModel.deleteMyPost(postId)
-                        if (type == COMMUNITY_POST)
-                            (activity as CommunityPostActivity).finish()
-                    }
-                }
+
+                //커뮤니티 글에서 댓글 edit
                 COMMUNITY_COMMENT -> {
-                    binding.tvBottomDialogMypageEdit.setOnClickListener {
-                        commentUpdateListener(data)
+                    tvBottomDialogMypageEdit.setOnClickListener {
+                        commentData.commentUpdateListener(commentData.data)
                         dialog?.dismiss()
                     }
+
                     tvBottomDialogMypageDelete.setOnClickListener {
-                        commentDeleteListener(data)
+                        commentData.commentDeleteListener(commentData.data)
                         setHandler()
                     }
                 }
-
             }
 
+            //그외 모든 닫기버튼 클릭시
             tvBottomDialogMypageClose.setOnClickListener {
                 setHandler()
             }
@@ -122,10 +109,12 @@ class BottomDialogMyPageFragment(private val postId: Int, private val commentId:
     }
 
     companion object {
-        const val MANAGEMENT_NO_COMMENT = "NO_COMMENT"
-        const val MANAGEMENT_POST = "MANAGEMENT_POST"
-        const val MANAGEMENT_COMMENT = "MANAGEMENT_COMMENT"
-        const val COMMUNITY_POST = "COMMUNITY_POST"
-        const val COMMUNITY_COMMENT = "COMMUNITY_COMMENT"
+        const val EDIT_TYPE = "EDIT_TYPE"
+        const val POST = "POST"
+        const val MYPAGE_COMMENT = "MYPAGE_COMMENT"
+        const val COMMUNITY_COMMENT = "POST_COMMENT"
+        const val COMMENT_PK = "COMMENT_PK"
+        const val POST_PK = "POST_PK"
+        const val COMMENT_DATA = "COMMENT_DATA"
     }
 }
