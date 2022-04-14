@@ -4,9 +4,11 @@ import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
 import com.fork.spoonfeed.data.remote.model.community.ResponseCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponseDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePatchCommentData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 import retrofit2.http.*
 
 interface CommentService {
@@ -34,4 +36,12 @@ interface CommentService {
         @Path("pk") pk: Int,
         @Body body: RequestDeleteCommentData
     ): ResponseDeleteCommentData
+
+    @POST("comments/{pk}/report")
+    suspend fun postCommentReport(
+        @Header("access_token") accessToken: String = UserData.accessToken!!,
+        @Header("platform") platform: String = UserData.platform!!,
+        @Path("pk") commentPk: Int,
+        @Body body: RequestPostReportData
+    ) : ResponsePostReportData
 }
