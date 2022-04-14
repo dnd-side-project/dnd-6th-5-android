@@ -9,9 +9,14 @@ import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.policy.RequestPolicyLikeData
 import com.fork.spoonfeed.data.remote.model.user.RequestQuestionData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
-import com.fork.spoonfeed.domain.repository.*
+import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
+import com.fork.spoonfeed.domain.repository.AuthRepository
+import com.fork.spoonfeed.domain.repository.CommentRepository
+import com.fork.spoonfeed.domain.repository.PolicyRepository
+import com.fork.spoonfeed.domain.repository.PostRepository
+import com.fork.spoonfeed.domain.repository.QuestionRepository
+import com.fork.spoonfeed.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

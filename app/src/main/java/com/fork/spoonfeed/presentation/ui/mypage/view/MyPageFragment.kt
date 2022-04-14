@@ -1,25 +1,20 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
-import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
-import com.navercorp.nid.oauth.NidOAuthLogin
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
