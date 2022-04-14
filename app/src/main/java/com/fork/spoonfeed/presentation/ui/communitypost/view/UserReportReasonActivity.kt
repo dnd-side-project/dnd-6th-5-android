@@ -8,36 +8,31 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityUserReportReasonBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.ReportViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUserReportReasonBinding>(R.layout.activity_user_report_reason) {
-    private val communityPostViewModel: CommunityPostViewModel by viewModels()
+
+    private val reportViewModel: ReportViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.userReportActivity = this
-        binding.communityPostViewModel = communityPostViewModel
+        binding.reportViewModel = reportViewModel
         initView()
     }
 
     override fun initView() {
         setObserve()
-        initData()
         setBackBtnClickListener()
     }
 
-    private fun initData() {
-        val reportedPostPk = intent.getIntExtra("postPk", 0)
-        communityPostViewModel.setReportedPostPk(reportedPostPk)
-    }
-
     private fun setObserve() {
-        communityPostViewModel.isUserReportSuccess.observe(this) { isUserReportSuccess ->
+        reportViewModel.isPostReportSuccess.observe(this) { isUserReportSuccess ->
             if (isUserReportSuccess) {
-                Toast.makeText(this, "게시물 신고가 완료되었습니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "신고가 완료되었습니다.", Toast.LENGTH_LONG).show()
                 moveToCommunityFragment()
             }
         }

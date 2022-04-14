@@ -8,8 +8,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="communityPostViewModel"
-            type="com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel" />
+            name="reportViewModel"
+            type="com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.ReportViewModel" />
 
         <variable
             name="userReportActivity"
@@ -86,9 +86,9 @@
 
                 <ImageButton
                     android:id="@+id/ctv_user_report_reason_one"
-                    isSelected="@{communityPostViewModel.reportReasonOneCheck}"
+                    isSelected="@{reportViewModel.reportReasonOneCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_ONE}"
-                    viewModel="@{communityPostViewModel}"
+                    viewModel="@{reportViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_selector_user_report"
@@ -121,9 +121,9 @@
 
                 <ImageButton
                     android:id="@+id/ctv_user_report_reason_two"
-                    isSelected="@{communityPostViewModel.reportReasonTwoCheck}"
+                    isSelected="@{reportViewModel.reportReasonTwoCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_TWO}"
-                    viewModel="@{communityPostViewModel}"
+                    viewModel="@{reportViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_selector_user_report"
@@ -155,9 +155,9 @@
 
                 <ImageButton
                     android:id="@+id/ctv_user_report_reason_three"
-                    isSelected="@{communityPostViewModel.reportReasonThreeCheck}"
+                    isSelected="@{reportViewModel.reportReasonThreeCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_THREE}"
-                    viewModel="@{communityPostViewModel}"
+                    viewModel="@{reportViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_selector_user_report"
@@ -189,9 +189,9 @@
 
                 <ImageButton
                     android:id="@+id/ctv_user_report_reason_four"
-                    isSelected="@{communityPostViewModel.reportReasonFourCheck}"
+                    isSelected="@{reportViewModel.reportReasonFourCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_FOUR}"
-                    viewModel="@{communityPostViewModel}"
+                    viewModel="@{reportViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_selector_user_report"
@@ -223,9 +223,9 @@
 
                 <ImageButton
                     android:id="@+id/ctv_user_report_reason_five"
-                    isSelected="@{communityPostViewModel.reportReasonFiveCheck}"
+                    isSelected="@{reportViewModel.reportReasonFiveCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_FIVE}"
-                    viewModel="@{communityPostViewModel}"
+                    viewModel="@{reportViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_selector_user_report"
@@ -257,9 +257,9 @@
 
                 <ImageButton
                     android:id="@+id/ctv_user_report_reason_six"
-                    isSelected="@{communityPostViewModel.reportReasonSixCheck}"
+                    isSelected="@{reportViewModel.reportReasonSixCheck}"
                     reasonNumber="@{userReportActivity.REPORT_REASON_SIX}"
-                    viewModel="@{communityPostViewModel}"
+                    viewModel="@{reportViewModel}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_selector_user_report"
@@ -289,9 +289,9 @@
             android:layout_height="56dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@{communityPostViewModel.isReportReasonValid ? @color/user_report : @color/gray03}"
-            android:enabled="@{communityPostViewModel.isReportReasonValid}"
-            android:onClick="@{()->communityPostViewModel.userReport()}"
+            android:backgroundTint="@{reportViewModel.isReportReasonValid ? @color/user_report : @color/gray03}"
+            android:enabled="@{reportViewModel.isReportReasonValid}"
+            android:onClick="@{()->reportViewModel.userReport()}"
             android:text="@string/user_report_reason_confirm"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -16,6 +16,7 @@ import com.fork.spoonfeed.domain.model.AgeInputType
 import com.fork.spoonfeed.domain.model.ChipInputType
 import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.ReportViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel
 import com.google.android.material.chip.ChipGroup
@@ -118,12 +119,12 @@ fun addTextChangeListener(view: EditText, viewModel: ViewModel, ageInputType: Ag
 fun setOnCheckedChanged(view: ImageButton, viewModel: ViewModel, reasonNumber: String,selected: Boolean) {
     view.setOnClickListener {
         when (reasonNumber) {
-            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? CommunityPostViewModel)?.setReportReasonOneStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? CommunityPostViewModel)?.setReportReasonTwoStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? CommunityPostViewModel)?.setReportReasonThreeStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_FOUR-> (viewModel as? CommunityPostViewModel)?.setReportReasonFourStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? CommunityPostViewModel)?.setReportReasonFiveStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? CommunityPostViewModel)?.setReportReasonSixStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? ReportViewModel)?.setReportReasonOneStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? ReportViewModel)?.setReportReasonTwoStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? ReportViewModel)?.setReportReasonThreeStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_FOUR-> (viewModel as? ReportViewModel)?.setReportReasonFourStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? ReportViewModel)?.setReportReasonFiveStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? ReportViewModel)?.setReportReasonSixStatus(!view.isSelected)
         }
     }
     view.isSelected = selected
