@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -10,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.databinding.ItemCommunityPostCommentBinding
+import com.fork.spoonfeed.domain.model.CommentData
 import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 
 class CommentAdapter(
@@ -50,7 +52,7 @@ class CommentAdapter(
                 if (ivItemEdit.isVisible) {
                     ivItemEdit.setOnClickListener {
                         showBottomDialog(
-                            0, commentResponseData.id.toString(), commentResponseData,
+                          commentResponseData.id.toString(), commentResponseData,
                             commentUpdateListener,
                             commentDeleteListener
                         )
@@ -62,17 +64,21 @@ class CommentAdapter(
         }
 
         private fun showBottomDialog(
-            postId: Int, commentId: String, data: ResponsePostData.Data.Comment,
+        commentPk: String, data: ResponsePostData.Data.Comment,
             commentUpdateListener: (ResponsePostData.Data.Comment) -> (Unit),
             commentDeleteListener: (ResponsePostData.Data.Comment) -> (Unit)
         ) {
-            val bottomSheetFragment = BottomDialogMyPageFragment(
-                postId, commentId, BottomDialogMyPageFragment.COMMUNITY_COMMENT, data,
-                commentUpdateListener,
-                commentDeleteListener
-            )
 
-            bottomSheetFragment.show(supportFragmentManager, bottomSheetFragment.tag)
+            val bottomSheetFragment = BottomDialogMyPageFragment()
+            bottomSheetFragment.arguments = Bundle().apply {
+                putString(BottomDialogMyPageFragment.COMMENT_PK, commentPk)
+                putString(BottomDialogMyPageFragment.EDIT_TYPE, BottomDialogMyPageFragment.COMMUNITY_COMMENT)
+                putSerializable(BottomDialogMyPageFragment.COMMENT_DATA, CommentData(data, commentUpdateListener, commentDeleteListener))
+            }
+            bottomSheetFragment.show(
+                supportFragmentManager,
+                bottomSheetFragment.tag
+            )
         }
     }
 
@@ -94,3 +100,4 @@ class CommentAdapter(
         }
     }
 }
+

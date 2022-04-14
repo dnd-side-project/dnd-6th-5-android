@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.community.adapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -63,6 +64,19 @@ class PostAdapter(
         holder.onBind(currentList[position])
     }
 
+
+    private fun showBottomDialog(postId: Int) {
+        val bottomSheetFragment = BottomDialogMyPageFragment()
+        bottomSheetFragment.arguments = Bundle().apply {
+            putInt(BottomDialogMyPageFragment.POST_PK, postId)
+            putString(BottomDialogMyPageFragment.EDIT_TYPE, BottomDialogMyPageFragment.POST)
+        }
+        bottomSheetFragment.show(
+            supportFragmentManager,
+            bottomSheetFragment.tag
+        )
+    }
+
     companion object {
         val diffUtil = object : DiffUtil.ItemCallback<ResponsePostAllData.Data.Post>() {
             override fun areContentsTheSame(
@@ -77,13 +91,5 @@ class PostAdapter(
             ) =
                 oldItem.id == newItem.id
         }
-    }
-
-    private fun showBottomDialog(postId: Int) {
-        val bottomSheetFragment = BottomDialogMyPageFragment(postId, BottomDialogMyPageFragment.MANAGEMENT_NO_COMMENT, BottomDialogMyPageFragment.MANAGEMENT_POST)
-        bottomSheetFragment.show(
-            supportFragmentManager,
-            bottomSheetFragment.tag
-        )
     }
 }
