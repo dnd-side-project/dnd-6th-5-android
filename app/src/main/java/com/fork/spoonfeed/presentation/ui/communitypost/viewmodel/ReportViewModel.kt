@@ -8,8 +8,11 @@ import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.local.dao.PostReportDao
 import com.fork.spoonfeed.data.local.entity.PostReportData
 import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
+import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
 import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
+import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity.Companion.USER_REPORT_TYPE_COMMENT
+import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity.Companion.USER_REPORT_TYPE_POST
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -18,10 +21,12 @@ import javax.inject.Inject
 class ReportViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val postRepository: PostRepository,
+    private val commentRepository: CommentRepository,
     private val dataBase: PostReportDao
 ) : ViewModel() {
 
     private val _reportedPostPk = savedStateHandle.get<Int>("postPk")
+    private val _reportedCommentPk = savedStateHandle.get<Int>("commentPk")
 
     private val _reportReasonOneCheck = MutableLiveData<Boolean>()
     val reportReasonOneCheck: LiveData<Boolean> = _reportReasonOneCheck
@@ -44,8 +49,9 @@ class ReportViewModel @Inject constructor(
     private val _isReportReasonValid = MutableLiveData(false)
     val isReportReasonValid: LiveData<Boolean> = _isReportReasonValid
 
-    private val _isPostReportSuccess = MutableLiveData<Boolean>()
-    val isPostReportSuccess: LiveData<Boolean> = _isPostReportSuccess
+    // success, report type
+    private val _isReportSuccess = MutableLiveData<Pair<Boolean, String>>()
+    val isReportSuccess: LiveData<Pair<Boolean, String>> = _isReportSuccess
 
     fun setReportReasonOneStatus(status: Boolean) {
         _reportReasonOneCheck.value = status
@@ -127,7 +133,6 @@ class ReportViewModel @Inject constructor(
     }
 
     fun userReport() {
-        val reportPostPk = _reportedPostPk ?: return
         var reportReason = ""
 
         if (_reportReasonOneCheck.value == true) reportReason =
@@ -142,16 +147,39 @@ class ReportViewModel @Inject constructor(
             UserReportReasonActivity.REPORT_REASON_FIVE
         if (_reportReasonSixCheck.value == true) reportReason =
             UserReportReasonActivity.REPORT_REASON_SIX
+
+        _reportedPostPk?.let {
+            reportPost(it, reportReason)
+        } ?: _reportedCommentPk?.let {
+            reportComment(it, reportReason)
+        }
+    }
+
+    private fun reportPost(postPk: Int, reportReason: String) {
         viewModelScope.launch {
             kotlin.runCatching {
-                postRepository.postReport(
-                    reportPostPk,
+                postRepository.postReport(postPk, RequestPostReportData(reason = reportReason))
+            }.onSuccess {
+                _isReportSuccess.value = true to USER_REPORT_TYPE_POST
+                insertReportedPostPk()
+            }.onFailure {
+                _isReportSuccess.value = false to USER_REPORT_TYPE_POST
+            }
+        }
+    }
+
+    private fun reportComment(commentPk: Int, reportReason: String) {
+        viewModelScope.launch {
+            kotlin.runCatching {
+                commentRepository.reportComment(
+                    commentPk,
                     RequestPostReportData(reason = reportReason)
                 )
             }.onSuccess {
-                _isPostReportSuccess.value = true
+                _isReportSuccess.value = true to USER_REPORT_TYPE_COMMENT
                 insertReportedPostPk()
             }.onFailure {
+                _isReportSuccess.value = false to USER_REPORT_TYPE_COMMENT
             }
         }
     }

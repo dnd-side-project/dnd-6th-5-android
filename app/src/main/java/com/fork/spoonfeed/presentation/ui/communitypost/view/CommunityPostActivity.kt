@@ -204,6 +204,7 @@ class CommunityPostActivity :
 
     companion object {
         const val REPORT_POST_PK = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_POST_PK"
+        const val REPORT_COMMENT_PK = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_COMMENT_PK"
     }
 }
 

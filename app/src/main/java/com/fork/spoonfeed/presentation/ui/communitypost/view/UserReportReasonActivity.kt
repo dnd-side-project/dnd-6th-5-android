@@ -12,7 +12,8 @@ import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.ReportViewMode
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUserReportReasonBinding>(R.layout.activity_user_report_reason) {
+class UserReportReasonActivity :
+    BaseViewUtil.BaseAppCompatActivity<ActivityUserReportReasonBinding>(R.layout.activity_user_report_reason) {
 
     private val reportViewModel: ReportViewModel by viewModels()
 
@@ -30,10 +31,13 @@ class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUser
     }
 
     private fun setObserve() {
-        reportViewModel.isPostReportSuccess.observe(this) { isUserReportSuccess ->
-            if (isUserReportSuccess) {
+        reportViewModel.isReportSuccess.observe(this) { isUserReportSuccess ->
+            if (isUserReportSuccess.first) {
                 Toast.makeText(this, "신고가 완료되었습니다.", Toast.LENGTH_LONG).show()
-                moveToCommunityFragment()
+                when (isUserReportSuccess.second) {
+                    USER_REPORT_TYPE_POST -> moveToCommunityFragment()
+                    USER_REPORT_TYPE_COMMENT -> finish()
+                }
             }
         }
     }
@@ -59,7 +63,12 @@ class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUser
         const val REPORT_REASON_FOUR = "개인정보 노출"
         const val REPORT_REASON_FIVE = "부적절한 닉네임"
         const val REPORT_REASON_SIX = "주제와 무관한 내용"
-        const val USER_REPORT_KEY = "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_KEY"
+        const val USER_REPORT_KEY =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_KEY"
         const val USER_REPORT = "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT"
+        const val USER_REPORT_TYPE_POST =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_TYPE_POST"
+        const val USER_REPORT_TYPE_COMMENT =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_TYPE_COMMENT"
     }
 }
