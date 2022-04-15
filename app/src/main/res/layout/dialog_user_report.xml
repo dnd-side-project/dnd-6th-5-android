@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_white_radius_20dp">
+
+        <ImageView
+            android:id="@+id/iv_user_report"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="24dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_report_user"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_user_report_title"
+            style="@style/TextView.Heading.Bold.16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="해당 유저 차단"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_user_report" />
+
+        <TextView
+            android:id="@+id/tv_user_report_desc"
+            style="@style/TextView.Label.Regular.14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:text="해당 유저의 게시글과 댓글이 \n보여지지 않아요. 차단할까요?"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_report_title" />
+
+        <Button
+            android:id="@+id/btn_user_report_cancel"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/selector_rewrite"
+            android:fontFamily="@font/suit_bold"
+            android:includeFontPadding="false"
+            android:text="@string/dialog_logout_cancle"
+            android:textColor="@color/gray03"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_user_report_confirm"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_user_report_desc" />
+
+        <Button
+            android:id="@+id/btn_user_report_confirm"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="116dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/selector_rewrite"
+            android:fontFamily="@font/suit_bold"
+            android:includeFontPadding="false"
+            android:text="차단하기"
+            android:textColor="@color/user_report"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_user_report_cancel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_user_report_cancel"
+            app:layout_constraintTop_toTopOf="@id/btn_user_report_cancel"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

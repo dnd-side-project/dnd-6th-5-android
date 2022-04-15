@@ -55,7 +55,8 @@ class CommunityPostActivity :
     }
 
     private fun setCommentAdapter(userData: ResponseUserData.Data.User) {
-        commentAdapter = CommentAdapter(supportFragmentManager, userData, ::commentUpdate, ::commentDelete)
+        commentAdapter =
+            CommentAdapter(supportFragmentManager, userData, ::commentUpdate, ::commentDelete)
         binding.rvCommunityPostComment.adapter = commentAdapter
         binding.rvCommunityPostComment.addItemDecoration(ItemDecoration())
         binding.tvCommunityPostCommentCount.text = commentAdapter.itemCount.toString()
@@ -150,6 +151,18 @@ class CommunityPostActivity :
         communityPostViewModel.deleteCommentSuccess.observe(this) {
             communityPostViewModel.initData()
         }
+        communityPostViewModel.isReportSuccess.observe(this) {
+            if (it.first) {
+                when (it.second) {
+                    REPORT_POST -> {
+                        finish()
+                    }
+                    REPORT_COMMENT -> {
+                        communityPostViewModel.initData()
+                    }
+                }
+            }
+        }
     }
 
     private fun showKeyboard() {
@@ -203,8 +216,13 @@ class CommunityPostActivity :
     }
 
     companion object {
-        const val REPORT_POST_PK = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_POST_PK"
-        const val REPORT_COMMENT_PK = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_COMMENT_PK"
+        const val REPORT_POST = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_POST"
+        const val REPORT_COMMENT =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_COMMENT"
+        const val REPORT_POST_PK =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_POST_PK"
+        const val REPORT_COMMENT_PK =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_COMMENT_PK"
     }
 }
 

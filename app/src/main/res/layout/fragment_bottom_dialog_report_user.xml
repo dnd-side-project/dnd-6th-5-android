@@ -11,45 +11,66 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_white_radius_top_20dp"
+        android:paddingHorizontal="@dimen/policy_filter_horizontal_margin_24"
+        android:paddingVertical="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="18dp"
-            android:layout_marginBottom="6dp"
-            android:paddingHorizontal="30dp"
-            android:paddingVertical="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+        <ImageView
+            android:id="@+id/iv_report"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_report_user"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageView
-                android:id="@+id/iv_user_report"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="12dp"
-                android:src="@drawable/ic_report_user"
-                app:layout_constraintBottom_toBottomOf="@+id/tv_bottom_dialog_report_user"
-                app:layout_constraintEnd_toStartOf="@+id/tv_bottom_dialog_report_user"
-                app:layout_constraintTop_toTopOf="@+id/tv_bottom_dialog_report_user" />
+        <TextView
+            android:id="@+id/tv_bottom_dialog_report_content"
+            style="@style/TextView.Label.Medium.14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="해당 글 신고"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/iv_report" />
 
+        <View
+            android:id="@+id/view_between_content_and_user"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray02"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_report_content" />
 
-            <TextView
-                android:id="@+id/tv_bottom_dialog_report_user"
-                style="@style/TextView.Label.Bold.16"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/bottom_dialog_report_user"
-                android:textColor="@color/user_report"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/tv_bottom_dialog_report_user"
+            style="@style/TextView.Label.Medium.14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="해당 유저 차단"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/view_between_content_and_user" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/view_between_user_and_close"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:background="@color/gray02"
+            app:layout_constraintTop_toBottomOf="@id/tv_bottom_dialog_report_user" />
+
+        <TextView
+            android:id="@+id/tv_bottom_dialog_report_close"
+            style="@style/TextView.Label.Bold.16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="닫기"
+            android:textAlignment="center"
+            app:layout_constraintTop_toBottomOf="@id/view_between_user_and_close" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
