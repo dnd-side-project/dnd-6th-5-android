@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.local.database.AppDatabase
 import com.fork.spoonfeed.databinding.FragmentMyPageBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
@@ -16,6 +17,9 @@ import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout.fragment_my_page) {
@@ -39,13 +43,20 @@ class MyPageFragment : BaseViewUtil.BaseFragment<FragmentMyPageBinding>(R.layout
     private fun setObserver() {
         myPageViewModel.logoutWithKakaoSuccess.observe(viewLifecycleOwner) { logoutSuccess ->
             if (logoutSuccess) {
+                clearDatabase()
                 moveToOnBoardingActivity()
             }
         }
         myPageViewModel.logoutWithNaverSuccess.observe(viewLifecycleOwner) { logoutSuccess ->
             if (logoutSuccess) {
+                clearDatabase()
                 moveToOnBoardingActivity()
             }
+        }
+    }
+    private fun clearDatabase() {
+        CoroutineScope(Dispatchers.IO).launch {
+            AppDatabase.getInstance(requireContext()).clearAllTables()
         }
     }
 

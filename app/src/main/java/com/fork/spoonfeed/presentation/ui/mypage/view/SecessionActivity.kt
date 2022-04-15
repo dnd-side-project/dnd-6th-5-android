@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.local.database.AppDatabase
 import com.fork.spoonfeed.databinding.ActivitySecessionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
@@ -15,6 +16,9 @@ import com.fork.spoonfeed.presentation.ui.onboarding.view.OnboardingActivity
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBinding>(R.layout.activity_secession) {
@@ -57,6 +61,7 @@ class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBi
         myPageViewModel.deleteWithKakaoSuccess.observe(this) { deleteWithKakaoSuccess ->
             if (deleteWithKakaoSuccess) {
                 dialog.dismiss()
+                clearDatabase()
                 moveToOnBoardingActivity()
             }
         }
@@ -64,6 +69,7 @@ class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBi
         myPageViewModel.deleteWithNaverSuccess.observe(this) { deleteWithKakaoSuccess ->
             if (deleteWithKakaoSuccess) {
                 dialog.dismiss()
+                clearDatabase()
                 moveToOnBoardingActivity()
             }
         }
@@ -74,5 +80,11 @@ class SecessionActivity : BaseViewUtil.BaseAppCompatActivity<ActivitySecessionBi
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         })
+    }
+
+    private fun clearDatabase() {
+        CoroutineScope(Dispatchers.IO).launch {
+            AppDatabase.getInstance(baseContext).clearAllTables()
+        }
     }
 }

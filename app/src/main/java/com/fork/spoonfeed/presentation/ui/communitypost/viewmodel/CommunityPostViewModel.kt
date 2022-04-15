@@ -6,6 +6,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
+import com.fork.spoonfeed.data.local.dao.CommentReportDao
 import com.fork.spoonfeed.data.local.dao.PostReportDao
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
@@ -25,7 +26,8 @@ class CommunityPostViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val postRepository: PostRepository,
     private val commentRepository: CommentRepository,
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val commentReportDao: CommentReportDao
 ) : ViewModel() {
 
     private val pk = savedStateHandle.get<Int>(CommunityFragment.POST_PK)
@@ -63,9 +65,12 @@ class CommunityPostViewModel @Inject constructor(
     fun initData() {
         viewModelScope.launch {
             if (pk != null) {
-                postRepository.getPostDetail(pk).let {
-                    _postDetailData.value = it.data.post
-                    _postCommentData.value = it.data.comment
+                val reportedCommentAllData = commentReportDao.getAllReportedComment().map { it.commentPk }
+                postRepository.getPostDetail(pk).let { postData ->
+                    _postDetailData.value = postData.data.post
+                    _postCommentData.value = postData.data.comment.filterNot { commentData ->
+                        reportedCommentAllData.contains(commentData.id)
+                    }
                 }
             }
         }

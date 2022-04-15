@@ -5,7 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fork.spoonfeed.data.local.dao.CommentReportDao
 import com.fork.spoonfeed.data.local.dao.PostReportDao
+import com.fork.spoonfeed.data.local.entity.CommentReportData
 import com.fork.spoonfeed.data.local.entity.PostReportData
 import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
 import com.fork.spoonfeed.domain.repository.CommentRepository
@@ -22,7 +24,8 @@ class ReportViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
     private val postRepository: PostRepository,
     private val commentRepository: CommentRepository,
-    private val dataBase: PostReportDao
+    private val postReportDao: PostReportDao,
+    private val commentReportDao: CommentReportDao
 ) : ViewModel() {
 
     private val _reportedPostPk = savedStateHandle.get<Int>("postPk")
@@ -177,7 +180,7 @@ class ReportViewModel @Inject constructor(
                 )
             }.onSuccess {
                 _isReportSuccess.value = true to USER_REPORT_TYPE_COMMENT
-                insertReportedPostPk()
+                insertReportedCommentPk()
             }.onFailure {
                 _isReportSuccess.value = false to USER_REPORT_TYPE_COMMENT
             }
@@ -187,11 +190,14 @@ class ReportViewModel @Inject constructor(
     private fun insertReportedPostPk() {
         val reportedPostPk = _reportedPostPk ?: return
         viewModelScope.launch {
-            kotlin.runCatching {
-                dataBase.insertReportedPost(PostReportData(postPk = reportedPostPk))
-            }.onSuccess {
-            }.onFailure {
-            }
+            postReportDao.insertReportedPost(PostReportData(postPk = reportedPostPk))
+        }
+    }
+
+    private fun insertReportedCommentPk() {
+        val reportedCommentPk = _reportedCommentPk ?: return
+        viewModelScope.launch {
+            commentReportDao.insertReportedComment(CommentReportData(commentPk = reportedCommentPk))
         }
     }
 }
