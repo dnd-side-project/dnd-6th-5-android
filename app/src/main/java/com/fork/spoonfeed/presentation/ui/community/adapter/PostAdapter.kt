@@ -1,6 +1,5 @@
 package com.fork.spoonfeed.presentation.ui.community.adapter
 
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -12,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.databinding.ItemPostBinding
-import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 
 class PostAdapter(
@@ -34,20 +32,13 @@ class PostAdapter(
                 tvItemCreated.text = data.createdAt
                 tvItemPolicyExplain.text = data.content
                 tvItemCommentCount.text = data.commentCount
-
+                binding.ivItemPostEdit.isVisible = false
                 if (data.category == "금융") {
                     tvItemCategory.setBackgroundResource(R.drawable.bg_finance_purple_radius_4dp)
                 }
 
-                ivItemPostEdit.setOnClickListener {
-                    showBottomDialog(data.id)
-                }
-
                 ctlItem.setOnClickListener {
                     clickListener(data)
-                }
-                myPageViewModel.userNickName.observe(adapterLifecycleOwner) {
-                    binding.ivItemPostEdit.isVisible = data.author == it
                 }
             }
         }
@@ -62,19 +53,6 @@ class PostAdapter(
 
     override fun onBindViewHolder(holder: CommunityViewHolder, position: Int) {
         holder.onBind(currentList[position])
-    }
-
-
-    private fun showBottomDialog(postId: Int) {
-        val bottomSheetFragment = BottomDialogMyPageFragment()
-        bottomSheetFragment.arguments = Bundle().apply {
-            putInt(BottomDialogMyPageFragment.POST_PK, postId)
-            putString(BottomDialogMyPageFragment.EDIT_TYPE, BottomDialogMyPageFragment.POST)
-        }
-        bottomSheetFragment.show(
-            supportFragmentManager,
-            bottomSheetFragment.tag
-        )
     }
 
     companion object {
