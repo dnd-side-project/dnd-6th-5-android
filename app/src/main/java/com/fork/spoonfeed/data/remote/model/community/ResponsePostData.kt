@@ -15,6 +15,7 @@ data class ResponsePostData(
             @SerializedName("category") val category: String,
             @SerializedName("content") val content: String,
             @SerializedName("author") val author: String,
+            @SerializedName("authorId") val authorId: Int,
             @SerializedName("age") val age: String,
             @SerializedName("maritalStatus") val maritalStatus: String,
             @SerializedName("workStatus") val workStatus: String,
@@ -28,10 +29,12 @@ data class ResponsePostData(
             @SerializedName("createdAt") val createdAt: String,
             @SerializedName("updatedAt") val updatedAt: String,
         )
+
         data class Comment(
             @SerializedName("id") val id: Int,
             @SerializedName("content") val content: String,
             @SerializedName("commenter") val commenter: String,
+            @SerializedName("commenterId") val commenterId: Int,
             @SerializedName("createdAt") val createdAt: String,
             @SerializedName("updatedAt") val updatedAt: String,
         )

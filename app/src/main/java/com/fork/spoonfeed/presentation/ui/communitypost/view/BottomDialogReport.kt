@@ -1,23 +1,28 @@
 package com.fork.spoonfeed.presentation.ui.communitypost.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
+import android.widget.Button
+import androidx.fragment.app.activityViewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentBottomDialogReportUserBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
+import com.fork.spoonfeed.presentation.util.showFloatingDialog
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.properties.Delegates
 
 @AndroidEntryPoint
 class BottomDialogReport :
     BaseViewUtil.BaseCategoryBottomDialogFragment<FragmentBottomDialogReportUserBinding>(R.layout.fragment_bottom_dialog_report_user) {
 
-    private var postPk : Int? = null
-    private var commentPk : Int? = null
+    private val communityPostViewModel: CommunityPostViewModel by activityViewModels()
+
+    private var postPk: Int? = null
+    private var commentPk: Int? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -32,15 +37,11 @@ class BottomDialogReport :
             commentPk = if (it == 0) null else it
         }
         setReportClickListener()
-    }
-
-    private fun setHandler() {
-        val handler = Handler(Looper.getMainLooper())
-        handler.postDelayed({ dialog?.dismiss() }, 140)
+        setObserver()
     }
 
     private fun setReportClickListener() {
-        binding.tvBottomDialogReportUser.setOnClickListener {
+        binding.tvBottomDialogReportContent.setOnClickListener {
             startActivity(
                 Intent(requireContext(), UserReportReasonActivity::class.java).apply {
                     postPk?.let {
@@ -52,6 +53,41 @@ class BottomDialogReport :
                 }
             )
             setHandler()
+        }
+        binding.tvBottomDialogReportUser.setOnClickListener {
+            showUserReportDialog()
+        }
+        binding.tvBottomDialogReportClose.setOnClickListener {
+            setHandler()
+        }
+    }
+
+    private fun setHandler() {
+        val handler = Handler(Looper.getMainLooper())
+        handler.postDelayed({ dialog?.dismiss() }, 140)
+    }
+
+    private fun setObserver() {
+        communityPostViewModel.isReportSuccess.observe(this) {
+            if (it.first) {
+                setHandler()
+            }
+        }
+    }
+
+    @SuppressLint("ResourceType")
+    private fun showUserReportDialog() {
+        val dialog = requireContext().showFloatingDialog(R.layout.dialog_user_report)
+        val confirmBtn = dialog.findViewById<Button>(R.id.btn_user_report_confirm)
+        val cancelBtn = dialog.findViewById<Button>(R.id.btn_user_report_cancel)
+
+        confirmBtn.setOnClickListener {
+            communityPostViewModel.reportUser(postPk != null, commentPk)
+            dialog.dismiss()
+        }
+
+        cancelBtn.setOnClickListener {
+            dialog.dismiss()
         }
     }
 }

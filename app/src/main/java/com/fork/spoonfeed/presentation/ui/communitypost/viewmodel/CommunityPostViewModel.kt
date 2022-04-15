@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.data.local.dao.CommentReportDao
-import com.fork.spoonfeed.data.local.dao.PostReportDao
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
@@ -17,6 +16,8 @@ import com.fork.spoonfeed.domain.repository.CommentRepository
 import com.fork.spoonfeed.domain.repository.PostRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity.Companion.REPORT_COMMENT
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity.Companion.REPORT_POST
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -56,6 +57,9 @@ class CommunityPostViewModel @Inject constructor(
     private val _deleteCommentSuccess = MutableLiveData(false)
     val deleteCommentSuccess: LiveData<Boolean> = _deleteCommentSuccess
 
+    private val _isReportSuccess = MutableLiveData<Pair<Boolean, String>>()
+    val isReportSuccess: LiveData<Pair<Boolean, String>> = _isReportSuccess
+
     fun initUserData() {
         viewModelScope.launch {
             _userData.value = userRepository.getUserData().data.user
@@ -65,7 +69,8 @@ class CommunityPostViewModel @Inject constructor(
     fun initData() {
         viewModelScope.launch {
             if (pk != null) {
-                val reportedCommentAllData = commentReportDao.getAllReportedComment().map { it.commentPk }
+                val reportedCommentAllData =
+                    commentReportDao.getAllReportedComment().map { it.commentPk }
                 postRepository.getPostDetail(pk).let { postData ->
                     _postDetailData.value = postData.data.post
                     _postCommentData.value = postData.data.comment.filterNot { commentData ->
@@ -126,4 +131,44 @@ class CommunityPostViewModel @Inject constructor(
         }
     }
 
+    fun reportUser(isPostWriterReport: Boolean, commentId: Int?) {
+        when (isPostWriterReport) {
+            true -> {
+                postWriterReport()
+            }
+            false -> {
+                commentWriterReport(commentId)
+            }
+        }
+    }
+
+    private fun postWriterReport() {
+        val postWriterId = _postDetailData.value?.authorId ?: return
+        viewModelScope.launch {
+            kotlin.runCatching {
+                userRepository.blockUser(postWriterId)
+            }.onSuccess {
+                _isReportSuccess.value = true to REPORT_POST
+            }.onFailure {
+                _isReportSuccess.value = false to REPORT_POST
+            }
+        }
+    }
+
+    private fun commentWriterReport(commentId: Int?) {
+        val commenterId = _postCommentData.value?.find { it.id == commentId }?.commenterId ?: return
+        viewModelScope.launch {
+            kotlin.runCatching {
+                userRepository.blockUser(commenterId)
+            }.onSuccess {
+                _isReportSuccess.value = if (commenterId == _postDetailData.value?.authorId) {
+                    true to REPORT_POST
+                } else {
+                    true to REPORT_COMMENT
+                }
+            }.onFailure {
+                _isReportSuccess.value = false to REPORT_COMMENT
+            }
+        }
+    }
 }
