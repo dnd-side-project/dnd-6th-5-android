@@ -8,6 +8,7 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
@@ -192,11 +193,18 @@ class CommunityPostActivity :
     }
 
     private fun showUserBottomDialog() {
-        val bottomDialogReportUser = BottomDialogReportUser(communityPostViewModel.getPk()!!)
+        val bottomDialogReportUser = BottomDialogReport().apply {
+            arguments = bundleOf(REPORT_POST_PK to communityPostViewModel.getPk()!!)
+        }
         bottomDialogReportUser.show(
             supportFragmentManager,
             bottomDialogReportUser.tag
         )
+    }
+
+    companion object {
+        const val REPORT_POST_PK = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_POST_PK"
+        const val REPORT_COMMENT_PK = "com.fork.spoonfeed.presentation.ui.communitypost.view REPORT_COMMENT_PK"
     }
 }
 

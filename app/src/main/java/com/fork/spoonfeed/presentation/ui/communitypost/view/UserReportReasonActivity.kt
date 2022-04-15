@@ -8,37 +8,36 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityUserReportReasonBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
-import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
+import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.ReportViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUserReportReasonBinding>(R.layout.activity_user_report_reason) {
-    private val communityPostViewModel: CommunityPostViewModel by viewModels()
+class UserReportReasonActivity :
+    BaseViewUtil.BaseAppCompatActivity<ActivityUserReportReasonBinding>(R.layout.activity_user_report_reason) {
+
+    private val reportViewModel: ReportViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
         binding.userReportActivity = this
-        binding.communityPostViewModel = communityPostViewModel
+        binding.reportViewModel = reportViewModel
         initView()
     }
 
     override fun initView() {
         setObserve()
-        initData()
         setBackBtnClickListener()
     }
 
-    private fun initData() {
-        val reportedPostPk = intent.getIntExtra("postPk", 0)
-        communityPostViewModel.setReportedPostPk(reportedPostPk)
-    }
-
     private fun setObserve() {
-        communityPostViewModel.isUserReportSuccess.observe(this) { isUserReportSuccess ->
-            if (isUserReportSuccess) {
-                Toast.makeText(this, "게시물 신고가 완료되었습니다.", Toast.LENGTH_LONG).show()
-                moveToCommunityFragment()
+        reportViewModel.isReportSuccess.observe(this) { isUserReportSuccess ->
+            if (isUserReportSuccess.first) {
+                Toast.makeText(this, "신고가 완료되었습니다.", Toast.LENGTH_LONG).show()
+                when (isUserReportSuccess.second) {
+                    USER_REPORT_TYPE_POST -> moveToCommunityFragment()
+                    USER_REPORT_TYPE_COMMENT -> finish()
+                }
             }
         }
     }
@@ -64,7 +63,12 @@ class UserReportReasonActivity : BaseViewUtil.BaseAppCompatActivity<ActivityUser
         const val REPORT_REASON_FOUR = "개인정보 노출"
         const val REPORT_REASON_FIVE = "부적절한 닉네임"
         const val REPORT_REASON_SIX = "주제와 무관한 내용"
-        const val USER_REPORT_KEY = "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_KEY"
+        const val USER_REPORT_KEY =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_KEY"
         const val USER_REPORT = "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT"
+        const val USER_REPORT_TYPE_POST =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_TYPE_POST"
+        const val USER_REPORT_TYPE_COMMENT =
+            "com.fork.spoonfeed.presentation.ui.communitypost.view USER_REPORT_TYPE_COMMENT"
     }
 }

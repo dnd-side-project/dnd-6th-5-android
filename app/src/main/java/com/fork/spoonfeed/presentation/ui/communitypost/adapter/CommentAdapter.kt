@@ -3,7 +3,7 @@ package com.fork.spoonfeed.presentation.ui.communitypost.adapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.isVisible
+import androidx.core.os.bundleOf
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -12,6 +12,8 @@ import com.fork.spoonfeed.data.remote.model.community.ResponsePostData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.databinding.ItemCommunityPostCommentBinding
 import com.fork.spoonfeed.domain.model.CommentData
+import com.fork.spoonfeed.presentation.ui.communitypost.view.BottomDialogReport
+import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 
 class CommentAdapter(
@@ -48,14 +50,15 @@ class CommentAdapter(
                 tvItemUserName.text = commentResponseData.commenter
                 tvItemDeadline.text = commentResponseData.createdAt
                 tvItemExplain.text = commentResponseData.content
-                ivItemEdit.isVisible = commentResponseData.commenter == userData.nickname
-                if (ivItemEdit.isVisible) {
-                    ivItemEdit.setOnClickListener {
+                ivItemEdit.setOnClickListener {
+                    if (commentResponseData.commenter == userData.nickname){
                         showBottomDialog(
-                          commentResponseData.id.toString(), commentResponseData,
+                            commentResponseData.id.toString(), commentResponseData,
                             commentUpdateListener,
                             commentDeleteListener
                         )
+                    } else {
+                        showUserBottomDialog(commentResponseData.id)
                     }
                 }
             }
@@ -64,7 +67,7 @@ class CommentAdapter(
         }
 
         private fun showBottomDialog(
-        commentPk: String, data: ResponsePostData.Data.Comment,
+            commentPk: String, data: ResponsePostData.Data.Comment,
             commentUpdateListener: (ResponsePostData.Data.Comment) -> (Unit),
             commentDeleteListener: (ResponsePostData.Data.Comment) -> (Unit)
         ) {
@@ -72,12 +75,28 @@ class CommentAdapter(
             val bottomSheetFragment = BottomDialogMyPageFragment()
             bottomSheetFragment.arguments = Bundle().apply {
                 putString(BottomDialogMyPageFragment.COMMENT_PK, commentPk)
-                putString(BottomDialogMyPageFragment.EDIT_TYPE, BottomDialogMyPageFragment.COMMUNITY_COMMENT)
-                putSerializable(BottomDialogMyPageFragment.COMMENT_DATA, CommentData(data, commentUpdateListener, commentDeleteListener))
+                putString(
+                    BottomDialogMyPageFragment.EDIT_TYPE,
+                    BottomDialogMyPageFragment.COMMUNITY_COMMENT
+                )
+                putSerializable(
+                    BottomDialogMyPageFragment.COMMENT_DATA,
+                    CommentData(data, commentUpdateListener, commentDeleteListener)
+                )
             }
             bottomSheetFragment.show(
                 supportFragmentManager,
                 bottomSheetFragment.tag
+            )
+        }
+
+        private fun showUserBottomDialog(commentPk: Int) {
+            val bottomDialogReportUser = BottomDialogReport().apply {
+                arguments = bundleOf(CommunityPostActivity.REPORT_COMMENT_PK to commentPk)
+            }
+            bottomDialogReportUser.show(
+                supportFragmentManager,
+                bottomDialogReportUser.tag
             )
         }
     }

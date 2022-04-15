@@ -4,9 +4,11 @@ import com.fork.spoonfeed.data.remote.api.community.CommentService
 import com.fork.spoonfeed.data.remote.model.community.RequestCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.RequestPatchCommentData
+import com.fork.spoonfeed.data.remote.model.community.RequestPostReportData
 import com.fork.spoonfeed.data.remote.model.community.ResponseCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponseDeleteCommentData
 import com.fork.spoonfeed.data.remote.model.community.ResponsePatchCommentData
+import com.fork.spoonfeed.data.remote.model.community.ResponsePostReportData
 import javax.inject.Inject
 
 class CommentDataSourceImpl @Inject constructor(private val commentService: CommentService) : CommentDataSource {
@@ -24,5 +26,12 @@ class CommentDataSourceImpl @Inject constructor(private val commentService: Comm
 
     override suspend fun deleteComment(pk: Int, body: RequestDeleteCommentData): ResponseDeleteCommentData {
         return commentService.deleteComment(pk = pk, body = body)
+    }
+
+    override suspend fun reportComment(
+        commentPk: Int,
+        body: RequestPostReportData
+    ): ResponsePostReportData {
+        return commentService.postCommentReport(commentPk = commentPk, body = body)
     }
 }
