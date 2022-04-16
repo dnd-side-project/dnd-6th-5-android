@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ListPopupWindow
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -45,8 +46,10 @@ class CommunityPostCreateActivity :
                             as ResponseUserData.Data.User
                 )
 
-                communityPostCreateViewModel.isValid()
-                setUpdateButtonActive()
+                if (it.data?.getStringExtra(CommunityPostInfoUpdateActivity.INFO_NOT_UPDATE_RESULT_KEY) == null) {
+                    communityPostCreateViewModel.isValid()
+                    setUpdateButtonActive()
+                } else Toast.makeText(this, "상세정보를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
     }
 

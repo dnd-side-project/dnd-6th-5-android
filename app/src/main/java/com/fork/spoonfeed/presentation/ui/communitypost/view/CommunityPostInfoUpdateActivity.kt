@@ -7,12 +7,7 @@ import android.widget.Button
 import androidx.activity.viewModels
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityCommunityPostInfoUpdateBinding
-import com.fork.spoonfeed.domain.model.AnnualIncome
-import com.fork.spoonfeed.domain.model.CompanySize
-import com.fork.spoonfeed.domain.model.HomeOwnership
-import com.fork.spoonfeed.domain.model.HouseHolderStatus
-import com.fork.spoonfeed.domain.model.MedianIncome
-import com.fork.spoonfeed.domain.model.NetWorth
+import com.fork.spoonfeed.domain.model.*
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostInfoUpdateViewModel
@@ -204,11 +199,9 @@ class CommunityPostInfoUpdateActivity :
             )
         }
         binding.mtCommunityPostInfoUpdateTitle.setNavigationOnClickListener {
-            setResult(RESULT_OK, Intent().apply {
-                putExtra(INFO_UPDATE_RESULT, communityPostInfoUpdateViewModel.updatedUserData)
-            })
-            finish()
+            onBackPressed()
         }
+
         binding.mbCommunityPostInfoUpdate.setOnClickListener {
             setResult(RESULT_OK, Intent().apply {
                 putExtra(INFO_UPDATE_RESULT, communityPostInfoUpdateViewModel.updatedUserData)
@@ -237,7 +230,18 @@ class CommunityPostInfoUpdateActivity :
         }
     }
 
+    override fun onBackPressed() {
+        setResult(RESULT_OK, Intent().apply {
+            putExtra(INFO_UPDATE_RESULT, communityPostInfoUpdateViewModel.initialUserInfo.value)
+            putExtra(INFO_NOT_UPDATE_RESULT_KEY, INFO_NOT_UPDATE_RESULT)
+        })
+        finish()
+        super.onBackPressed()
+    }
+
     companion object {
         const val INFO_UPDATE_RESULT = "com.fork.spoonfeed.presentation.ui.communitypost.view"
+        const val INFO_NOT_UPDATE_RESULT_KEY = "INFO_NOT_UPDATE_RESULT_KEY"
+        const val INFO_NOT_UPDATE_RESULT = "INFO_NOT_UPDATE_RESULT"
     }
 }

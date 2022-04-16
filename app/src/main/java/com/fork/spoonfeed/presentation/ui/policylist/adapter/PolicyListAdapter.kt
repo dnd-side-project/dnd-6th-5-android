@@ -42,6 +42,9 @@ class PolicyListAdapter(
                         tvItemLikeCount.text = (++likeCountInt).toString()
                     } else if (!ivItemLike.isChecked) {
                         tvItemLikeCount.text = (--likeCountInt).toString()
+                        if (likeCountInt == -1) {
+                            tvItemLikeCount.text = (++likeCountInt).toString()
+                        }
                     }
                     policyListViewModel.postMyLikePolicy(data.id.toString())
                 }

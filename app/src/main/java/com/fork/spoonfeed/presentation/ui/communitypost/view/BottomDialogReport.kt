@@ -55,6 +55,7 @@ class BottomDialogReport :
             setHandler()
         }
         binding.tvBottomDialogReportUser.setOnClickListener {
+            setHandler()
             showUserReportDialog()
         }
         binding.tvBottomDialogReportClose.setOnClickListener {
