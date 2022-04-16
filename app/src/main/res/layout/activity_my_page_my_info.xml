@@ -51,18 +51,46 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:id="@+id/tv_mypage_my_info_email_title"
+                    style="@style/TextView.Heading.Bold.14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="32dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="이메일" />
+
+                <TextView
+                    android:id="@+id/tv_mypage_my_info_email"
+                    style="@style/TextView.Label.Regular.16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="alalekqls22@naver.com"
+                    android:textColor="@color/gray04"
+                    app:layout_constraintStart_toStartOf="@id/tv_mypage_my_info_email_title"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_info_email_title"
+
+                <View
+                    android:id="@+id/view_decorator0"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/policy_filter_decorator_height"
+                    android:layout_marginTop="36dp"
+                    android:background="@color/gray01"
+                    app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_info_email" />
+
+                <TextView
                     android:id="@+id/tv_mypage_my_info_update_name"
                     style="@style/TextView.Heading.Bold.14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/policy_filter_horizontal_margin_24"
                     android:layout_marginTop="32dp"
                     android:text="@string/mypage_my_info_update_name"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_mypage_my_info_email_title"
+                    app:layout_constraintTop_toBottomOf="@+id/view_decorator0" />
 
                 <EditText
-                    android:text="@{viewModel.userNickName}"
                     android:id="@+id/et_mypage_my_info_update_name"
                     style="@style/TextView.Paragraph.Regular.14"
                     android:layout_width="0dp"
@@ -73,6 +101,7 @@
                     android:hint="@string/mypage_my_info_update_name"
                     android:paddingHorizontal="@dimen/policy_filter_edittext_padding"
                     android:paddingVertical="13dp"
+                    android:text="@{viewModel.userNickName}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tv_mypage_my_info_update_name" />
@@ -674,7 +703,6 @@
                         android:text="@string/policy_filter_level_three_home_ownership_private" />
 
                 </com.google.android.material.chip.ChipGroup>
-
 
 
                 <com.google.android.material.button.MaterialButton
