@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.activity.viewModels
 import com.fork.spoonfeed.BuildConfig
 import com.fork.spoonfeed.R
+import com.fork.spoonfeed.data.UserData
 import com.fork.spoonfeed.databinding.ActivityOnboardingBinding
 import com.fork.spoonfeed.presentation.MainActivity
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
@@ -17,6 +18,7 @@ import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.log.NidLog
 import com.navercorp.nid.oauth.OAuthLoginCallback
 import dagger.hilt.android.AndroidEntryPoint
+
 
 @AndroidEntryPoint
 class OnboardingActivity :
@@ -82,7 +84,7 @@ class OnboardingActivity :
             override fun onSuccess() {
                 val accessToken = NaverIdLoginSDK.getAccessToken() ?: return
                 val refreshToken = NaverIdLoginSDK.getRefreshToken() ?: return
-                Log.e("kakao login", accessToken.toString())
+                Log.e("naver login", accessToken.toString())
                 loginViewModel.loginWithNaver(accessToken, refreshToken)
             }
         }
@@ -97,8 +99,11 @@ class OnboardingActivity :
                 UserApiClient.instance.me { user, error ->
                     val accessToken = token.accessToken
                     val refreshToken = token.refreshToken
+                    val email = user?.kakaoAccount?.email ?: ""
                     Log.e("kakao login", token.accessToken)
                     Log.e("kakao login", token.refreshToken)
+
+                    loginViewModel.setEmail(email)
                     loginViewModel.loginWithKakao(accessToken, refreshToken)
                 }
             }

@@ -35,6 +35,7 @@ class MyPageMyInfoActivity :
     }
 
     override fun initView() {
+        myPageMyInfoViewModel.getUserEmail()
         binding.lifecycleOwner = this
         binding.viewModel = myPageMyInfoViewModel
         binding.activity = this
