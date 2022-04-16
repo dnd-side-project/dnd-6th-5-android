@@ -63,6 +63,10 @@ class MyPageMyInfoViewModel @Inject constructor(
     private val _name = MutableLiveData<String?>()
     val name: LiveData<String?> = _name
 
+    fun setPatchNickNameSuccess(){
+        _isPatchNickNameSuccess.value=true
+    }
+
     fun isPatchUserInfoSuccess() {
         _isPatchUserInfoSuccess.value = _isPatchUserFilterSuccess.value == true && _isPatchNickNameSuccess.value == true
     }
