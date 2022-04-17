@@ -3,6 +3,7 @@ package com.fork.spoonfeed.presentation.ui.onboarding.view
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.fork.spoonfeed.BuildConfig
 import com.fork.spoonfeed.R
@@ -16,7 +17,10 @@ import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.user.UserApiClient
 import com.navercorp.nid.NaverIdLoginSDK
 import com.navercorp.nid.log.NidLog
+import com.navercorp.nid.oauth.NidOAuthLogin
 import com.navercorp.nid.oauth.OAuthLoginCallback
+import com.navercorp.nid.profile.NidProfileCallback
+import com.navercorp.nid.profile.data.NidProfileResponse
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -84,11 +88,30 @@ class OnboardingActivity :
             override fun onSuccess() {
                 val accessToken = NaverIdLoginSDK.getAccessToken() ?: return
                 val refreshToken = NaverIdLoginSDK.getRefreshToken() ?: return
-                Log.e("naver login", accessToken.toString())
-                loginViewModel.loginWithNaver(accessToken, refreshToken)
+                Log.e("naver login", accessToken)
+                getEmail(accessToken, refreshToken)
             }
         }
         NaverIdLoginSDK.authenticate(this, oauthLoginCallback)
+    }
+
+    fun getEmail(accessToken: String, refreshToken: String) {
+        NidOAuthLogin().callProfileApi(object : NidProfileCallback<NidProfileResponse> {
+            override fun onSuccess(response: NidProfileResponse) {
+                loginViewModel.setEmail(response.profile?.email!!)
+                loginViewModel.loginWithNaver(accessToken, refreshToken)
+            }
+
+            override fun onFailure(httpStatus: Int, message: String) {
+                val errorCode = NaverIdLoginSDK.getLastErrorCode().code
+                val errorDescription = NaverIdLoginSDK.getLastErrorDescription()
+                Log.e("naver login erroe", "errorCode:$errorCode, errorDesc:$errorDescription")
+            }
+
+            override fun onError(errorCode: Int, message: String) {
+                onFailure(errorCode, message)
+            }
+        })
     }
 
     private fun setKakaoLogin() {

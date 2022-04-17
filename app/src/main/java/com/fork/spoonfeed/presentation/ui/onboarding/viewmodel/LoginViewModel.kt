@@ -39,6 +39,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun loginWithNaver(accessToken: String, refreshToken: String) {
+        val email = _email.value ?: return
         viewModelScope.launch {
             _loginSuccess.value =
                 authRepository.loginWithNaver(accessToken, refreshToken).run {
@@ -49,14 +50,14 @@ class LoginViewModel @Inject constructor(
                     UserData.accessToken = newAccessToken
                     UserData.refreshToken = responseBody.data.user.token.refreshToken
                     UserData.platform = "naver"
-                    UserData.email = "vs"
+                    UserData.email = email
 
                     authRepository.setAutoLoginManager(
                         AutoLoginManager.Companion.UserInfo(
                             refreshToken = responseBody.data.user.token.refreshToken,
                             accessToken = newAccessToken,
                             platform = "naver",
-                            email = "vs"
+                            email = email
                         )
                     )
 
