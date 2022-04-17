@@ -6,4 +6,5 @@ object UserData {
     var refreshToken: String? = null
     var accessToken: String? = null
     var platform: String? = null
+    var email: String? = null
 }

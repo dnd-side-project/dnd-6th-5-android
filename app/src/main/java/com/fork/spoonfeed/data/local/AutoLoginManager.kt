@@ -27,7 +27,8 @@ class AutoLoginManager @Inject constructor(
         data class UserInfo(
             var refreshToken: String,
             var accessToken: String,
-            var platform: String
+            var platform: String,
+            var email:String
         )
     }
 }

@@ -12,6 +12,7 @@ import com.fork.spoonfeed.data.remote.model.user.RequestUserNickNameData
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserData
 import com.fork.spoonfeed.domain.model.Age
 import com.fork.spoonfeed.domain.model.CompanySize
+import com.fork.spoonfeed.domain.repository.AuthRepository
 import com.fork.spoonfeed.domain.repository.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -19,7 +20,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MyPageMyInfoViewModel @Inject constructor(
-    private val userRepository: UserRepository
+    private val userRepository: UserRepository,
+    private val authRepository: AuthRepository
 ) : ViewModel() {
 
     private val _initialUserData = MutableLiveData<ResponseUserData.Data.User>()
@@ -60,8 +62,15 @@ class MyPageMyInfoViewModel @Inject constructor(
     private val _isNameSpecial = MutableLiveData<Boolean>()
     val isNameSpecial: LiveData<Boolean> = _isNameSpecial
 
+    private val _email = MutableLiveData<String?>()
+    val email: LiveData<String?> = _email
+
     private val _name = MutableLiveData<String?>()
     val name: LiveData<String?> = _name
+
+    fun setPatchNickNameSuccess() {
+        _isPatchNickNameSuccess.value = true
+    }
 
     fun isPatchUserInfoSuccess() {
         _isPatchUserInfoSuccess.value = _isPatchUserFilterSuccess.value == true && _isPatchNickNameSuccess.value == true
@@ -79,6 +88,11 @@ class MyPageMyInfoViewModel @Inject constructor(
 
     private fun setIsPatchUserFilterValid() {
         _isPatchUserFilterValid.value = _age.value?.isValid() == true && _isPatchNickNameVaild.value == true
+    }
+
+    fun getUserEmail() {
+        val userLoginData = authRepository.getAutoLoginManager()
+        _email.value = userLoginData?.email
     }
 
     fun getUserData() {

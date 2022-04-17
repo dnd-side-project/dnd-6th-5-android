@@ -25,13 +25,21 @@ class LoginViewModel @Inject constructor(
     private val _name = MutableLiveData<String?>()
     val name: LiveData<String?> = _name
 
+    private val _email = MutableLiveData<String?>()
+    val email: LiveData<String?> = _email
+
     private val _isNameSpecial = MutableLiveData<Boolean>()
     val isNameSpecial: LiveData<Boolean> = _isNameSpecial
 
     private val _nickNameSetStatus = MutableLiveData(false)
     val nickNameSetStatus: LiveData<Boolean> get() = _nickNameSetStatus
 
+    fun setEmail(email: String) {
+        _email.value = email
+    }
+
     fun loginWithNaver(accessToken: String, refreshToken: String) {
+        val email = _email.value ?: return
         viewModelScope.launch {
             _loginSuccess.value =
                 authRepository.loginWithNaver(accessToken, refreshToken).run {
@@ -42,14 +50,18 @@ class LoginViewModel @Inject constructor(
                     UserData.accessToken = newAccessToken
                     UserData.refreshToken = responseBody.data.user.token.refreshToken
                     UserData.platform = "naver"
+                    UserData.email = email
 
-                    authRepository.setAutoLoginManager(AutoLoginManager.Companion.UserInfo(
-                        refreshToken = responseBody.data.user.token.refreshToken,
-                        accessToken = newAccessToken,
-                        platform = "naver"
-                    ))
+                    authRepository.setAutoLoginManager(
+                        AutoLoginManager.Companion.UserInfo(
+                            refreshToken = responseBody.data.user.token.refreshToken,
+                            accessToken = newAccessToken,
+                            platform = "naver",
+                            email = email
+                        )
+                    )
 
-                    if (responseBody.data.user.nickname == null){
+                    if (responseBody.data.user.nickname == null) {
                         false
                     } else {
                         responseBody.success
@@ -59,6 +71,8 @@ class LoginViewModel @Inject constructor(
     }
 
     fun loginWithKakao(accessToken: String, refreshToken: String) {
+        val email = _email.value ?: return
+
         viewModelScope.launch {
             _loginSuccess.value =
                 authRepository.loginWithKakao(accessToken, refreshToken).run {
@@ -69,14 +83,18 @@ class LoginViewModel @Inject constructor(
                     UserData.accessToken = newAccessToken
                     UserData.refreshToken = responseBody.data.user.token.refreshToken
                     UserData.platform = "kakao"
+                    UserData.email = email
 
-                    authRepository.setAutoLoginManager(AutoLoginManager.Companion.UserInfo(
-                        refreshToken = responseBody.data.user.token.refreshToken,
-                        accessToken = newAccessToken,
-                        platform = "kakao"
-                    ))
+                    authRepository.setAutoLoginManager(
+                        AutoLoginManager.Companion.UserInfo(
+                            refreshToken = responseBody.data.user.token.refreshToken,
+                            accessToken = newAccessToken,
+                            platform = "kakao",
+                            email = email
+                        )
+                    )
 
-                    if (responseBody.data.user.nickname == null){
+                    if (responseBody.data.user.nickname == null) {
                         false
                     } else {
                         responseBody.success
@@ -108,11 +126,14 @@ class LoginViewModel @Inject constructor(
                     requestUserNickNameData
                 ).data.user.nickname
             }.onSuccess {
-                authRepository.setAutoLoginManager(AutoLoginManager.Companion.UserInfo(
-                    refreshToken = UserData.refreshToken!!,
-                    accessToken = UserData.accessToken!!,
-                    platform = UserData.platform!!
-                ))
+                authRepository.setAutoLoginManager(
+                    AutoLoginManager.Companion.UserInfo(
+                        refreshToken = UserData.refreshToken!!,
+                        accessToken = UserData.accessToken!!,
+                        platform = UserData.platform!!,
+                        email = UserData.email!!
+                    )
+                )
                 _nickNameSetStatus.value = true
             }.onFailure {
                 _nickNameSetStatus.value = false

@@ -35,6 +35,7 @@ class MyPageMyInfoActivity :
     }
 
     override fun initView() {
+        myPageMyInfoViewModel.getUserEmail()
         binding.lifecycleOwner = this
         binding.viewModel = myPageMyInfoViewModel
         binding.activity = this
@@ -167,7 +168,13 @@ class MyPageMyInfoActivity :
         }
 
         binding.mbMypageMyInfoUpdate.setOnClickListener {
-            myPageMyInfoViewModel.setUserNickName(binding.etMypageMyInfoUpdateName.text.toString())
+            val updatedNickname = binding.etMypageMyInfoUpdateName.text.toString()
+            if (myPageMyInfoViewModel.userNickName.value != updatedNickname) {
+                myPageMyInfoViewModel.setUserNickName(updatedNickname)
+            } else {
+                myPageMyInfoViewModel.patchUserFilter()
+                myPageMyInfoViewModel.setPatchNickNameSuccess()
+            }
         }
     }
 
