@@ -47,6 +47,7 @@ class MyPageMyInfoActivity :
         nickNameTextChanged()
         setNickNameObserve()
         patchUserFilterObserve()
+        setBackButtonListener()
     }
 
     private fun setObserver() {
@@ -282,6 +283,12 @@ class MyPageMyInfoActivity :
 
         cancelBtn.setOnClickListener {
             dialog.dismiss()
+            finish()
+        }
+    }
+
+    private fun setBackButtonListener() {
+        binding.mtMypageMyInfoUpdateTitle.setNavigationOnClickListener {
             finish()
         }
     }
