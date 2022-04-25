@@ -97,13 +97,17 @@
 
         <ImageView
             android:id="@+id/iv_signup_terms_condition_digital_content"
-            android:layout_width="@dimen/signup_terms_condition_chevron_width"
-            android:layout_height="@dimen/signup_terms_condition_chevron_height"
-            android:layout_marginEnd="@dimen/signup_terms_condition_chevron_margin_end"
-            android:background="@drawable/ic_chevron_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:backgroundTint="@color/gray03"
+            android:paddingHorizontal="10dp"
+            android:layout_marginEnd="20dp"
+            android:paddingVertical="8dp"
+            android:src="@drawable/ic_terms_chevron"
             app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_digital_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1"
+            app:layout_constraintStart_toEndOf="@+id/tv_signup_terms_condition_digital_content"
             app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_digital_content" />
 
         <CheckBox
@@ -131,10 +135,12 @@
 
         <ImageView
             android:id="@+id/iv_signup_terms_condition_user_protect"
-            android:layout_width="@dimen/signup_terms_condition_chevron_width"
-            android:layout_height="@dimen/signup_terms_condition_chevron_height"
-            android:layout_marginEnd="@dimen/signup_terms_condition_chevron_margin_end"
-            android:background="@drawable/ic_chevron_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginEnd="20dp"
+            android:paddingVertical="8dp"
+            android:src="@drawable/ic_terms_chevron"
             android:backgroundTint="@color/gray03"
             app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_user_protect"
             app:layout_constraintEnd_toEndOf="parent"
@@ -165,10 +171,12 @@
 
         <ImageView
             android:id="@+id/iv_signup_terms_condition_personal_info"
-            android:layout_width="@dimen/signup_terms_condition_chevron_width"
-            android:layout_height="@dimen/signup_terms_condition_chevron_height"
-            android:layout_marginEnd="@dimen/signup_terms_condition_chevron_margin_end"
-            android:background="@drawable/ic_chevron_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginEnd="20dp"
+            android:paddingVertical="8dp"
+            android:src="@drawable/ic_terms_chevron"
             android:backgroundTint="@color/gray03"
             app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_personal_info"
             app:layout_constraintEnd_toEndOf="parent"
