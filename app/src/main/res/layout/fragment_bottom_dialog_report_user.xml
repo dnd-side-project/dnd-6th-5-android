@@ -50,7 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="해당 유저 차단"
+            android:text="해당 유저 신고"
             android:textAlignment="center"
             app:layout_constraintTop_toBottomOf="@id/view_between_content_and_user" />
 
