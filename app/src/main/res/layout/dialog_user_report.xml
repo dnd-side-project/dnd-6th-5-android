@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="해당 유저 차단"
+            android:text="해당 유저 신고"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iv_user_report" />
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="24dp"
             android:layout_marginTop="8dp"
-            android:text="해당 유저의 게시글과 댓글이 \n보여지지 않아요. 차단할까요?"
+            android:text="해당 유저의 게시글과 댓글이 \n보여지지 않아요. 신고할까요?"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_user_report_title" />
@@ -73,7 +73,7 @@
             android:background="@drawable/selector_rewrite"
             android:fontFamily="@font/suit_bold"
             android:includeFontPadding="false"
-            android:text="차단하기"
+            android:text="신고하기"
             android:textColor="@color/user_report"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@id/btn_user_report_cancel"
