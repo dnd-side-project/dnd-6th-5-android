@@ -117,6 +117,7 @@ class SplashViewModel @Inject constructor(
                 autoLogin()
             }.onFailure {
                 _isTokenValid.value = false
+                _loginSuccess.value = false
             }
         }
     }
