@@ -5,7 +5,10 @@ import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.DisplayMetrics
-import android.widget.*
+import android.widget.CheckBox
+import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.databinding.BindingAdapter
@@ -15,12 +18,18 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.domain.model.AgeInputType
 import com.fork.spoonfeed.domain.model.ChipInputType
 import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
-import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.CommunityPostViewModel
 import com.fork.spoonfeed.presentation.ui.communitypost.viewmodel.ReportViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageMyInfoViewModel
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterViewModel
 import com.google.android.material.chip.ChipGroup
 import kotlin.math.roundToInt
+
+fun AppCompatActivity.add(fragment: Fragment) {
+    supportFragmentManager
+        .beginTransaction()
+        .add(R.id.fcv_main, fragment, null)
+        .commit()
+}
 
 fun AppCompatActivity.replace(fragment: Fragment) {
     supportFragmentManager
@@ -115,16 +124,33 @@ fun addTextChangeListener(view: EditText, viewModel: ViewModel, ageInputType: Ag
     })
 }
 
-@BindingAdapter("viewModel", "reasonNumber","isSelected")
-fun setOnCheckedChanged(view: ImageButton, viewModel: ViewModel, reasonNumber: String,selected: Boolean) {
+@BindingAdapter("viewModel", "reasonNumber", "isSelected")
+fun setOnCheckedChanged(
+    view: ImageButton,
+    viewModel: ViewModel,
+    reasonNumber: String,
+    selected: Boolean
+) {
     view.setOnClickListener {
         when (reasonNumber) {
-            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? ReportViewModel)?.setReportReasonOneStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? ReportViewModel)?.setReportReasonTwoStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? ReportViewModel)?.setReportReasonThreeStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_FOUR-> (viewModel as? ReportViewModel)?.setReportReasonFourStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? ReportViewModel)?.setReportReasonFiveStatus(!view.isSelected)
-            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? ReportViewModel)?.setReportReasonSixStatus(!view.isSelected)
+            UserReportReasonActivity.REPORT_REASON_ONE -> (viewModel as? ReportViewModel)?.setReportReasonOneStatus(
+                !view.isSelected
+            )
+            UserReportReasonActivity.REPORT_REASON_TWO -> (viewModel as? ReportViewModel)?.setReportReasonTwoStatus(
+                !view.isSelected
+            )
+            UserReportReasonActivity.REPORT_REASON_THREE -> (viewModel as? ReportViewModel)?.setReportReasonThreeStatus(
+                !view.isSelected
+            )
+            UserReportReasonActivity.REPORT_REASON_FOUR -> (viewModel as? ReportViewModel)?.setReportReasonFourStatus(
+                !view.isSelected
+            )
+            UserReportReasonActivity.REPORT_REASON_FIVE -> (viewModel as? ReportViewModel)?.setReportReasonFiveStatus(
+                !view.isSelected
+            )
+            UserReportReasonActivity.REPORT_REASON_SIX -> (viewModel as? ReportViewModel)?.setReportReasonSixStatus(
+                !view.isSelected
+            )
         }
     }
     view.isSelected = selected
