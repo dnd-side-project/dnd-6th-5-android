@@ -45,6 +45,7 @@ class PolicyListActivity :
     }
 
     override fun initView() {
+        setBottomNav()
         setPolicyListAdapter()
         setPolicyListObserve()
         setFilterClickObserve()
@@ -54,6 +55,41 @@ class PolicyListActivity :
         policyListViewModel.applyFilter()
         policyListViewModel.getMyLikePolicy()
         this.setBackBtnClickListener(binding.ivPolicylistBack)
+    }
+
+    private fun setBottomNav() {
+        binding.bnvPolicylist.selectedItemId = R.id.menu_main_policy
+        binding.bnvPolicylist.setOnItemSelectedListener {
+            return@setOnItemSelectedListener when (it.itemId) {
+                R.id.menu_main_home -> {
+                    moveToMenu(MainActivity.BOTTOM_HOME)
+                    true
+                }
+                R.id.menu_main_policy -> {
+                    moveToMenu(MainActivity.BOTTOM_POLICY)
+                    true
+                }
+                R.id.menu_main_community -> {
+                    moveToMenu(MainActivity.BOTTOM_COMMUNITY)
+                    true
+                }
+                R.id.menu_main_mypage -> {
+                    moveToMenu(MainActivity.BOTTOM_MYPAGE)
+                    true
+                }
+                else -> {
+                    false
+                }
+            }
+        }
+    }
+
+    private fun moveToMenu(targetFragment: String) {
+        startActivity(Intent(baseContext, MainActivity::class.java).apply {
+            putExtra(MainActivity.BOTTOM_MOVE, targetFragment)
+            addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        })
     }
 
     private fun setInitLayout() {

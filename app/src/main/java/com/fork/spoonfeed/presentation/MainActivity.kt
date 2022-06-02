@@ -41,6 +41,15 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
             replace(communityFragment)
             moveToCommunity()
         }
+        intent.getStringExtra(BOTTOM_MOVE)?.let {
+            binding.bnvMain.selectedItemId = when(it) {
+                BOTTOM_HOME -> R.id.menu_main_home
+                BOTTOM_POLICY -> R.id.menu_main_policy
+                BOTTOM_COMMUNITY -> R.id.menu_main_community
+                BOTTOM_MYPAGE -> R.id.menu_main_mypage
+                else -> return@let
+            }
+        }
     }
 
     private fun checkPolicyReset() {
@@ -79,5 +88,13 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
 
     fun moveToCommunity() {
         binding.bnvMain.selectedItemId = R.id.menu_main_community
+    }
+
+    companion object {
+        const val BOTTOM_MOVE = "com.fork.spoonfeed.presentation BOTTOM_MOVE"
+        const val BOTTOM_HOME = "com.fork.spoonfeed.presentation BOTTOM_HOME"
+        const val BOTTOM_POLICY = "com.fork.spoonfeed.presentation BOTTOM_POLICY"
+        const val BOTTOM_COMMUNITY = "com.fork.spoonfeed.presentation BOTTOM_COMMUNITY"
+        const val BOTTOM_MYPAGE = "com.fork.spoonfeed.presentation BOTTOM_MYPAGE"
     }
 }

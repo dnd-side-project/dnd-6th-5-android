@@ -45,9 +45,10 @@
         <androidx.core.widget.NestedScrollView
             android:id="@+id/nsv_policylist"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="20dp"
             android:overScrollMode="never"
+            app:layout_constraintBottom_toTopOf="@id/bnv_policylist"
             app:layout_constraintTop_toBottomOf="@+id/tv_policylist_title">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -160,6 +161,19 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bnv_policylist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rectangle_top_gray03"
+            app:itemBackground="@color/white"
+            app:itemIconTint="@color/black"
+            app:itemTextColor="@color/black"
+            app:labelVisibilityMode="labeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/nsv_policylist"
+            app:menu="@menu/menu_bottom_nav" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
