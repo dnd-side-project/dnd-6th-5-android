@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.ColorStateList
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import com.fork.spoonfeed.R
@@ -26,8 +27,37 @@ class SignupTermsConditionFragment :
         initView()
     }
 
+    private fun checkedSwitch() {
+        with(binding) {
+            ctl1.setOnClickListener {
+                Log.e("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ","ahenzmfflr")
+                cbSignupTermsConditionAllAgree.isChecked = !cbSignupTermsConditionAllAgree.isChecked
+                if (cbSignupTermsConditionAllAgree.isChecked) {
+                    setAllChecked()
+                    setNextBtn()
+                } else {
+                    setAllUnChecked()
+                    setNextBtn()
+                }
+            }
+            ctl2.setOnClickListener {
+                cbSignupTermsConditionDigitalContent.isChecked = !cbSignupTermsConditionDigitalContent.isChecked
+                setNextBtn()
+            }
+            ctl3.setOnClickListener {
+                cbSignupTermsConditionUserProtect.isChecked = !cbSignupTermsConditionUserProtect.isChecked
+                setNextBtn()
+            }
+            ctl4.setOnClickListener {
+                cbSignupTermsConditionPersonalInfo.isChecked = !cbSignupTermsConditionPersonalInfo.isChecked
+                setNextBtn()
+            }
+        }
+    }
+
     override fun initView() {
         setOnClickListener()
+        checkedSwitch()
     }
 
     private fun setOnClickListener() {

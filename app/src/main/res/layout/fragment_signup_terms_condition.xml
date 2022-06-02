@@ -32,68 +32,89 @@
             style="@style/TextView.Label.Regular.14"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="@string/signup_terms_condition_subtitle"
             android:textColor="@color/gray04"
             app:layout_constraintStart_toStartOf="@id/tv_signup_terms_condition_title"
             app:layout_constraintTop_toBottomOf="@id/tv_signup_terms_condition_title" />
 
-        <CheckBox
-            android:id="@+id/cb_signup_terms_condition_all_agree"
-            android:layout_width="@dimen/signup_terms_condition_check_box_size"
-            android:layout_height="@dimen/signup_terms_condition_check_box_size"
-            android:layout_marginStart="3dp"
-            android:layout_marginTop="59dp"
-            android:background="@drawable/selector_check_round"
-            android:backgroundTint="@color/selector_check_round_background_color"
-            android:button="@null"
-            app:layout_constraintStart_toStartOf="@id/tv_signup_terms_condition_title"
-            app:layout_constraintTop_toBottomOf="@id/tv_signup_terms_condition_subtitle" />
-
-        <TextView
-            android:id="@+id/tv_signup_terms_condition_all_agree"
-            style="@style/TextView.Heading.SemiBold.16"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="11dp"
-            android:text="@string/signup_terms_condition_all_agree"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_all_agree"
-            app:layout_constraintStart_toEndOf="@id/cb_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_all_agree" />
+            android:layout_height="0dp"
+            android:layout_marginStart="19dp"
+            android:layout_marginTop="40dp"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_signup_terms_condition_subtitle">
+
+            <CheckBox
+                android:id="@+id/cb_signup_terms_condition_all_agree"
+                android:layout_width="@dimen/signup_terms_condition_check_box_size"
+                android:layout_height="@dimen/signup_terms_condition_check_box_size"
+                android:background="@drawable/selector_check_round"
+                android:backgroundTint="@color/selector_check_round_background_color"
+                android:button="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_signup_terms_condition_all_agree"
+                style="@style/TextView.Heading.SemiBold.16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:text="@string/signup_terms_condition_all_agree"
+                app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_all_agree"
+                app:layout_constraintStart_toEndOf="@id/cb_signup_terms_condition_all_agree"
+                app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_all_agree" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <View
             android:id="@+id/view_decorator"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginHorizontal="@dimen/policy_filter_horizontal_margin_24"
-            android:layout_marginTop="19dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="16dp"
             android:background="@color/gray02"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cb_signup_terms_condition_all_agree" />
+            app:layout_constraintTop_toBottomOf="@id/ctl_1" />
 
-        <CheckBox
-            android:id="@+id/cb_signup_terms_condition_digital_content"
-            android:layout_width="@dimen/signup_terms_condition_check_box_size"
-            android:layout_height="@dimen/signup_terms_condition_check_box_size"
-            android:layout_marginTop="19dp"
-            android:background="@drawable/selector_check_round"
-            android:backgroundTint="@color/selector_check_round_background_color"
-            android:button="@null"
-            android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
-            app:layout_constraintStart_toStartOf="@id/cb_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toBottomOf="@id/view_decorator" />
-
-        <TextView
-            android:id="@+id/tv_signup_terms_condition_digital_content"
-            style="@style/TextView.Label.Regular.14"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup_terms_condition_digital_content"
-            android:textColor="@color/gray04"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_digital_content"
-            app:layout_constraintStart_toStartOf="@id/tv_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_digital_content" />
+            android:layout_marginTop="16dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_1"
+            app:layout_constraintTop_toBottomOf="@id/view_decorator">
+
+            <CheckBox
+                android:id="@+id/cb_signup_terms_condition_digital_content"
+                android:layout_width="@dimen/signup_terms_condition_check_box_size"
+                android:layout_height="@dimen/signup_terms_condition_check_box_size"
+                android:background="@drawable/selector_check_round"
+                android:backgroundTint="@color/selector_check_round_background_color"
+                android:button="@null"
+                android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_signup_terms_condition_digital_content"
+                style="@style/TextView.Label.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:text="@string/signup_terms_condition_digital_content"
+                android:textColor="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cb_signup_terms_condition_digital_content"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/iv_signup_terms_condition_digital_content"
@@ -104,34 +125,43 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:src="@drawable/ic_terms_chevron"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_digital_content"
+            app:layout_constraintBottom_toBottomOf="@+id/ctl_2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1"
-            app:layout_constraintStart_toEndOf="@+id/tv_signup_terms_condition_digital_content"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_digital_content" />
+            app:layout_constraintTop_toTopOf="@+id/ctl_2" />
 
-        <CheckBox
-            android:id="@+id/cb_signup_terms_condition_user_protect"
-            android:layout_width="@dimen/signup_terms_condition_check_box_size"
-            android:layout_height="@dimen/signup_terms_condition_check_box_size"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/selector_check_round"
-            android:backgroundTint="@color/selector_check_round_background_color"
-            android:button="@null"
-            android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
-            app:layout_constraintStart_toStartOf="@id/cb_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toBottomOf="@id/cb_signup_terms_condition_digital_content" />
-
-        <TextView
-            android:id="@+id/tv_signup_terms_condition_user_protect"
-            style="@style/TextView.Label.Regular.14"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup_terms_condition_user_protect"
-            android:textColor="@color/gray04"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_user_protect"
-            app:layout_constraintStart_toStartOf="@id/tv_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_user_protect" />
+            android:layout_marginTop="16dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="@+id/ctl_2"
+            app:layout_constraintTop_toBottomOf="@+id/ctl_2">
+
+            <CheckBox
+                android:id="@+id/cb_signup_terms_condition_user_protect"
+                android:layout_width="@dimen/signup_terms_condition_check_box_size"
+                android:layout_height="@dimen/signup_terms_condition_check_box_size"
+                android:layout_marginTop="22dp"
+                android:background="@drawable/selector_check_round"
+                android:backgroundTint="@color/selector_check_round_background_color"
+                android:button="@null"
+                android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_signup_terms_condition_user_protect"
+                style="@style/TextView.Label.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:text="@string/signup_terms_condition_user_protect"
+                android:textColor="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cb_signup_terms_condition_user_protect"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/iv_signup_terms_condition_user_protect"
@@ -142,32 +172,42 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:src="@drawable/ic_terms_chevron"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_user_protect"
+            app:layout_constraintBottom_toBottomOf="@+id/ctl_3"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_user_protect" />
+            app:layout_constraintTop_toTopOf="@+id/ctl_3" />
 
-        <CheckBox
-            android:id="@+id/cb_signup_terms_condition_personal_info"
-            android:layout_width="@dimen/signup_terms_condition_check_box_size"
-            android:layout_height="@dimen/signup_terms_condition_check_box_size"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/selector_check_round"
-            android:backgroundTint="@color/selector_check_round_background_color"
-            android:button="@null"
-            android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
-            app:layout_constraintStart_toStartOf="@id/cb_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toBottomOf="@id/cb_signup_terms_condition_user_protect" />
-
-        <TextView
-            android:id="@+id/tv_signup_terms_condition_personal_info"
-            style="@style/TextView.Label.Regular.14"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/signup_terms_condition_personal_info"
-            android:textColor="@color/gray04"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_personal_info"
-            app:layout_constraintStart_toStartOf="@id/tv_signup_terms_condition_all_agree"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_personal_info" />
+            android:layout_marginTop="16dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="@id/ctl_3"
+            app:layout_constraintTop_toBottomOf="@+id/ctl_3">
+
+            <CheckBox
+                android:id="@+id/cb_signup_terms_condition_personal_info"
+                android:layout_width="@dimen/signup_terms_condition_check_box_size"
+                android:layout_height="@dimen/signup_terms_condition_check_box_size"
+                android:background="@drawable/selector_check_round"
+                android:backgroundTint="@color/selector_check_round_background_color"
+                android:button="@null"
+                android:onClick="@{()->signUpTermsConditionFragment.setNextBtn()}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_signup_terms_condition_personal_info"
+                style="@style/TextView.Label.Regular.14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:text="@string/signup_terms_condition_personal_info"
+                android:textColor="@color/gray04"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cb_signup_terms_condition_personal_info"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/iv_signup_terms_condition_personal_info"
@@ -178,9 +218,9 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="8dp"
             android:src="@drawable/ic_terms_chevron"
-            app:layout_constraintBottom_toBottomOf="@id/cb_signup_terms_condition_personal_info"
+            app:layout_constraintBottom_toBottomOf="@+id/ctl_4"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/cb_signup_terms_condition_personal_info" />
+            app:layout_constraintTop_toTopOf="@+id/ctl_4" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/mb_signup_terms_condition"
