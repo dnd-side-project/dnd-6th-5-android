@@ -11,7 +11,7 @@
 
     <!--  Policy Main -->
     <string name="policy_subtitle">Spoon Feed 스푼피드에서\n 내게 맞는 정책을 찾아보세요!</string>
-    <string name="policy_description">떠먹여주는 맞춤 정책 정보 Spoon Feed 스푼 피드는\n모르고 쉽게 지나칠 수 있는 많은 정책 정보를 개인 맞춤 필터를 적용해 한눈에 보기 쉽도록 만들었어요.\n\n온라인 청년센터에 제공되는 공식 정보를 참고하여 제작했으며, 자세한 내용은 온라인 청년센터 홈페이지에서\n확인이 가능합니다!</string>
+    <string name="policy_description">떠먹여주는 맞춤 정책 정보 Spoon Feed 스푼 피드는 모르고 쉽게 지나칠 수 있는 많은 정책 정보를 개인 맞춤 필터를 적용해 한눈에 보기 쉽도록 만들었어요.\n\n온라인 청년센터에 제공되는 공식 정보를 참고하여 제작했으며, 자세한 내용은 온라인 청년센터 홈페이지에서 확인이 가능합니다!</string>
     <string name="policy_youth_center_shortcut"><u>온라인 청년센터 바로가기</u></string>
     <string name="policy_find_fit_policy">맞춤 정책 찾기</string>
 
@@ -90,7 +90,7 @@
     <!--  Median Income Tooltip  -->
     <string name="median_income_tooltip_title">중위소득 알아보기</string>
     <string name="median_income_tooltip_subtitle">‘중위소득’은 어떻게\n알 수 있나요?</string>
-    <string name="median_income_tooltip_description">기준 중위소득은 모든 가구의 소득을 순서대로 세웠을 때, 정확히 중간 지점에 있는 가구의 소득을 의미합니다.\n\n통계청의 자료를 바탕으로 보건복지부에서 매년 8월마다 공표하며, 중위소득에 따라 생계 ‧ 의료급여를 선정하고, 최저보장수준을 정합니다.\n\n예를 들어 30%이하는 기준 중위소득에 비해 30%만큼 적은 소득을 뜻합니다. 정확한 금액은 오른쪽 하단 버튼을\n눌러 확인해주세요.</string>
+    <string name="median_income_tooltip_description">기준 중위소득은 모든 가구의 소득을 순서대로 세웠을 때, 정확히 중간 지점에 있는 가구의 소득을 의미합니다.\n\n통계청의 자료를 바탕으로 보건복지부에서 매년 8월마다 공표하며, 중위소득에 따라 생계 ‧ 의료급여를 선정하고, 최저보장수준을 정합니다.\n\n예를 들어 30%이하는 기준 중위소득에 비해 30%만큼 적은 소득을 뜻합니다. 정확한 금액은 오른쪽 하단 버튼을 눌러 확인해주세요.</string>
     <string name="median_income_tooltip_ref">* 2022년 중위소득 : 보건복지부 고시 제2021–21호 참조</string>
     <string name="median_income_tooltip_close">닫기</string>
     <string name="median_income_tooltip_shortcut">중위소득 확인하기</string>
@@ -98,7 +98,7 @@
     <!--  Net Worth Tooltip  -->
     <string name="net_worth_tooltip_title">순자산 알아보기</string>
     <string name="net_worth_tooltip_subtitle">‘순자산’은 어떻게\n알 수 있나요?</string>
-    <string name="net_worth_tooltip_description">순자산이란 자산 총액에서 부채를 뺀 나머지 금액입니다.\n주로 재무 현황을 알기 위해 파악하며 ‘현재\' 중심으로 계산합니다.\n\n예를 들면, 예적금 및 현금, 소유 재산, 투자 차익, 전세 보증금, 자동차 보유 자산 가치 등을 모두 더한 자산합계에서m학자금 대출, 신용카드 할부 잔액, 전세 대출 잔액 등 모든 부채를 뺀 금액입니다.\n\n순자산 = (자산합계-부채합계)</string>
+    <string name="net_worth_tooltip_description">순자산이란 자산 총액에서 부채를 뺀 나머지 금액입니다. 주로 재무 현황을 알기 위해 파악하며 ‘현재\' 중심으로 계산합니다.\n\n예를 들면, 예적금 및 현금, 소유 재산, 투자 차익, 전세 보증금, 자동차 보유 자산 가치 등을 모두 더한 자산합계에서 학자금 대출, 신용카드 할부 잔액, 전세 대출 잔액 등 모든 부채를 뺀 금액입니다.\n\n순자산 = (자산합계-부채합계)</string>
     <string name="net_worth_tooltip_close">닫기</string>
     <string name="net_worth_tooltip_shortcut">순자산 알아보기</string>
 
