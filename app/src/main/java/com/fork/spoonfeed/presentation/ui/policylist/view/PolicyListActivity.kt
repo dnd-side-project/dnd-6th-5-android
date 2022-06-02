@@ -205,7 +205,7 @@ class PolicyListActivity :
             startActivity(Intent(baseContext, MainActivity::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                putExtra(POLICY_FILTER_RESET_NAME, POLICY_FILTER_RESET_VALUE)
+                putExtra(MainActivity.BOTTOM_MOVE, MainActivity.BOTTOM_POLICY)
             })
         }
 

@@ -50,7 +50,7 @@ class UserReportReasonActivity :
 
     private fun moveToCommunityFragment() {
         startActivity(Intent(baseContext, MainActivity::class.java).apply {
-            putExtra(USER_REPORT_KEY, USER_REPORT)
+            putExtra(MainActivity.BOTTOM_MOVE, MainActivity.BOTTOM_COMMUNITY)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
         })
