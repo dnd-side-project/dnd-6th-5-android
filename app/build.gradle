@@ -17,8 +17,8 @@ android {
         applicationId "com.fork.spoonfeed"
         minSdk 23
         targetSdk 30
-        versionCode 2
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.1"
         manifestPlaceholders = [kakaoKey: kakao_key_manifest]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField "String", "NAVER_CLIENT_ID", properties["naver_api_client_id"]
