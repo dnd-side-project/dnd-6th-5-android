@@ -11,7 +11,7 @@ class MedianIncomeTooltipActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityMedianIncomeTooltipBinding>(R.layout.activity_median_income_tooltip) {
 
     private val medianIncomeUrl =
-        "http://www.mohw.go.kr/upload/viewer/skin/doc.html?fn=1628123391435_20210805092951.pdf&rs=/upload/viewer/result/202202/"
+        "http://www.mohw.go.kr/react/policy/index.jsp?PAR_MENU_ID=06&MENU_ID=06350109&PAGE=9"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -28,9 +28,11 @@ class SplashViewModel @Inject constructor(
     val isTokenInvalid: LiveData<Boolean> = _isTokenValid
 
     fun autoLogin() {
-        val userLoginData = authRepository.getAutoLoginManager()
-        userLoginData?.let { userData ->
-            _autoLogin.value = userData
+        if (_autoLogin.value == null) {
+            _autoLogin.value = authRepository.getAutoLoginManager()
+        }
+
+        _autoLogin.value?.let { userData ->
             when (userData.platform) {
                 "naver" -> {
                     loginWithNaver(userData)
@@ -117,6 +119,7 @@ class SplashViewModel @Inject constructor(
                 autoLogin()
             }.onFailure {
                 _isTokenValid.value = false
+                _loginSuccess.value = false
             }
         }
     }

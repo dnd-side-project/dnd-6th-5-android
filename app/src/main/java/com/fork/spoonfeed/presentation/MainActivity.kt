@@ -5,17 +5,15 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.ActivityMainBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.community.view.CommunityFragment
-import com.fork.spoonfeed.presentation.ui.communitypost.view.UserReportReasonActivity
 import com.fork.spoonfeed.presentation.ui.home.view.HomeFragment
 import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageFragment
-import com.fork.spoonfeed.presentation.ui.mypage.view.MyPageMyInfoActivity
 import com.fork.spoonfeed.presentation.ui.policy.view.PolicyFragment
-import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import com.fork.spoonfeed.presentation.util.replace
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.layout.activity_main) {
+class MainActivity :
+    BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.layout.activity_main) {
 
     private val homeFragment: HomeFragment by lazy { HomeFragment() }
     private val policyFragment: PolicyFragment by lazy { PolicyFragment() }
@@ -28,25 +26,20 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
     }
 
     override fun initView() {
-        intent.getStringExtra(MyPageMyInfoActivity.MY_INFO_EMPTY_KEY)?.let {
-            replace(policyFragment)
-            moveToPolicy()
-        } ?: replace(homeFragment)
-
         initBottomNavigation()
 
-        checkPolicyReset()
-
-        intent.getStringExtra(UserReportReasonActivity.USER_REPORT_KEY)?.let {
-            replace(communityFragment)
-            moveToCommunity()
-        }
+        initMainMenu()
     }
 
-    private fun checkPolicyReset() {
-        intent.getStringExtra(PolicyListActivity.POLICY_FILTER_RESET_NAME)?.let {
-            moveToPolicy()
-        }
+    private fun initMainMenu() {
+        binding.bnvMain.selectedItemId = intent.getStringExtra(BOTTOM_MOVE)?.let {
+            when (it) {
+                BOTTOM_POLICY -> R.id.menu_main_policy
+                BOTTOM_COMMUNITY -> R.id.menu_main_community
+                BOTTOM_MYPAGE -> R.id.menu_main_mypage
+                else -> R.id.menu_main_home
+            }
+        } ?: R.id.menu_main_home
     }
 
     private fun initBottomNavigation() {
@@ -74,10 +67,14 @@ class MainActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMainBinding>(R.l
     }
 
     fun moveToPolicy() {
-        binding.bnvMain.selectedItemId = R.id.menu_main_policy
+        replace(policyFragment)
     }
 
-    fun moveToCommunity() {
-        binding.bnvMain.selectedItemId = R.id.menu_main_community
+    companion object {
+        const val BOTTOM_MOVE = "com.fork.spoonfeed.presentation BOTTOM_MOVE"
+        const val BOTTOM_HOME = "com.fork.spoonfeed.presentation BOTTOM_HOME"
+        const val BOTTOM_POLICY = "com.fork.spoonfeed.presentation BOTTOM_POLICY"
+        const val BOTTOM_COMMUNITY = "com.fork.spoonfeed.presentation BOTTOM_COMMUNITY"
+        const val BOTTOM_MYPAGE = "com.fork.spoonfeed.presentation BOTTOM_MYPAGE"
     }
 }

@@ -275,7 +275,7 @@ class MyPageMyInfoActivity :
         inputBtn.setOnClickListener {
             dialog.dismiss()
             startActivity(Intent(baseContext, MainActivity::class.java).apply {
-                putExtra(MY_INFO_EMPTY_KEY, MY_INFO_EMPTY)
+                putExtra(MainActivity.BOTTOM_MOVE, MainActivity.BOTTOM_POLICY)
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             })
