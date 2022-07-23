@@ -112,7 +112,20 @@ https://user-images.githubusercontent.com/84564695/180598819-65abf15b-cb4d-4b55-
 ```
 
 ## Project Rule
-[GITHUB WIKI](https://github.com/dnd-side-project/dnd-6th-5-android/wiki)
+<h3> ⚙Setting
+  <ul>
+    <li><a href="https://github.com/dnd-side-project/dnd-6th-5-android/wiki/%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD">개발 환경</a></li>
+  </ul>
+</h3>
+<h3> 📚Rule
+  <ul>
+    <li><a href="https://github.com/dnd-side-project/dnd-6th-5-android/wiki/%EC%BD%94%EB%93%9C-%EC%BB%A8%EB%B2%A4%EC%85%98">코드 컨벤션</a></li>
+    <li><a href="https://github.com/dnd-side-project/dnd-6th-5-android/wiki/%EC%BB%A4%EB%B0%8B-%EC%BB%A8%EB%B2%A4%EC%85%98">커밋 컨벤션</a></li>
+    <li><a href="https://github.com/dnd-side-project/dnd-6th-5-android/wiki/%EB%B8%8C%EB%9E%9C%EC%B9%98-%EC%A0%84%EB%9E%B5">브랜치 전략</a></li>
+    <li><a href="https://github.com/dnd-side-project/dnd-6th-5-android/wiki/%ED%98%91%EC%97%85-%EA%B7%9C%EC%B9%99">협업 규칙</a></li>
+  </ul>
+</h3>
+
 
 ## Stack
 ![image](https://user-images.githubusercontent.com/84564695/180599029-5cb327c6-c664-4566-9de3-9a17846eb6bc.png)
