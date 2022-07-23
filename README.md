@@ -55,10 +55,10 @@
 
 
 
-### 💘온보딩
-https://user-images.githubusercontent.com/84564695/180598856-ce4fe6cd-8114-4bec-9318-8dd154477b29.mp4
-
 ### 💘맞춤 정책 찾기
+https://user-images.githubusercontent.com/84564695/180599170-e25d2752-1d93-4700-90eb-12dd085dfacd.mp4
+
+### 💘맞춤 정책 자세히보기
 https://user-images.githubusercontent.com/84564695/180598776-b9f9fc54-3eaa-4cb7-adb0-f262de9e5bfe.mp4
 
 ### 💘커뮤니티
