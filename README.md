@@ -1,7 +1,7 @@
-# 스푼피드
+# 🥄스푼피드
 <img width="1400" src = "https://user-images.githubusercontent.com/84564695/180598164-f600814c-1820-43b1-afc8-6062b51060fb.png" />
 
-# Android Developer
+# 🥄Android Developer
 <table align="center" style = "table-layout: auto; width: 100%; table-layout: fixed;">
   <colgroup>
     <col style="width:33%"/>
@@ -31,7 +31,7 @@
 
 
 
-# 서비스 소개
+# 🥄서비스 소개
 
 ### 사회 초년생이 꼭 알아야하는 맞춤 정책 서비스, 스푼피드
 
@@ -51,7 +51,7 @@
 
 ```
 
-# Preview
+# 🥄Preview
 
 
 
@@ -65,7 +65,7 @@ https://user-images.githubusercontent.com/84564695/180598776-b9f9fc54-3eaa-4cb7-
 https://user-images.githubusercontent.com/84564695/180598819-65abf15b-cb4d-4b55-a886-6f97edbfffcd.mp4
 
 
-# 기능 설명
+# 🥄기능 설명
 #### 스플래쉬
 ```
 스푼피드 애니메이션 나타나는 단계
@@ -111,7 +111,7 @@ https://user-images.githubusercontent.com/84564695/180598819-65abf15b-cb4d-4b55-
 자신의 개인 정보(나이, 소득 등)을 변경하고 찜한 정책 리스트로 이동하는 
 ```
 
-## Project Rule
+## 🥄Project Rule
 <h3> ⚙Setting
   <ul>
     <li><a href="https://github.com/dnd-side-project/dnd-6th-5-android/wiki/%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD">개발 환경</a></li>
@@ -127,5 +127,15 @@ https://user-images.githubusercontent.com/84564695/180598819-65abf15b-cb4d-4b55-
 </h3>
 
 
-## Stack
-![image](https://user-images.githubusercontent.com/84564695/180599029-5cb327c6-c664-4566-9de3-9a17846eb6bc.png)
+## 🥄Stack
+| Architecture | Clean Architecture, MVVM |
+|:---|:---|
+| Design Pattern | Repository Pattern, Adapter Pattern,  Delegation Pattern, Observer Pattern |
+| Jetpack Components | Room, LiveData, Lifecycle, ViewModel, DataBinding |
+| Dependency Injection | Hilt |
+| Network | Retrofit, OkHttp |
+| Asynchronous Processing | Coroutine) |
+| Third Party Library |  Social Login, Lottie, Timber, kotlinSerialization |
+| Strategy | Git Flow |
+| CI/CD | GitHub Action(KtLint) |
+| Other Tool | Slack, Notion, Figma, Postman |
