@@ -108,7 +108,7 @@ https://user-images.githubusercontent.com/84564695/180598819-65abf15b-cb4d-4b55-
 
 #### 마이페이지
 ```
-자신의 개인 정보(나이, 소득 등)을 변경하고 찜한 정책 리스트로 이동하는 
+자신의 개인 정보(나이, 소득 등)을 변경하고 찜한 정책 리스트로 이동하는 단계
 ```
 
 ## 🥄Project Rule
@@ -134,7 +134,7 @@ https://user-images.githubusercontent.com/84564695/180598819-65abf15b-cb4d-4b55-
 | Jetpack Components | Room, LiveData, Lifecycle, ViewModel, DataBinding |
 | Dependency Injection | Hilt |
 | Network | Retrofit, OkHttp |
-| Asynchronous Processing | Coroutine) |
+| Asynchronous Processing | Coroutine |
 | Third Party Library |  Social Login, Lottie, Timber, kotlinSerialization |
 | Strategy | Git Flow |
 | CI/CD | GitHub Action(KtLint) |
