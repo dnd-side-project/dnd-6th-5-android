@@ -42,125 +42,65 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nsv_policylist"
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:overScrollMode="never"
-            app:layout_constraintBottom_toTopOf="@id/bnv_policylist"
+            android:background="@color/white"
             app:layout_constraintTop_toBottomOf="@+id/tv_policylist_title">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_policylist"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="24dp"
+                android:overScrollMode="never"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="6"
+                tools:listitem="@layout/item_policy_list">
 
-                <TextView
-                    android:id="@+id/tv_policylist_rewrite"
-                    style="@style/TextView.Label.Regular.14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:includeFontPadding="false"
-                    android:onClick="@{()->policyListViewModel.reWriteOnClick()}"
-                    android:paddingVertical="11dp"
-                    android:paddingStart="36dp"
-                    android:paddingEnd="16dp"
-                    android:text="@string/policylist_rewrite"
-                    android:textColor="@color/gray04"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/cl_policylist_empty_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rv_policylist">
 
                 <ImageView
-                    android:id="@+id/iv_policylist_enter_back"
+                    android:id="@+id/iv_policylist_no_list_explain"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="18dp"
-                    android:src="@drawable/ic_rearrow"
-                    app:layout_constraintBottom_toBottomOf="@id/tv_policylist_rewrite"
-                    app:layout_constraintStart_toStartOf="@id/tv_policylist_rewrite"
-                    app:layout_constraintTop_toTopOf="@id/tv_policylist_rewrite"
-                    tools:layout_editor_absoluteX="20dp" />
-
-                <TextView
-                    android:id="@+id/tv_policylist_filter"
-                    style="@style/TextView.Label.Regular.14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/bg_stroke_gray02_1dp"
-                    android:onClick="@{()->policyListViewModel.filterOnClick()}"
-                    android:paddingVertical="11dp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="38dp"
-                    android:text="@string/policylist_all"
-                    android:textColor="@color/gray06"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_policylist_rewrite"
+                    android:src="@drawable/ic_empty"
+                    app:layout_constraintBottom_toTopOf="@id/tv_policylist_no_list_explain"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/tv_policylist_rewrite" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_chainStyle="packed" />
 
-                <ImageView
-                    android:id="@+id/iv_policylist_filter"
+                <TextView
+                    android:id="@+id/tv_policylist_no_list_explain"
+                    style="@style/TextView.Label.Regular.16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="15dp"
-                    android:src="@drawable/ic_chevron_down_20"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_policylist_filter"
-                    app:layout_constraintEnd_toEndOf="@+id/tv_policylist_filter"
-                    app:layout_constraintTop_toTopOf="@+id/tv_policylist_filter" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_policylist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="24dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginBottom="24dp"
-                    android:overScrollMode="never"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_rewrite"
-                    tools:itemCount="6"
-                    tools:listitem="@layout/item_policy_list">
-
-                </androidx.recyclerview.widget.RecyclerView>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/cl_policylist_empty_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:visibility="invisible"
+                    android:layout_marginTop="14dp"
+                    android:text="해당하는 정책이 없어요"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_rewrite">
-
-                    <ImageView
-                        android:id="@+id/iv_policylist_no_list_explain"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_empty"
-                        app:layout_constraintBottom_toTopOf="@id/tv_policylist_no_list_explain"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_chainStyle="packed" />
-
-                    <TextView
-                        android:id="@+id/tv_policylist_no_list_explain"
-                        style="@style/TextView.Label.Regular.16"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="14dp"
-                        android:text="해당하는 정책이 없어요"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_policylist_no_list_explain"
-                        app:layout_constraintVertical_chainStyle="packed" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    app:layout_constraintTop_toBottomOf="@id/tv_policylist_no_list_explain"
+                    app:layout_constraintVertical_chainStyle="packed" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bnv_policylist"
@@ -172,7 +112,6 @@
             app:itemTextColor="@color/black"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/nsv_policylist"
             app:menu="@menu/menu_bottom_nav" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

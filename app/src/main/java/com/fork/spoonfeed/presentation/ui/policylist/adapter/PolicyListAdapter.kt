@@ -17,6 +17,7 @@ class PolicyListAdapter(
     private val clickListener: (ResponsePolicyAllData.Data.Policy) -> Unit
 ) : ListAdapter<ResponsePolicyAllData.Data.Policy, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
 
+
     inner class PolicyListViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponsePolicyAllData.Data.Policy) {
 

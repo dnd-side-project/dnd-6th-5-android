@@ -8,6 +8,7 @@ import android.widget.Button
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.policy.RequestFilteredPolicy
@@ -20,6 +21,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialo
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.FINANCE
 import com.fork.spoonfeed.presentation.ui.policy.view.filter.PolicyFilterLevelThreeFragment
 import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyListAdapter
+import com.fork.spoonfeed.presentation.ui.policylist.adapter.PolicyMenuAdapter
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.showFloatingDialog
@@ -30,6 +32,8 @@ class PolicyListActivity :
     BaseViewUtil.BaseAppCompatActivity<ActivityPolicyListBinding>(R.layout.activity_policy_list) {
     private val policyListViewModel: PolicyListViewModel by viewModels()
     private lateinit var policyListAdapter: PolicyListAdapter
+    private lateinit var policyMenuAdapter: PolicyMenuAdapter
+    private lateinit var concatAdapter: ConcatAdapter
     private lateinit var getResultText: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,7 +54,6 @@ class PolicyListActivity :
         setPolicyListObserve()
         setFilterClickObserve()
         setReWriteClickObserve()
-        setInitLayout()
         setLikeBtnResult()
         policyListViewModel.applyFilter()
         policyListViewModel.getMyLikePolicy()
@@ -102,24 +105,21 @@ class PolicyListActivity :
         val category = intent.getStringExtra(CATEGORY)
         if (category != null) {
             with(binding) {
-                tvPolicylistRewrite.visibility = View.INVISIBLE
-                ivPolicylistEnterBack.visibility = View.INVISIBLE
                 tvPolicylistTitle.text = "청년 정책"
             }
             policyListViewModel.setCategorySelected(category)
-            setFilterCategoryLayout(category)
         } else {
             showSearchDoneDialog()
         }
     }
 
-    private fun setFilterCategoryLayout(category: String) {
+/*    private fun setFilterCategoryLayout(category: String) {
         when (category) {
-            ALL -> binding.tvPolicylistFilter.text = ALL
-            DWELLING -> binding.tvPolicylistFilter.text = DWELLING
-            FINANCE -> binding.tvPolicylistFilter.text = FINANCE
+            ALL ->  policyMenuAdapter.clickFilter(ALL)     //binding.tvPolicylistFilter.text = ALL
+            DWELLING ->  policyMenuAdapter.clickFilter(DWELLING)   //binding.tvPolicylistFilter.text = DWELLING
+            FINANCE ->  policyMenuAdapter.clickFilter(FINANCE)   //binding.tvPolicylistFilter.text = FINANCE
         }
-    }
+    }*/
 
     private fun setPolicyListAdapter() {
         policyListAdapter = PolicyListAdapter(this, policyListViewModel) {
@@ -128,10 +128,14 @@ class PolicyListActivity :
                 getResultText.launch(this)
             }
         }
+        policyMenuAdapter = PolicyMenuAdapter({ policyListViewModel.reWriteOnClick() }, { policyListViewModel.filterOnClick() })
         with(binding) {
-            rvPolicylist.adapter = policyListAdapter
+            concatAdapter = ConcatAdapter(policyMenuAdapter, policyListAdapter)
+            rvPolicylist.adapter = concatAdapter
             rvPolicylist.layoutManager = LinearLayoutManager(this@PolicyListActivity)
         }
+
+        setInitLayout()
     }
 
     private fun setLikeBtnResult() {
@@ -169,7 +173,7 @@ class PolicyListActivity :
 
     private fun setFilterClickLayoutObserve() {
         policyListViewModel.selectedFilter.observe(this) { category ->
-            setFilterCategoryLayout(category)
+           // setFilterCategoryLayout(category)
             policyListViewModel.applyFilter()
         }
     }
