@@ -11,6 +11,7 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentSignupTermsConditionBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 
 @AndroidEntryPoint
@@ -30,7 +31,7 @@ class SignupTermsConditionFragment :
     private fun checkedSwitch() {
         with(binding) {
             ctl1.setOnClickListener {
-                Log.e("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ","ahenzmfflr")
+            Timber.d("checkedSwitch","모두 동의하기 클릭")
                 cbSignupTermsConditionAllAgree.isChecked = !cbSignupTermsConditionAllAgree.isChecked
                 if (cbSignupTermsConditionAllAgree.isChecked) {
                     setAllChecked()
