@@ -15,13 +15,14 @@ import com.fork.spoonfeed.domain.model.CommentData
 import com.fork.spoonfeed.presentation.ui.communitypost.view.BottomDialogReport
 import com.fork.spoonfeed.presentation.ui.communitypost.view.CommunityPostActivity
 import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
+import com.fork.spoonfeed.presentation.util.SimpleDiffUtil
 
 class CommentAdapter(
     private val supportFragmentManager: FragmentManager,
     private val userData: ResponseUserData.Data.User,
     private val commentUpdateListener: (ResponsePostData.Data.Comment) -> Unit,
     private val commentDeleteListener: (ResponsePostData.Data.Comment) -> Unit
-) : ListAdapter<ResponsePostData.Data.Comment, CommentAdapter.CommentViewHolder>(diffUtil) {
+) : ListAdapter<ResponsePostData.Data.Comment, CommentAdapter.CommentViewHolder>(SimpleDiffUtil()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         return CommentViewHolder(
@@ -98,24 +99,6 @@ class CommentAdapter(
                 supportFragmentManager,
                 bottomDialogReportUser.tag
             )
-        }
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<ResponsePostData.Data.Comment>() {
-            override fun areContentsTheSame(
-                oldItem: ResponsePostData.Data.Comment,
-                newItem: ResponsePostData.Data.Comment
-            ): Boolean {
-                return oldItem == newItem
-            }
-
-            override fun areItemsTheSame(
-                oldItem: ResponsePostData.Data.Comment,
-                newItem: ResponsePostData.Data.Comment
-            ): Boolean {
-                return oldItem.id == newItem.id
-            }
         }
     }
 }

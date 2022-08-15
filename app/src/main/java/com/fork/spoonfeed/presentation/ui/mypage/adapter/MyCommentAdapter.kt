@@ -10,11 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserCommentData
 import com.fork.spoonfeed.databinding.ItemCommentBinding
 import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
+import com.fork.spoonfeed.presentation.util.SimpleDiffUtil
 
 class MyCommentAdapter(
     private val supportFragmentManager: FragmentManager,
     private val clickListener: (ResponseUserCommentData.Data.Comment) -> Unit
-) : ListAdapter<ResponseUserCommentData.Data.Comment, MyCommentAdapter.MyCommentViewHolder>(diffUtil) {
+) : ListAdapter<ResponseUserCommentData.Data.Comment, MyCommentAdapter.MyCommentViewHolder>(SimpleDiffUtil()) {
 
     inner class MyCommentViewHolder(private val binding: ItemCommentBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseUserCommentData.Data.Comment) {
@@ -55,15 +56,5 @@ class MyCommentAdapter(
             supportFragmentManager,
             bottomSheetFragment.tag
         )
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<ResponseUserCommentData.Data.Comment>() {
-            override fun areContentsTheSame(oldItem: ResponseUserCommentData.Data.Comment, newItem: ResponseUserCommentData.Data.Comment) =
-                oldItem == newItem
-
-            override fun areItemsTheSame(oldItem: ResponseUserCommentData.Data.Comment, newItem: ResponseUserCommentData.Data.Comment) =
-                oldItem.commentId == newItem.commentId
-        }
     }
 }

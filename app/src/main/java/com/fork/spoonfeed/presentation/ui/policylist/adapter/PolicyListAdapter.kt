@@ -10,12 +10,13 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.policy.ResponsePolicyAllData
 import com.fork.spoonfeed.databinding.ItemPolicyListBinding
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
+import com.fork.spoonfeed.presentation.util.SimpleDiffUtil
 
 class PolicyListAdapter(
     private val context: LifecycleOwner,
     private val policyListViewModel: PolicyListViewModel,
     private val clickListener: (ResponsePolicyAllData.Data.Policy) -> Unit
-) : ListAdapter<ResponsePolicyAllData.Data.Policy, PolicyListAdapter.PolicyListViewHolder>(diffUtil) {
+) : ListAdapter<ResponsePolicyAllData.Data.Policy, PolicyListAdapter.PolicyListViewHolder>(SimpleDiffUtil()) {
 
 
     inner class PolicyListViewHolder(private val binding: ItemPolicyListBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -76,15 +77,5 @@ class PolicyListAdapter(
 
     override fun onBindViewHolder(holder: PolicyListViewHolder, position: Int) {
         holder.onBind(currentList[position])
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<ResponsePolicyAllData.Data.Policy>() {
-            override fun areContentsTheSame(oldItem: ResponsePolicyAllData.Data.Policy, newItem: ResponsePolicyAllData.Data.Policy) =
-                oldItem == newItem
-
-            override fun areItemsTheSame(oldItem: ResponsePolicyAllData.Data.Policy, newItem: ResponsePolicyAllData.Data.Policy) =
-                oldItem.id == newItem.id
-        }
     }
 }
