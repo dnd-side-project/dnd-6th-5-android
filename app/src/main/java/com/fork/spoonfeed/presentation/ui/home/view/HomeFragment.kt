@@ -29,6 +29,7 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        LifeCycleEventLogger(javaClass.name).registerLogger(viewLifecycleOwner.lifecycle)
         initView()
     }
 
