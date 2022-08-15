@@ -38,6 +38,7 @@ class PolicyListActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        LifeCycleEventLogger(javaClass.name).registerLogger(lifecycle)
         binding.policyListViewModel = policyListViewModel
         binding.lifecycleOwner = this
         initView()
@@ -173,7 +174,7 @@ class PolicyListActivity :
 
     private fun setFilterClickLayoutObserve() {
         policyListViewModel.selectedFilter.observe(this) { category ->
-           // setFilterCategoryLayout(category)
+            // setFilterCategoryLayout(category)
             policyListViewModel.applyFilter()
         }
     }

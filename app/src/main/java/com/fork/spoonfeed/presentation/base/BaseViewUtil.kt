@@ -12,9 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
 import com.fork.spoonfeed.R
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import timber.log.Timber
 
 
 sealed class BaseViewUtil {
@@ -36,6 +40,16 @@ sealed class BaseViewUtil {
         }
 
         abstract fun initView()
+
+        protected inner class LifeCycleEventLogger(private val className: String) : LifecycleObserver {
+            fun registerLogger(lifecycle: Lifecycle) {
+                lifecycle.addObserver(this)
+            }
+
+            fun log() {
+                Timber.d("${className}LifeCycleEvent", "${lifecycle.currentState}")
+            }
+        }
     }
 
     abstract class BaseAppCompatActivity<T : ViewDataBinding>(@LayoutRes val layoutRes: Int) :
@@ -50,6 +64,16 @@ sealed class BaseViewUtil {
         }
 
         abstract fun initView()
+
+        protected inner class LifeCycleEventLogger(private val className: String) : LifecycleObserver {
+            fun registerLogger(lifecycle: Lifecycle) {
+                lifecycle.addObserver(this)
+            }
+
+            fun log() {
+                Timber.d("${className}LifeCycleEvent", "${lifecycle.currentState}")
+            }
+        }
     }
 
     abstract class BaseCategoryBottomDialogFragment<T : ViewDataBinding>(@LayoutRes val layout: Int) :
