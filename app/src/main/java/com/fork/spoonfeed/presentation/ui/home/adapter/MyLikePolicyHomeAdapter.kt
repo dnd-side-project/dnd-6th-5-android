@@ -8,10 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.databinding.ItemInterastedPolicyBinding
+import com.fork.spoonfeed.presentation.util.SimpleDiffUtil
 
 class MyLikePolicyAdapter(
     private val clickListener: (ResponseUserLikePolicyData.Data.Policy) -> Unit
-) : ListAdapter<ResponseUserLikePolicyData.Data.Policy, MyLikePolicyAdapter.MyLikePolicyHomeViewHolder>(diffUtil) {
+) : ListAdapter<ResponseUserLikePolicyData.Data.Policy, MyLikePolicyAdapter.MyLikePolicyHomeViewHolder>(SimpleDiffUtil()) {
 
     inner class MyLikePolicyHomeViewHolder(private val binding: ItemInterastedPolicyBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseUserLikePolicyData.Data.Policy) {
@@ -52,19 +53,12 @@ class MyLikePolicyAdapter(
             currentList.size
         }
 
-    override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyHomeViewHolder, position: Int) { holder.onBind(getItem(position))
+    override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyHomeViewHolder, position: Int) {
+        holder.onBind(getItem(position))
 
     }
 
     companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<ResponseUserLikePolicyData.Data.Policy>() {
-            override fun areContentsTheSame(oldItem: ResponseUserLikePolicyData.Data.Policy, newItem: ResponseUserLikePolicyData.Data.Policy) =
-                oldItem == newItem
-
-            override fun areItemsTheSame(oldItem: ResponseUserLikePolicyData.Data.Policy, newItem: ResponseUserLikePolicyData.Data.Policy) =
-                oldItem.policyId == newItem.policyId
-        }
-
         const val DEFAULT_COUNT = 3
     }
 }

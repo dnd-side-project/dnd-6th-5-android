@@ -13,12 +13,13 @@ import com.fork.spoonfeed.data.remote.model.user.ResponseUserPostData
 import com.fork.spoonfeed.databinding.ItemPostBinding
 import com.fork.spoonfeed.presentation.ui.mypage.view.BottomDialogMyPageFragment
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
+import com.fork.spoonfeed.presentation.util.SimpleDiffUtil
 
 class MyPostAdapter(
     private val supportFragmentManager: FragmentManager,
     private val myPageViewModel: MyPageViewModel,
     private val clickListener: (ResponseUserPostData.Data.Post) -> Unit
-) : ListAdapter<ResponseUserPostData.Data.Post, MyPostAdapter.MyPostViewHolder>(diffUtil) {
+) : ListAdapter<ResponseUserPostData.Data.Post, MyPostAdapter.MyPostViewHolder>(SimpleDiffUtil()) {
 
     inner class MyPostViewHolder(private val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(data: ResponseUserPostData.Data.Post) {
@@ -68,15 +69,5 @@ class MyPostAdapter(
             supportFragmentManager,
             bottomSheetFragment.tag
         )
-    }
-
-    companion object {
-        val diffUtil = object : DiffUtil.ItemCallback<ResponseUserPostData.Data.Post>() {
-            override fun areContentsTheSame(oldItem: ResponseUserPostData.Data.Post, newItem: ResponseUserPostData.Data.Post) =
-                oldItem == newItem
-
-            override fun areItemsTheSame(oldItem: ResponseUserPostData.Data.Post, newItem: ResponseUserPostData.Data.Post) =
-                oldItem.postId == newItem.postId
-        }
     }
 }
