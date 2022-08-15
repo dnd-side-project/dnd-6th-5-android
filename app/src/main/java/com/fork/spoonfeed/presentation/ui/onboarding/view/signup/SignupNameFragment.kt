@@ -65,7 +65,7 @@ class SignupNameFragment :
     }
 
     private fun setNickNameObserve() {
-        loginViewModel.isNameSpecial.observe(this) {
+        loginViewModel.isNameSpecial.observe(viewLifecycleOwner) {
             if (!it) {
                 Snackbar.make(binding.root, "존재하는 닉네임입니다.", Snackbar.LENGTH_SHORT).show()
             } else {
