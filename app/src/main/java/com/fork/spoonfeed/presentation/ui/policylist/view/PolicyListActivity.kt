@@ -145,9 +145,9 @@ class PolicyListActivity :
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == RESULT_OK) {
-                val id = result.data?.getIntExtra("id", -1)
-                val ctn = result.data?.getIntExtra("ctn", -1)
-                val likeState = result.data?.getBooleanExtra("likeState", false)
+                val id = result.data?.getIntExtra(DetailInfoActivity.ID, -1)
+                val ctn = result.data?.getIntExtra(DetailInfoActivity.CTN, -1)
+                val likeState = result.data?.getBooleanExtra(DetailInfoActivity.LIKE_STATE, false)
                 policyListViewModel.setLikeBtn(LikeBtnState(id!!, ctn!!, likeState!!))
             }
         }

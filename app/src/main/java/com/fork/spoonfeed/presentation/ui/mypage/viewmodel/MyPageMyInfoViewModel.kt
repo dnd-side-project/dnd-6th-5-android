@@ -33,28 +33,22 @@ class MyPageMyInfoViewModel @Inject constructor(
     val isPatchUserFilterValid: LiveData<Boolean> = _isPatchUserFilterValid
 
     private val _isPatchUserFilterSuccess = MutableLiveData(false)
-    val isPatchUserFilterSuccess: LiveData<Boolean> = _isPatchUserFilterSuccess
 
     private val _age = MutableLiveData(Age())
     val age: LiveData<Age> = _age
 
     private val _marriageStatus = MutableLiveData<Boolean>()
-    val marriageStatus: LiveData<Boolean> = _marriageStatus
 
     private val _employmentAvailability = MutableLiveData<Boolean?>()
-    val employmentAvailability: LiveData<Boolean?> = _employmentAvailability
 
     private val _companySize = MutableLiveData<CompanySize?>()
-    val companySize: LiveData<CompanySize?> = _companySize
 
     private val _userNickName = MutableLiveData<String>()
     val userNickName: LiveData<String> = _userNickName
 
     private val _isPatchNickNameVaild = MutableLiveData(false)
-    val isPatchNickNameVaild: LiveData<Boolean> get() = _isPatchNickNameVaild
 
     private val _isPatchNickNameSuccess = MutableLiveData(false)
-    val isPatchNickNameSuccess: LiveData<Boolean> get() = _isPatchNickNameSuccess
 
     private val _isPatchUserInfoSuccess = MutableLiveData(false)
     val isPatchUserInfoSuccess: LiveData<Boolean> get() = _isPatchUserInfoSuccess

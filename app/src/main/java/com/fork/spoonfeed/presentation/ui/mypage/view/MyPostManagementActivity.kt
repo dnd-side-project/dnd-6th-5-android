@@ -31,9 +31,9 @@ class MyPostManagementActivity : BaseViewUtil.BaseAppCompatActivity<ActivityMyPo
     }
 
     private fun initTabLayout() {
-        val tabLable = listOf("게시글", "댓글")
+        val tabLabel = listOf("게시글", "댓글")
         TabLayoutMediator(binding.tlMypostmanagement, binding.vpMypostmanagement) { tab, position ->
-            tab.text = tabLable[position]
+            tab.text = tabLabel[position]
         }.attach()
     }
 }
