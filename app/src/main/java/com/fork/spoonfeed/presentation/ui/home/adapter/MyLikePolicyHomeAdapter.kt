@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.home.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -14,8 +15,10 @@ class MyLikePolicyAdapter(
     private val clickListener: (ResponseUserLikePolicyData.Data.Policy) -> Unit
 ) : ListAdapter<ResponseUserLikePolicyData.Data.Policy, MyLikePolicyAdapter.MyLikePolicyHomeViewHolder>(SimpleDiffUtil()) {
 
-    inner class MyLikePolicyHomeViewHolder(private val binding: ItemInterastedPolicyBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(data: ResponseUserLikePolicyData.Data.Policy) {
+    private lateinit var inflater: LayoutInflater
+
+    class MyLikePolicyHomeViewHolder(private val binding: ItemInterastedPolicyBinding) : RecyclerView.ViewHolder(binding.root) {
+        fun onBind(data: ResponseUserLikePolicyData.Data.Policy, clickListener: (ResponseUserLikePolicyData.Data.Policy) -> Unit) {
             binding.apply {
                 tvItemPolicyTitle.text = data.name
                 tvItemCategory.text = data.category
@@ -34,15 +37,16 @@ class MyLikePolicyAdapter(
                     tvItemCategory.setBackgroundResource(R.drawable.bg_dwelling_blue_radius_4dp)
                 }
 
-                root.setOnClickListener {
-                    clickListener(data)
-                }
+                root.setOnClickListener { clickListener(data) }
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyLikePolicyAdapter.MyLikePolicyHomeViewHolder {
-        val binding = ItemInterastedPolicyBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        if (!::inflater.isInitialized) //변수를 객체로 엑세스하여 객체에 대한 속성 참조
+            inflater = LayoutInflater.from(parent.context)
+        val binding = ItemInterastedPolicyBinding.inflate(inflater, parent, false)
+
         return MyLikePolicyHomeViewHolder(binding)
     }
 
@@ -54,7 +58,7 @@ class MyLikePolicyAdapter(
         }
 
     override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyHomeViewHolder, position: Int) {
-        holder.onBind(getItem(position))
+        holder.onBind(getItem(position), clickListener)
 
     }
 
