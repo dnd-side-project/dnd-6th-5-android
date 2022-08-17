@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -188,5 +189,9 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
     companion object {
         const val POST_PK = "com.fork.spoonfeed.presentation.ui.mypage.view"
         const val REFERENCE_SITE_NOTHING = "-"
+        fun start(context: Context, pk: Int) {
+            val intent = Intent(context, DetailInfoActivity::class.java).putExtra(POST_PK, pk)
+            context.startActivity(intent)
+        }
     }
 }

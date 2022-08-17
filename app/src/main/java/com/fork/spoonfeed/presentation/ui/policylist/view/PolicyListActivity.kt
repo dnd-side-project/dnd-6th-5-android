@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -231,7 +232,10 @@ class PolicyListActivity :
 
     companion object {
         const val CATEGORY = "CATEGORY"
-        const val POLICY_FILTER_RESET_NAME = "com.fork.spoonfeed.presentation.ui.policylist"
-        const val POLICY_FILTER_RESET_VALUE = "RESET"
+
+        fun start(context: Context, category: String) {
+            val intent = Intent(context, PolicyListActivity::class.java).putExtra(CATEGORY, category)
+            context.startActivity(intent)
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.mypage.view
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.adapter.MyLikePolicyAdapter
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
+import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -80,6 +82,13 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
         with(binding) {
             rvLikepolicy.adapter = myLikePolicyAdapter
             rvLikepolicy.layoutManager = LinearLayoutManager(this@InterestedPolicyActivity)
+        }
+    }
+
+    companion object {
+        fun start(context: Context) {
+            val intent = Intent(context, MyLikePolicyAdapter::class.java)
+            context.startActivity(intent)
         }
     }
 }

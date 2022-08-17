@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.fork.spoonfeed.R
 import com.fork.spoonfeed.databinding.FragmentHomeBinding
@@ -18,7 +17,6 @@ import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterestedPolicyActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
-import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity.Companion.CATEGORY
 import com.fork.spoonfeed.presentation.util.LinearLayoutManagerWrapper
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,7 +27,6 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        LifeCycleEventLogger(javaClass.name).registerLogger(viewLifecycleOwner.lifecycle)
         initView()
     }
 
@@ -52,60 +49,31 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     private fun initClick() {
         with(binding) {
-
-            ivHomeAllBackground.setOnClickListener {
-                val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
-                    it.putExtra(CATEGORY, ALL)
-                }
-                startActivity(intent)
-            }
-            ivHomeDwellingBackground.setOnClickListener {
-                val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
-                    it.putExtra(CATEGORY, DWELLING)
-                }
-                startActivity(intent)
-            }
-            ivHomeFinanceBackground.setOnClickListener {
-                val intent = Intent(requireContext(), PolicyListActivity::class.java).let {
-                    it.putExtra(CATEGORY, FINANCE)
-                }
-                startActivity(intent)
-            }
-            ivHomeInterastedPolicyMore.setOnClickListener {
-                val intent = Intent(requireContext(), InterestedPolicyActivity::class.java)
-                startActivity(intent)
-            }
-
-            ctlHomeCustomizedPolicy.setOnClickListener {
-                (activity as MainActivity).moveToPolicy()
-            }
+            ivHomeAllBackground.setOnClickListener { PolicyListActivity.start(requireContext(), ALL) }
+            ivHomeDwellingBackground.setOnClickListener { PolicyListActivity.start(requireContext(), DWELLING) }
+            ivHomeFinanceBackground.setOnClickListener { PolicyListActivity.start(requireContext(), FINANCE) }
+            ivHomeInterastedPolicyMore.setOnClickListener { InterestedPolicyActivity.start(requireContext()) }
+            ctlHomeCustomizedPolicy.setOnClickListener { (activity as MainActivity).moveToPolicy() }
         }
     }
 
     private fun setMyLikePolicyListAdapter() {
-        val linearLayoutManagerWrapepr = LinearLayoutManagerWrapper(requireContext(), LinearLayoutManager.VERTICAL, false)
+        myLikePolicyAdapter = MyLikePolicyAdapter { DetailInfoActivity.start(requireContext(), it.policyId) }
 
-        myLikePolicyAdapter = MyLikePolicyAdapter {
-            Intent(requireContext(), DetailInfoActivity::class.java).apply {
-                putExtra(DetailInfoActivity.POST_PK, it.policyId)
-                startActivity(this)
-            }
-        }
-
-        with(binding) {
-            rvHomeInterastedPolicyList.adapter = myLikePolicyAdapter
-            rvHomeInterastedPolicyList.layoutManager = linearLayoutManagerWrapepr
+        with(binding.rvHomeInterastedPolicyList) {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = myLikePolicyAdapter
         }
     }
 
     private fun setMyLikePolicyListObserve() {
-        homeViewModel.myLikePolicyList.observe(this) { myLikePolicyList ->
+        homeViewModel.myLikePolicyList.observe(viewLifecycleOwner) { myLikePolicyList ->
             myLikePolicyAdapter.submitList(myLikePolicyList)
         }
     }
 
-    fun setMyPolicyListEmptyObserve() {
-        homeViewModel.isMyLikePolicyListEmpty.observe(this) { isMyLikePolicyListEmpty ->
+    private fun setMyPolicyListEmptyObserve() {
+        homeViewModel.isMyLikePolicyListEmpty.observe(viewLifecycleOwner) { isMyLikePolicyListEmpty ->
             if (isMyLikePolicyListEmpty) {
                 binding.rvHomeInterastedPolicyList.visibility = View.GONE
                 binding.ctlHomeNoInterastedPolicyList.visibility = View.VISIBLE
