@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter
 import android.widget.ListPopupWindow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -40,17 +41,21 @@ class CommunityPostCreateActivity :
 
     private fun setRegisterForActivityResult() {
         registerForActivity =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult ->
                 communityPostCreateViewModel.setUserInfo(
-                    it.data?.getSerializableExtra(CommunityPostInfoUpdateActivity.INFO_UPDATE_RESULT)
+                    activityResult.data?.getSerializableExtra(CommunityPostInfoUpdateActivity.INFO_UPDATE_RESULT)
                             as ResponseUserData.Data.User
                 )
 
-                if (it.data?.getStringExtra(CommunityPostInfoUpdateActivity.INFO_NOT_UPDATE_RESULT_KEY) == null) {
+                if (checkFromInfo(activityResult)) {
                     communityPostCreateViewModel.isValid()
                     setUpdateButtonActive()
                 } else Toast.makeText(this, "상세정보를 확인해주세요", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    fun checkFromInfo(activityResult: ActivityResult): Boolean {
+        return activityResult.data?.getStringExtra(CommunityPostInfoUpdateActivity.INFO_NOT_UPDATE_RESULT_KEY) == null
     }
 
     override fun initView() {
