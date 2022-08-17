@@ -1,5 +1,6 @@
 package com.fork.spoonfeed.presentation.ui.community.adapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
@@ -12,19 +13,17 @@ import com.fork.spoonfeed.R
 import com.fork.spoonfeed.data.remote.model.community.ResponsePostAllData
 import com.fork.spoonfeed.databinding.ItemPostBinding
 import com.fork.spoonfeed.presentation.ui.mypage.viewmodel.MyPageViewModel
+import timber.log.Timber
 
 class PostAdapter(
-    private val myPageViewModel: MyPageViewModel,
-    private val adapterLifecycleOwner: LifecycleOwner,
-    private val supportFragmentManager: FragmentManager,
     private val clickListener: (ResponsePostAllData.Data.Post) -> Unit
 ) : ListAdapter<ResponsePostAllData.Data.Post, PostAdapter.CommunityViewHolder>(diffUtil) {
 
-    inner class CommunityViewHolder(
+    class CommunityViewHolder(
         private val binding: ItemPostBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(data: ResponsePostAllData.Data.Post) {
+        fun onBind(data: ResponsePostAllData.Data.Post, clickListener: (ResponsePostAllData.Data.Post) -> Unit) {
             binding.apply {
                 tvItemCategory.text = data.category
                 tvItemPolicyTitle.text = data.title
@@ -52,7 +51,7 @@ class PostAdapter(
     override fun getItemCount() = currentList.size
 
     override fun onBindViewHolder(holder: CommunityViewHolder, position: Int) {
-        holder.onBind(currentList[position])
+        holder.onBind(currentList[position], clickListener)
     }
 
     companion object {
