@@ -189,7 +189,7 @@ class MyPageViewModel @Inject constructor(
         viewModelScope.launch {
             _myLikePolicyList.value = userRepository.getUserLikePolicy().data.policy
             _isMyLikePolicyListEmpty.value =
-                _myLikePolicyList.value!![0]?.name.isEmpty() == true
+                _myLikePolicyList.value!!.isEmpty() == true
         }
     }
 

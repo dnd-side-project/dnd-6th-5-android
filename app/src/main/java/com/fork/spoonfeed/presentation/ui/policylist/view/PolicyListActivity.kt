@@ -89,7 +89,7 @@ class PolicyListActivity :
     }
 
     private fun moveToMenu(targetFragment: String) {
-        startActivity(Intent(baseContext, MainActivity::class.java).apply {
+        startActivity(Intent(this, MainActivity::class.java).apply {
             putExtra(MainActivity.BOTTOM_MOVE, targetFragment)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

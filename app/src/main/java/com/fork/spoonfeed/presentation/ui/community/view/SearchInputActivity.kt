@@ -1,5 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.community.view
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
@@ -13,6 +15,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialo
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.FINANCE
 import com.fork.spoonfeed.presentation.ui.community.adapter.TabLayoutAdapter
 import com.fork.spoonfeed.presentation.ui.community.viewmodel.SearchViewModel
+import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
 import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 import com.fork.spoonfeed.presentation.util.setTextColor
 import com.fork.spoonfeed.presentation.util.setTextSize
@@ -98,5 +101,10 @@ class SearchInputActivity :
 
     companion object {
         const val POST_CATEGORY = "com.fork.spoonfeed.presentation.ui.community.view POST_CATEGORY"
+
+        fun start(context: Context) {
+            val intent = Intent(context, SearchInputActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 }

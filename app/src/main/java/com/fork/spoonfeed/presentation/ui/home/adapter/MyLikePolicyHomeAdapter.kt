@@ -42,7 +42,7 @@ class MyLikePolicyAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyLikePolicyAdapter.MyLikePolicyHomeViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyLikePolicyHomeViewHolder {
         if (!::inflater.isInitialized) //변수를 객체로 엑세스하여 객체에 대한 속성 참조
             inflater = LayoutInflater.from(parent.context)
         val binding = ItemInterastedPolicyBinding.inflate(inflater, parent, false)
@@ -51,13 +51,11 @@ class MyLikePolicyAdapter(
     }
 
     override fun getItemCount() =
-        if (DEFAULT_COUNT < currentList.size) {
-            3
-        } else {
-            currentList.size
-        }
+        if (DEFAULT_COUNT < currentList.size) 3
+        else currentList.size
 
-    override fun onBindViewHolder(holder: MyLikePolicyAdapter.MyLikePolicyHomeViewHolder, position: Int) {
+
+    override fun onBindViewHolder(holder: MyLikePolicyHomeViewHolder, position: Int) {
         holder.onBind(getItem(position), clickListener)
 
     }
