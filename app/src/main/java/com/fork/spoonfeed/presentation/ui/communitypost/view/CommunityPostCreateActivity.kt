@@ -56,7 +56,7 @@ class CommunityPostCreateActivity :
             }
     }
 
-    fun checkFromInfo(activityResult: ActivityResult): Boolean {
+    private fun checkFromInfo(activityResult: ActivityResult): Boolean {
         return activityResult.data?.getStringExtra(CommunityPostInfoUpdateActivity.INFO_NOT_UPDATE_RESULT_KEY) == null
     }
 
@@ -75,7 +75,6 @@ class CommunityPostCreateActivity :
             setOnClickListener(true, postId)
         } else {
             setOnClickListener(false, postId)
-
         }
     }
 
@@ -94,7 +93,7 @@ class CommunityPostCreateActivity :
                     tvCommunityPostCreateCategory.setTextColor(getColor(R.color.dwelling_blue))
                 }
                 val typeFaceBold = Typeface.createFromAsset(assets, "suit_bold.otf")
-                binding.tvCommunityPostCreateCategory.setTypeface(typeFaceBold)
+                binding.tvCommunityPostCreateCategory.typeface = typeFaceBold
 
             }
         }
@@ -143,14 +142,10 @@ class CommunityPostCreateActivity :
             setNextButtonActive(it)
         }
         communityPostCreateViewModel.sendSuccess.observe(this) {
-            if (it) {
-                finish()
-            }
+            if (it) finish()
         }
         communityPostCreateViewModel.patchSuccess.observe(this) {
-            if (it) {
-                finish()
-            }
+            if (it) finish()
         }
     }
 
@@ -202,7 +197,6 @@ class CommunityPostCreateActivity :
     private fun showMenu() {
         val items = resources.getStringArray(R.array.category_popup)
 
-        // TODO 텍스트 스타일 적용이 안되는 문제 해결 필요
         val popupAdapter =
             object : ArrayAdapter<String>(baseContext, R.layout.item_category_popup, items) {
                 override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
