@@ -1,6 +1,5 @@
 package com.fork.spoonfeed.presentation.ui.home.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
@@ -17,7 +16,6 @@ import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterestedPolicyActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.PolicyListActivity
-import com.fork.spoonfeed.presentation.util.LinearLayoutManagerWrapper
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +25,7 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel=homeViewModel
         initView()
     }
 
@@ -39,7 +38,6 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
         initClick()
         setMyLikePolicyListAdapter()
         setMyLikePolicyListObserve()
-        setMyPolicyListEmptyObserve()
         initData()
     }
 
@@ -69,18 +67,6 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
     private fun setMyLikePolicyListObserve() {
         homeViewModel.myLikePolicyList.observe(viewLifecycleOwner) { myLikePolicyList ->
             myLikePolicyAdapter.submitList(myLikePolicyList)
-        }
-    }
-
-    private fun setMyPolicyListEmptyObserve() {
-        homeViewModel.isMyLikePolicyListEmpty.observe(viewLifecycleOwner) { isMyLikePolicyListEmpty ->
-            if (isMyLikePolicyListEmpty) {
-                binding.rvHomeInterastedPolicyList.visibility = View.GONE
-                binding.ctlHomeNoInterastedPolicyList.visibility = View.VISIBLE
-            } else {
-                binding.ctlHomeNoInterastedPolicyList.visibility = View.GONE
-                binding.rvHomeInterastedPolicyList.visibility = View.VISIBLE
-            }
         }
     }
 }

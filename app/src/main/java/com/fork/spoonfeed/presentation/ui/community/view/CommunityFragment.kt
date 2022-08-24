@@ -27,7 +27,6 @@ class CommunityFragment :
         super.onViewCreated(view, savedInstanceState)
         binding.communityViewModel = communityViewModel
         binding.lifecycleOwner = viewLifecycleOwner
-        binding.lifecycleOwner = viewLifecycleOwner
         initView()
     }
 
@@ -41,8 +40,12 @@ class CommunityFragment :
         setCommunityAdapter()
         setObserver()
         setFilterClickObserve()
-        setSearchClickListener()
-        setFloatingClickListener()
+        setInitClickListener()
+    }
+
+    private fun initData() {
+        communityViewModel.getPostData()
+        myPageViewModel.getNickName()
     }
 
     private fun setCommunityAdapter() {
@@ -51,7 +54,6 @@ class CommunityFragment :
                 putExtra(POST_PK, it.id)
             })
         }
-        communityAdapter.notifyDataSetChanged()
         with(binding) {
             rvCommunity.adapter = communityAdapter
             rvCommunity.layoutManager = LinearLayoutManager(requireContext())
@@ -72,23 +74,9 @@ class CommunityFragment :
         }
     }
 
-    private fun initData() {
-        communityViewModel.getPostData()
-        myPageViewModel.getNickName()
-    }
-
-    private fun setSearchClickListener() {
-        binding.ivCommunityMagnifyGlass.setOnClickListener {
-            val intent = Intent(requireContext(), SearchInputActivity::class.java)
-            startActivity(intent)
-        }
-    }
-
-    private fun setFloatingClickListener() {
-        binding.ivCommunityFloatingButton.setOnClickListener {
-            val intent = Intent(context, CommunityPostCreateActivity::class.java)
-            startActivity(intent)
-        }
+    private fun setInitClickListener() {
+        binding.ivCommunityMagnifyGlass.setOnClickListener { SearchInputActivity.start(requireContext()) }
+        binding.ivCommunityFloatingButton.setOnClickListener { CommunityPostCreateActivity.start(requireContext()) }
     }
 
     private fun setFilterClickObserve() {

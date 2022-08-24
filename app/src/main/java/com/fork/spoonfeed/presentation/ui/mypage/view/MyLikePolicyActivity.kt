@@ -87,7 +87,7 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
 
     companion object {
         fun start(context: Context) {
-            val intent = Intent(context, MyLikePolicyAdapter::class.java)
+            val intent = Intent(context, InterestedPolicyActivity::class.java)
             context.startActivity(intent)
         }
     }

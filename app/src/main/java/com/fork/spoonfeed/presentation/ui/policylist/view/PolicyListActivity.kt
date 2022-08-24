@@ -39,7 +39,6 @@ class PolicyListActivity :
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        LifeCycleEventLogger(javaClass.name).registerLogger(lifecycle)
         binding.policyListViewModel = policyListViewModel
         binding.lifecycleOwner = this
         initView()
@@ -90,7 +89,7 @@ class PolicyListActivity :
     }
 
     private fun moveToMenu(targetFragment: String) {
-        startActivity(Intent(baseContext, MainActivity::class.java).apply {
+        startActivity(Intent(this, MainActivity::class.java).apply {
             putExtra(MainActivity.BOTTOM_MOVE, targetFragment)
             addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
             addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
@@ -115,15 +114,7 @@ class PolicyListActivity :
         }
     }
 
-/*    private fun setFilterCategoryLayout(category: String) {
-        when (category) {
-            ALL ->  policyMenuAdapter.clickFilter(ALL)     //binding.tvPolicylistFilter.text = ALL
-            DWELLING ->  policyMenuAdapter.clickFilter(DWELLING)   //binding.tvPolicylistFilter.text = DWELLING
-            FINANCE ->  policyMenuAdapter.clickFilter(FINANCE)   //binding.tvPolicylistFilter.text = FINANCE
-        }
-    }*/
-
-    private fun setPolicyListAdapter() {
+   private fun setPolicyListAdapter() {
         policyListAdapter = PolicyListAdapter(this, policyListViewModel) {
             Intent(this, DetailInfoActivity::class.java).apply {
                 putExtra(DetailInfoActivity.POST_PK, it.id)
