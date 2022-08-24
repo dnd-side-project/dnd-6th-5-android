@@ -1,22 +1,16 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.lifecycle.ViewModelProvider
 import com.fork.spoonfeed.R
-import com.fork.spoonfeed.data.remote.model.user.ResponseUserLikePolicyData
 import com.fork.spoonfeed.databinding.ActivityDetailInfoBinding
 import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.DetailInfoViewModel
-import com.fork.spoonfeed.presentation.ui.policylist.viewmodel.PolicyListViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import com.fork.spoonfeed.presentation.util.setBackBtnClickListener
 
 
 @AndroidEntryPoint
@@ -45,7 +39,7 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
 
     private fun setReferenceSiteInitLayout() {
         with(binding) {
-            detailInfoViewModel.referenceSiteOne.observe(this@DetailInfoActivity) { referenceSiteOne ->
+            detailInfoViewModel!!.referenceSiteOne.observe(this@DetailInfoActivity) { referenceSiteOne ->
                 if (referenceSiteOne == REFERENCE_SITE_NOTHING) {
                     viewReferenceOne.visibility = View.INVISIBLE
                 } else {
@@ -53,7 +47,7 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
                     referenceOneClickListener(referenceSiteOne)
                 }
             }
-            detailInfoViewModel.referenceSiteTwo.observe(this@DetailInfoActivity) { referenceSiteTwo ->
+            detailInfoViewModel!!.referenceSiteTwo.observe(this@DetailInfoActivity) { referenceSiteTwo ->
                 if (referenceSiteTwo == REFERENCE_SITE_NOTHING) {
                     viewReferenceTwo.visibility = View.INVISIBLE
                 } else {
@@ -76,18 +70,18 @@ class DetailInfoActivity : BaseViewUtil.BaseAppCompatActivity<ActivityDetailInfo
 
             ivDetailInfoApplyQualifications.setOnClickListener {
                 Intent(this@DetailInfoActivity, ApplyQualificationActivity::class.java).apply {
-                    putExtra(LIMITED_AGE, detailInfoViewModel.policyDetailInfo.value?.limitAge)
-                    putExtra(LIMITED_AREA_ASSET, detailInfoViewModel.policyDetailInfo.value?.limitAreaAsset)
-                    putExtra(SPECIALIZATION, detailInfoViewModel.policyDetailInfo.value?.specialization)
+                    putExtra(LIMITED_AGE, detailInfoViewModel!!.policyDetailInfo.value?.limitAge)
+                    putExtra(LIMITED_AREA_ASSET, detailInfoViewModel!!.policyDetailInfo.value?.limitAreaAsset)
+                    putExtra(SPECIALIZATION, detailInfoViewModel!!.policyDetailInfo.value?.specialization)
                     startActivity(this)
                 }
             }
             ivDetailInfoApplyExplain.setOnClickListener {
                 Intent(this@DetailInfoActivity, ApplyExplainActivity::class.java).apply {
-                    putExtra(CONTENT, detailInfoViewModel.policyDetailInfo.value?.content)
-                    putExtra(OTHER_INFO, detailInfoViewModel.policyDetailInfo.value?.otherInfo)
-                    putExtra(LIMITED_TARGET, detailInfoViewModel.policyDetailInfo.value?.limitedTarget)
-                    putExtra(SUPPORT_SCALE, detailInfoViewModel.policyDetailInfo.value?.supportScale)
+                    putExtra(CONTENT, detailInfoViewModel!!.policyDetailInfo.value?.content)
+                    putExtra(OTHER_INFO, detailInfoViewModel!!.policyDetailInfo.value?.otherInfo)
+                    putExtra(LIMITED_TARGET, detailInfoViewModel!!.policyDetailInfo.value?.limitedTarget)
+                    putExtra(SUPPORT_SCALE, detailInfoViewModel!!.policyDetailInfo.value?.supportScale)
                     startActivity(this)
                 }
             }
