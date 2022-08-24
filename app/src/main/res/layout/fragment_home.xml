@@ -5,6 +5,11 @@
 
     <data>
 
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -287,7 +292,7 @@
                         android:id="@+id/ctl_home_no_interasted_policy_list"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="invisible"
+                        android:visibility="@{viewModel.isMyLikePolicyListEmpty ?  View.VISIBLE : View.GONE }"
                         app:layout_constraintBottom_toBottomOf="@+id/iv_interasted_policy_background"
                         app:layout_constraintEnd_toEndOf="@id/iv_interasted_policy_background"
                         app:layout_constraintStart_toStartOf="@id/iv_interasted_policy_background"
@@ -320,6 +325,7 @@
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="24dp"
                         android:overScrollMode="never"
+                        android:visibility="@{viewModel.isMyLikePolicyListEmpty ?  View.GONE : View.VISIBLE}"
                         app:layout_constraintBottom_toBottomOf="@id/iv_interasted_policy_background"
                         app:layout_constraintEnd_toEndOf="@+id/iv_interasted_policy_background"
                         app:layout_constraintStart_toStartOf="@+id/iv_interasted_policy_background"
