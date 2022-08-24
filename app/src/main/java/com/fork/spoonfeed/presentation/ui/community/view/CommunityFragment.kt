@@ -46,11 +46,12 @@ class CommunityFragment :
     }
 
     private fun setCommunityAdapter() {
-        communityAdapter = PostAdapter(myPageViewModel, viewLifecycleOwner, childFragmentManager) {
+        communityAdapter = PostAdapter {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(POST_PK, it.id)
             })
         }
+        communityAdapter.notifyDataSetChanged()
         with(binding) {
             rvCommunity.adapter = communityAdapter
             rvCommunity.layoutManager = LinearLayoutManager(requireContext())
@@ -91,7 +92,7 @@ class CommunityFragment :
     }
 
     private fun setFilterClickObserve() {
-        communityViewModel.isFilterClicked.observe(this) { isFilterClicked ->
+        communityViewModel.isFilterClicked.observe(viewLifecycleOwner) { isFilterClicked ->
             isFilterClicked.let {
                 if (isFilterClicked) {
                     showBottomFilterDialog()

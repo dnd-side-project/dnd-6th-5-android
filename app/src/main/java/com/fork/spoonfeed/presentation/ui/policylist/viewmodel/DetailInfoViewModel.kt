@@ -31,12 +31,8 @@ class DetailInfoViewModel @Inject constructor(
         get() = _myLikePolicyList
 
     private val _postMyLikePolicySuccess = MutableLiveData(false)
-    val postMyLikePolicySuccess: LiveData<Boolean>
-        get() = _postMyLikePolicySuccess
 
     private val _isLikeClicked = MutableLiveData(false)
-    val isLikeClicked: LiveData<Boolean>
-        get() = _isLikeClicked
 
     private val _referenceSiteOne = MutableLiveData<String>("")
     val referenceSiteOne: LiveData<String>

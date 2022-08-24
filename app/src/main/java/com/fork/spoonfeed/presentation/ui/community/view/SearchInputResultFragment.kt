@@ -61,7 +61,7 @@ class SearchInputResultFragment :
     }
 
     private fun initRvAdapter() {
-        communityPostAdapter = PostAdapter(myPageViewModel,viewLifecycleOwner,childFragmentManager) {
+        communityPostAdapter = PostAdapter {
             startActivity(Intent(requireContext(), CommunityPostActivity::class.java).apply {
                 putExtra(CommunityFragment.POST_PK, it.id)
             })

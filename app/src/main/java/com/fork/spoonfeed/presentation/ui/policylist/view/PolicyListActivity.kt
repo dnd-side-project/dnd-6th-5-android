@@ -1,6 +1,7 @@
 package com.fork.spoonfeed.presentation.ui.policylist.view
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -144,9 +145,9 @@ class PolicyListActivity :
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == RESULT_OK) {
-                val id = result.data?.getIntExtra("id", -1)
-                val ctn = result.data?.getIntExtra("ctn", -1)
-                val likeState = result.data?.getBooleanExtra("likeState", false)
+                val id = result.data?.getIntExtra(DetailInfoActivity.ID, -1)
+                val ctn = result.data?.getIntExtra(DetailInfoActivity.CTN, -1)
+                val likeState = result.data?.getBooleanExtra(DetailInfoActivity.LIKE_STATE, false)
                 policyListViewModel.setLikeBtn(LikeBtnState(id!!, ctn!!, likeState!!))
             }
         }
@@ -231,7 +232,10 @@ class PolicyListActivity :
 
     companion object {
         const val CATEGORY = "CATEGORY"
-        const val POLICY_FILTER_RESET_NAME = "com.fork.spoonfeed.presentation.ui.policylist"
-        const val POLICY_FILTER_RESET_VALUE = "RESET"
+
+        fun start(context: Context, category: String) {
+            val intent = Intent(context, PolicyListActivity::class.java).putExtra(CATEGORY, category)
+            context.startActivity(intent)
+        }
     }
 }

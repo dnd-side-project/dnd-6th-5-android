@@ -79,7 +79,7 @@ class SearchInputActivity :
         }
     }
 
-    fun setInputField() {
+    private fun setInputField() {
         binding.etSearchInputBar.setTextSize(14f)
         binding.etSearchInputBar.setTextColor(this)
 

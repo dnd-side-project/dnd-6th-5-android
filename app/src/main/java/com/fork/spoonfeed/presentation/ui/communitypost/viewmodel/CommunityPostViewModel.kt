@@ -45,6 +45,9 @@ class CommunityPostViewModel @Inject constructor(
     private val _postDetailData = MutableLiveData<ResponsePostData.Data.Post>()
     val postDetailData: LiveData<ResponsePostData.Data.Post> = _postDetailData
 
+    private val _isWriter = MutableLiveData<Boolean>()
+    val isWriter: LiveData<Boolean> = _isWriter
+
     private val _postCommentData = MutableLiveData<List<ResponsePostData.Data.Comment>>()
     val postCommentData: LiveData<List<ResponsePostData.Data.Comment>> = _postCommentData
 
@@ -59,6 +62,10 @@ class CommunityPostViewModel @Inject constructor(
 
     private val _isReportSuccess = MutableLiveData<Pair<Boolean, String>>()
     val isReportSuccess: LiveData<Pair<Boolean, String>> = _isReportSuccess
+
+    fun switchClickEvent() {
+        if (postDetailData.value?.author == getUserData()?.nickname) _isWriter.value = true
+    }
 
     fun initUserData() {
         viewModelScope.launch {

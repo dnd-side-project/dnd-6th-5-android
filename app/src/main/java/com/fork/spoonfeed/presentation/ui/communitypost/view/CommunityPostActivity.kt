@@ -41,6 +41,7 @@ class CommunityPostActivity :
 
     private fun initUserData() {
         communityPostViewModel.initUserData()
+        communityPostViewModel.switchClickEvent()
         communityPostViewModel.userData.observe(this) {
             setCommentAdapter(it)
             setCommentEditor()
@@ -120,9 +121,13 @@ class CommunityPostActivity :
     private fun setObserver() {
         communityPostViewModel.postDetailData.observe(this) {
             setCategoryBackground(it.category)
-            if (it.author == communityPostViewModel.getUserData()?.nickname) setPostEditWriterClickListener()
+        }
+
+        communityPostViewModel.isWriter.observe(this) { writer ->
+            if (writer) setPostEditWriterClickListener()
             else setPostEditUserClickListener()
         }
+
         communityPostViewModel.postCommentData.observe(this) {
             commentAdapter.submitList(it)
         }

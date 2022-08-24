@@ -46,16 +46,12 @@ class PolicyListViewModel @Inject constructor(
         _policyFilteredResult
 
     private val _postMyLikePolicySuccess = MutableLiveData(false)
-    val postMyLikePolicySuccess: LiveData<Boolean>
-        get() = _postMyLikePolicySuccess
 
     private val _myLikePolicyList = MutableLiveData<List<ResponseUserLikePolicyData.Data.Policy>>()
     val myLikePolicyList: LiveData<List<ResponseUserLikePolicyData.Data.Policy>>
         get() = _myLikePolicyList
 
     private val _getMyLikePolicySuccess = MutableLiveData(false)
-    val getMyLikePolicySuccess: LiveData<Boolean>
-        get() = _getMyLikePolicySuccess
 
     private val _likeBtnState = MutableLiveData<LikeBtnState>()
     val likeBtnState: LiveData<LikeBtnState>

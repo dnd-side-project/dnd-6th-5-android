@@ -30,9 +30,9 @@ class ApplyQualificationActivity : BaseViewUtil.BaseAppCompatActivity<ActivityAp
 
     private fun setApplyQualification() {
         with(binding) {
-            tvApplyQualificationsAgeContent.text = intent.getStringExtra("limitAge")
-            tvApplyQualificationResidenceAndIncomeContent.text = intent.getStringExtra("limitAreaAsset")
-            tvApplyQualificationSpecializationFieldContent.text = intent.getStringExtra("specialization")
+            tvApplyQualificationsAgeContent.text = intent.getStringExtra(DetailInfoActivity.LIMITED_AGE)
+            tvApplyQualificationResidenceAndIncomeContent.text = intent.getStringExtra(DetailInfoActivity.LIMITED_AREA_ASSET)
+            tvApplyQualificationSpecializationFieldContent.text = intent.getStringExtra(DetailInfoActivity.SPECIALIZATION)
         }
     }
 }
