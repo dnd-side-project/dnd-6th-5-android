@@ -66,7 +66,7 @@ class SearchInputActivity :
     }
 
     private fun initTabLayout() {
-        val tabLabel = listOf("전체", "주거", "금융")
+        val tabLabel = listOf(ALL, DWELLING, FINANCE)
         TabLayoutMediator(binding.tlSearchInput, binding.vpSearchInput) { tab, position ->
             tab.text = tabLabel[position]
         }.attach()
