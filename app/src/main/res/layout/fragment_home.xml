@@ -321,7 +321,7 @@
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rv_home_interasted_policy_list"
                         android:layout_width="match_parent"
-                        android:layout_height="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginHorizontal="24dp"
                         android:layout_marginTop="24dp"
                         android:overScrollMode="never"
@@ -330,8 +330,8 @@
                         app:layout_constraintEnd_toEndOf="@+id/iv_interasted_policy_background"
                         app:layout_constraintStart_toStartOf="@+id/iv_interasted_policy_background"
                         app:layout_constraintTop_toTopOf="@id/iv_interasted_policy_background"
-                        tools:itemCount="3"
-                        tools:listitem="@layout/item_interasted_policy">
+                        tools:itemCount="1"
+                        tools:listitem="@layout/rv_item">
 
                     </androidx.recyclerview.widget.RecyclerView>
 

@@ -43,7 +43,7 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     fun setMyPolicyListEmptyObserve() {
-        myPageViewModel.isMyPostEmpty.observe(this) { isMyPostEmpty ->
+        myPageViewModel.isMyPostEmpty.observe(viewLifecycleOwner) { isMyPostEmpty ->
             if (isMyPostEmpty) {
                 binding.rvMypostmanagement.visibility = View.GONE
                 binding.ctlMypostmanagementNoPost.visibility = View.VISIBLE
@@ -55,11 +55,11 @@ class MyPostManagementPostFragment : BaseViewUtil.BaseFragment<FragmentMyPostMan
     }
 
     private fun setMyPolicyListObserve() {
-        myPageViewModel.myPostList.observe(this) { myPostList ->
+        myPageViewModel.myPostList.observe(viewLifecycleOwner) { myPostList ->
             myPostManagementPostAdapter.submitList(myPostList)
         }
 
-        myPageViewModel.deletePostSuccess.observe(this) { deleteSuccess ->
+        myPageViewModel.deletePostSuccess.observe(viewLifecycleOwner) { deleteSuccess ->
             if (deleteSuccess)
                 initData()
         }

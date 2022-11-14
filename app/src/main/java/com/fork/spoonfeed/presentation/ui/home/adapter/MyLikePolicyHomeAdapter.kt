@@ -50,17 +50,11 @@ class MyLikePolicyAdapter(
         return MyLikePolicyHomeViewHolder(binding)
     }
 
-    override fun getItemCount() =
-        if (DEFAULT_COUNT < currentList.size) 3
-        else currentList.size
+    override fun getItemCount() =currentList.size
 
 
     override fun onBindViewHolder(holder: MyLikePolicyHomeViewHolder, position: Int) {
         holder.onBind(getItem(position), clickListener)
 
-    }
-
-    companion object {
-        const val DEFAULT_COUNT = 3
     }
 }

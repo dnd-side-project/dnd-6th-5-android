@@ -35,11 +35,10 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
         setMyCommentListEmptyObserve()
         setMyCommentListObserve()
         initRvAdapter()
-
     }
 
     private fun setMyCommentListEmptyObserve() {
-        myPageViewModel.isMyCommentEmpty.observe(this) { isMyCommentEmpty ->
+        myPageViewModel.isMyCommentEmpty.observe(viewLifecycleOwner) { isMyCommentEmpty ->
             if (isMyCommentEmpty) {
                 binding.rvMypostmanagement.visibility = View.GONE
                 binding.ctlMypostmanagementNoComment.visibility = View.VISIBLE
@@ -51,10 +50,10 @@ class MyPostManagementCommentFragment : BaseViewUtil.BaseFragment<FragmentMyPost
     }
 
     private fun setMyCommentListObserve() {
-        myPageViewModel.myCommentList.observe(this) { myCommentList ->
+        myPageViewModel.myCommentList.observe(viewLifecycleOwner) { myCommentList ->
             myCommentAdapter.submitList(myCommentList)
         }
-        myPageViewModel.deleteCommentSuccess.observe(this) { deleteCommentSuccess ->
+        myPageViewModel.deleteCommentSuccess.observe(viewLifecycleOwner) { deleteCommentSuccess ->
             if (deleteCommentSuccess)
                 initData()
         }

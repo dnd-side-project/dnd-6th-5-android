@@ -71,7 +71,6 @@ class InterestedPolicyActivity : BaseViewUtil.BaseAppCompatActivity<ActivityInte
         }
     }
 
-
     private fun initRvAdapter() {
         myLikePolicyAdapter = MyLikePolicyAdapter(myPageViewModel) {
             Intent(this, DetailInfoActivity::class.java).apply {
