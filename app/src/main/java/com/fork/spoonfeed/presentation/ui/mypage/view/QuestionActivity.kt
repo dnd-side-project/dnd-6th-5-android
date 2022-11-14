@@ -103,7 +103,7 @@ class QuestionActivity : BaseViewUtil.BaseAppCompatActivity<ActivityQuestionBind
         }
     }
 
-    fun setBtn() {
+    private fun setBtn() {
         isValidBtn = binding.etQuestionEmail.length() > 0 && binding.etQuestionSentence.length() > 0
         myPageViewModel.postBtnEnable(isValidBtn)
     }

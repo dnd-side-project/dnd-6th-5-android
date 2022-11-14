@@ -11,7 +11,7 @@ import com.fork.spoonfeed.presentation.base.BaseViewUtil
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.ALL
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.DWELLING
 import com.fork.spoonfeed.presentation.base.BaseViewUtil.BaseCategoryBottomDialogFragment.Companion.FINANCE
-import com.fork.spoonfeed.presentation.ui.home.adapter.MyLikePolicyAdapter
+import com.fork.spoonfeed.presentation.ui.home.adapter.MainAdapter
 import com.fork.spoonfeed.presentation.ui.home.viewmodel.HomeViewModel
 import com.fork.spoonfeed.presentation.ui.mypage.view.InterestedPolicyActivity
 import com.fork.spoonfeed.presentation.ui.policylist.view.DetailInfoActivity
@@ -20,12 +20,12 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
-    private lateinit var myLikePolicyAdapter: MyLikePolicyAdapter
+    private lateinit var myLikePolicyAdapter: MainAdapter
     private val homeViewModel: HomeViewModel by activityViewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewModel=homeViewModel
+        binding.viewModel = homeViewModel
         initView()
     }
 
@@ -37,7 +37,6 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
     override fun initView() {
         initClick()
         setMyLikePolicyListAdapter()
-        setMyLikePolicyListObserve()
         initData()
     }
 
@@ -47,26 +46,44 @@ class HomeFragment : BaseViewUtil.BaseFragment<FragmentHomeBinding>(R.layout.fra
 
     private fun initClick() {
         with(binding) {
-            ivHomeAllBackground.setOnClickListener { PolicyListActivity.start(requireContext(), ALL) }
-            ivHomeDwellingBackground.setOnClickListener { PolicyListActivity.start(requireContext(), DWELLING) }
-            ivHomeFinanceBackground.setOnClickListener { PolicyListActivity.start(requireContext(), FINANCE) }
-            ivHomeInterastedPolicyMore.setOnClickListener { InterestedPolicyActivity.start(requireContext()) }
+            ivHomeAllBackground.setOnClickListener {
+                PolicyListActivity.start(
+                    requireContext(),
+                    ALL
+                )
+            }
+            ivHomeDwellingBackground.setOnClickListener {
+                PolicyListActivity.start(
+                    requireContext(),
+                    DWELLING
+                )
+            }
+            ivHomeFinanceBackground.setOnClickListener {
+                PolicyListActivity.start(
+                    requireContext(),
+                    FINANCE
+                )
+            }
+            ivHomeInterastedPolicyMore.setOnClickListener {
+                InterestedPolicyActivity.start(
+                    requireContext()
+                )
+            }
             ctlHomeCustomizedPolicy.setOnClickListener { (activity as MainActivity).moveToPolicy() }
         }
     }
 
     private fun setMyLikePolicyListAdapter() {
-        myLikePolicyAdapter = MyLikePolicyAdapter { DetailInfoActivity.start(requireContext(), it.policyId) }
-
+        myLikePolicyAdapter =
+            MainAdapter(requireContext(), homeViewModel, viewLifecycleOwner) {
+                DetailInfoActivity.start(
+                    requireContext(),
+                    it.policyId
+                )
+            }
         with(binding.rvHomeInterastedPolicyList) {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = myLikePolicyAdapter
-        }
-    }
-
-    private fun setMyLikePolicyListObserve() {
-        homeViewModel.myLikePolicyList.observe(viewLifecycleOwner) { myLikePolicyList ->
-            myLikePolicyAdapter.submitList(myLikePolicyList)
         }
     }
 }
